@@ -1,59 +1,25 @@
-import { useState, useRef, useEffect } from "react";
-import menuData from "./data/menuData";
-import CategoryNav from "./components/CategoryNav";
-import MenuItems from "./components/MenuItems";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
-import CategoryHeader from "./components/CategoryHeader";
 import Footer from "./components/Footer";
+import MenuPage from "./pages/MenuPage";
+import AboutPage from "./pages/AboutPage";
+import FeedbackPage from "./pages/FeedbackPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 export default function App() {
-  const categories = Object.keys(menuData);
-  const [activeCategory, setActiveCategory] = useState(categories[0]);
-  const menuRef = useRef(null);
-  const ActiveIcon = menuData[activeCategory].icon;
-
-  useEffect(() => {
-    if (menuRef.current) {
-      const menuTop =
-        menuRef.current.getBoundingClientRect().top + window.pageYOffset;
-      const stickyOffset = 81; // height of your sticky nav
-
-      // Only scroll if user is below the menu section
-      if (window.scrollY > menuTop - stickyOffset) {
-        window.scrollTo({
-          top: menuTop - stickyOffset,
-          behavior: "smooth",
-        });
-      }
-    }
-  }, [activeCategory]);
-
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-100 via-blue-200 to-blue-50">
-      {/* Header */}
-      <Header />
-
-      <CategoryNav
-        activeCategory={activeCategory}
-        setActiveCategory={setActiveCategory}
-      />
-
-      {/* Menu Section */}
-      <main
-        ref={menuRef}
-        className="px-6 py-10 max-w-7xl mx-auto min-h-screen flex flex-col"
-      >
-        <CategoryHeader
-          activeCategory={activeCategory}
-          ActiveIcon={ActiveIcon}
-        />
-
-        <MenuItems
-          items={menuData[activeCategory].items}
-          activeCategory={activeCategory}
-        />
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <div className="min-h-screen bg-gradient-to-b from-blue-100 via-blue-200 to-blue-50">
+        <Header />
+        <Routes>
+          <Route path="/" element={<MenuPage />} />
+          <Route path="/menu" element={<MenuPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/feedback" element={<FeedbackPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
