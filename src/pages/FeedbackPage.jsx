@@ -55,16 +55,16 @@ export default function FeedbackPage() {
           type="text"
           name="name"
           placeholder="Your name (optional)"
-          className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
+          className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 border-gray-400"
         />
         <input
           type="email"
           name="email"
           placeholder="Your email (optional)"
-          className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
+          className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 border-gray-400"
         />
         <textarea
-          className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500"
+          className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-500 border-gray-400"
           rows="5"
           name="message"
           placeholder="Share your thoughts with us..."
