@@ -1,5 +1,4 @@
 import { Star, Leaf, TrendingUp, Droplet } from "lucide-react";
-
 import Badge from "./Badge";
 import { useState } from "react";
 
@@ -13,6 +12,7 @@ export default function MenuItem({ item }) {
       <div className="overflow-hidden rounded-t-3xl relative">
         <img
           src={"public/menu/" + image}
+          loading="lazy"
           alt={name}
           className={`w-full h-56 object-cover transform transition duration-600 hover:scale-105 ${
             loaded ? "opacity-100 blur-0" : "opacity-0 blur-lg"
