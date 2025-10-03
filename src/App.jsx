@@ -9,15 +9,19 @@ import NotFoundPage from "./pages/NotFoundPage";
 export default function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gradient-to-b from-blue-100 via-blue-200 to-blue-50">
+      <div className="flex flex-col min-h-screen bg-gradient-to-b from-blue-100 via-blue-200 to-blue-50">
         <Header />
-        <Routes>
-          <Route path="/" element={<MenuPage />} />
-          <Route path="/menu" element={<MenuPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/feedback" element={<FeedbackPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
+
+        <div className="flex-1">
+          <Routes>
+            <Route path="/" element={<MenuPage />} />
+            <Route path="/menu" element={<MenuPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/feedback" element={<FeedbackPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </div>
+
         <Footer />
       </div>
     </Router>
