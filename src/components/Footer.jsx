@@ -24,13 +24,13 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a href="about" className="hover:text-blue-200">
-                About Us
+              <a href="feedback" className="hover:text-blue-200">
+                Feedback
               </a>
             </li>
             <li>
-              <a href="contact" className="hover:text-blue-200">
-                Contact
+              <a href="about" className="hover:text-blue-200">
+                About Us
               </a>
             </li>
           </ul>
