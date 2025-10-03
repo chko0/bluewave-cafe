@@ -4,6 +4,7 @@ import CategoryNav from "./components/CategoryNav";
 import MenuItems from "./components/MenuItems";
 import Header from "./components/Header";
 import CategoryHeader from "./components/CategoryHeader";
+import Footer from "./components/Footer";
 
 export default function App() {
   const categories = Object.keys(menuData);
@@ -52,6 +53,7 @@ export default function App() {
           activeCategory={activeCategory}
         />
       </main>
+      <Footer />
     </div>
   );
 }
