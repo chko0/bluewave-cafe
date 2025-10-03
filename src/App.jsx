@@ -12,6 +12,7 @@ import MenuPage from "./pages/MenuPage";
 import AboutPage from "./pages/AboutPage";
 import FeedbackPage from "./pages/FeedbackPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import FeedbackSuccessPage from "./pages/FeedbackSuccessPage";
 
 export default function App() {
   useEffect(() => {
@@ -47,6 +48,7 @@ export default function App() {
             <Route path="/menu" element={<MenuPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/feedback" element={<FeedbackPage />} />
+            <Route path="/feedback/success" element={<FeedbackSuccessPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>
