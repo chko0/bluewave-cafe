@@ -13,6 +13,7 @@ import AboutPage from "./pages/AboutPage";
 import FeedbackPage from "./pages/FeedbackPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import FeedbackSuccessPage from "./pages/FeedbackSuccessPage";
+import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
   useEffect(() => {
@@ -39,6 +40,7 @@ export default function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <div className="flex flex-col min-h-screen bg-gradient-to-b from-blue-100 via-blue-200 to-blue-50">
         <Header />
 

@@ -1,5 +1,6 @@
 // Footer.jsx
 import { Facebook, Instagram, Twitter } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -19,19 +20,19 @@ export default function Footer() {
           <h3 className="text-md font-semibold">Quick Links</h3>
           <ul className="mt-3 space-y-2 text-sm">
             <li>
-              <a href="menu" className="hover:text-blue-200">
+              <Link to="menu" className="hover:text-blue-200">
                 Menu
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="feedback" className="hover:text-blue-200">
+              <Link to="feedback" className="hover:text-blue-200">
                 Feedback
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="about" className="hover:text-blue-200">
+              <Link to="about" className="hover:text-blue-200">
                 About Us
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
