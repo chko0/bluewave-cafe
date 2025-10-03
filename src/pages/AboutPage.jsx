@@ -1,5 +1,5 @@
 import { MapPin, Phone, Coffee } from "lucide-react";
-import heroImg from "../assets/cafe-hero.jpg"; // add a hero image in your project
+import heroImg from "/public/cafe-hero.jpg";
 
 export default function AboutPage() {
   return (

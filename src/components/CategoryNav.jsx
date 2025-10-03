@@ -3,6 +3,9 @@ import menuData from "../data/menuData";
 export default function CategoryNav({ activeCategory, setActiveCategory }) {
   return (
     <nav className="sticky top-0 z-50 overflow-x-auto bg-blue-50 border-b border-blue-200 shadow-sm relative">
+      {/* Left gradient overlay */}
+      <div className="absolute top-0 left-0 h-full w-12 bg-gradient-to-r from-blue-50 to-transparent pointer-events-none" />
+
       <div className="overflow-x-auto px-2">
         <div className="flex gap-3 px-4 py-3 min-w-max justify-start sm:justify-center">
           {Object.entries(menuData).map(([catName, catData]) => {
@@ -26,7 +29,7 @@ export default function CategoryNav({ activeCategory, setActiveCategory }) {
         </div>
       </div>
 
-      {/*  gradient overlay to hint scroll */}
+      {/* Right gradient overlay */}
       <div className="absolute top-0 right-0 h-full w-12 bg-gradient-to-l from-blue-50 to-transparent pointer-events-none" />
     </nav>
   );

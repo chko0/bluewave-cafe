@@ -1,18 +1,29 @@
 import { Star, Leaf, TrendingUp, Droplet } from "lucide-react";
 
 import Badge from "./Badge";
+import { useState } from "react";
 
 export default function MenuItem({ item }) {
   const { name, image, description, price } = item;
+  const [loaded, setLoaded] = useState(false);
+
   return (
     <div className="bg-gradient-to-br from-blue-50 via-blue-100 to-white rounded-3xl border-t-4 border-blue-500 overflow-hidden flex flex-col h-full shadow-md">
       {/* Image */}
       <div className="overflow-hidden rounded-t-3xl relative">
         <img
-          src={image}
+          src={"public/menu/" + image}
           alt={name}
-          className="w-full h-56 object-cover transform transition-transform duration-500 hover:scale-105 object-cover"
+          className={`w-full h-56 object-cover transform transition duration-600 hover:scale-105 ${
+            loaded ? "opacity-100 blur-0" : "opacity-0 blur-lg"
+          }`}
+          onLoad={() => setLoaded(true)}
         />
+
+        {/* Subtle skeleton background while loading */}
+        {!loaded && (
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-blue-50 animate-pulse"></div>
+        )}
 
         {/* Badges overlay */}
         <div className="absolute top-2 left-2 flex flex-row gap-1 z-10">
