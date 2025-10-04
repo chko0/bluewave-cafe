@@ -7,11 +7,11 @@ export default function Header() {
         <Link to="/menu" className="hover:text-white transition">
           Menu
         </Link>
-        <Link to="/about" className="hover:text-white transition">
-          About
-        </Link>
         <Link to="/feedback" className="hover:text-white transition">
           Feedback
+        </Link>
+        <Link to="/about" className="hover:text-white transition">
+          About Us
         </Link>
       </nav>
 

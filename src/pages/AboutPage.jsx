@@ -1,5 +1,5 @@
 import { MapPin, Phone, Coffee } from "lucide-react";
-import heroImg from "/cafe-hero.jpg";
+import heroImg from "/cafe-hero.webp";
 import { useState } from "react";
 
 export default function AboutPage() {
