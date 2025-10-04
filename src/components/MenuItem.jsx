@@ -27,20 +27,20 @@ export default function MenuItem({ item }) {
 
         {/* Badges overlay */}
         <div className="absolute top-2 left-2 flex flex-row gap-1 z-10">
-          {item.new && (
-            <Badge
-              text="New"
-              icon={TrendingUp}
-              bgColor="bg-blue-100 shimmer-animated"
-              textColor="text-blue-700"
-            />
-          )}
           {item.popular && (
             <Badge
               text="Popular"
               icon={Star}
               bgColor="bg-yellow-100 glow-animated shimmer-animated"
               textColor="text-yellow-800"
+            />
+          )}
+          {item.new && (
+            <Badge
+              text="New"
+              icon={TrendingUp}
+              bgColor="bg-blue-100 shimmer-animated"
+              textColor="text-blue-700"
             />
           )}
 

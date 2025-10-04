@@ -14,30 +14,9 @@ import FeedbackPage from "./pages/FeedbackPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import FeedbackSuccessPage from "./pages/FeedbackSuccessPage";
 import ScrollToTop from "./components/ScrollToTop";
+import PageTitleHandler from "./components/PageTitleHandler";
 
 export default function App() {
-  useEffect(() => {
-    const baseTitle = "BlueWave Café ☕";
-    let pageTitle = "";
-
-    switch (location.pathname) {
-      case "/":
-      case "/menu":
-        pageTitle = "Menu";
-        break;
-      case "/about":
-        pageTitle = "About Us";
-        break;
-      case "/feedback":
-        pageTitle = "Feedback";
-        break;
-      default:
-        pageTitle = "Page Not Found";
-    }
-
-    document.title = `${baseTitle} | ${pageTitle}`;
-  }, [location]);
-
   return (
     <Router>
       <ScrollToTop />
@@ -45,6 +24,7 @@ export default function App() {
         <Header />
 
         <div className="flex-1">
+          <PageTitleHandler />
           <Routes>
             <Route path="/" element={<MenuPage />} />
             <Route path="/menu" element={<MenuPage />} />

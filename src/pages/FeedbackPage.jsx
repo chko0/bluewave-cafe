@@ -1,31 +1,40 @@
-import { MessageCircle } from "lucide-react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { MessageCircle } from "lucide-react";
 
 export default function FeedbackPage() {
-  // const [result, setResult] = useState("");
+  const navigate = useNavigate();
+  const [result, setResult] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  // const onSubmit = async (event) => {
-  //   event.preventDefault();
-  //   setResult("Sending....");
-  //   const formData = new FormData(event.target);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
 
-  //   formData.append("access_key", "1aa061e8-2830-4275-acb2-e9428d1523ec");
+    const formData = new FormData(e.target);
+    formData.append("access_key", "1aa061e8-2830-4275-acb2-e9428d1523ec");
 
-  //   const response = await fetch("https://api.web3forms.com/submit", {
-  //     method: "POST",
-  //     body: formData,
-  //   });
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await response.json();
 
-  //   const data = await response.json();
-
-  //   if (data.success) {
-  //     setResult("Form Submitted Successfully");
-  //     event.target.reset();
-  //   } else {
-  //     console.log("Error", data);
-  //     setResult(data.message);
-  //   }
-  // };
+      if (data.success) {
+        e.target.reset();
+        navigate("/feedback/success");
+      } else {
+        console.error(data.message);
+        alert("Error sending feedback!");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong!");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <main className="px-6 py-12 max-w-3xl mx-auto">
@@ -41,16 +50,9 @@ export default function FeedbackPage() {
       </div>
 
       <form
-        action="https://api.web3forms.com/submit"
-        method="POST"
+        onSubmit={handleSubmit}
         className="bg-white p-8 rounded-2xl shadow-md space-y-6"
       >
-        <input
-          type="hidden"
-          name="access_key"
-          value="1aa061e8-2830-4275-acb2-e9428d1523ec"
-        />
-
         <input
           type="text"
           name="name"
@@ -71,19 +73,15 @@ export default function FeedbackPage() {
           required
         />
 
-        <input
-          type="hidden"
-          name="redirect"
-          value="http://localhost:5173/feedback/success"
-        />
-
         <button
           type="submit"
+          disabled={loading}
           className="w-full bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition font-semibold hover:cursor-pointer"
         >
-          Submit Feedback
+          {loading ? "Sending..." : "Submit Feedback"}
         </button>
       </form>
+      <span className="text-red-500">{result}</span>
     </main>
   );
 }
