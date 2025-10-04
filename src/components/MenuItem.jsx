@@ -11,7 +11,7 @@ export default function MenuItem({ item }) {
       {/* Image */}
       <div className="overflow-hidden rounded-t-3xl relative">
         <img
-          src={"public/menu/" + image}
+          src={"/menu/" + image}
           loading="lazy"
           alt={name}
           className={`w-full h-56 object-cover transform transition duration-600 hover:scale-105 ${
