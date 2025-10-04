@@ -1,16 +1,27 @@
 import { MapPin, Phone, Coffee } from "lucide-react";
-import heroImg from "/public/cafe-hero.jpg";
+import heroImg from "/cafe-hero.jpg";
+import { useState } from "react";
 
 export default function AboutPage() {
+  const [loaded, setLoaded] = useState(false);
+
   return (
     <main className="px-6 py-16 max-w-5xl mx-auto flex flex-col gap-12">
       {/* Hero Section */}
       <div className="relative w-full h-64 md:h-96 rounded-3xl overflow-hidden shadow-lg">
         <img
           src={heroImg}
+          loading="lazy"
           alt="BlueWave Café"
-          className="w-full h-full object-cover"
+          className={`w-full h-full object-cover transform transition duration-600 ${
+            loaded ? "opacity-100 blur-0" : "opacity-0 blur-lg"
+          }`}
+          onLoad={() => setLoaded(true)}
         />
+        {/* Subtle skeleton background while loading */}
+        {!loaded && (
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-blue-50 animate-pulse"></div>
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-blue-900/70 to-transparent flex items-end p-6 rounded-3xl">
           <h1 className="text-3xl md:text-5xl font-extrabold text-white drop-shadow-lg">
             Welcome to BlueWave Café

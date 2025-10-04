@@ -14,7 +14,7 @@ export default function MenuItem({ item }) {
           src={"/menu/" + image}
           loading="lazy"
           alt={name}
-          className={`w-full h-56 object-cover transform transition duration-600 hover:scale-105 ${
+          className={`w-full h-56 object-cover transform transition duration-400 hover:scale-105 ${
             loaded ? "opacity-100 blur-0" : "opacity-0 blur-lg"
           }`}
           onLoad={() => setLoaded(true)}
