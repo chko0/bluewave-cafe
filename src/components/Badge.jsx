@@ -8,14 +8,14 @@ export default function Badge({
 }) {
   return (
     <div
-      className={`inline-flex items-center gap-1 px-2 py-1 rounded-full ${bgColor} shadow-sm`}
+      className={`flex items-center gap-1 px-2 py-0.5 text-xs font-semibold rounded-full ${bgColor} shadow-sm`}
     >
       <Icon
         className={`w-4 h-4 ${textColor} ${
           ["New"].includes(text) ? "animate-bounce" : ""
         }`}
       />
-      <span className={`text-xs font-semibold ${textColor}`}>{text}</span>
+      <span className={`text-xs ${textColor}`}>{text}</span>
     </div>
   );
 }
