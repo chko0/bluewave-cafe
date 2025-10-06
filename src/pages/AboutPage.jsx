@@ -1,6 +1,9 @@
 import { MapPin, Phone, Coffee } from "lucide-react";
 import heroImg from "/cafe-hero.webp";
-import { useState } from "react";
+import { useTheme } from "../context/ThemeContext";
+import config from "../config.json";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 export default function AboutPage() {
   const [loaded, setLoaded] = useState(false);
@@ -9,14 +12,12 @@ export default function AboutPage() {
     <main className="px-6 py-16 max-w-5xl mx-auto flex flex-col gap-12">
       {/* Hero Section */}
       <div className="relative w-full h-64 md:h-96 rounded-3xl overflow-hidden shadow-lg">
-        <img
+        <LazyLoadImage
           src={heroImg}
-          loading="lazy"
-          alt="BlueWave Café"
-          className={`w-full h-full object-cover transform transition duration-600 ${
-            loaded ? "opacity-100 blur-0" : "opacity-0 blur-lg"
-          }`}
-          onLoad={() => setLoaded(true)}
+          alt={config.site.name}
+          effect="blur"
+          wrapperClassName="w-full h-full flex justify-center items-center"
+          className={`w-full h-full object-cover transform transition duration-600 block`}
         />
         {/* Subtle skeleton background while loading */}
         {!loaded && (
