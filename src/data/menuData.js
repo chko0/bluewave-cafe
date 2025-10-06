@@ -37,7 +37,6 @@ const menuData = {
         image: "almond_latte.webp",
         popular: true,
         vegan: true,
-        lactoseFree: true,
       },
       {
         name: "Mocha",

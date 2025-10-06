@@ -2,6 +2,19 @@ import MenuItem from "./MenuItem";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function MenuItems({ items, activeCategory }) {
+  // Sort items so 'New' items are first
+  const sortedItems = [...items].sort((a, b) => {
+    const isANew = a.new ? 1 : 0;
+    const isBNew = b.new ? 1 : 0;
+
+    if (isBNew !== isANew) {
+      return isBNew - isANew;
+    }
+
+    // Optional: Secondary sort by name (A-Z) if both are 'new' or both are old
+    return a.name.localeCompare(b.name);
+  });
+
   return (
     <AnimatePresence mode="wait">
       <motion.div
@@ -12,7 +25,7 @@ export default function MenuItems({ items, activeCategory }) {
         exit={{ opacity: 0.83 }}
         transition={{ duration: 0.25 }}
       >
-        {items.map((item) => (
+        {sortedItems.map((item) => (
           <motion.div
             key={item.name}
             initial={{ opacity: 0, y: 25 }}
