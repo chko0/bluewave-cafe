@@ -5,22 +5,61 @@ import { useTheme } from "../context/ThemeContext";
 import config from "../config.json";
 
 export default function FeedbackSuccessPage() {
-  const location = useLocation();
+  const { colors } = useTheme();
+  const location = useLocation(); // location is unused, but kept if needed later
+
+  // Define success color derived from the theme (using primary colors for brand consistency)
+  const successColor = colors.primary500;
 
   return (
-    <main className="px-6 py-20 max-w-3xl mx-auto text-center">
-      <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-6" />
-      <h2 className="text-3xl font-bold text-blue-900 mb-2">Thank You!</h2>
-      <p className="text-blue-800 text-lg mb-6">
-        Your feedback has been successfully sent. We appreciate your input and
-        will use it to make BlueWave Café even better!
-      </p>
-      <Link
-        to="/menu"
-        className="inline-block bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition font-semibold"
+    <main className="px-6 py-24 max-w-xl mx-auto text-center">
+      {/* Container for the success card effect */}
+      <div
+        className="bg-white p-10 rounded-3xl shadow-2xl space-y-5 border-t-8"
+        style={{ borderColor: successColor }}
       >
-        Back to Menu
-      </Link>
+        <CheckCircle
+          // Increased size and stronger drop shadow for visual celebration
+          className="w-20 h-20 mx-auto mb-4 transition-transform duration-300 scale-100 animate-pulse-once"
+          // 💡 Use a theme primary color for brand consistency, or green for a strong success signal.
+          // Since primary is often blue, we'll use primary500 for a consistent, bright look.
+          style={{ color: successColor }}
+        />
+
+        <h2
+          className="text-4xl font-extrabold mb-6"
+          style={{ color: colors.primary900 }}
+        >
+          Feedback Received!
+        </h2>
+
+        <p className="text-xl mb-8" style={{ color: colors.primary700 }}>
+          Your input is greatly appreciated! We'll use your message to make{" "}
+          {config.site.name} even better.
+        </p>
+
+        {/* --- Back to Menu Button (Refined) --- */}
+        <Link
+          to="/menu"
+          className="
+            inline-block text-white px-8 py-3 rounded-xl transition-all duration-200 
+            font-bold shadow-lg hover:shadow-xl uppercase tracking-wider
+            hover:scale-[1.03]
+          "
+          style={{
+            backgroundColor: colors.primary600,
+          }}
+          // Handle the hover effect directly
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = colors.primary700;
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = colors.primary600;
+          }}
+        >
+          Return to Menu
+        </Link>
+      </div>
     </main>
   );
 }
