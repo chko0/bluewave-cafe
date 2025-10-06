@@ -4,14 +4,12 @@ import * as LucideIcons from "lucide-react";
 import config from "../config.json";
 import { useEffect, useState } from "react";
 
-export default function Navbar() {
+export default function Navbar({ scrollThreshold = 168 }) {
   const [isScrolled, setIsScrolled] = useState(false);
-  const SCROLL_THRESHOLD = 168;
-
   useEffect(() => {
     const handleScroll = () => {
       // Check if the vertical scroll position is greater than the threshold
-      const shouldShrink = window.scrollY > SCROLL_THRESHOLD;
+      const shouldShrink = window.scrollY > scrollThreshold;
       if (shouldShrink !== isScrolled) {
         setIsScrolled(shouldShrink);
       }

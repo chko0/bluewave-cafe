@@ -4,22 +4,24 @@ import CategoryNav from "../components/CategoryNav";
 import MenuItems from "../components/MenuItems";
 import CategoryHeader from "../components/CategoryHeader";
 
-export default function MenuPage() {
+export default function MenuPage({ headerOffset = 292 }) {
   const categories = Object.keys(menuData);
   const [activeCategory, setActiveCategory] = useState(categories[0]);
-  const menuRef = useRef(null);
+
   const ActiveIcon = menuData[activeCategory].icon;
 
+  const menuRef = useRef(null);
+  const navRef = useRef(null);
+
   useEffect(() => {
-    if (menuRef.current) {
+    if (menuRef.current && navRef.current) {
       const menuTop =
         menuRef.current.getBoundingClientRect().top + window.pageYOffset;
-      const stickyOffset = 71; // height of your sticky nav
 
       // Only scroll if user is below the menu section
-      if (window.scrollY > menuTop - stickyOffset) {
+      if (window.scrollY > headerOffset) {
         window.scrollTo({
-          top: menuTop - stickyOffset,
+          top: headerOffset,
           behavior: "smooth",
         });
       }
@@ -27,7 +29,7 @@ export default function MenuPage() {
   }, [activeCategory]);
 
   return (
-    <>
+    <div ref={navRef}>
       <CategoryNav
         activeCategory={activeCategory}
         setActiveCategory={setActiveCategory}
@@ -48,6 +50,6 @@ export default function MenuPage() {
           activeCategory={activeCategory}
         />
       </main>
-    </>
+    </div>
   );
 }

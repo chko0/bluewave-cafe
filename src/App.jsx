@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
 import { useTheme } from "./context/ThemeContext";
 
 import Header from "./components/Header";
@@ -20,6 +20,16 @@ const NotFoundPage = React.lazy(() => import("./pages/NotFoundPage"));
 export default function App() {
   const { colors } = useTheme();
 
+  const headerRef = useRef(null);
+  const [headerHeight, setHeaderHeight] = useState(0);
+
+  // Measure the header height after it mounts/renders
+  useEffect(() => {
+    if (headerRef.current) {
+      setHeaderHeight(headerRef.current.offsetHeight);
+    }
+  }, []);
+
   return (
     <Router>
       <ScrollToTop />
@@ -33,14 +43,24 @@ export default function App() {
           backgroundSize: "100% 100vh",
         }}
       >
-        <Navbar />
-        <Header />
+        <Navbar scrollThreshold={headerHeight - 62} />
+
+        <div ref={headerRef}>
+          <Header />
+        </div>
+
         {/* Suspense loader while lazy pages load */}
         <Suspense fallback={<Loading isFullHeight={true} />}>
           <div className="flex-1">
             <Routes>
-              <Route path="/" element={<MenuPage />} />
-              <Route path="/menu" element={<MenuPage />} />
+              <Route
+                path="/"
+                element={<MenuPage headerOffset={headerHeight} />}
+              />
+              <Route
+                path="/menu"
+                element={<MenuPage headerOffset={headerHeight} />}
+              />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/feedback" element={<FeedbackPage />} />
               <Route
@@ -51,6 +71,7 @@ export default function App() {
             </Routes>
           </div>
         </Suspense>
+
         <Footer />
       </div>
     </Router>
