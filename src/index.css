@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @plugin 'tailwind-scrollbar';
 
+.footer-options a:hover {
+  /* Use the CSS variable defined on the element */
+  color: var(--hover-color) !important;
+}
+
 /* =============================== */
 /* NEW THEME-AWARE GLOW ANIMATION  */
 /* =============================== */

@@ -1,5 +1,4 @@
 // Footer.jsx
-import { Facebook, Instagram, Twitter } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 import * as LucideIcons from "lucide-react";
@@ -16,7 +15,7 @@ export default function Footer() {
   const primaryGradientStart = colors.primary600;
   const primaryGradientMiddle = colors.primary700;
 
-  const hoverLinkColor = colors.primary500;
+  const hoverLinkColor = colors.hoverBg;
   const primaryTextMuted = "rgba(255, 255, 255, 0.8)"; // Replaces text-blue-100/200
   const borderSubtle = "rgba(255, 255, 255, 0.3)"; // Replaces border-blue-400/40
 
@@ -42,20 +41,15 @@ export default function Footer() {
         {/* Quick Links */}
         <div>
           <h3 className="text-md font-semibold">Quick Links</h3>
-          <ul className="mt-3 space-y-2 text-sm">
+          <ul className="footer-options mt-3 space-y-2 text-sm">
             {navLinks.map(({ path, label }) => (
               <li key={path}>
                 <Link
                   to={path}
-                  className="transition"
+                  className="transition hover:opacity-100 focus:opacity-100"
                   style={{
                     color: primaryTextMuted,
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = hoverLinkColor;
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = primaryTextMuted;
+                    "--hover-color": hoverLinkColor,
                   }}
                 >
                   {label}
@@ -68,7 +62,7 @@ export default function Footer() {
         {/* Socials */}
         <div>
           <h3 className="text-md font-semibold">Follow Us</h3>
-          <div className="flex gap-4 mt-3">
+          <div className="footer-options flex gap-4 mt-3">
             {socialLinks.map(({ platform, url, icon }) => {
               // Dynamically get the icon component
               const IconComponent = LucideIcons[icon];
@@ -76,38 +70,28 @@ export default function Footer() {
               if (!IconComponent) return null; // Skip if icon name is invalid
 
               return (
-                <a
+                <Link
                   key={platform}
-                  href={url}
+                  to={url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition"
-                  style={{ color: primaryTextMuted }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.color = hoverLinkColor;
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.color = primaryTextMuted;
-                  }}
-                  // Added a slight scale on hover for better feedback
-                  onFocus={(e) => {
-                    e.currentTarget.style.transform = "scale(1.2)";
-                  }}
-                  onBlur={(e) => {
-                    e.currentTarget.style.transform = "scale(1)";
+                  className="transition hover:opacity-100 focus:opacity-100"
+                  style={{
+                    color: primaryTextMuted,
+                    "--hover-color": hoverLinkColor,
                   }}
                 >
                   <IconComponent size={20} />
-                </a>
+                </Link>
               );
             })}
           </div>
         </div>
       </div>
+
       {/* Bottom Bar */}
       <div
         className="py-4 text-center text-sm"
-        // 🟢 Apply theme color for the border and muted text
         style={{
           borderTop: `1px solid ${borderSubtle}`,
           color: primaryTextMuted,
