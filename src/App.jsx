@@ -1,10 +1,6 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useLocation,
-} from "react-router-dom";
-import React, { Suspense, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { Suspense } from "react";
+import { useTheme } from "./context/ThemeContext";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -28,9 +24,8 @@ export default function App() {
 
       <div className="flex flex-col min-h-screen bg-gradient-to-b from-blue-100 via-blue-200 to-blue-50">
         <Header />
-
         {/* Suspense loader while lazy pages load */}
-        <Suspense fallback={<Loading />}>
+        <Suspense fallback={<Loading isFullHeight={true} />}>
           <div className="flex-1">
             <Routes>
               <Route path="/" element={<MenuPage />} />
@@ -45,7 +40,6 @@ export default function App() {
             </Routes>
           </div>
         </Suspense>
-
         <Footer />
       </div>
     </Router>
