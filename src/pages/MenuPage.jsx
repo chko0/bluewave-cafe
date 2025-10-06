@@ -32,10 +32,11 @@ export default function MenuPage() {
         activeCategory={activeCategory}
         setActiveCategory={setActiveCategory}
       />
+
       {/* Menu Section */}
       <main
         ref={menuRef}
-        className="px-6 py-10 max-w-7xl mx-auto min-h-screen flex flex-col"
+        className="px-6 py-6 md:py-8 max-w-7xl mx-auto min-h-screen flex flex-col transition duration-300 ease-in-out"
       >
         <CategoryHeader
           activeCategory={activeCategory}

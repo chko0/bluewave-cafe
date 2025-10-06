@@ -6,10 +6,29 @@ import "react-lazy-load-image-component/src/effects/opacity.css";
 
 export default function MenuItem({ item }) {
   const { name, image, description, price } = item;
-  const [loaded, setLoaded] = useState(false);
+
+  const { colors } = useTheme();
+
+  const statusColors = {
+    popular: { bg: "#fff3cd", text: "#856404" }, // Light Gold/Yellow
+    new: { bg: colors.hoverBg, text: colors.primary900 }, // Thematic: Use a PRIMARY accent for 'New'
+    vegan: { bg: "#d4edda", text: "#155724" }, // Light Green
+    lactoseFree: { bg: "#e2d5ff", text: "#6f42c1" }, // Light Lavender/Purple
+  };
+
+  const newStyles = {
+    bg: colors.hoverBg, // Use the theme's hover background for a subtle highlight
+    text: colors.primary700, // Use the theme's dark subtext color
+  };
 
   return (
-    <div className="bg-gradient-to-br from-blue-50 via-blue-100 to-white rounded-3xl border-t-4 border-blue-500 overflow-hidden flex flex-col h-full shadow-md">
+    <div
+      className="rounded-3xl border-t-4 overflow-hidden flex flex-col h-full shadow-md"
+      style={{
+        background: `linear-gradient(to bottom right, ${colors.lightBg}, #f4f7fa, #ffffff)`,
+        borderTopColor: colors.primary500,
+      }}
+    >
       {/* Image */}
       <div className="overflow-hidden rounded-t-3xl relative h-56">
         <LazyLoadImage
@@ -21,7 +40,7 @@ export default function MenuItem({ item }) {
         />
 
         {/* Badges overlay */}
-        <div className="absolute top-2 left-2 flex flex-row gap-1 z-10">
+        <div className="absolute top-2 left-2 flex flex-row gap-1 z-10 flex-wrap max-w-[90%]">
           {item.popular && (
             <Badge
               text="Popular"
@@ -59,12 +78,17 @@ export default function MenuItem({ item }) {
       </div>
 
       {/* Text Content */}
-      <div className="p-5 pt-3 flex flex-col flex-grow">
-        <div className="flex justify-between items-center mb-2">
-          <h3 className="text-xl md:text-2xl font-extrabold text-blue-900">
+      <div className="p-5 pt-3 pb-4 flex flex-col flex-grow">
+        <div className="flex justify-between items-baseline mb-1">
+          <h3
+            className="text-xl md:text-2xl font-extrabold"
+            style={{ color: colors.primary900 }}
+          >
             {name}
           </h3>
-          <p className="text-blue-600 font-bold text-lg">${price}</p>
+          <p className="font-bold text-lg" style={{ color: colors.primary600 }}>
+            ${price}
+          </p>
         </div>
 
         <p className="text-gray-700 text-sm flex-grow">{description}</p>
