@@ -14,7 +14,7 @@ export default function MenuPage() {
     if (menuRef.current) {
       const menuTop =
         menuRef.current.getBoundingClientRect().top + window.pageYOffset;
-      const stickyOffset = 81; // height of your sticky nav
+      const stickyOffset = 71; // height of your sticky nav
 
       // Only scroll if user is below the menu section
       if (window.scrollY > menuTop - stickyOffset) {

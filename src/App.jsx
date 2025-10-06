@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import PageTitleHandler from "./components/PageTitleHandler";
 import Loading from "./components/Loading";
+import Navbar from "./components/Navbar";
 
 const MenuPage = React.lazy(() => import("./pages/MenuPage"));
 const AboutPage = React.lazy(() => import("./pages/AboutPage"));
@@ -17,12 +18,22 @@ const FeedbackSuccessPage = React.lazy(() =>
 const NotFoundPage = React.lazy(() => import("./pages/NotFoundPage"));
 
 export default function App() {
+  const { colors } = useTheme();
+
   return (
     <Router>
       <ScrollToTop />
       <PageTitleHandler />
 
-      <div className="flex flex-col min-h-screen bg-gradient-to-b from-blue-100 via-blue-200 to-blue-50">
+      <div
+        className="flex flex-col min-h-screen"
+        style={{
+          backgroundImage: `linear-gradient(to bottom, ${colors.inactiveBg}, ${colors.lightBg}, ${colors.lightBg})`,
+          backgroundAttachment: "fixed",
+          backgroundSize: "100% 100vh",
+        }}
+      >
+        <Navbar />
         <Header />
         {/* Suspense loader while lazy pages load */}
         <Suspense fallback={<Loading isFullHeight={true} />}>
