@@ -2,7 +2,7 @@ export const palette = {
   /**
    * 🌊 BlueWave: Cool, Fresh, Corporate (Tailwind-like structure)
    */
-  blueWave: {
+  bluewave: {
     // === FUNCTIONAL ROLES ===
     // Backgrounds & Surfaces
     lightBg: "#eff6ff", // blue-50: Main page background
@@ -20,17 +20,12 @@ export const palette = {
     primary600: "#2563eb", // blue-600: Primary Action/Button color (Matches activeBg)
     primary700: "#1d4ed8", // blue-700: Darker shade (Subtext, Hover)
     primary900: "#1e3a8a", // blue-900: Deepest shade (Matches inactiveText, Headers)
-
-    fontFamily: {
-      heading: "'Inter', sans-serif",
-      body: "'Inter', sans-serif",
-    },
   },
 
   /**
    * 🍂 WarmGinger: Cozy, Earthy, and Inviting
    */
-  warmGinger: {
+  warm: {
     // === FUNCTIONAL ROLES ===
     // Backgrounds & Surfaces
     lightBg: "#fcf6f3", // Very pale cream/shell white (Clean canvas)
@@ -48,11 +43,6 @@ export const palette = {
     primary600: "#b5694a", // Rich ginger/burnt orange (Matches activeBg)
     primary700: "#99583b", // Darker shade of ginger/rust
     primary900: "#5c331a", // Deep cocoa brown (Matches inactiveText, Headers)
-
-    fontFamily: {
-      heading: "'Lora', serif",
-      body: "'Cabin', sans-serif",
-    },
   },
 
   /**
@@ -81,7 +71,7 @@ export const palette = {
   /**
    * 🌿 ForestMist: Cool, Natural, and Refreshing
    */
-  forestMist: {
+  forest: {
     // === FUNCTIONAL ROLES ===
     // Backgrounds & Surfaces
     lightBg: "#f5f7f5", // Very light off-white/gray-green
@@ -104,7 +94,7 @@ export const palette = {
   /**
    * 💎 RoyalGarnet: Rich, Deep, and Luxurious
    */
-  royalGarnet: {
+  royal: {
     // === FUNCTIONAL ROLES ===
     // Backgrounds & Surfaces
     lightBg: "#fff9f9", // Very pale pink/near-white
@@ -128,7 +118,7 @@ export const palette = {
    * 🌊 AhwakCoast: Fresh Mediterranean Turquoise & Gold
    * Based on: Main BG (#67c1c2), Main Text (#fffdfe), Gold (#efc674)
    */
-  ahwakCoast: {
+  ahwak: {
     // === FUNCTIONAL ROLES ===
     // Backgrounds & Surfaces
     lightBg: "#f7feff", // Very light off-white/near-white (clean surface)

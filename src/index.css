@@ -1,16 +1,55 @@
 @import "tailwindcss";
 @plugin 'tailwind-scrollbar';
 
-.shimmer-animated {
+/* =============================== */
+/* NEW THEME-AWARE GLOW ANIMATION  */
+/* =============================== */
+
+@keyframes badge-pulse-glow {
+  0%,
+  100% {
+    /* Subtle initial state */
+    box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4),
+      /* Soft gold outside */ 0 0 0 0 rgba(255, 171, 0, 0.6); /* Amber core inside */
+    transform: scale(1);
+  }
+  50% {
+    /* Maximum glow state */
+    box-shadow: 0 0 8px 1px rgba(255, 215, 0, 0.7),
+      /* Outer soft glow (Gold: #FFD700) */ 0 0 15px 4px rgba(255, 171, 0, 0.5); /* Stronger core light (Amber: #FFAB00) */
+    transform: scale(1.02); /* Slight scale for a dimensional pop */
+  }
+}
+
+.animate-badge-pulse-glow {
+  animation: badge-pulse-glow 2s ease-in-out infinite;
+  /* Add a metallic-looking border for structure */
+  border: 1px solid #ffd700; /* Fixed gold border */
+}
+
+/* ================================ */
+/* NEW THEME-AWARE SHIMMER ANIMATION */
+/* ================================ */
+
+@keyframes badge-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+.animate-badge-shimmer {
   position: relative;
   overflow: hidden; /* keeps shimmer inside the pill */
 }
 
-.shimmer-animated::before {
+.animate-badge-shimmer::before {
   content: "";
   position: absolute;
   top: 0;
-  left: -100%;
+  left: 0;
   width: 80%;
   height: 100%;
   background: linear-gradient(
@@ -19,36 +58,56 @@
     rgba(255, 255, 255, 0.6) 50%,
     rgba(255, 255, 255, 0) 70%
   );
-  animation: shimmer 2.5s infinite;
+  animation: badge-shimmer 2.1s ease-in-out infinite;
 }
 
-@keyframes shimmer {
-  100% {
-    left: 120%;
-  }
-}
+/* =============================== */
+/* WIGGLE (from previous iteration)*/
+/* =============================== */
 
-@keyframes glow {
+@keyframes popular-attention {
   0%,
   100% {
-    box-shadow: 0 0 6px rgba(255, 215, 0, 0.4), 0 0 12px rgba(255, 215, 0, 0.3);
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.2) rotate(4deg);
   }
   50% {
-    box-shadow: 0 0 12px rgba(255, 215, 0, 0.7), 0 0 20px rgba(255, 215, 0, 0.5);
+    transform: scale(1.1) rotate(-4deg);
+  }
+  75% {
+    transform: scale(1.2) rotate(4deg);
   }
 }
 
-.glow-animated {
-  animation: glow 1.25s ease-out infinite;
-  border: 1px solid rgba(255, 215, 0, 0.6);
+.animate-popular-attention {
+  animation: popular-attention 2.5s ease-in-out infinite;
 }
 
+/* =============================== */
+/* BOUNCE (for New) */
+/* =============================== */
+/* @keyframes bounce-icon {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-bounce-icon {
+  animation: bounce-icon 1s ease-in-out infinite;
+} */
+
+/* =============================== */
 /* Custom utility for the nav link line */
+/* =============================== */
 .nav-link-item:hover .nav-line {
-  /* Set the background color here if you want a specific hover color */
-  background-color: var(
-    --line-active-color
-  ); /* You'd pass this via custom property */
+  /* Set the background color here */
+  background-color: var(--line-active-color);
   opacity: 0.5 !important; /* Half opacity on hover */
   transform: scaleX(0.9) !important; /* Scale to 90% width on hover */
 }

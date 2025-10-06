@@ -9,16 +9,31 @@ export default function MenuItem({ item }) {
 
   const { colors } = useTheme();
 
-  const statusColors = {
-    popular: { bg: "#fff3cd", text: "#856404" }, // Light Gold/Yellow
-    new: { bg: colors.hoverBg, text: colors.primary900 }, // Thematic: Use a PRIMARY accent for 'New'
-    vegan: { bg: "#d4edda", text: "#155724" }, // Light Green
-    lactoseFree: { bg: "#e2d5ff", text: "#6f42c1" }, // Light Lavender/Purple
+  const STATUS_COLORS = {
+    // Standard Success/Green (for Vegan/Leaf)
+    success: { bg: "#d4edda", text: "#155724" },
+    // Standard Warning/Gold (for Popular/Star)
+    warning: { bg: "#fff3cd", text: "#856404" },
+    // 💡 Fixed Light Purple/Lavender for Dietary
+    dietary: { bg: "#f3e8ff", text: "#5b21b6" }, // Based on very light purple/violet for uniqueness
   };
 
-  const newStyles = {
-    bg: colors.hoverBg, // Use the theme's hover background for a subtle highlight
-    text: colors.primary700, // Use the theme's dark subtext color
+  // 💡 2. CALCULATE DYNAMIC BADGE COLORS based on the active theme
+  const badgeColors = {
+    // ⭐️ POPULAR (Warning Role: Fixed Gold/Yellow for universal recognition)
+    popular: STATUS_COLORS.warning,
+
+    // ✨ NEW (Accent Role: Use Theme's primary for brand consistency)
+    new: {
+      bg: colors.border, // A very light, thematic background
+      text: colors.primary700, // A darker thematic text color for high contrast
+    },
+
+    // 🌱 VEGAN (Success Role: Fixed Green for universal recognition)
+    vegan: STATUS_COLORS.success,
+
+    // 🥛 LACTOSE-FREE (Thematic Accent: Use a complementary shade like the primary accent)
+    lactoseFree: STATUS_COLORS.dietary,
   };
 
   return (
@@ -40,38 +55,38 @@ export default function MenuItem({ item }) {
         />
 
         {/* Badges overlay */}
-        <div className="absolute top-2 left-2 flex flex-row gap-1 z-10 flex-wrap max-w-[90%]">
+        <div className="absolute top-2 left-2 flex flex-row gap-1.5 z-10 flex-wrap max-w-[90%]">
           {item.popular && (
             <Badge
               text="Popular"
               icon={Star}
-              bgColor="bg-yellow-100 glow-animated shimmer-animated"
-              textColor="text-yellow-800"
+              bgColor={badgeColors.popular.bg} // Dynamic Background
+              textColor={badgeColors.popular.text} // Dynamic Text
+              // We'll assume your custom animations (wiggle/shimmer) are handled globally or in Badge.jsx
             />
           )}
           {item.new && (
             <Badge
               text="New"
               icon={TrendingUp}
-              bgColor="bg-blue-100 shimmer-animated"
-              textColor="text-blue-700"
+              bgColor={badgeColors.new.bg} // Dynamic Background
+              textColor={badgeColors.new.text} // Dynamic Text
             />
           )}
-
           {item.vegan && (
             <Badge
               text="Vegan"
               icon={Leaf}
-              bgColor="bg-green-100"
-              textColor="text-green-800"
+              bgColor={badgeColors.vegan.bg} // Dynamic Background
+              textColor={badgeColors.vegan.text} // Dynamic Text
             />
           )}
           {item.lactoseFree && (
             <Badge
               text="Dairy-Free"
               icon={Droplet}
-              bgColor="bg-purple-100"
-              textColor="text-purple-800"
+              bgColor={badgeColors.lactoseFree.bg} // Dynamic Background
+              textColor={badgeColors.lactoseFree.text} // Dynamic Text
             />
           )}
         </div>
