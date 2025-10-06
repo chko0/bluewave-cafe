@@ -25,7 +25,7 @@ export default function AboutPage() {
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-blue-900/70 to-transparent flex items-end p-6 rounded-3xl">
           <h1 className="text-3xl md:text-5xl font-extrabold text-white drop-shadow-lg">
-            Welcome to BlueWave Café
+            Welcome to {config.site.name}
           </h1>
         </div>
       </div>
@@ -36,22 +36,25 @@ export default function AboutPage() {
           <Coffee className="w-6 h-6 text-blue-500" />
           Our Story
         </h2>
-        <p className="text-lg text-blue-800 leading-relaxed">
-          At BlueWave Café, we craft moments of comfort with every cup. From
-          freshly brewed coffee to baked delights, our mission is to brighten
-          your day in a cozy and welcoming space.
+        <p
+          className="text-lg leading-relaxed"
+          style={{ color: colors.primary700 }}
+        >
+          At {config.site.name}, we craft moments of comfort with every cup.
+          From freshly brewed coffee to baked delights, our mission is to
+          brighten your day in a cozy and welcoming space.
         </p>
       </section>
 
       {/* Contact Info */}
       <section className="grid sm:grid-cols-2 gap-8 text-blue-900">
         <div className="flex items-center gap-3">
-          <MapPin className="w-6 h-6 text-blue-500" />
-          <p>123 BlueWave Street, Tripoli, Lebanon</p>
+          <MapPin className="w-6 h-6" style={{ color: colors.primary500 }} />{" "}
+          <p>{config.contact.address}</p>
         </div>
         <div className="flex items-center gap-3">
-          <Phone className="w-6 h-6 text-blue-500" />
-          <p>+961 55 555 555</p>
+          <Phone className="w-6 h-6" style={{ color: colors.primary500 }} />{" "}
+          <p>{config.contact.phone}</p>
         </div>
       </section>
 
