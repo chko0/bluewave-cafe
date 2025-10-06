@@ -22,7 +22,7 @@ export default function Footer() {
 
   return (
     <footer
-      className="text-white mt-16"
+      className="text-white mt-16 min-h-62 w-full"
       style={{
         background: `linear-gradient(to right, ${primaryGradientStart},  ${primaryGradientMiddle})`,
       }}
