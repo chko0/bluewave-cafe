@@ -119,7 +119,7 @@ const menuData = {
     items: [
       {
         name: "Club Sandwich",
-        price: 6.5,
+        price: 6,
         description:
           "Triple-layered sandwich with turkey, crispy bacon, lettuce & tomato",
         image: "club_sandwich.webp",
@@ -142,7 +142,7 @@ const menuData = {
       },
       {
         name: "Vegetarian Burger",
-        price: 5,
+        price: 8,
         description: "Hearty black bean patty with fresh cilantro & lime aioli",
         image: "vegetarian_burger.webp",
         vegan: true,
@@ -150,7 +150,7 @@ const menuData = {
       },
       {
         name: "Breakfast Bagel",
-        price: 5,
+        price: 6.5,
         description: "Toasted everything bagel with egg, cheese, & arugula",
         image: "bagel.webp",
         new: true,
