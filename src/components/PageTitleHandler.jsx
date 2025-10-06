@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import config from "../config.json";
 
 export default function PageTitleHandler() {
   const location = useLocation();
   useEffect(() => {
-    const baseTitle = "BlueWave Café ☕";
+    const baseTitle = config.site.tabTitle;
     let pageTitle = "";
 
     switch (location.pathname) {

@@ -2,18 +2,30 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MessageCircle } from "lucide-react";
 
+import { useTheme } from "../context/ThemeContext";
+
+import config from "../config.json";
+
 export default function FeedbackPage() {
+  const { colors } = useTheme();
+
   const navigate = useNavigate();
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
+
+  // State for the rating value (0-5)
+  const [rating, setRating] = useState(0);
+  // State for the hover effect
+  const [hoverRating, setHoverRating] = useState(0);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     const formData = new FormData(e.target);
-    formData.append("access_key", "1aa061e8-2830-4275-acb2-e9428d1523ec");
+    formData.append("access_key", config.services.web3formsAccessKey);
 
+    // --- Submission Logic (omitted for brevity) ---
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -43,9 +55,8 @@ export default function FeedbackPage() {
         <h2 className="text-3xl font-bold text-blue-900 mb-2">
           We Value Your Feedback
         </h2>
-        <p className="text-blue-800 text-lg">
-          Tell us what you loved or how we can improve. Every message helps us
-          make BlueWave Café better!
+        <p className="text-lg" style={{ color: colors.primary700 }}>
+          Every message helps us make {config.site.name} better
         </p>
       </div>
 

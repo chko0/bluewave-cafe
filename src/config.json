@@ -1,0 +1,56 @@
+{
+  "site": {
+    "name": "BlueWave Café",
+    "subtitle": "Fresh brews & baked delights",
+    "tagline": "Your cozy spot for coffee & comfort",
+    "footerDescription": "Fresh brews, warm smiles, & baked delights every day. Your cozy spot for coffee & comfort",
+    "copyrightName": "BlueWave Café",
+    "tabTitle": "BlueWave Café ☕"
+  },
+
+  "contact": {
+    "phone": "+961 55 555 555",
+    "address": "123 BlueWave Street, Tripoli, Lebanon",
+    "email": "contact@bluewavecafe.com"
+  },
+
+  "navigation": [
+    {
+      "label": "Menu",
+      "path": "/menu",
+      "icon": "Coffee"
+    },
+    {
+      "label": "Feedback",
+      "path": "/feedback",
+      "icon": "MessageCircle"
+    },
+    {
+      "label": "About",
+      "path": "/about",
+      "icon": "Info"
+    }
+  ],
+
+  "socials": [
+    {
+      "platform": "Facebook",
+      "url": "https://facebook.com/",
+      "icon": "Facebook"
+    },
+    {
+      "platform": "Instagram",
+      "url": "https://instagram.com/",
+      "icon": "Instagram"
+    },
+    {
+      "platform": "Twitter",
+      "url": "https://twitter.com/",
+      "icon": "Twitter"
+    }
+  ],
+
+  "services": {
+    "web3formsAccessKey": "1aa061e8-2830-4275-acb2-e9428d1523ec"
+  }
+}

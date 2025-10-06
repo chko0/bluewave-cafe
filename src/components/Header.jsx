@@ -1,29 +1,46 @@
 import { Link } from "react-router-dom";
+import { useTheme } from "../context/ThemeContext";
+import config from "../config.json";
+
+import AppLogo from "/favicon.svg";
 
 export default function Header() {
+  const { colors } = useTheme();
+
   return (
-    <header className="bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 text-white py-8 shadow-lg">
-      <nav className="flex justify-center gap-6 text-sm text-blue-200 mb-3">
-        <Link to="/menu" className="hover:text-white transition">
-          Menu
-        </Link>
-        <Link to="/feedback" className="hover:text-white transition">
-          Feedback
-        </Link>
-        <Link to="/about" className="hover:text-white transition">
-          About Us
-        </Link>
-      </nav>
+    <header
+      className="text-white py-8 pt-17 shadow-lg relative overflow-hidden" // Added relative & overflow-hidden for potential background effects
+      style={{
+        background: `linear-gradient(to right, ${colors.primary700}, ${colors.primary600}, ${colors.primary500})`,
+      }}
+    >
+      {/* Optional: Add a subtle background pattern or texture for extra polish */}
+      {/* <div 
+        className="absolute inset-0 bg-pattern-subtle opacity-10 pointer-events-none" 
+        style={{ backgroundImage: 'url(/path/to/subtle-pattern.svg)', backgroundSize: '200px' }}
+      ></div> */}
 
-      <Link to="/" className="block">
-        <h1 className="text-center text-4xl md:text-5xl font-extrabold tracking-wide drop-shadow-lg">
-          BlueWave Café
-        </h1>
-      </Link>
+      <div className="relative z-10">
+        <Link to="/" className="flex justify-center items-center gap-1.5">
+          <img
+            src={AppLogo}
+            alt={`${config.site.name} Logo`}
+            className="h-12 md:h-14 w-auto object-contain drop-shadow-md"
+            style={{ filter: "drop-shadow(0 2px 5px rgba(0,0,0,0.3))" }}
+          />
 
-      <p className="text-center text-blue-200 mt-2 text-lg md:text-xl">
-        Fresh brews & baked delights
-      </p>
+          <h1 className="text-2xl md:text-3xl font-extrabold tracking-wide drop-shadow-lg">
+            {config.site.name}
+          </h1>
+        </Link>
+
+        <p
+          className="text-center text-md font-light tracking-wide"
+          style={{ color: colors.lightBg }}
+        >
+          {config.site.subtitle}
+        </p>
+      </div>
     </header>
   );
 }

@@ -1,6 +1,8 @@
 // FeedbackSuccessPage.jsx
 import { CheckCircle } from "lucide-react";
-import { Link, Navigate, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom"; // Removed 'Navigate' as it's unused
+import { useTheme } from "../context/ThemeContext";
+import config from "../config.json";
 
 export default function FeedbackSuccessPage() {
   const location = useLocation();
