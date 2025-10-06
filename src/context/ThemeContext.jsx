@@ -4,7 +4,7 @@ import { palette } from "../theme/colors";
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState("sunset");
+  const [theme, setTheme] = useState("bluewave");
 
   const value = {
     colors: palette[theme],

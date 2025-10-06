@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 import config from "../config.json";
-
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/opacity.css";
 import AppLogo from "/favicon.svg";
 
 export default function Header() {
@@ -9,37 +10,44 @@ export default function Header() {
 
   return (
     <header
-      className="text-white py-8 pt-17 shadow-lg relative overflow-hidden" // Added relative & overflow-hidden for potential background effects
+      className="text-white py-6 pt-18 shadow-lg relative overflow-hidden"
       style={{
         background: `linear-gradient(to right, ${colors.primary700}, ${colors.primary600}, ${colors.primary500})`,
       }}
     >
-      {/* Optional: Add a subtle background pattern or texture for extra polish */}
-      {/* <div 
-        className="absolute inset-0 bg-pattern-subtle opacity-10 pointer-events-none" 
-        style={{ backgroundImage: 'url(/path/to/subtle-pattern.svg)', backgroundSize: '200px' }}
-      ></div> */}
-
       <div className="relative z-10">
-        <Link to="/" className="flex justify-center items-center gap-1.5">
-          <img
-            src={AppLogo}
-            alt={`${config.site.name} Logo`}
-            className="h-12 md:h-14 w-auto object-contain drop-shadow-md"
-            style={{ filter: "drop-shadow(0 2px 5px rgba(0,0,0,0.3))" }}
-          />
+        <div className="flex justify-center">
+          <Link
+            to="/"
+            className="flex flex-col items-center justify-center p-2"
+          >
+            {/* Logo Container */}
+            <div
+              className="rounded-full bg-white shadow-xl p-2 h-full w-full flex items-center justify-center mb-2"
+              style={{ height: "3.2rem", width: "3.2rem" }}
+            >
+              <LazyLoadImage
+                src={AppLogo}
+                alt={`${config.site.name} Logo`}
+                effect="opacity"
+                className="h-full w-full object-contain drop-shadow-md"
+              />
+            </div>
 
-          <h1 className="text-2xl md:text-3xl font-extrabold tracking-wide drop-shadow-lg">
-            {config.site.name}
-          </h1>
-        </Link>
+            {/* Title */}
+            <h1 className="text-2xl md:text-3xl font-extrabold tracking-wide drop-shadow-lg -mb-0.5">
+              {config.site.name}
+            </h1>
 
-        <p
-          className="text-center text-md font-light tracking-wide"
-          style={{ color: colors.lightBg }}
-        >
-          {config.site.subtitle}
-        </p>
+            {/* Subtitle */}
+            <p
+              className="text-center text-sm md:text-lg font-light tracking-wide"
+              style={{ color: colors.lightBg }}
+            >
+              {config.site.subtitle}
+            </p>
+          </Link>
+        </div>
       </div>
     </header>
   );
