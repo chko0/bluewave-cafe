@@ -59,7 +59,7 @@ export const palette = {
     // Backgrounds & Surfaces
     lightBg: "#fef3e7", // Light, warm cream/beige (Less pure white than before)
     border: "#facc15", // Muted, deep yellow/gold
-    inactiveBg: "#facc15", // Same as border
+    inactiveBg: "#fadb61ff", // Same as border
     hoverBg: "#f59e0b", // More subdued golden-orange
     activeBg: "#ea580c", // Deeper, more mature orange-red (Less pure, vibrant orange)
 
