@@ -136,7 +136,7 @@ const menuData = {
         price: 7,
         description:
           "Fresh mozzarella, sliced tomato, basil pesto, & balsamic glaze",
-        image: "classic_capress_sandwich.webp",
+        image: "classic_caprese_panini.webp",
         vegan: true,
       },
       {
@@ -150,7 +150,8 @@ const menuData = {
       {
         name: "Breakfast Bagel",
         price: 6.5,
-        description: "Toasted everything bagel with egg, cheese, & arugula",
+        description:
+          "Toasted everything bagel with egg, cheese, ham, tomato, & lettuce",
         image: "bagel.webp",
         new: true,
       },

@@ -7,12 +7,7 @@ export default function MenuItems({ items, activeCategory }) {
     const isANew = a.new ? 1 : 0;
     const isBNew = b.new ? 1 : 0;
 
-    if (isBNew !== isANew) {
-      return isBNew - isANew;
-    }
-
-    // Secondary sort by name (A-Z) if both are 'New' or both are old
-    return a.name.localeCompare(b.name);
+    return isBNew - isANew;
   });
 
   return (
