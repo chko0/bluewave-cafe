@@ -24,7 +24,7 @@ export default function Header() {
             {/* Logo Container */}
             <div
               className="rounded-full bg-white shadow-xl p-2 h-full w-full flex items-center justify-center mb-2"
-              style={{ height: "3.2rem", width: "3.2rem" }}
+              style={{ height: "3.4rem", width: "3.4rem" }}
             >
               <LazyLoadImage
                 src={AppLogo}

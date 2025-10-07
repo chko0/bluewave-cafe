@@ -6,6 +6,11 @@ import { useEffect, useState } from "react";
 
 export default function Navbar({ scrollThreshold = 168 }) {
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const { colors } = useTheme();
+  const location = useLocation();
+  const navLinks = config.navigation;
+
   useEffect(() => {
     const handleScroll = () => {
       // Check if the vertical scroll position is greater than the threshold
@@ -22,10 +27,6 @@ export default function Navbar({ scrollThreshold = 168 }) {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [isScrolled]); // Depend on isScrolled to avoid unnecessary re-runs
-
-  const { colors } = useTheme();
-  const location = useLocation();
-  const navLinks = config.navigation;
 
   return (
     <nav

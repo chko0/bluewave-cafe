@@ -3,6 +3,8 @@ export const palette = {
    * 🌊 BlueWave: Cool, Fresh, Corporate (Tailwind-like structure)
    */
   bluewave: {
+    name: "Default",
+
     // === FUNCTIONAL ROLES ===
     // Backgrounds & Surfaces
     lightBg: "#eff6ff", // blue-50: Main page background
@@ -26,6 +28,8 @@ export const palette = {
    * 🍂 WarmGinger: Cozy, Earthy, and Inviting
    */
   warm: {
+    name: "Warm",
+
     // === FUNCTIONAL ROLES ===
     // Backgrounds & Surfaces
     lightBg: "#fcf6f3", // Very pale cream/shell white (Clean canvas)
@@ -49,6 +53,8 @@ export const palette = {
    * 🌅 Sunset: Bright, Cheerful, Energetic
    */
   sunset: {
+    name: "Sunset",
+
     // === FUNCTIONAL ROLES ===
     // Backgrounds & Surfaces
     lightBg: "#fff9eb", // Very light cream/off-white
@@ -72,6 +78,8 @@ export const palette = {
    * 🌿 ForestMist: Cool, Natural, and Refreshing
    */
   forest: {
+    name: "Forest",
+
     // === FUNCTIONAL ROLES ===
     // Backgrounds & Surfaces
     lightBg: "#f5f7f5", // Very light off-white/gray-green
@@ -95,6 +103,8 @@ export const palette = {
    * 💎 RoyalGarnet: Rich, Deep, and Luxurious
    */
   royal: {
+    name: "Royal",
+
     // === FUNCTIONAL ROLES ===
     // Backgrounds & Surfaces
     lightBg: "#fff9f9", // Very pale pink/near-white
@@ -119,6 +129,8 @@ export const palette = {
    * Based on: Main BG (#67c1c2), Main Text (#fffdfe), Gold (#efc674)
    */
   ahwak: {
+    name: "Ahwak",
+
     // === FUNCTIONAL ROLES ===
     // Backgrounds & Surfaces
     lightBg: "#f7feff", // Very light off-white/near-white (clean surface)

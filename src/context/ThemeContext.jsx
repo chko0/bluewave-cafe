@@ -1,10 +1,12 @@
-import React, { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext } from "react";
 import { palette } from "../theme/colors";
 
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState("warm");
+  const [theme, setTheme] = useState(
+    localStorage.getItem("Theme") || "bluewave"
+  );
 
   const value = {
     colors: palette[theme],

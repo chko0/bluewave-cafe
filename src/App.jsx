@@ -8,6 +8,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import PageTitleHandler from "./components/PageTitleHandler";
 import Loading from "./components/Loading";
 import Navbar from "./components/Navbar";
+import ThemeSwitcher from "./components/ThemeSwitcher";
 
 const MenuPage = React.lazy(() => import("./pages/MenuPage"));
 const AboutPage = React.lazy(() => import("./pages/AboutPage"));
@@ -71,6 +72,10 @@ export default function App() {
             </Routes>
           </div>
         </Suspense>
+
+        <div className="flex-shrink-0">
+          <ThemeSwitcher />
+        </div>
 
         <Footer />
       </div>
