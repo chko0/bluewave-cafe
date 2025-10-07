@@ -11,7 +11,7 @@ export default function MenuItems({ items, activeCategory }) {
       return isBNew - isANew;
     }
 
-    // Optional: Secondary sort by name (A-Z) if both are 'new' or both are old
+    // Secondary sort by name (A-Z) if both are 'New' or both are old
     return a.name.localeCompare(b.name);
   });
 
@@ -25,7 +25,7 @@ export default function MenuItems({ items, activeCategory }) {
         exit={{ opacity: 0.83 }}
         transition={{ duration: 0.25 }}
       >
-        {sortedItems.map((item) => (
+        {sortedItems.map((item, index) => (
           <motion.div
             key={item.name}
             initial={{ opacity: 0, y: 25 }}
@@ -33,7 +33,11 @@ export default function MenuItems({ items, activeCategory }) {
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.3 }}
           >
-            <MenuItem item={item} />
+            <MenuItem
+              index={index}
+              item={item}
+              highPriorityLoading={index < 1}
+            />
           </motion.div>
         ))}
       </motion.div>

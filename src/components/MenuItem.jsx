@@ -4,7 +4,7 @@ import { useTheme } from "../context/ThemeContext";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/opacity.css";
 
-export default function MenuItem({ item }) {
+export default function MenuItem({ index, item, highPriorityLoading }) {
   const { name, image, description, price } = item;
 
   const { colors } = useTheme();
@@ -18,7 +18,6 @@ export default function MenuItem({ item }) {
     dietary: { bg: "#f3e8ff", text: "#5b21b6" }, // Based on very light purple/violet for uniqueness
   };
 
-  // 💡 2. CALCULATE DYNAMIC BADGE COLORS based on the active theme
   const badgeColors = {
     // ⭐️ POPULAR (Warning Role: Fixed Gold/Yellow for universal recognition)
     popular: STATUS_COLORS.warning,
@@ -50,6 +49,8 @@ export default function MenuItem({ item }) {
           src={"/menu/" + image}
           alt={name}
           effect="opacity"
+          fetchPriority={highPriorityLoading ? "high" : "auto"}
+          loading={highPriorityLoading ? "eager" : "lazy"}
           wrapperClassName="w-full h-full flex justify-center items-center"
           className={`select-none w-full h-full object-cover transform transition duration-400 hover:scale-105 block`}
         />
@@ -62,7 +63,6 @@ export default function MenuItem({ item }) {
               icon={Star}
               bgColor={badgeColors.popular.bg} // Dynamic Background
               textColor={badgeColors.popular.text} // Dynamic Text
-              // We'll assume your custom animations (wiggle/shimmer) are handled globally or in Badge.jsx
             />
           )}
           {item.new && (

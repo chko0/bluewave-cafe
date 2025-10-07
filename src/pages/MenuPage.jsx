@@ -6,7 +6,9 @@ import CategoryHeader from "../components/CategoryHeader";
 
 export default function MenuPage({ headerOffset = 292 }) {
   const categories = Object.keys(menuData);
-  const [activeCategory, setActiveCategory] = useState(categories[0]);
+
+  const chosenCategory = localStorage.getItem("Category") || categories[0];
+  const [activeCategory, setActiveCategory] = useState(chosenCategory);
 
   const ActiveIcon = menuData[activeCategory].icon;
 
@@ -14,6 +16,7 @@ export default function MenuPage({ headerOffset = 292 }) {
   const navRef = useRef(null);
 
   useEffect(() => {
+    localStorage.setItem("Category", activeCategory);
     if (menuRef.current && navRef.current) {
       const menuTop =
         menuRef.current.getBoundingClientRect().top + window.pageYOffset;

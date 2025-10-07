@@ -21,6 +21,8 @@ const NotFoundPage = React.lazy(() => import("./pages/NotFoundPage"));
 export default function App() {
   const { colors } = useTheme();
 
+  localStorage.removeItem("Category");
+
   const headerRef = useRef(null);
   const [headerHeight, setHeaderHeight] = useState(0);
 
@@ -71,13 +73,13 @@ export default function App() {
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </div>
+
+          <Footer />
         </Suspense>
 
         <div className="flex-shrink-0">
           <ThemeSwitcher />
         </div>
-
-        <Footer />
       </div>
     </Router>
   );
