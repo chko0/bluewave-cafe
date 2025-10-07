@@ -24,12 +24,12 @@ export default function ThemeIcon({ themeKey, theme, onClick }) {
       `}
         style={{
           // Gradient background for the professional color swatch look
-          background: `linear-gradient(135deg, ${theme.primary600}, ${theme.activeBg})`,
+          background: `linear-gradient(to right, ${theme.activeBg}, ${theme.primary500})`,
 
           // Dynamic border/ring based on selection status for high contrast
           borderColor: isSelected ? theme.primary900 : theme.border,
           boxShadow: isSelected
-            ? `0 0 0 2px ${theme.activeBg}, 0 0 0 5px ${theme.primary900}`
+            ? `0 0 0 2px ${theme.activeBg}, 0 0 0 5px ${theme.primary600}`
             : "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
         }}
       />

@@ -50,28 +50,28 @@ export const palette = {
   },
 
   /**
-   * 🌅 Sunset: Bright, Cheerful, Energetic
+   * 🌅 Sunset (Dimmed): Earthy, Muted Gold and Deep Orange
    */
   sunset: {
     name: "Sunset",
 
     // === FUNCTIONAL ROLES ===
     // Backgrounds & Surfaces
-    lightBg: "#fff9eb", // Very light cream/off-white
-    border: "#fcd34d", // Light yellow-orange
-    inactiveBg: "#fcd34d", // Same as border
-    hoverBg: "#fbbf24", // Muted orange/gold
-    activeBg: "#f97316", // Vibrant orange
+    lightBg: "#fef3e7", // Light, warm cream/beige (Less pure white than before)
+    border: "#facc15", // Muted, deep yellow/gold
+    inactiveBg: "#facc15", // Same as border
+    hoverBg: "#f59e0b", // More subdued golden-orange
+    activeBg: "#ea580c", // Deeper, more mature orange-red (Less pure, vibrant orange)
 
     // Text & Contrast
-    inactiveText: "#b45309", // Deep burnt orange/brown (Standardized role)
+    inactiveText: "#92400e", // Darker brown for better contrast
     activeText: "#ffffff", // White
 
     // === BRANDING & EXTENDED SCALE ===
-    primary500: "#f59e0b", // Golden yellow (Accent, Icons)
-    primary600: "#f97316", // Vibrant orange (Matches activeBg)
-    primary700: "#ea580c", // Deep red-orange (Subtext, Hover)
-    primary900: "#7c2d12", // Very dark brown/terracotta (Headers)
+    primary500: "#d97706", // Rusty gold (Accent, Icons)
+    primary600: "#ea580c", // Deep orange-red (Matches activeBg)
+    primary700: "#b45309", // Dark, burnt orange
+    primary900: "#78350f", // Very deep mahogany/brown (Headers)
   },
 
   /**
@@ -125,11 +125,11 @@ export const palette = {
   },
 
   /**
-   * 🌊 AhwakCoast: Fresh Mediterranean Turquoise & Gold
+   * 🌊 Bahwak: Fresh Mediterranean Turquoise & Gold
    * Based on: Main BG (#67c1c2), Main Text (#fffdfe), Gold (#efc674)
    */
-  ahwak: {
-    name: "Ahwak",
+  bahwak: {
+    name: "Bahwak",
 
     // === FUNCTIONAL ROLES ===
     // Backgrounds & Surfaces
