@@ -110,10 +110,8 @@ export default function FeedbackPage() {
                 key={starValue}
                 type="button"
                 onClick={() => setRating(starValue)}
-                className="
-                  text-3xl transition-all duration-200 transform hover:scale-125 focus:outline-none 
-                  active:scale-100 hover:cursor-pointer
-                "
+                className="text-3xl transition-all duration-200 transform hover:scale-125 focus:outline-none select-none
+                  active:scale-100 hover:cursor-pointer"
                 style={{
                   // Determine color based on the displayRating (hover/selected)
                   color:

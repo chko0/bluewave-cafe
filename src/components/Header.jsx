@@ -10,7 +10,7 @@ export default function Header() {
 
   return (
     <header
-      className="text-white py-6 pt-18 shadow-lg relative overflow-hidden"
+      className="text-white py-6 pt-18 shadow-lg relative overflow-hidden select-none"
       style={{
         background: `linear-gradient(to right, ${colors.primary700}, ${colors.primary600}, ${colors.primary500})`,
       }}

@@ -51,7 +51,7 @@ export default function MenuItem({ item }) {
           alt={name}
           effect="opacity"
           wrapperClassName="w-full h-full flex justify-center items-center"
-          className={`w-full h-full object-cover transform transition duration-400 hover:scale-105 block`}
+          className={`select-none w-full h-full object-cover transform transition duration-400 hover:scale-105 block`}
         />
 
         {/* Badges overlay */}

@@ -55,7 +55,7 @@ export default function CategoryNav({ activeCategory, setActiveCategory }) {
               <button
                 key={catName}
                 onClick={() => setActiveCategory(catName)}
-                className={`px-5 py-2 rounded-full font-semibold transition-all flex items-center gap-2
+                className={`px-5 py-2 rounded-full font-semibold transition-all flex items-center gap-2 select-none
                   ${
                     activeCategory === catName
                       ? "shadow-lg scale-105"

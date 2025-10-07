@@ -24,9 +24,8 @@ export default function Badge({ text, icon: Icon = Star, bgColor, textColor }) {
 
   return (
     <div
-      className={`flex items-center gap-1 px-2 py-1 text-xs font-semibold rounded-full shadow-sm ${animationClasses.join(
-        " "
-      )}`}
+      className={`flex items-center gap-1 px-2 py-1 text-xs font-semibold rounded-full shadow-sm select-none
+        ${animationClasses.join(" ")}`}
       style={{
         backgroundColor: bgColor,
         color: textColor,
