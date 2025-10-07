@@ -1,4 +1,4 @@
-import { MapPin, Phone, Coffee } from "lucide-react";
+import { MapPin, Phone, Mail, Coffee } from "lucide-react";
 import heroImg from "/cafe-hero.webp";
 import { useTheme } from "../context/ThemeContext";
 import config from "../config.json";
@@ -47,23 +47,43 @@ export default function AboutPage() {
         >
           At {config.site.name}, we craft moments of comfort with every cup.
           From freshly brewed coffee to baked delights, our mission is to
-          brighten your day in a cozy and welcoming space.
+          brighten your day in a cozy & welcoming space.
         </p>
       </section>
 
       {/* Contact Info */}
       <section
-        className="grid sm:grid-cols-2 gap-8"
+        className="grid md:place-items-center sm:grid-cols-3 gap-4"
         style={{ color: colors.primary900 }}
       >
-        <div className="flex items-center gap-3">
-          <MapPin className="w-6 h-6" style={{ color: colors.primary500 }} />{" "}
+        {/* 1. Address Link (MapPin) */}
+        <a
+          href={`https://maps.google.com/?q=${config.contact.address}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-3 group transition-opacity hover:opacity-85 focus:outline-none"
+        >
+          <MapPin className="w-6 h-6" style={{ color: colors.primary500 }} />
           <p>{config.contact.address}</p>
-        </div>
-        <div className="flex items-center gap-3">
-          <Phone className="w-6 h-6" style={{ color: colors.primary500 }} />{" "}
+        </a>
+
+        {/* 2. Phone Link */}
+        <a
+          href={`tel:${config.contact.phone}`}
+          className="flex items-center gap-3 group transition-opacity hover:opacity-85 focus:outline-none"
+        >
+          <Phone className="w-6 h-6" style={{ color: colors.primary500 }} />
           <p>{config.contact.phone}</p>
-        </div>
+        </a>
+
+        {/* 3. Email Link */}
+        <a
+          href={`mailto:${config.contact.email}`}
+          className="flex items-center gap-3 group transition-opacity hover:opacity-85 focus:outline-none"
+        >
+          <Mail className="w-6 h-6" style={{ color: colors.primary500 }} />
+          <p>{config.contact.email}</p>
+        </a>
       </section>
 
       {/* Mission / Values */}
@@ -75,7 +95,7 @@ export default function AboutPage() {
           Our Mission
         </h3>
         <p style={{ color: colors.primary700 }}>
-          Fresh brews, warm smiles, and baked delights... making every visit a
+          Fresh brews, warm smiles, & baked delights... making every visit a
           moment to remember!
         </p>
       </section>
