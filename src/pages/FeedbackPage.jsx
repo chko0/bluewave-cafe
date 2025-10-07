@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, AlertCircle } from "lucide-react";
 
 import { useTheme } from "../context/ThemeContext";
 
 import config from "../config.json";
+
+const MIN_MESSAGE_LENGTH = 10;
 
 export default function FeedbackPage() {
   const { colors } = useTheme();
@@ -18,6 +20,9 @@ export default function FeedbackPage() {
   // State for the hover effect
   const [hoverRating, setHoverRating] = useState(0);
 
+  const [message, setMessage] = useState("");
+  const [isMessageTouched, setIsMessageTouched] = useState(false);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -25,7 +30,9 @@ export default function FeedbackPage() {
     const formData = new FormData(e.target);
     formData.append("access_key", config.services.web3formsAccessKey);
 
-    // --- Submission Logic (omitted for brevity) ---
+    formData.append("rating", rating);
+
+    // --- Submission Logic ---
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -51,6 +58,10 @@ export default function FeedbackPage() {
   // Determine the rating to display (hover takes precedence over selected)
   const displayRating = hoverRating || rating;
 
+  // Determine if the button should be disabled
+  const isButtonDisabled =
+    loading || rating === 0 || message.trim().length < MIN_MESSAGE_LENGTH;
+
   // Reusable Tailwind classes for inputs
   const inputClasses = `
     w-full p-4 border rounded-xl shadow-inner
@@ -64,7 +75,7 @@ export default function FeedbackPage() {
       <div className="text-center mb-10">
         <MessageCircle
           className="w-12 h-12 mx-auto mb-4"
-          style={{ color: colors.primary600 }} // Use a stronger primary color
+          style={{ color: colors.primary600 }}
         />
         <h2
           className="text-4xl font-extrabold mb-2"
@@ -79,20 +90,19 @@ export default function FeedbackPage() {
 
       <form
         onSubmit={handleSubmit}
-        // Increased padding and shadow for a modern card effect
-        className="bg-white p-8 rounded-3xl shadow-2xl space-y-7"
+        className="bg-white p-8 rounded-3xl shadow-2xl space-y-6"
       >
-        {/* --- RATING SECTION (Refined and Responsive) --- */}
+        {/* --- RATING SECTION --- */}
         <div className="space-y-4 text-center">
           <h3
-            className="text-lg sm:text-xl font-bold" // 💡 Responsive Text Size
+            className="text-lg sm:text-xl font-bold"
             style={{ color: colors.primary700 }}
           >
             Rate Your Overall Experience!
           </h3>
 
           <div
-            className="flex justify-center items-center gap-1 sm:gap-2 p-3 sm:p-4 rounded-xl border-2" // 💡 Responsive Gap and Padding
+            className="flex justify-center items-center gap-1 sm:gap-2 p-3 sm:p-4 rounded-xl border-2"
             style={{ borderColor: colors.border }}
           >
             {[1, 2, 3, 4, 5].map((starValue) => (
@@ -122,30 +132,60 @@ export default function FeedbackPage() {
                 ★
               </button>
             ))}
-            {/* Hidden input to ensure the rating value is submitted */}
-            <input
-              type="hidden"
-              name="rating"
-              value={rating}
-              required
-              className="w-0 h-0"
-            />{" "}
-            {/* 💡 Ensure no space is taken */}
           </div>
         </div>
 
-        {/* --- MESSAGE INPUT (Refined) --- */}
-        <textarea
-          className={inputClasses}
-          rows="5"
-          name="message"
-          placeholder="What did you love? How can we improve?"
-          required
-          // Apply theme color to the focus ring
-          style={{ "--tw-ring-color": colors.primary500 }}
-        />
+        {/* --- MESSAGE INPUT --- */}
+        <div className="relative">
+          <textarea
+            // Note: Added resize-none and increased bottom padding (pb-8) to make space for the counter
+            className={`${inputClasses} resize-none`}
+            rows="4"
+            name="message"
+            placeholder="What did you love? How can we improve?"
+            required
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            onBlur={() => setIsMessageTouched(true)}
+            style={{ "--tw-ring-color": colors.primary500 }}
+          />
 
-        {/* --- NAME INPUT (Refined) --- */}
+          {/* 💡 Character Counter (Bottom Right, inside the textarea) */}
+          <span
+            className="absolute bottom-3 right-2 text-xs font-medium select-none"
+            style={{
+              color: "red",
+              visibility:
+                message.trim().length < MIN_MESSAGE_LENGTH
+                  ? "visible"
+                  : "hidden",
+            }}
+          >
+            {message.trim().length} / {MIN_MESSAGE_LENGTH}
+          </span>
+        </div>
+
+        {/* 🟢 NEW: Smooth Alert Message (CLS Fixed, appears on blur) */}
+        {/* Always render container to reserve space and prevent layout shift */}
+        <div
+          className={`
+              overflow-hidden transition-all duration-300 ease-in-out -mt-5 select-none
+              ${
+                message.trim().length < MIN_MESSAGE_LENGTH && isMessageTouched
+                  ? "max-h-[3rem] opacity-100" // Visible and tall enough to show content
+                  : "max-h-0 opacity-0" // Hidden (collapsed height 0, invisible)
+              }
+          `}
+        >
+          <div className="flex items-center gap-2 text-red-500 font-medium">
+            <AlertCircle className="w-5 h-5 flex-shrink-0" />
+            <p className="text-sm">
+              Message requires at least {MIN_MESSAGE_LENGTH} characters
+            </p>
+          </div>
+        </div>
+
+        {/* --- NAME INPUT --- */}
         <input
           type="text"
           name="name"
@@ -154,7 +194,7 @@ export default function FeedbackPage() {
           style={{ "--tw-ring-color": colors.primary500 }}
         />
 
-        {/* --- EMAIL INPUT (Refined) --- */}
+        {/* --- EMAIL INPUT --- */}
         <input
           type="text"
           name="email_phone"
@@ -163,10 +203,10 @@ export default function FeedbackPage() {
           style={{ "--tw-ring-color": colors.primary500 }}
         />
 
-        {/* --- SUBMIT BUTTON (Refined) --- */}
+        {/* --- SUBMIT BUTTON --- */}
         <button
           type="submit"
-          disabled={loading || rating === 0} // 💡 Disable if no rating is selected
+          disabled={isButtonDisabled}
           className="
             w-full text-white px-6 py-4 rounded-xl font-bold uppercase tracking-wider
             transition-all duration-200 shadow-lg hover:shadow-xl hover:cursor-pointer
@@ -187,15 +227,16 @@ export default function FeedbackPage() {
           }}
         >
           {loading ? (
-            <span className="flex items-center justify-center gap-2">
+            <span className="flex items-center justify-center gap-2 select-none">
               <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
               Sending...
             </span>
           ) : (
-            "Send" // More professional button text
+            <span className="select-none">Send</span>
           )}
         </button>
       </form>
+
       <span className="text-red-500">{result}</span>
     </main>
   );
