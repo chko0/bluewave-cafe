@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { MessageCircle, AlertCircle } from "lucide-react";
+import { MessageCircle, AlertCircle, CheckCircle } from "lucide-react";
 
 import { useTheme } from "../context/ThemeContext";
 
@@ -22,6 +22,10 @@ export default function FeedbackPage() {
 
   const [message, setMessage] = useState("");
   const [isMessageTouched, setIsMessageTouched] = useState(false);
+  const [isTextareaFocused, setIsTextareaFocused] = useState(false);
+
+  const currentLength = message.trim().replace(/\s/g, "").length;
+  const isMessageValid = currentLength >= MIN_MESSAGE_LENGTH;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -60,11 +64,11 @@ export default function FeedbackPage() {
 
   // Determine if the button should be disabled
   const isButtonDisabled =
-    loading || rating === 0 || message.trim().length < MIN_MESSAGE_LENGTH;
+    loading || rating === 0 || currentLength < MIN_MESSAGE_LENGTH;
 
   // Reusable Tailwind classes for inputs
   const inputClasses = `
-    w-full p-4 border rounded-xl shadow-inner
+    w-full p-4 pr-7 border rounded-xl shadow-inner
     focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-200
     border-gray-300 placeholder-gray-500
   `;
@@ -137,39 +141,61 @@ export default function FeedbackPage() {
         <div className="relative">
           <textarea
             // Note: Added resize-none and increased bottom padding (pb-8) to make space for the counter
-            className={`${inputClasses} resize-none`}
+            className={`${inputClasses} resize-none scrollbar scrollbar-thin hover:scrollbar-thumb-gray-400 scrollbar-thumb-rounded`}
             rows="4"
             name="message"
             placeholder="What did you love? How can we improve?"
             required
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            onBlur={() => setIsMessageTouched(true)}
             style={{ "--tw-ring-color": colors.primary500 }}
+            onFocus={() => setIsTextareaFocused(true)} // Set to true when user focuses
+            onBlur={() => {
+              setIsMessageTouched(true);
+              setIsTextareaFocused(false); // Set to false when user clicks away
+            }}
           />
 
-          {/* 💡 Character Counter (Bottom Right, inside the textarea) */}
+          {/* 💡 Character Status (Bottom Right, inside the textarea) */}
           <span
             className="absolute bottom-3 right-2 text-xs font-medium select-none"
             style={{
-              color: "red",
-              visibility:
-                message.trim().length < MIN_MESSAGE_LENGTH
-                  ? "visible"
-                  : "hidden",
+              color: isMessageValid ? "#10b981" : "red",
             }}
           >
-            {message.trim().length} / {MIN_MESSAGE_LENGTH}
+            {/* Conditional rendering for the icon/text */}
+            <div className="relative w-17 h-7 flex items-end justify-end">
+              <span
+                className={`absolute ${
+                  isTextareaFocused && !isMessageValid
+                    ? "opacity-100 transition-opacity duration-300"
+                    : "opacity-0"
+                }`}
+                style={{ color: "red" }}
+              >
+                {currentLength} / {MIN_MESSAGE_LENGTH}
+              </span>
+
+              {/* State 2: Valid Message (Icon - fades in) */}
+              <span
+                className={`absolute  ${
+                  isMessageValid
+                    ? "transition-opacity duration-300 opacity-100"
+                    : "opacity-0"
+                }`}
+              >
+                <CheckCircle size={20} />
+              </span>
+            </div>
           </span>
         </div>
 
-        {/* 🟢 NEW: Smooth Alert Message (CLS Fixed, appears on blur) */}
-        {/* Always render container to reserve space and prevent layout shift */}
+        {/* Alert Message */}
         <div
           className={`
               overflow-hidden transition-all duration-300 ease-in-out -mt-5 select-none
               ${
-                message.trim().length < MIN_MESSAGE_LENGTH && isMessageTouched
+                currentLength < MIN_MESSAGE_LENGTH && isMessageTouched
                   ? "max-h-[3rem] opacity-100" // Visible and tall enough to show content
                   : "max-h-0 opacity-0" // Hidden (collapsed height 0, invisible)
               }
