@@ -2,8 +2,6 @@ import { MapPin, Phone, Mail, Coffee } from "lucide-react";
 import heroImg from "/cafe-hero.webp";
 import { useTheme } from "../context/ThemeContext";
 import config from "../config.json";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/blur.css";
 
 export default function AboutPage() {
   const { colors } = useTheme();
@@ -12,12 +10,12 @@ export default function AboutPage() {
     <main className="px-6 py-16 max-w-5xl mx-auto flex flex-col gap-12">
       {/* Hero Section */}
       <div className="relative w-full h-64 md:h-96 rounded-3xl overflow-hidden shadow-lg">
-        <LazyLoadImage
+        <img
           src={heroImg}
           alt={config.site.name}
-          effect="blur"
-          wrapperClassName="w-full h-full flex justify-center items-center"
           className={`w-full h-full object-cover transform transition duration-600 block`}
+          fetchPriority="high"
+          loading="eager"
         />
 
         <div
