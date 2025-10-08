@@ -50,6 +50,7 @@ export default function Footer() {
                   <Link
                     to={path}
                     className="transition hover:opacity-100 focus:opacity-100"
+                    aria-label={`Go to ${label} page`}
                     style={{
                       color: primaryTextMuted,
                       "--hover-color": hoverLinkColor,
@@ -77,6 +78,7 @@ export default function Footer() {
                 <Link
                   key={platform}
                   to={url}
+                  aria-label={`Follow us on ${platform}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="transition hover:opacity-100 focus:opacity-100"

@@ -41,8 +41,8 @@ export default function FeedbackSuccessPage() {
           className="
             inline-block text-white px-8 py-3 rounded-xl transition-all duration-200 
             font-bold shadow-lg hover:shadow-xl uppercase tracking-wider
-            hover:scale-[1.03]
-          "
+            hover:scale-[1.03]"
+          aria-label="Return to Menu"
           style={{
             backgroundColor: colors.primary600,
           }}

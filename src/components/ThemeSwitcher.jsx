@@ -52,8 +52,7 @@ export default function ThemeSwitcher() {
           aria-expanded={isOpen}
           aria-controls="theme-list"
           aria-label={isOpen ? "Close Theme Selector" : "Open Theme Selector"}
-          className="w-14 h-14 rounded-full shadow-xl flex items-center justify-center transition-all duration-300 
-                     transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-offset-2 text-white hover:cursor-pointer"
+          className="w-14 h-14 rounded-full shadow-xl flex items-center justify-center transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-offset-2 text-white hover:cursor-pointer"
           style={{
             // Change FAB color when open
             background: isOpen ? "gray" : colors.primary600,

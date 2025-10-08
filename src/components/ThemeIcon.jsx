@@ -18,10 +18,11 @@ export default function ThemeIcon({ themeKey, theme, onClick }) {
     <div className="relative group">
       <button
         onClick={handleClick}
-        className={`
-        w-7 h-7 rounded-lg border-2 p-0.5 transition-all duration-200 focus:outline-none focus:ring-4 hover:cursor-pointer
-        ${isSelected ? "scale-110 ring-2" : "hover:scale-105 hover:shadow-lg"}
-      `}
+        aria-label={`Select ${theme.name} theme`}
+        className={`w-7 h-7 rounded-lg border-2 p-0.5 transition-all duration-200 focus:outline-none focus:ring-4 hover:cursor-pointer
+          ${
+            isSelected ? "scale-110 ring-2" : "hover:scale-105 hover:shadow-lg"
+          }`}
         style={{
           // Gradient background for the professional color swatch look
           background: `linear-gradient(to right, ${theme.activeBg}, ${theme.primary500})`,

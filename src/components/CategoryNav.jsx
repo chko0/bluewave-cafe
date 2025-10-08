@@ -55,6 +55,7 @@ export default function CategoryNav({ activeCategory, setActiveCategory }) {
               <button
                 key={catName}
                 onClick={() => setActiveCategory(catName)}
+                aria-label={`Select ${catName} category`}
                 className={`px-5 py-2 rounded-full font-semibold transition-all flex items-center gap-2 select-none
                   ${
                     activeCategory === catName

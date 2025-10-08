@@ -67,8 +67,7 @@ export default function FeedbackPage() {
     loading || rating === 0 || currentLength < MIN_MESSAGE_LENGTH;
 
   // Reusable Tailwind classes for inputs
-  const inputClasses = `
-    w-full p-4 pr-7 border rounded-xl shadow-inner
+  const inputClasses = `w-full p-4 pr-7 border rounded-xl shadow-inner
     focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-200
     border-gray-300 placeholder-gray-500
   `;
@@ -99,6 +98,7 @@ export default function FeedbackPage() {
         {/* --- RATING SECTION --- */}
         <div className="space-y-4 text-center">
           <h3
+            id="rating-label"
             className="text-lg sm:text-xl font-bold"
             style={{ color: colors.primary700 }}
           >
@@ -107,12 +107,18 @@ export default function FeedbackPage() {
 
           <div
             className="flex justify-center items-center gap-1 sm:gap-2 p-3 sm:p-4 rounded-xl border-2"
+            role="radiogroup"
+            aria-required="true"
+            aria-labelledby="rating-label"
             style={{ borderColor: colors.border }}
           >
             {[1, 2, 3, 4, 5].map((starValue) => (
               <button
                 key={starValue}
                 type="button"
+                aria-label={`Rate ${starValue} out of 5 stars`}
+                aria-checked={rating === starValue}
+                role="radio"
                 onClick={() => setRating(starValue)}
                 className="text-3xl transition-all duration-200 transform hover:scale-125 focus:outline-none select-none
                   active:scale-100 hover:cursor-pointer"
@@ -140,10 +146,11 @@ export default function FeedbackPage() {
         {/* --- MESSAGE INPUT --- */}
         <div className="relative">
           <textarea
-            // Note: Added resize-none and increased bottom padding (pb-8) to make space for the counter
             className={`${inputClasses} resize-none scrollbar scrollbar-thin hover:scrollbar-thumb-gray-400 scrollbar-thumb-rounded`}
             rows="4"
             name="message"
+            aria-label="Your feedback. What did you love? How can we improve?"
+            aria-required="true"
             placeholder="What did you love? How can we improve?"
             required
             value={message}
@@ -192,14 +199,12 @@ export default function FeedbackPage() {
 
         {/* Alert Message */}
         <div
-          className={`
-              overflow-hidden transition-all duration-300 ease-in-out -mt-5 select-none
+          className={`overflow-hidden transition-all duration-300 ease-in-out -mt-5 select-none
               ${
                 currentLength < MIN_MESSAGE_LENGTH && isMessageTouched
                   ? "max-h-[3rem] opacity-100" // Visible and tall enough to show content
                   : "max-h-0 opacity-0" // Hidden (collapsed height 0, invisible)
-              }
-          `}
+              }`}
         >
           <div className="flex items-center gap-2 text-red-500 font-medium">
             <AlertCircle className="w-5 h-5 flex-shrink-0" />
@@ -213,6 +218,7 @@ export default function FeedbackPage() {
         <input
           type="text"
           name="name"
+          aria-label="Enter your name"
           placeholder="Your Name (optional)"
           className={inputClasses}
           style={{ "--tw-ring-color": colors.primary500 }}
@@ -222,6 +228,7 @@ export default function FeedbackPage() {
         <input
           type="text"
           name="email_phone"
+          aria-label="Enter your email or phone"
           placeholder="Your Email or Phone (optional)"
           className={inputClasses}
           style={{ "--tw-ring-color": colors.primary500 }}
@@ -230,6 +237,7 @@ export default function FeedbackPage() {
         {/* --- SUBMIT BUTTON --- */}
         <button
           type="submit"
+          aria-label="Send Feedback"
           disabled={isButtonDisabled}
           className="
             w-full text-white px-6 py-4 rounded-xl font-bold uppercase tracking-wider

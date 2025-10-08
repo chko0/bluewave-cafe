@@ -62,10 +62,9 @@ export default function Navbar({ scrollThreshold = 168 }) {
             <Link
               key={path}
               to={path}
-              className={`
-                group flex items-center gap-2 font-medium relative transition-all duration-200 whitespace-nowrap select-none
-                ${isActive ? "text-white" : "hover:text-white"} 
-              `}
+              aria-label={`Go to ${label} page`}
+              className={`group flex items-center gap-2 font-medium relative transition-all duration-200 whitespace-nowrap select-none
+                ${isActive ? "text-white" : "hover:text-white"} `}
               style={{
                 color: isActive ? "white" : colors.border,
               }}
