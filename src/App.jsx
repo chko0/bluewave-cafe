@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React, { Suspense, useEffect, useRef, useState } from "react";
 import { useTheme } from "./context/ThemeContext";
 
+import { setFavicon } from "./utils/utils";
+
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
@@ -32,6 +34,10 @@ export default function App() {
       setHeaderHeight(headerRef.current.offsetHeight);
     }
   }, []);
+
+  useEffect(() => {
+    setFavicon(colors.activeBg, colors.inactiveBg);
+  }, [colors]);
 
   return (
     <Router>

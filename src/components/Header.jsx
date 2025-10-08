@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 import config from "../config.json";
-import { LazyLoadImage } from "react-lazy-load-image-component";
-import "react-lazy-load-image-component/src/effects/opacity.css";
-import AppLogo from "/favicon.svg";
+// import { LazyLoadImage } from "react-lazy-load-image-component";
+// import "react-lazy-load-image-component/src/effects/opacity.css";
+import { ReactComponent as AppLogo } from "../assets/favicon.svg";
 
 export default function Header() {
   const { colors } = useTheme();
@@ -26,11 +26,12 @@ export default function Header() {
               className="rounded-full bg-white shadow-xl p-2 h-full w-full flex items-center justify-center mb-2"
               style={{ height: "3.4rem", width: "3.4rem" }}
             >
-              <LazyLoadImage
-                src={AppLogo}
-                alt={`${config.site.name} Logo`}
-                effect="opacity"
+              <AppLogo
                 className="h-full w-full object-contain drop-shadow-md"
+                style={{
+                  "--color-primary": colors.activeBg,
+                  "--color-accent": colors.inactiveBg,
+                }}
               />
             </div>
 
