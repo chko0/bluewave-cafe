@@ -64,7 +64,7 @@ export default function App() {
         </div>
 
         {/* Suspense loader while lazy pages load */}
-        <Suspense fallback={<Loading isFullHeight={true} />}>
+        <Suspense fallback={<Loading />}>
           <div className="flex-1">
             <Routes>
               <Route

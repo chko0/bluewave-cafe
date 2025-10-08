@@ -1,8 +1,13 @@
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, Suspense } from "react";
+import "../styles/MenuPage.css";
+
 import menuData from "../data/menuData";
+
 import CategoryNav from "../components/CategoryNav";
-import MenuItems from "../components/MenuItems";
 import CategoryHeader from "../components/CategoryHeader";
+import Loading from "../components/Loading";
+
+const MenuItems = React.lazy(() => import("../components/MenuItems"));
 
 export default function MenuPage({ headerOffset = 292 }) {
   const categories = Object.keys(menuData);
@@ -55,10 +60,12 @@ export default function MenuPage({ headerOffset = 292 }) {
           ActiveIcon={ActiveIcon}
         />
 
-        <MenuItems
-          items={menuData[activeCategory].items}
-          activeCategory={activeCategory}
-        />
+        <Suspense fallback={<Loading isFullHeight={false} className="mt-12" />}>
+          <MenuItems
+            items={menuData[activeCategory].items}
+            activeCategory={activeCategory}
+          />
+        </Suspense>
       </main>
     </div>
   );
