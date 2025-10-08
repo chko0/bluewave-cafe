@@ -1,0 +1,7 @@
+User-agent: *
+
+Disallow: /admin
+Disallow: /dashboard
+Disallow: /feedback/success
+
+Allow: /assets/
