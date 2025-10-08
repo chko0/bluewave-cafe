@@ -1,77 +1,77 @@
 export const palette = {
   /**
-   * 🌊 BlueWave: Cool, Fresh, Corporate (Tailwind-like structure)
+   * 🌊 BlueWave (Muted): Subtle, Professional Blue
    */
   bluewave: {
     name: "Default",
 
     // === FUNCTIONAL ROLES ===
     // Backgrounds & Surfaces
-    lightBg: "#eff6ff", // blue-50: Main page background
-    border: "#bfdbfe", // blue-200: Subtle border/divider
-    inactiveBg: "#bfdbfe", // blue-200: Default state background
-    hoverBg: "#93c5fd", // blue-300: Hover state background
-    activeBg: "#2563eb", // blue-600: Active state background
+    lightBg: "#f5f9ff", // Lighter, slightly less saturated blue-white base
+    border: "#b4c9e8", // Muted, dustier light blue for dividers
+    inactiveBg: "#b4c9e8", // Same as border
+    hoverBg: "#8ca8d3", // Gentler, slightly desaturated medium blue
+    activeBg: "#2d5ec7ff", // Deeper, slightly richer primary blue (Action)
 
     // Text & Contrast
-    inactiveText: "#1e3a8a", // blue-900: Default dark text color (Standardized role)
-    activeText: "#ffffff", // white: Text color for use on dark backgrounds
+    inactiveText: "#18326e", // Slightly deeper indigo for better contrast
+    activeText: "#ffffff", // white
 
     // === BRANDING & EXTENDED SCALE ===
-    primary500: "#3b82f6", // blue-500: Accent color (Icons, Focus Rings)
-    primary600: "#2563eb", // blue-600: Primary Action/Button color (Matches activeBg)
-    primary700: "#1d4ed8", // blue-700: Darker shade (Subtext, Hover)
-    primary900: "#1e3a8a", // blue-900: Deepest shade (Matches inactiveText, Headers)
+    primary500: "#3370e8", // Muted, clearer accent blue
+    primary600: "#2256c7", // Primary Action/Button color (Matches activeBg)
+    primary700: "#18459f", // Darker shade
+    primary900: "#18326e", // Deepest shade (Matches inactiveText, Headers)
   },
 
   /**
-   * 🍂 WarmGinger: Cozy, Earthy, and Inviting
+   * 🌊 Bahwak (Revised): Rich, Saturated Mediterranean Teal and Deep Gold
    */
-  warm: {
-    name: "Warm",
+  bahwak: {
+    name: "Bahwak",
 
     // === FUNCTIONAL ROLES ===
     // Backgrounds & Surfaces
-    lightBg: "#fcf6f3", // Very pale cream/shell white (Clean canvas)
-    border: "#e8d3c7", // Muted light tan/flesh tone
-    inactiveBg: "#e8d3c7", // Same as border
-    hoverBg: "#d8a68b", // Soft blush/muted terra-cotta
-    activeBg: "#b5694a", // Rich ginger/burnt orange (Main cozy accent)
+    lightBg: "#f2faff", // Cleaner, slightly less saturated off-white base
+    border: "#7dcac7", // Deeper, more saturated teal for dividers
+    inactiveBg: "#7dcac7", // Same as border
+    hoverBg: "#50a9a7", // Richer, true teal for hover (much deeper)
+    activeBg: "#308587", // Deep, strong teal (Primary brand action)
 
     // Text & Contrast
-    inactiveText: "#5c331a", // Deep cocoa brown (Standardized dark text)
-    activeText: "#ffffff", // White (for use on dark activeBg)
+    inactiveText: "#142a2b", // Deeper, darker teal-black (Ensures high contrast)
+    activeText: "#ffffff", // White (Maintains readability on dark activeBg)
 
     // === BRANDING & EXTENDED SCALE ===
-    primary500: "#c77c5e", // Medium copper/ginger tone (Accent, Icons)
-    primary600: "#b5694a", // Rich ginger/burnt orange (Matches activeBg)
-    primary700: "#99583b", // Darker shade of ginger/rust
-    primary900: "#5c331a", // Deep cocoa brown (Matches inactiveText, Headers)
+    primary500: "#d6a858", // Richer, more antique gold (Accent/Icons)
+    primary600: "#308587", // Primary Action/Button color (Matches activeBg)
+    primary700: "#226364", // Darker shade of deep teal (Subtext)
+    primary900: "#142a2b", // Deepest shade (Matches inactiveText, Headers)
   },
 
   /**
-   * 🌅 Sunset (Dimmed): Earthy, Muted Gold and Deep Orange
+   * 🥇 GildedTeal: Rich, Deep Petrol Blue with Muted Mustard Gold Accent
    */
-  sunset: {
-    name: "Sunset",
+  gilded: {
+    name: "Gilded Teal",
 
     // === FUNCTIONAL ROLES ===
     // Backgrounds & Surfaces
-    lightBg: "#fef3e7", // Light, warm cream/beige (Less pure white than before)
-    border: "#facc15", // Muted, deep yellow/gold
-    inactiveBg: "#fadb61ff", // Same as border
-    hoverBg: "#f59e0b", // More subdued golden-orange
-    activeBg: "#ea580c", // Deeper, more mature orange-red (Less pure, vibrant orange)
+    lightBg: "#fefbf5", // Very soft, warm off-white/cream base
+    border: "#c3ddd7", // Muted sage/light teal (Subtle divider)
+    inactiveBg: "#c3ddd7", // Same as border
+    hoverBg: "#99c2bb", // Soft, dusty teal for hover effect
+    activeBg: "#0f766e", // Deep Petrol Blue/Teal (Main action color)
 
     // Text & Contrast
-    inactiveText: "#92400e", // Darker brown for better contrast
+    inactiveText: "#134e4a", // Very dark forest/charcoal teal (High contrast dark text)
     activeText: "#ffffff", // White
 
     // === BRANDING & EXTENDED SCALE ===
-    primary500: "#d97706", // Rusty gold (Accent, Icons)
-    primary600: "#ea580c", // Deep orange-red (Matches activeBg)
-    primary700: "#b45309", // Dark, burnt orange
-    primary900: "#78350f", // Very deep mahogany/brown (Headers)
+    primary500: "#d97706", // Rich, Muted Mustard Gold (Accent, Icons)
+    primary600: "#0f766e", // Primary Action/Button color (Matches activeBg)
+    primary700: "#0f5951", // Darker shadow teal
+    primary900: "#134e4a", // Deepest charcoal teal (Matches inactiveText, Headers)
   },
 
   /**
@@ -100,6 +100,31 @@ export const palette = {
   },
 
   /**
+   * 💜 LavenderMist (Muted): Deep Plum and Slate-Violet for Visual Comfort
+   */
+  lavender: {
+    name: "Lavender",
+
+    // === FUNCTIONAL ROLES ===
+    // Backgrounds & Surfaces
+    lightBg: "#f5f0fb", // Soft, muted gray-lavender (not near-white)
+    border: "#e0d8eb", // Muted, soft gray-violet
+    inactiveBg: "#e0d8eb", // Same as border
+    hoverBg: "#c7b6df", // Dustier, deeper lilac for hover
+    activeBg: "#631bd7ff", // Rich, medium-dark indigo-violet (Main action)
+
+    // Text & Contrast
+    inactiveText: "#331a61", // Deep indigo-plum (Darker for contrast)
+    activeText: "#ffffff", // White
+
+    // === BRANDING & EXTENDED SCALE ===
+    primary500: "#8c79c5", // Muted, medium-depth accent purple (Accent, Icons)
+    primary600: "#6d28d9", // Rich Indigo-Violet (Matches activeBg)
+    primary700: "#581eaf", // Darker shade of indigo
+    primary900: "#331a61", // Deepest indigo-plum (Matches inactiveText, Headers)
+  },
+
+  /**
    * 💎 RoyalGarnet: Rich, Deep, and Luxurious
    */
   royal: {
@@ -125,28 +150,52 @@ export const palette = {
   },
 
   /**
-   * 🌊 Bahwak: Fresh Mediterranean Turquoise & Gold
-   * Based on: Main BG (#67c1c2), Main Text (#fffdfe), Gold (#efc674)
+   * 🧡 CanyonClay (Final Pop): Clean Base with Punchier Terracotta Accents
    */
-  bahwak: {
-    name: "Bahwak",
+  canyon: {
+    name: "Canyon Clay",
 
     // === FUNCTIONAL ROLES ===
     // Backgrounds & Surfaces
-    lightBg: "#f7feff", // Very light off-white/near-white (clean surface)
-    border: "#a7e3e4", // Muted light turquoise (subtle dividers)
-    inactiveBg: "#a7e3e4", // Same as border
-    hoverBg: "#8ccfc7", // Lighter, slightly desaturated turquoise
-    activeBg: "#67c1c2", // Main BG Color (Primary brand action)
+    lightBg: "#fffbf8", // Cleaner, near-white base for better contrast
+    border: "#e8d0bd", // Slightly cleaner, brighter apricot for divider
+    inactiveBg: "#e8d0bd", // Same as border
+    hoverBg: "#d8b191", // Clearer, slightly brighter peach/apricot for hover
+    activeBg: "#c45c34", // Deeper, punchier rust/burnt orange (Main action color)
 
     // Text & Contrast
-    inactiveText: "#1d3539", // Very dark teal/near-black (High contrast text)
-    activeText: "#fffdfe", // Main Text Color (White)
+    inactiveText: "#522f1c", // Slightly darker, richer cocoa brown
+    activeText: "#ffffff", // White
 
     // === BRANDING & EXTENDED SCALE ===
-    primary500: "#efc674", // Alternative Logo Color (Gold/Accent/Icons)
-    primary600: "#67c1c2", // Primary Action/Button color (Matches activeBg)
-    primary700: "#4b9c9e", // Darker shade of turquoise (Subtext)
-    primary900: "#1d3539", // Deepest shade (Matches inactiveText, Headers)
+    primary500: "#d37954", // Clearer, brighter copper/terracotta (Accent, Icons)
+    primary600: "#c45c34", // Primary Action/Button color (Matches activeBg)
+    primary700: "#a64929", // Darker, rich rust shade
+    primary900: "#522f1c", // Deepest cocoa (Matches inactiveText, Headers)
+  },
+
+  /**
+   * 🍂 WarmGinger: Cozy, Earthy, and Inviting
+   */
+  warm: {
+    name: "Warm",
+
+    // === FUNCTIONAL ROLES ===
+    // Backgrounds & Surfaces
+    lightBg: "#fcf6f3", // Very pale cream/shell white (Clean canvas)
+    border: "#e8d3c7", // Muted light tan/flesh tone
+    inactiveBg: "#e8d3c7", // Same as border
+    hoverBg: "#d8a68b", // Soft blush/muted terra-cotta
+    activeBg: "#b5694a", // Rich ginger/burnt orange (Main cozy accent)
+
+    // Text & Contrast
+    inactiveText: "#5c331a", // Deep cocoa brown (Standardized dark text)
+    activeText: "#ffffff", // White (for use on dark activeBg)
+
+    // === BRANDING & EXTENDED SCALE ===
+    primary500: "#c77c5e", // Medium copper/ginger tone (Accent, Icons)
+    primary600: "#b5694a", // Rich ginger/burnt orange (Matches activeBg)
+    primary700: "#99583b", // Darker shade of ginger/rust
+    primary900: "#5c331a", // Deep cocoa brown (Matches inactiveText, Headers)
   },
 };

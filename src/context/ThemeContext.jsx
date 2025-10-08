@@ -3,9 +3,12 @@ import { palette } from "../theme/colors";
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState(
-    localStorage.getItem("Theme") || "bluewave"
-  );
+  const fallbackTheme = "bluewave";
+  const savedTheme = localStorage.getItem("Theme");
+  const initialTheme =
+    savedTheme && palette[savedTheme] ? savedTheme : fallbackTheme;
+
+  const [theme, setTheme] = useState(initialTheme);
 
   const value = {
     colors: palette[theme],
