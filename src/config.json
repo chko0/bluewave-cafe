@@ -3,7 +3,7 @@
     "name": "BlueWave Café",
     "subtitle": "Fresh brews & baked delights",
     "tagline": "Your cozy spot for coffee & comfort",
-    "footerDescription": "Fresh brews, warm smiles, & baked delights every day. Your cozy spot for coffee & comfort",
+    "description": "Fresh brews, warm smiles, & baked delights every day. Your cozy spot for coffee & comfort",
     "copyrightName": "BlueWave Café",
     "tabTitle": "BlueWave Café ☕"
   },
@@ -18,14 +18,7 @@
     {
       "label": "Menu",
       "path": "/",
-      "hidden": true,
-      "description": "Browse our complete list of coffee, pastries, & desserts. Find your new favorite today!"
-    },
-    {
-      "label": "Menu",
-      "path": "/menu",
-      "icon": "Coffee",
-      "description": "Browse our complete list of coffee, pastries, & desserts. Find your new favorite today!"
+      "icon": "Coffee"
     },
     {
       "label": "Feedback",

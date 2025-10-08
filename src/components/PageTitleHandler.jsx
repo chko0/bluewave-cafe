@@ -1,32 +1,46 @@
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import config from "../config.json";
-import { Helmet } from "react-helmet-async";
 
 export default function PageTitleHandler() {
   const location = useLocation();
-  const baseTitle = config.site.tabTitle;
 
-  // 1. Find matching navigation item (synchronous logic)
-  const navItem = config.navigation.find(
-    (item) => item.path === location.pathname
+  const [currentFullTitle, setCurrentFullTitle] = useState(
+    config.site.tabTitle
+  );
+  const [currentDescription, setCurrentDescription] = useState(
+    config.site.description
   );
 
-  // 2. Calculate final title and description
-  const pageLabel = navItem?.label || "Page Not Found";
-  const pageDescription = navItem?.description || config.site.description;
+  useEffect(() => {
+    const baseTitle = config.site.tabTitle;
 
-  const fullTitle = `${baseTitle} | ${pageLabel}`;
+    // 1. Find matching navigation item
+    const navItem = config.navigation.find(
+      (item) => item.path === location.pathname
+    );
+
+    // 2. Calculate final title and description
+    const pageLabel = navItem?.label || "Page Not Found";
+    const pageDescription = navItem?.description || config.site.description;
+
+    const fullTitle = `${baseTitle} | ${pageLabel}`;
+
+    // 3. Update state, which triggers a re-render of Helmet
+    setCurrentFullTitle(fullTitle);
+    setCurrentDescription(pageDescription);
+  }, [location.pathname]);
 
   return (
-    <Helmet>
+    <>
       {/* Basic SEO Tags */}
-      <title>{fullTitle}</title>
-      <meta name="description" content={pageDescription} />
-
-      {/* Open Graph / Social Sharing Tags */}
-      <meta property="og:title" content={fullTitle} />
-      <meta property="og:description" content={pageDescription} />
-      <meta property="og:type" content="website" />
-    </Helmet>
+      <title>{currentFullTitle}</title>
+      <meta
+        name="description"
+        content={currentDescription}
+        key={currentDescription}
+      />
+      <link rel="canonical" href={window.location.href} />
+    </>
   );
 }

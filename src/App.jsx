@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import React, { Suspense, useEffect, useRef, useState } from "react";
 import { useTheme } from "./context/ThemeContext";
 
@@ -68,7 +73,7 @@ export default function App() {
               />
               <Route
                 path="/menu"
-                element={<MenuPage headerOffset={headerHeight} />}
+                element={<Navigate to="/" replace={true} />}
               />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/feedback" element={<FeedbackPage />} />

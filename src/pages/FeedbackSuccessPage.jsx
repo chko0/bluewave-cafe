@@ -19,10 +19,7 @@ export default function FeedbackSuccessPage() {
         style={{ borderColor: successColor }}
       >
         <CheckCircle
-          // Increased size and stronger drop shadow for visual celebration
           className="w-20 h-20 mx-auto mb-4 transition-transform duration-300 scale-100 animate-pulse-once"
-          // 💡 Use a theme primary color for brand consistency, or green for a strong success signal.
-          // Since primary is often blue, we'll use primary500 for a consistent, bright look.
           style={{ color: successColor }}
         />
 
@@ -38,9 +35,9 @@ export default function FeedbackSuccessPage() {
           {config.site.name} even better.
         </p>
 
-        {/* --- Back to Menu Button (Refined) --- */}
+        {/* --- Back to Menu Button --- */}
         <Link
-          to="/menu"
+          to="/"
           className="
             inline-block text-white px-8 py-3 rounded-xl transition-all duration-200 
             font-bold shadow-lg hover:shadow-xl uppercase tracking-wider

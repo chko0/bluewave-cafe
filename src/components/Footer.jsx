@@ -34,7 +34,7 @@ export default function Footer() {
             className="mt-3 text-sm leading-relaxed"
             style={{ color: primaryTextMuted }}
           >
-            {config.site.footerDescription}
+            {config.site.description}
           </p>
         </div>
 

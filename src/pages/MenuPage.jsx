@@ -7,7 +7,14 @@ import CategoryHeader from "../components/CategoryHeader";
 export default function MenuPage({ headerOffset = 292 }) {
   const categories = Object.keys(menuData);
 
-  const chosenCategory = localStorage.getItem("Category") || categories[0];
+  const storedCategory = localStorage.getItem("Category");
+  const defaultCategory = categories[0];
+
+  const chosenCategory =
+    storedCategory && menuData[storedCategory]
+      ? storedCategory
+      : defaultCategory;
+
   const [activeCategory, setActiveCategory] = useState(chosenCategory);
 
   const ActiveIcon = menuData[activeCategory].icon;
