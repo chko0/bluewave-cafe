@@ -47,7 +47,9 @@ export default function Navbar({ scrollThreshold = 168 }) {
           text-sm sm:text-base transition-all duration-300 ease-in-out
         `}
       >
-        {navLinks.map(({ path, label, icon }) => {
+        {navLinks.map(({ path, label, icon, hidden }) => {
+          if (hidden) return null;
+
           const IconComponent = LucideIcons[icon];
 
           const isMenuLink = path === "/menu";

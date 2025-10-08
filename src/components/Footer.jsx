@@ -42,20 +42,24 @@ export default function Footer() {
         <div>
           <h3 className="text-md font-semibold">Quick Links</h3>
           <ul className="footer-options mt-3 space-y-2 text-sm">
-            {navLinks.map(({ path, label }) => (
-              <li key={path}>
-                <Link
-                  to={path}
-                  className="transition hover:opacity-100 focus:opacity-100"
-                  style={{
-                    color: primaryTextMuted,
-                    "--hover-color": hoverLinkColor,
-                  }}
-                >
-                  {label}
-                </Link>
-              </li>
-            ))}
+            {navLinks.map(({ path, label, hidden }) => {
+              if (hidden) return null;
+
+              return (
+                <li key={path}>
+                  <Link
+                    to={path}
+                    className="transition hover:opacity-100 focus:opacity-100"
+                    style={{
+                      color: primaryTextMuted,
+                      "--hover-color": hoverLinkColor,
+                    }}
+                  >
+                    {label}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
 

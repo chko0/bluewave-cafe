@@ -17,18 +17,33 @@
   "navigation": [
     {
       "label": "Menu",
+      "path": "/",
+      "hidden": true,
+      "description": "Browse our complete list of coffee, pastries, & desserts. Find your new favorite today!"
+    },
+    {
+      "label": "Menu",
       "path": "/menu",
-      "icon": "Coffee"
+      "icon": "Coffee",
+      "description": "Browse our complete list of coffee, pastries, & desserts. Find your new favorite today!"
     },
     {
       "label": "Feedback",
       "path": "/feedback",
-      "icon": "MessageCircle"
+      "icon": "MessageCircle",
+      "description": "Share your experience and help us improve! We value your feedback on our coffee and service."
     },
     {
       "label": "About",
       "path": "/about",
-      "icon": "Info"
+      "icon": "Info",
+      "description": "Learn the story behind BlueWave Café! Discover our commitment to quality coffee, local ingredients, & creating a welcoming community space. Visit us today!"
+    },
+    {
+      "label": "Thanks for Feedback!",
+      "path": "/feedback/success",
+      "hidden": true,
+      "description": "Thanks for your feedback! We value your input and will use it to improve our service."
     }
   ],
 
