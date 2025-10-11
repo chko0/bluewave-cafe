@@ -1,16 +1,12 @@
 import { motion, AnimatePresence } from "framer-motion";
-import React, { Suspense } from "react";
-
-const MenuItem = React.lazy(() => import("./MenuItem"));
+import { Suspense } from "react";
+import MenuItem from "./MenuItem";
 
 export default function MenuItems({ items, activeCategory }) {
   // Sort items so 'New' items are first
-  const sortedItems = [...items].sort((a, b) => {
-    const isANew = a.new ? 1 : 0;
-    const isBNew = b.new ? 1 : 0;
-
-    return isBNew - isANew;
-  });
+  const sortedItems = [...items].sort(
+    (a, b) => (b.new ? 1 : 0) - (a.new ? 1 : 0)
+  );
 
   return (
     <AnimatePresence mode="wait">

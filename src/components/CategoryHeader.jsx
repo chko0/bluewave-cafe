@@ -9,7 +9,7 @@ export default function CategoryHeader({ activeCategory, ActiveIcon }) {
 
   return (
     <h2
-      className="text-2xl sm:text-3xl font-bold mb-8 flex items-center justify-center gap-3"
+      className="text-2xl font-bold mb-8 flex items-center justify-center gap-3"
       style={{ color: textColor }}
     >
       {/* Left gradient bar */}
