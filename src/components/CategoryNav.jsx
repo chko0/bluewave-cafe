@@ -31,7 +31,7 @@ export default function CategoryNav({ activeCategory, setActiveCategory }) {
     >
       {/* Left gradient overlay */}
       <div
-        className="absolute top-0 left-0 h-full w-12 pointer-events-none"
+        className="absolute top-0 left-0 h-full w-11 pointer-events-none"
         style={{
           background: `linear-gradient(to right, ${colors.lightBg}, transparent, transparent)`,
         }}
@@ -39,13 +39,14 @@ export default function CategoryNav({ activeCategory, setActiveCategory }) {
 
       {/* Right gradient overlay */}
       <div
-        className="absolute top-0 right-0 h-full w-12 pointer-events-none"
+        className="absolute top-0 right-0 h-full w-11 pointer-events-none"
         style={{
           background: `linear-gradient(to left, ${colors.lightBg}, transparent, transparent)`,
         }}
       />
+
       <div className="overflow-x-auto scrollbar scrollbar-thumb-rounded scrollbar-thin">
-        <div className="overflow-x-auto flex gap-3 px-4 py-2 min-w-max justify-start sm:justify-center">
+        <div className="flex gap-3 px-4 py-2 min-w-max justify-start sm:justify-center rtl:flex-row-reverse">
           {Object.entries(menuData).map(([catName, catData]) => {
             const Icon = catData.icon;
             const isActive = activeCategory === catName;
@@ -78,7 +79,6 @@ export default function CategoryNav({ activeCategory, setActiveCategory }) {
                 }}
                 onMouseLeave={(e) => {
                   if (!isActive) {
-                    // Revert to original inactive styles
                     e.currentTarget.style.backgroundColor = colors.inactiveBg;
                     e.currentTarget.style.color = colors.inactiveText;
                   }
