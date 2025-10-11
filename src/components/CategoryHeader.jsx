@@ -16,21 +16,33 @@ export default function CategoryHeader({ activeCategory, ActiveIcon }) {
       <span
         className="block h-1 w-16 rounded-full"
         style={{ background: gradient }}
+        translate="no"
       ></span>
 
-      {/* Icon */}
-      <ActiveIcon className="w-6 h-6" style={{ color: iconColor }} />
+      {/* Icon #1 */}
+      <ActiveIcon
+        key="left"
+        className="w-6 h-6"
+        style={{ color: iconColor }}
+        translate="no"
+      />
 
       {/* Category Name */}
       {activeCategory}
 
-      {/* Icon */}
-      <ActiveIcon className="w-6 h-6" style={{ color: iconColor }} />
+      {/* Icon #2 */}
+      <ActiveIcon
+        key="right"
+        className="w-6 h-6"
+        style={{ color: iconColor }}
+        translate="no"
+      />
 
       {/* Right gradient bar */}
       <span
         className="block h-1 w-16 rounded-full"
         style={{ background: gradient }}
+        translate="no"
       ></span>
     </h2>
   );
