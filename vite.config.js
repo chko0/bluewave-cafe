@@ -12,7 +12,7 @@ export default defineConfig({
     svgr(),
     beasties({
       options: {
-        preload: "swap",
+        preload: true,
         pruneSource: false,
       },
     }),
