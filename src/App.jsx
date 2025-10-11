@@ -35,9 +35,14 @@ export default function App() {
 
   // Measure the header height after it mounts/renders
   useEffect(() => {
-    if (headerRef.current) {
-      setHeaderHeight(headerRef.current.offsetHeight);
-    }
+    const updateHeaderHeight = () => {
+      if (headerRef.current) {
+        setHeaderHeight(headerRef.current.offsetHeight);
+      }
+    };
+    updateHeaderHeight(); // Run once initially
+    window.addEventListener("resize", updateHeaderHeight); // Listen to window resize
+    return () => window.removeEventListener("resize", updateHeaderHeight); // Cleanup
   }, []);
 
   useEffect(() => {
@@ -59,13 +64,11 @@ export default function App() {
       >
         <Navbar scrollThreshold={headerHeight - 62} />
 
-        <div ref={headerRef}>
-          <Header />
-        </div>
+        <Header ref={headerRef} />
 
         {/* Suspense loader while lazy pages load */}
         <Suspense fallback={<Loading />}>
-          <div className="flex-1">
+          <main className="flex-1">
             <Routes>
               <Route
                 path="/"
@@ -83,7 +86,7 @@ export default function App() {
               />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
-          </div>
+          </main>
 
           <Footer />
         </Suspense>

@@ -44,9 +44,8 @@ export default function CategoryNav({ activeCategory, setActiveCategory }) {
           background: `linear-gradient(to left, ${colors.lightBg}, transparent, transparent)`,
         }}
       />
-
-      <div className="overflow-x-auto px-2 scrollbar scrollbar-thumb-rounded scrollbar-thin">
-        <div className="flex gap-3 px-2 py-2 min-w-max justify-start sm:justify-center">
+      <div className="overflow-x-auto scrollbar scrollbar-thumb-rounded scrollbar-thin">
+        <div className="overflow-x-auto flex gap-3 px-4 py-2 min-w-max justify-start sm:justify-center">
           {Object.entries(menuData).map(([catName, catData]) => {
             const Icon = catData.icon;
             const isActive = activeCategory === catName;

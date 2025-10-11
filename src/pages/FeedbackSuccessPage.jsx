@@ -12,7 +12,7 @@ export default function FeedbackSuccessPage() {
   const successColor = colors.primary500;
 
   return (
-    <main className="px-6 py-24 max-w-xl mx-auto text-center">
+    <div className="px-6 py-24 max-w-xl mx-auto text-center">
       {/* Container for the success card effect */}
       <div
         className="bg-white p-10 rounded-3xl shadow-2xl space-y-5 border-t-8"
@@ -57,6 +57,6 @@ export default function FeedbackSuccessPage() {
           Return to Menu
         </Link>
       </div>
-    </main>
+    </div>
   );
 }

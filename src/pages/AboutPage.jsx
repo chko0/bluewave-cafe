@@ -7,7 +7,7 @@ export default function AboutPage() {
   const { colors } = useTheme();
 
   return (
-    <main className="px-6 py-16 max-w-5xl mx-auto flex flex-col gap-12">
+    <div className="px-6 py-16 max-w-5xl mx-auto flex flex-col gap-12">
       {/* Hero Section */}
       <div className="relative w-full h-64 md:h-96 rounded-3xl overflow-hidden shadow-lg">
         <img
@@ -97,6 +97,6 @@ export default function AboutPage() {
           moment to remember!
         </p>
       </section>
-    </main>
+    </div>
   );
 }

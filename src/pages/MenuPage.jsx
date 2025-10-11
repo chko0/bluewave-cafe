@@ -29,7 +29,7 @@ export default function MenuPage({ headerOffset = 292 }) {
 
   useEffect(() => {
     localStorage.setItem("Category", activeCategory);
-    if (menuRef.current && navRef.current) {
+    if (menuRef.current) {
       const menuTop =
         menuRef.current.getBoundingClientRect().top + window.pageYOffset;
 
@@ -44,14 +44,14 @@ export default function MenuPage({ headerOffset = 292 }) {
   }, [activeCategory]);
 
   return (
-    <div ref={navRef}>
+    <>
       <CategoryNav
         activeCategory={activeCategory}
         setActiveCategory={setActiveCategory}
       />
 
       {/* Menu Section */}
-      <main
+      <div
         ref={menuRef}
         className="px-6 py-6 md:py-8 max-w-7xl mx-auto min-h-screen flex flex-col transition duration-300 ease-in-out"
       >
@@ -66,7 +66,7 @@ export default function MenuPage({ headerOffset = 292 }) {
             activeCategory={activeCategory}
           />
         </Suspense>
-      </main>
-    </div>
+      </div>
+    </>
   );
 }

@@ -73,7 +73,7 @@ export default function FeedbackPage() {
   `;
 
   return (
-    <main className="px-6 py-12 max-w-3xl mx-auto">
+    <div className="px-6 py-12 max-w-3xl mx-auto">
       {/* Header and Call to Action */}
       <div className="text-center mb-10">
         <MessageCircle
@@ -270,6 +270,6 @@ export default function FeedbackPage() {
       </form>
 
       <span className="text-red-500">{result}</span>
-    </main>
+    </div>
   );
 }
