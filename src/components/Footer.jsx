@@ -1,9 +1,15 @@
 // Footer.jsx
 import { Link } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
-import * as LucideIcons from "lucide-react";
+import { Twitter, Facebook, Instagram } from "lucide-react";
 
 import config from "../config.json";
+
+const iconMap = {
+  twitter: Twitter,
+  facebook: Facebook,
+  instagram: Instagram,
+};
 
 export default function Footer() {
   const { colors } = useTheme();
@@ -70,8 +76,7 @@ export default function Footer() {
           <div className="footer-options flex gap-4 mt-3">
             {socialLinks.map(({ platform, url, icon }) => {
               // Dynamically get the icon component
-              const IconComponent = LucideIcons[icon];
-
+              const IconComponent = iconMap[platform.toLowerCase()];
               if (!IconComponent) return null; // Skip if icon name is invalid
 
               return (

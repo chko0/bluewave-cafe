@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 import config from "../config.json";
-// import { LazyLoadImage } from "react-lazy-load-image-component";
-// import "react-lazy-load-image-component/src/effects/opacity.css";
 import { ReactComponent as AppLogo } from "../assets/favicon.svg";
 import { forwardRef } from "react";
 

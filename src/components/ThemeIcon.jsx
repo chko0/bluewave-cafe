@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useTheme } from "../context/ThemeContext";
 
 export default function ThemeIcon({ themeKey, theme, onClick }) {

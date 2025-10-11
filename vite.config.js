@@ -17,4 +17,15 @@ export default defineConfig({
       },
     }),
   ],
+  build: {
+    minify: "esbuild",
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          react: ["react", "react-dom"],
+          router: ["react-router-dom"],
+        },
+      },
+    },
+  },
 });

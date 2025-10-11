@@ -1,8 +1,14 @@
 import { Link, useLocation } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
-import * as LucideIcons from "lucide-react";
+import { Coffee, MessageCircle, Info } from "lucide-react";
 import config from "../config.json";
 import { useEffect, useState } from "react";
+
+const iconMap = {
+  Coffee: Coffee,
+  MessageCircle: MessageCircle,
+  Info: Info,
+};
 
 export default function Navbar({ scrollThreshold = 168 }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -50,7 +56,7 @@ export default function Navbar({ scrollThreshold = 168 }) {
         {navLinks.map(({ path, label, icon, hidden }) => {
           if (hidden) return null;
 
-          const IconComponent = LucideIcons[icon];
+          const IconComponent = iconMap[icon];
 
           const isMenuLink = path === "/menu";
           const isRootPath = location.pathname === "/";
