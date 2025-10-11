@@ -208,8 +208,8 @@ export default function FeedbackPage() {
         >
           <div className="flex items-center gap-2 text-red-500 font-medium">
             <AlertCircle className="w-5 h-5 flex-shrink-0" />
-            <p className="text-sm">
-              Message requires at least {MIN_MESSAGE_LENGTH} characters
+            <p className="text-xs sm:text-sm">
+              Please enter at least {MIN_MESSAGE_LENGTH} characters
             </p>
           </div>
         </div>

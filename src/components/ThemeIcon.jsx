@@ -35,12 +35,8 @@ export default function ThemeIcon({ themeKey, theme, onClick }) {
       />
 
       <span
-        className={`
-          absolute right-full top-1/2 -translate-y-1/2 mr-4 px-2 py-1 
-          bg-gray-800 text-white text-xs font-medium rounded-md whitespace-nowrap 
-          opacity-0 pointer-events-none transition-opacity duration-200
-          group-hover:opacity-100
-        `}
+        className={`absolute right-full top-1/2 -translate-y-1/2 mr-4 px-2 py-1 bg-gray-800 text-white text-xs font-medium rounded-md whitespace-nowrap 
+          opacity-0 pointer-events-none transition-opacity duration-200 group-hover:opacity-100 group-hover:pointer-events-auto`}
       >
         {theme.name}
       </span>
