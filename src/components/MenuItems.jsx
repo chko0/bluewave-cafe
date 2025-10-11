@@ -1,5 +1,7 @@
-import MenuItem from "./MenuItem";
 import { motion, AnimatePresence } from "framer-motion";
+import React, { Suspense } from "react";
+
+const MenuItem = React.lazy(() => import("./MenuItem"));
 
 export default function MenuItems({ items, activeCategory }) {
   // Sort items so 'New' items are first
@@ -28,11 +30,13 @@ export default function MenuItems({ items, activeCategory }) {
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.3 }}
           >
-            <MenuItem
-              index={index}
-              item={item}
-              highPriorityLoading={index < 1}
-            />
+            <Suspense fallback={null}>
+              <MenuItem
+                index={index}
+                item={item}
+                highPriorityLoading={index < 1}
+              />
+            </Suspense>
           </motion.div>
         ))}
       </motion.div>
