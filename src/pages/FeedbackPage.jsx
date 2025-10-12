@@ -7,6 +7,7 @@ import { useTheme } from "../context/ThemeContext";
 import config from "../config.json";
 
 const MIN_MESSAGE_LENGTH = 10;
+const WORKER_ENDPOINT = "https://feedback-handler.chadi-kouzayha.workers.dev";
 
 export default function FeedbackPage() {
   const { colors } = useTheme();
@@ -15,10 +16,8 @@ export default function FeedbackPage() {
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // State for the rating value (0-5)
-  const [rating, setRating] = useState(0);
-  // State for the hover effect
-  const [hoverRating, setHoverRating] = useState(0);
+  const [rating, setRating] = useState(0); // State for the rating value (0-5)
+  const [hoverRating, setHoverRating] = useState(0); // State for the hover effect
 
   const [message, setMessage] = useState("");
   const [isMessageTouched, setIsMessageTouched] = useState(false);
@@ -26,38 +25,6 @@ export default function FeedbackPage() {
 
   const currentLength = message.trim().replace(/\s/g, "").length;
   const isMessageValid = currentLength >= MIN_MESSAGE_LENGTH;
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-
-    const formData = new FormData(e.target);
-    formData.append("access_key", config.services.web3formsAccessKey);
-
-    formData.append("rating", rating);
-
-    // --- Submission Logic ---
-    try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: formData,
-      });
-      const data = await response.json();
-
-      if (data.success) {
-        e.target.reset();
-        navigate("/feedback/success");
-      } else {
-        console.error(data.message);
-        alert("Error sending feedback!");
-      }
-    } catch (err) {
-      console.error(err);
-      alert("Something went wrong!");
-    } finally {
-      setLoading(false);
-    }
-  };
 
   // Determine the rating to display (hover takes precedence over selected)
   const displayRating = hoverRating || rating;
@@ -72,6 +39,39 @@ export default function FeedbackPage() {
     border-gray-300 placeholder-gray-500
   `;
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setResult(""); // Clear previous results
+
+    const formData = new FormData(e.target);
+
+    // Append fields for the Worker to process
+    formData.append("rating", rating);
+
+    // --- Submission Logic ---
+    try {
+      const response = await fetch(WORKER_ENDPOINT, {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        navigate("/feedback/success");
+      } else {
+        // Display the error message returned by the Worker
+        setResult(data.message || "A server error occurred during submission.");
+      }
+    } catch (error) {
+      console.error("Submission failed:", error);
+      setResult("Network error or failed to reach the server.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="px-6 py-12 max-w-3xl mx-auto">
       {/* Header and Call to Action */}
@@ -81,7 +81,7 @@ export default function FeedbackPage() {
           style={{ color: colors.primary600 }}
         />
         <h2
-          className="text-4xl font-extrabold mb-2"
+          className="text-3xl font-extrabold mb-2"
           style={{ color: colors.primary900 }}
         >
           Your Feedback Matters
@@ -163,7 +163,7 @@ export default function FeedbackPage() {
             }}
           />
 
-          {/* 💡 Character Status (Bottom Right, inside the textarea) */}
+          {/* Character Status (Bottom Right, inside the textarea) */}
           <span
             className="absolute bottom-3 right-2 text-xs font-medium select-none"
             style={{
@@ -227,7 +227,7 @@ export default function FeedbackPage() {
         {/* --- EMAIL INPUT --- */}
         <input
           type="text"
-          name="email_phone"
+          name="contact"
           aria-label="Enter your email or phone"
           placeholder="Your Email or Phone (optional)"
           className={inputClasses}
@@ -239,23 +239,16 @@ export default function FeedbackPage() {
           type="submit"
           aria-label="Send Feedback"
           disabled={isButtonDisabled}
-          className="
-            w-full text-white px-6 py-4 rounded-xl font-bold uppercase tracking-wider
-            transition-all duration-200 shadow-lg hover:shadow-xl hover:cursor-pointer
-            disabled:opacity-40 disabled:cursor-not-allowed
-            hover:scale-[1.01]
-          "
+          className={`w-full text-white px-6 py-4 rounded-xl font-bold uppercase tracking-wider transition-all duration-200 shadow-lg hover:shadow-xl hover:cursor-pointer
+            disabled:opacity-40 disabled:cursor-not-allowed  ${
+              isButtonDisabled
+                ? ""
+                : "hover:scale-[1.01] hover:[--btn-bg:var(--btn-hover-bg)]"
+            }`}
           style={{
-            backgroundColor: colors.primary600,
-            // 💡 Clean Hover: Use onMouseEnter to handle the hover color directly
-          }}
-          onMouseEnter={(e) => {
-            if (!loading && rating !== 0)
-              e.currentTarget.style.backgroundColor = colors.primary700;
-          }}
-          onMouseLeave={(e) => {
-            if (!loading && rating !== 0)
-              e.currentTarget.style.backgroundColor = colors.primary600;
+            "--btn-bg": colors.primary600,
+            "--btn-hover-bg": colors.primary700,
+            backgroundColor: "var(--btn-bg)",
           }}
         >
           {loading ? (

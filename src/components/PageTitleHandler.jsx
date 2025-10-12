@@ -33,9 +33,6 @@ export default function PageTitleHandler() {
 
   return (
     <>
-      {/* Preload */}
-      <link rel="preload" href="cafe-hero.webp" as="image" />
-
       {/* Basic SEO Tags */}
       <title>{currentFullTitle}</title>
       <meta

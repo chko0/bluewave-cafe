@@ -1,4 +1,3 @@
-// Footer.jsx
 import { Link } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 import { Twitter, Facebook, Instagram } from "lucide-react";
@@ -75,7 +74,6 @@ export default function Footer() {
           <h3 className="text-md font-semibold">Follow Us</h3>
           <div className="footer-options flex gap-4 mt-3">
             {socialLinks.map(({ platform, url, icon }) => {
-              // Dynamically get the icon component
               const IconComponent = iconMap[platform.toLowerCase()];
               if (!IconComponent) return null; // Skip if icon name is invalid
 

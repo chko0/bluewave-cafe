@@ -41,7 +41,7 @@ export default function ThemeSwitcher() {
     <div className="fixed bottom-6 right-6 z-50">
       <AnimatePresence>
         {isOpen && (
-          // The Floating Theme List */}
+          // The Floating Theme List
           <motion.div
             id="theme-list"
             initial="hidden"

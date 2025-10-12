@@ -56,9 +56,5 @@
       "url": "https://twitter.com/",
       "icon": "Twitter"
     }
-  ],
-
-  "services": {
-    "web3formsAccessKey": "1aa061e8-2830-4275-acb2-e9428d1523ec"
-  }
+  ]
 }

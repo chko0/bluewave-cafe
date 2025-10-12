@@ -14,7 +14,7 @@ export default function MenuItem({ index, item, highPriorityLoading }) {
     success: { bg: "#d4edda", text: "#155724" },
     // Standard Warning/Gold (for Popular/Star)
     warning: { bg: "#fff3cd", text: "#856404" },
-    // 💡 Fixed Light Purple/Lavender for Dietary
+    // Light Purple/Lavender for Dietary
     dietary: { bg: "#f3e8ff", text: "#5b21b6" }, // Based on very light purple/violet for uniqueness
   };
 

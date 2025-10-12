@@ -1,18 +1,16 @@
-// FeedbackSuccessPage.jsx
 import { CheckCircle } from "lucide-react";
-import { Link, useLocation } from "react-router-dom"; // Removed 'Navigate' as it's unused
+import { Link } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 import config from "../config.json";
 
 export default function FeedbackSuccessPage() {
   const { colors } = useTheme();
-  const location = useLocation(); // location is unused, but kept if needed later
 
   // Define success color derived from the theme (using primary colors for brand consistency)
   const successColor = colors.primary500;
 
   return (
-    <div className="px-6 py-24 max-w-xl mx-auto text-center">
+    <div className="px-6 py-14 max-w-xl mx-auto text-center">
       {/* Container for the success card effect */}
       <div
         className="bg-white p-10 rounded-3xl shadow-2xl space-y-5 border-t-8"
@@ -24,13 +22,16 @@ export default function FeedbackSuccessPage() {
         />
 
         <h2
-          className="text-4xl font-extrabold mb-6"
+          className="text-3xl sm:text-4xl font-extrabold mb-6"
           style={{ color: colors.primary900 }}
         >
           Feedback Received!
         </h2>
 
-        <p className="text-xl mb-8" style={{ color: colors.primary700 }}>
+        <p
+          className="text-lg md:text-xl mb-8"
+          style={{ color: colors.primary700 }}
+        >
           Your input is greatly appreciated! We'll use your message to make{" "}
           {config.site.name} even better.
         </p>
@@ -38,20 +39,13 @@ export default function FeedbackSuccessPage() {
         {/* --- Back to Menu Button --- */}
         <Link
           to="/"
-          className="
-            inline-block text-white px-8 py-3 rounded-xl transition-all duration-200 
-            font-bold shadow-lg hover:shadow-xl uppercase tracking-wider
-            hover:scale-[1.03]"
+          className="inline-block text-white text-sm md:text-base px-6 py-4 md:px-8 rounded-xl transition-all duration-200 font-bold shadow-lg 
+            hover:shadow-xl uppercase tracking-wider hover:scale-[1.03] hover:[--link-bg:var(--link-hover-bg)]"
           aria-label="Return to Menu"
           style={{
-            backgroundColor: colors.primary600,
-          }}
-          // Handle the hover effect directly
-          onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = colors.primary700;
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = colors.primary600;
+            "--link-bg": colors.primary600,
+            "--link-hover-bg": colors.primary700,
+            backgroundColor: "var(--link-bg)",
           }}
         >
           Return to Menu

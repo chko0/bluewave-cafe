@@ -1,5 +1,4 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { Suspense } from "react";
 import MenuItem from "./MenuItem";
 
 export default function MenuItems({ items, activeCategory }) {
@@ -26,13 +25,11 @@ export default function MenuItems({ items, activeCategory }) {
             exit={{ opacity: 0, y: -15 }}
             transition={{ duration: 0.3 }}
           >
-            <Suspense fallback={null}>
-              <MenuItem
-                index={index}
-                item={item}
-                highPriorityLoading={index < 1}
-              />
-            </Suspense>
+            <MenuItem
+              index={index}
+              item={item}
+              highPriorityLoading={index < 1}
+            />
           </motion.div>
         ))}
       </motion.div>

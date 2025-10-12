@@ -16,17 +16,16 @@ export default function NotFoundPage() {
       </h2>
       <p className="text-lg mb-8" style={{ color: paragraphText }}>
         Oops! Page not found.
-      </p>{" "}
+      </p>
       <Link
         to="/"
-        className="text-white px-6 py-3 rounded-xl transition font-semibold"
+        aria-label="Back to Home"
+        className="text-white px-6 py-3 rounded-xl transition font-semibold hover:scale-105 hover:[--btn-bg:var(--btn-hover-bg)]"
         style={{
-          backgroundColor: buttonBg,
+          "--btn-bg": buttonBg,
+          "--btn-hover-bg": buttonHoverBg,
+          backgroundColor: "var(--btn-bg)",
         }}
-        onMouseEnter={(e) =>
-          (e.currentTarget.style.backgroundColor = buttonHoverBg)
-        }
-        onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = buttonBg)}
       >
         Back to Home
       </Link>
