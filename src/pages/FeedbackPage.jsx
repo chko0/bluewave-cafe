@@ -7,7 +7,7 @@ import { useTheme } from "../context/ThemeContext";
 import config from "../config.json";
 
 const MIN_MESSAGE_LENGTH = 10;
-const WORKER_ENDPOINT = "https://feedback-handler.chadi-kouzayha.workers.dev";
+const WORKER_ENDPOINT = config.workers.WORKER_ENDPOINT;
 
 export default function FeedbackPage() {
   const { colors } = useTheme();

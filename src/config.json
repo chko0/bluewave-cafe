@@ -56,5 +56,8 @@
       "url": "https://twitter.com/",
       "icon": "Twitter"
     }
-  ]
+  ],
+  "workers": {
+    "WORKER_ENDPOINT": "https://feedback-handler.chadi-kouzayha.workers.dev"
+  }
 }

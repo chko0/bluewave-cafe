@@ -1,0 +1,9 @@
+Copyright (c) 2025 chko0
+
+All rights reserved.
+
+This software and its source code are the intellectual property of the author.
+No part of this project may be copied, modified, distributed, or used,
+in whole or in part, without prior written permission from the copyright holder.
+
+For inquiries about usage rights or licensing, please contact the author.
