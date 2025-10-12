@@ -18,10 +18,7 @@ const Header = forwardRef((props, ref) => {
       <div className="flex justify-center">
         <Link to="/" className="flex flex-col items-center justify-center p-2">
           {/* Logo Container */}
-          <div
-            className="rounded-full bg-white shadow-xl p-2 h-full w-full flex items-center justify-center mb-2"
-            style={{ height: "3.4rem", width: "3.4rem" }}
-          >
+          <div className="rounded-full bg-white shadow-xl p-2  flex items-center justify-center mb-2 h-14 w-14">
             <AppLogo
               className="h-full w-full object-contain drop-shadow-md"
               style={{

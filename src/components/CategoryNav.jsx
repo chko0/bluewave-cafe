@@ -58,31 +58,32 @@ export default function CategoryNav({ activeCategory, setActiveCategory }) {
                 aria-label={`Select ${catName} category`}
                 className={`px-5 py-2 rounded-full font-semibold transition-all flex items-center gap-2 select-none
                   ${
+                    !isActive
+                      ? "bg-[var(--inactive-bg)] text-[var(--inactive-text)]"
+                      : ""
+                  }
+                  ${
                     activeCategory === catName
                       ? "shadow-lg scale-105"
                       : "hover:scale-105 hover:shadow hover:cursor-pointer"
-                  }`}
+                  }
+                  ${
+                    !isActive
+                      ? "hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]"
+                      : ""
+                  }
+                `}
                 style={{
-                  backgroundColor: isActive
-                    ? colors.activeBg
-                    : colors.inactiveBg,
-                  color: isActive ? colors.activeText : colors.inactiveText,
+                  "--hover-bg": hoverBackgroundColor,
+                  "--hover-text": hoverTextColor,
+                  "--inactive-bg": colors.inactiveBg,
+                  "--inactive-text": colors.inactiveText,
+
+                  backgroundColor: isActive ? colors.activeBg : undefined,
+                  color: isActive ? colors.activeText : undefined,
                   boxShadow: isActive ? "0 4px 10px rgba(0,0,0,0.2)" : "none",
                 }}
                 ref={isActive ? activeItemRef : null}
-                onMouseEnter={(e) => {
-                  if (!isActive) {
-                    e.currentTarget.style.backgroundColor =
-                      hoverBackgroundColor;
-                    e.currentTarget.style.color = hoverTextColor;
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (!isActive) {
-                    e.currentTarget.style.backgroundColor = colors.inactiveBg;
-                    e.currentTarget.style.color = colors.inactiveText;
-                  }
-                }}
               >
                 <Icon className="w-5 h-5" />
                 {catName}

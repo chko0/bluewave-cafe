@@ -36,6 +36,7 @@ export default function ThemeSwitcher() {
       },
     },
   };
+
   return (
     // Fixed container positioned at the bottom right
     <div className="fixed bottom-6 right-6 z-50">
@@ -60,36 +61,36 @@ export default function ThemeSwitcher() {
             ))}
           </motion.div>
         )}
+      </AnimatePresence>
 
-        {/* The Toggle Button (FAB) */}
-        <div className="relative group">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            aria-expanded={isOpen}
-            aria-controls="theme-list"
-            aria-label={isOpen ? "Close Theme Selector" : "Open Theme Selector"}
-            className="w-14 h-14 rounded-full shadow-xl flex items-center justify-center transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-offset-2 text-white hover:cursor-pointer"
-            style={{
-              // Change FAB color when open
-              background: isOpen ? "gray" : colors.primary600,
-              boxShadow: `0 8px 15px rgba(0, 0, 0, 0.25), 0 0 0 4px ${colors.primary700}30`, // Subtle shadow effect
-            }}
-          >
-            {/* Change icon based on state */}
-            {isOpen ? <X size={24} /> : <Palette size={24} />}
-          </button>
+      {/* The Toggle Button (FAB) */}
+      <div className="relative group">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          aria-expanded={isOpen}
+          aria-controls="theme-list"
+          aria-label={isOpen ? "Close Theme Selector" : "Open Theme Selector"}
+          className="w-14 h-14 rounded-full shadow-xl flex items-center justify-center transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-offset-2 text-white hover:cursor-pointer"
+          style={{
+            // Change FAB color when open
+            background: isOpen ? "gray" : colors.primary600,
+            boxShadow: `0 8px 15px rgba(0, 0, 0, 0.25), 0 0 0 4px ${colors.primary700}30`, // Subtle shadow effect
+          }}
+        >
+          {/* Change icon based on state */}
+          {isOpen ? <X size={24} /> : <Palette size={24} />}
+        </button>
 
-          {/* Tooltip */}
-          <span
-            className={`absolute right-full top-1/2 -translate-y-1/2 mr-3 px-3 py-1.5 bg-gray-800 text-white text-sm font-medium rounded-lg whitespace-nowrap 
+        {/* Tooltip */}
+        <span
+          className={`absolute right-full top-1/2 -translate-y-1/2 mr-3 px-3 py-1.5 bg-gray-800 text-white text-sm font-medium rounded-lg whitespace-nowrap 
             opacity-0 pointer-events-none transition-opacity duration-300 group-hover:pointer-events-auto ${
               !isOpen ? "group-hover:opacity-100" : ""
             }`}
-          >
-            Theme
-          </span>
-        </div>
-      </AnimatePresence>
+        >
+          Theme
+        </span>
+      </div>
     </div>
   );
 }

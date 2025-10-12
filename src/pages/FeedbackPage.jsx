@@ -99,10 +99,10 @@ export default function FeedbackPage() {
         <div className="space-y-4 text-center">
           <h3
             id="rating-label"
-            className="text-lg sm:text-xl font-bold"
+            className="text-md md:text-lg sm:text-xl font-bold"
             style={{ color: colors.primary700 }}
           >
-            Rate Your Overall Experience!
+            Rate Your Experience!
           </h3>
 
           <div
