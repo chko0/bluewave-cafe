@@ -120,15 +120,26 @@ The production build will be located in the `/dist` folder.
 The codebase follows a clear, predictable structure for high maintainability:
 
 ```bash
-src/
-├── components/ # Reusable UI components (Navbar, Footer, Badge, Loading)
-├── context/    # Global state logic (ThemeContext.jsx)
-├── data/       # Content data (menuData.js)
-├── pages/      # Route-specific components (MenuPage, AboutPage, NotFoundPage)
-├── theme/      # Theme definitions (colors.js)
-├── utils/      # Utility functions (setFavicon, utils.js)
-├── App.jsx     # Main routing and global layout
-└── main.jsx    # Entry point (initializes ThemeProvider)
+/
+├── node_modules/
+├── public/
+│   ├── menu/           # Contains menu item images (e.g., espresso.webp, latte.webp)
+│   ├── cafe-hero.webp  # Hero image, accessed directly by components like AboutPage
+│   └── robots.txt      # SEO configuration file
+│
+└── src/
+    ├── assets/         # Contains static assets referenced by React components
+    │   └── favicon.svg # Used by Header.jsx for the logo component
+    │
+    ├── components/     # Reusable UI components (Navbar, Footer, Badge, Loading, ...)
+    ├── context/        # Global state logic (ThemeContext.jsx)
+    ├── data/           # Content data (menuData.js)
+    ├── pages/          # Route-specific components (MenuPage, AboutPage, NotFoundPage, ...)
+    ├── theme/          # Theme definitions (colors.js)
+    ├── utils/          # Utility functions (setFavicon, utils.js)
+    ├── config.json     # Application settings (API endpoints, navigation links, contact info)
+    ├── App.jsx         # Main routing and global layout
+    └── main.jsx        # Entry point (initializes ThemeProvider)
 ```
 
 ## ⚡ Performance
