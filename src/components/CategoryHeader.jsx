@@ -9,7 +9,7 @@ export default function CategoryHeader({ activeCategory, ActiveIcon }) {
 
   return (
     <h2
-      className="text-2xl font-bold mb-8 flex items-center justify-center gap-3"
+      className="text-2xl/7 font-bold mb-6 flex items-center justify-center gap-3"
       style={{ color: textColor }}
     >
       {/* Left gradient bar */}
@@ -28,7 +28,9 @@ export default function CategoryHeader({ activeCategory, ActiveIcon }) {
       />
 
       {/* Category Name */}
-      {activeCategory}
+      <span className="text-center max-w-xs h-12 flex flex-col justify-center">
+        {activeCategory}
+      </span>
 
       {/* Icon #2 */}
       <ActiveIcon

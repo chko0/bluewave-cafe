@@ -1,6 +1,15 @@
-import { Coffee, Star, CupSoda, Croissant, Cake, Sandwich } from "lucide-react";
+import {
+  Coffee,
+  Star,
+  CupSoda,
+  Croissant,
+  Cake,
+  Sandwich,
+  Milk,
+} from "lucide-react";
 
 const menuData = {
+  // --- 1. COFFEE ---
   Coffee: {
     icon: Coffee,
     items: [
@@ -47,6 +56,144 @@ const menuData = {
     ],
   },
 
+  // --- 2. COLD BEVERAGES ---
+  "Cold Drinks": {
+    icon: CupSoda, // Keeping the soda icon for cold drinks
+    items: [
+      {
+        name: "Iced Tea",
+        price: 2.5,
+        description: "Refreshing chilled black tea with lemon",
+        image: "iced_tea.webp",
+        popular: true,
+        new: true,
+      },
+      {
+        name: "Lemonade",
+        price: 3,
+        description: "Freshly squeezed lemon juice with a touch of mint",
+        image: "lemonade.webp",
+      },
+      {
+        name: "Smoothie",
+        price: 5,
+        description: "Blend of mixed berries, banana, & almond milk",
+        image: "smoothie.webp",
+        lactoseFree: true,
+      },
+    ],
+  },
+
+  // --- 3. HOT DRINKS ---
+  "Hot Drinks": {
+    icon: Milk,
+    items: [
+      {
+        name: "Hot Chocolate",
+        price: 3.5,
+        description: "Warm & creamy cocoa drink",
+        image: "hot_chocolate.webp",
+      },
+      {
+        name: "Classic Hot Tea",
+        price: 3.0,
+        description: "Your choice of high-quality Black Tea or Earl Grey",
+        image: "classic_hot_tea.webp", // New image
+      },
+      {
+        name: "Chai Latte",
+        price: 4.5,
+        description:
+          "Sweet & spicy black tea concentrate mixed with steamed milk",
+        image: "chai_latte.webp", // New image
+        popular: true,
+      },
+      {
+        name: "Matcha Latte",
+        price: 5.5,
+        description:
+          "Ceremonial grade Japanese matcha blended with steamed milk",
+        image: "matcha_latte.webp", // New image
+        new: true,
+      },
+    ],
+  },
+
+  // --- 4. BREAKFAST ---
+  Breakfast: {
+    icon: Star,
+    items: [
+      {
+        name: "Pancakes",
+        price: 6,
+        description:
+          "Stack of fluffy pancakes topped with maple syrup & fresh berries",
+        image: "pancakes.webp",
+      },
+      {
+        name: "Three-Egg Omelette",
+        price: 6.5,
+        description:
+          "Omelette with cheddar, fresh herbs, served with sourdough toast",
+        image: "omelette.webp",
+      },
+      {
+        name: "French Toast",
+        price: 5.5,
+        description: "Golden bread slices with powdered sugar & maple syrup",
+        image: "french_toast.webp",
+        new: true,
+      },
+    ],
+  },
+
+  // --- 5. SANDWICHES ---
+  Sandwiches: {
+    icon: Sandwich,
+    items: [
+      {
+        name: "Club Sandwich",
+        price: 6,
+        description:
+          "Triple-layered sandwich with turkey, crispy bacon, lettuce & tomato",
+        image: "club_sandwich.webp",
+        popular: true,
+      },
+      {
+        name: "Grilled Cheese",
+        price: 4,
+        description:
+          "Golden grilled bread with a sharp cheddar & povolone blend",
+        image: "grilled_cheese.webp",
+      },
+      {
+        name: "Classic Caprese Panini",
+        price: 7,
+        description:
+          "Fresh mozzarella, sliced tomato, basil pesto, & balsamic glaze",
+        image: "classic_caprese_panini.webp",
+        vegan: true,
+      },
+      {
+        name: "Vegetarian Burger",
+        price: 8,
+        description: "Hearty black bean patty with fresh cilantro & lime aioli",
+        image: "vegetarian_burger.webp",
+        vegan: true,
+        new: true,
+      },
+      {
+        name: "Breakfast Bagel",
+        price: 6.5,
+        description:
+          "Toasted everything bagel with egg, cheese, ham, tomato, & lettuce",
+        image: "bagel.webp",
+        new: true,
+      },
+    ],
+  },
+
+  // --- 6. PASTRIES ---
   Pastries: {
     icon: Croissant,
     items: [
@@ -113,111 +260,7 @@ const menuData = {
     ],
   },
 
-  Sandwiches: {
-    icon: Sandwich,
-    items: [
-      {
-        name: "Club Sandwich",
-        price: 6,
-        description:
-          "Triple-layered sandwich with turkey, crispy bacon, lettuce & tomato",
-        image: "club_sandwich.webp",
-        popular: true,
-      },
-      {
-        name: "Grilled Cheese",
-        price: 4,
-        description:
-          "Golden grilled bread with a sharp cheddar & povolone blend",
-        image: "grilled_cheese.webp",
-      },
-      {
-        name: "Classic Caprese Panini",
-        price: 7,
-        description:
-          "Fresh mozzarella, sliced tomato, basil pesto, & balsamic glaze",
-        image: "classic_caprese_panini.webp",
-        vegan: true,
-      },
-      {
-        name: "Vegetarian Burger",
-        price: 8,
-        description: "Hearty black bean patty with fresh cilantro & lime aioli",
-        image: "vegetarian_burger.webp",
-        vegan: true,
-        new: true,
-      },
-      {
-        name: "Breakfast Bagel",
-        price: 6.5,
-        description:
-          "Toasted everything bagel with egg, cheese, ham, tomato, & lettuce",
-        image: "bagel.webp",
-        new: true,
-      },
-    ],
-  },
-
-  Drinks: {
-    icon: CupSoda,
-    items: [
-      {
-        name: "Iced Tea",
-        price: 2.5,
-        description: "Refreshing chilled black tea with lemon",
-        image: "iced_tea.webp",
-        popular: true,
-        new: true,
-      },
-      {
-        name: "Lemonade",
-        price: 3,
-        description: "Freshly squeezed lemon juice with a touch of mint",
-        image: "lemonade.webp",
-      },
-      {
-        name: "Smoothie",
-        price: 5,
-        description: "Blend of mixed berries, banana, & almond milk",
-        image: "smoothie.webp",
-        lactoseFree: true,
-      },
-      {
-        name: "Hot Chocolate",
-        price: 3.5,
-        description: "Warm & creamy cocoa drink",
-        image: "hot_chocolate.webp",
-      },
-    ],
-  },
-
-  Breakfast: {
-    icon: Star,
-    items: [
-      {
-        name: "Pancakes",
-        price: 6,
-        description:
-          "Stack of fluffy pancakes topped with maple syrup & fresh berries",
-        image: "pancakes.webp",
-      },
-      {
-        name: "Three-Egg Omelette",
-        price: 6.5,
-        description:
-          "Omelette with cheddar, fresh herbs, served with sourdough toast",
-        image: "omelette.webp",
-      },
-      {
-        name: "French Toast",
-        price: 5.5,
-        description: "Golden bread slices with powdered sugar & maple syrup",
-        image: "french_toast.webp",
-        new: true,
-      },
-    ],
-  },
-
+  // --- 7. DESSERTS ---
   Desserts: {
     icon: Cake,
     items: [

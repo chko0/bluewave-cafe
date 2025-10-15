@@ -53,7 +53,7 @@ export default function MenuPage({ headerOffset = 292 }) {
       {/* Menu Section */}
       <div
         ref={menuRef}
-        className="px-6 py-6 md:py-8 max-w-7xl mx-auto min-h-screen flex flex-col transition duration-300 ease-in-out"
+        className="px-6 py-4 md:py-6 max-w-7xl mx-auto min-h-screen flex flex-col transition duration-300 ease-in-out"
       >
         <CategoryHeader
           key={activeCategory}
