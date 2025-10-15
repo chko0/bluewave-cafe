@@ -1,9 +1,9 @@
-Copyright (c) 2025 chko0
-
+Copyright (c) 2025 Chadi Kouzayha
 All rights reserved.
 
-This software and its source code are the intellectual property of the author.
-No part of this project may be copied, modified, distributed, or used,
-in whole or in part, without prior written permission from the copyright holder.
+Third-party assets included in this project, such as images from Unsplash or icons from Lucide Icons, are subject to their respective licenses and are not covered by this license.
 
-For inquiries about usage rights or licensing, please contact the author.
+This software and its source code are the intellectual property of Chadi Kouzayha. 
+No part of this project may be copied, modified, distributed, or used, in whole or in part, without prior written permission from the author.
+
+For licensing inquiries or permissions, please contact: chadi.kouzayha@gmail.com

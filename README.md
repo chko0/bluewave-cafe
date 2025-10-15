@@ -160,7 +160,7 @@ Tested using **Google PageSpeed Insights** — achieving near-perfect scores:
 
 ## 📜 License
 
-© 2025 chko0. All rights reserved.  
+© 2025 Chadi Kouzayha. All rights reserved.
 This project is for demonstration and portfolio purposes. Redistribution or commercial use without permission is prohibited.
 
 ---
