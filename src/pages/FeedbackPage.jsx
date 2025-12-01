@@ -4,7 +4,7 @@ import { MessageCircle, AlertCircle, CheckCircle } from "lucide-react";
 
 import { useTheme } from "../context/ThemeContext";
 
-import config from "../config.json";
+import config from "../config";
 
 const MIN_MESSAGE_LENGTH = 10;
 const WORKER_ENDPOINT = config.workers.WORKER_ENDPOINT;

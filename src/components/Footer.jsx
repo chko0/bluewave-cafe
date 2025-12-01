@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 import { Twitter, Facebook, Instagram } from "lucide-react";
 
-import config from "../config.json";
+import config from "../config";
 
 const iconMap = {
   twitter: Twitter,

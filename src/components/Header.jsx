@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
-import config from "../config.json";
+import config from "../config";
 import { ReactComponent as AppLogo } from "../assets/favicon.svg";
 import { forwardRef } from "react";
 

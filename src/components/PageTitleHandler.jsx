@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import config from "../config.json";
+import config from "../config";
 
 export default function PageTitleHandler() {
   const location = useLocation();
@@ -24,7 +24,7 @@ export default function PageTitleHandler() {
     const pageLabel = navItem?.label || "Page Not Found";
     const pageDescription = navItem?.description || config.site.description;
 
-    const fullTitle = `${baseTitle} | ${pageLabel}`;
+    const fullTitle = `${pageLabel} | ${baseTitle}`;
 
     // 3. Update state, which triggers a re-render of Helmet
     setCurrentFullTitle(fullTitle);

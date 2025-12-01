@@ -17,6 +17,7 @@ import Loading from "./components/Loading";
 import Navbar from "./components/Navbar";
 import ThemeSwitcher from "./components/ThemeSwitcher";
 
+const HomePage = React.lazy(() => import("./pages/HomePage"));
 const MenuPage = React.lazy(() => import("./pages/MenuPage"));
 const AboutPage = React.lazy(() => import("./pages/AboutPage"));
 const FeedbackPage = React.lazy(() => import("./pages/FeedbackPage"));
@@ -70,13 +71,14 @@ export default function App() {
         <Suspense fallback={<Loading />}>
           <main className="flex-1">
             <Routes>
+              <Route path="/" element={<HomePage />} />
               <Route
-                path="/"
-                element={<MenuPage headerOffset={headerHeight} />}
+                path="/home"
+                element={<Navigate to="/" replace={true} />}
               />
               <Route
                 path="/menu"
-                element={<Navigate to="/" replace={true} />}
+                element={<MenuPage headerOffset={headerHeight} />}
               />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/feedback" element={<FeedbackPage />} />

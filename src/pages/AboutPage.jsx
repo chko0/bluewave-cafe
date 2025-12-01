@@ -1,7 +1,7 @@
 import { MapPin, Phone, Mail, Coffee } from "lucide-react";
 import heroImg from "/cafe-hero.webp";
 import { useTheme } from "../context/ThemeContext";
-import config from "../config.json";
+import config from "../config";
 
 export default function AboutPage() {
   const { colors } = useTheme();
