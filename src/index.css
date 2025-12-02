@@ -14,3 +14,32 @@
   opacity: 0.5 !important; /* Half opacity on hover */
   transform: scaleX(0.9) !important; /* Scale to 90% width on hover */
 }
+
+/* ============================
+   GLOBAL SCROLLBAR STYLING
+   ============================ */
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  height: 6px; /* horizontal scrollbar height */
+  width: 6px; /* vertical scrollbar width */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.18); /* subtle thumb */
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.28);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.22) transparent;
+}
