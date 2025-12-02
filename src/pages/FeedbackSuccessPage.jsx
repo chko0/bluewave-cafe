@@ -48,7 +48,7 @@ export default function FeedbackSuccessPage() {
             backgroundColor: "var(--link-bg)",
           }}
         >
-          Return to Menu
+          Return to Home
         </Link>
       </div>
     </div>
