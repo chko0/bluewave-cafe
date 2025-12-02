@@ -1,4 +1,6 @@
-import React, { useState, useRef, useEffect, Suspense } from "react";
+import React, { useState, useEffect, Suspense } from "react";
+import { useOutletContext } from "react-router-dom";
+
 import "../styles/MenuPage.css";
 
 import menuData from "../data/menuData";
@@ -9,52 +11,49 @@ import Loading from "../components/Loading";
 
 const MenuItems = React.lazy(() => import("../components/MenuItems"));
 
-export default function MenuPage({ headerOffset = 292 }) {
+export default function MenuPage() {
+  const { headerHeight, navbarHeight } = useOutletContext();
+
+  // All categories available
   const categories = Object.keys(menuData);
 
-  const storedCategory = localStorage.getItem("Category");
+  // Default category fallback
   const defaultCategory = categories[0];
 
-  const chosenCategory =
+  // Retrieve stored category if valid
+  const storedCategory = localStorage.getItem("Category");
+  const initialCategory =
     storedCategory && menuData[storedCategory]
       ? storedCategory
       : defaultCategory;
 
-  const [activeCategory, setActiveCategory] = useState(chosenCategory);
+  const [activeCategory, setActiveCategory] = useState(initialCategory);
 
   const ActiveIcon = menuData[activeCategory].icon;
 
-  const menuRef = useRef(null);
-  const navRef = useRef(null);
-
+  // Scroll into position after category change
   useEffect(() => {
     localStorage.setItem("Category", activeCategory);
-    if (menuRef.current) {
-      const menuTop =
-        menuRef.current.getBoundingClientRect().top + window.pageYOffset;
 
-      // Only scroll if user is below the menu section
-      if (window.scrollY > headerOffset) {
-        window.scrollTo({
-          top: headerOffset,
-          behavior: "smooth",
-        });
-      }
+    const targetScroll = headerHeight - navbarHeight;
+
+    if (window.scrollY > targetScroll) {
+      window.scrollTo({
+        top: targetScroll,
+        behavior: "smooth",
+      });
     }
-  }, [activeCategory]);
+  }, [activeCategory, headerHeight, navbarHeight]);
 
   return (
     <>
       <CategoryNav
         activeCategory={activeCategory}
         setActiveCategory={setActiveCategory}
+        navbarHeight={navbarHeight}
       />
 
-      {/* Menu Section */}
-      <div
-        ref={menuRef}
-        className="px-6 py-4 md:py-6 max-w-7xl mx-auto min-h-screen flex flex-col transition duration-300 ease-in-out"
-      >
+      <div className="px-6 py-4 md:py-6 max-w-7xl mx-auto min-h-screen flex flex-col transition duration-300">
         <CategoryHeader
           key={activeCategory}
           activeCategory={activeCategory}

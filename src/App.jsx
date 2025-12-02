@@ -4,18 +4,13 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import React, { Suspense, useEffect, useRef, useState } from "react";
-import { useTheme } from "./context/ThemeContext";
+import React, { Suspense } from "react";
 
-import { setFavicon } from "./utils/utils";
-
-import Header from "./components/Header";
-import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import PageTitleHandler from "./components/PageTitleHandler";
 import Loading from "./components/Loading";
-import Navbar from "./components/Navbar";
-import ThemeSwitcher from "./components/ThemeSwitcher";
+
+import MainLayout from "./layout/MainLayout";
 
 const HomePage = React.lazy(() => import("./pages/HomePage"));
 const MenuPage = React.lazy(() => import("./pages/MenuPage"));
@@ -27,59 +22,19 @@ const FeedbackSuccessPage = React.lazy(() =>
 const NotFoundPage = React.lazy(() => import("./pages/NotFoundPage"));
 
 export default function App() {
-  const { colors } = useTheme();
-
-  localStorage.removeItem("Category");
-
-  const headerRef = useRef(null);
-  const [headerHeight, setHeaderHeight] = useState(0);
-
-  // Measure the header height after it mounts/renders
-  useEffect(() => {
-    const updateHeaderHeight = () => {
-      if (headerRef.current) {
-        setHeaderHeight(headerRef.current.offsetHeight);
-      }
-    };
-    updateHeaderHeight(); // Run once initially
-    window.addEventListener("resize", updateHeaderHeight); // Listen to window resize
-    return () => window.removeEventListener("resize", updateHeaderHeight); // Cleanup
-  }, []);
-
-  useEffect(() => {
-    setFavicon(colors.activeBg, colors.inactiveBg);
-  }, [colors]);
-
   return (
     <Router>
       <ScrollToTop />
       <PageTitleHandler />
 
-      <div
-        className="flex flex-col min-h-screen"
-        style={{
-          backgroundImage: `linear-gradient(to bottom, ${colors.inactiveBg}, ${colors.lightBg}, ${colors.lightBg})`,
-          backgroundAttachment: "fixed",
-          backgroundSize: "100% 100vh",
-        }}
-      >
-        <Navbar scrollThreshold={headerHeight - 62} />
-
-        <Header ref={headerRef} />
-
-        {/* Suspense loader while lazy pages load */}
-        <Suspense fallback={<Loading />}>
-          <main className="flex-1">
-            <Routes>
+      {/* Suspense loader while lazy pages load */}
+      <Suspense fallback={<Loading />}>
+        <main className="flex-1">
+          <Routes>
+            <Route element={<MainLayout />}>
               <Route path="/" element={<HomePage />} />
-              <Route
-                path="/home"
-                element={<Navigate to="/" replace={true} />}
-              />
-              <Route
-                path="/menu"
-                element={<MenuPage headerOffset={headerHeight} />}
-              />
+              <Route path="/home" element={<Navigate to="/" replace />} />
+              <Route path="/menu" element={<MenuPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/feedback" element={<FeedbackPage />} />
               <Route
@@ -87,16 +42,10 @@ export default function App() {
                 element={<FeedbackSuccessPage />}
               />
               <Route path="*" element={<NotFoundPage />} />
-            </Routes>
-          </main>
-
-          <Footer />
-        </Suspense>
-
-        <div className="flex-shrink-0">
-          <ThemeSwitcher />
-        </div>
-      </div>
+            </Route>
+          </Routes>
+        </main>
+      </Suspense>
     </Router>
   );
 }
