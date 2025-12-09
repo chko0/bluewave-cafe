@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 import config from "../config";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Menu, X } from "lucide-react";
 
 export default function Navbar({ ref }) {

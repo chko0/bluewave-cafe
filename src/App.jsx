@@ -27,24 +27,18 @@ export default function App() {
       <ScrollToTop />
       <PageTitleHandler />
 
-      {/* Suspense loader while lazy pages load */}
       <Suspense fallback={<Loading />}>
-        <main className="flex-1">
-          <Routes>
-            <Route element={<MainLayout />}>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/home" element={<Navigate to="/" replace />} />
-              <Route path="/menu" element={<MenuPage />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/feedback" element={<FeedbackPage />} />
-              <Route
-                path="/feedback/success"
-                element={<FeedbackSuccessPage />}
-              />
-              <Route path="*" element={<NotFoundPage />} />
-            </Route>
-          </Routes>
-        </main>
+        <Routes>
+          <Route element={<MainLayout />}>
+            <Route index element={<HomePage />} />
+            <Route path="home" element={<Navigate to="/" replace />} />
+            <Route path="menu" element={<MenuPage />} />
+            <Route path="about" element={<AboutPage />} />
+            <Route path="feedback" element={<FeedbackPage />} />
+            <Route path="feedback/success" element={<FeedbackSuccessPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
+        </Routes>
       </Suspense>
     </Router>
   );

@@ -1,7 +1,5 @@
-import { CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
-import config from "../config";
 
 export default function NotFoundPage() {
   const { colors } = useTheme();
