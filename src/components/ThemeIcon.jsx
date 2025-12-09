@@ -1,4 +1,5 @@
 import { useTheme } from "../context/ThemeContext";
+import { motion } from "framer-motion";
 
 export default function ThemeIcon({ themeKey, theme, onClick }) {
   const { themeKey: currentThemeKey, setTheme } = useTheme();
@@ -6,40 +7,49 @@ export default function ThemeIcon({ themeKey, theme, onClick }) {
 
   const handleClick = () => {
     setTheme(themeKey);
-    // Execute the provided onClick prop if it exists (used by ThemeSwitcher)
-    if (onClick) {
-      onClick(themeKey);
-    }
+    onClick?.(themeKey);
     localStorage.setItem("Theme", themeKey);
   };
 
   return (
-    <div className="relative group">
-      <button
+    <motion.div
+      className="relative group"
+      initial={false}
+      animate={isSelected ? { scale: 1.15 } : { scale: 1 }}
+      transition={{ type: "spring", stiffness: 250, damping: 18 }}
+    >
+      {/* Swatch button */}
+      <motion.button
         onClick={handleClick}
         aria-label={`Select ${theme.name} theme`}
-        className={`w-7 h-7 rounded-lg border-2 p-0.5 transition-all duration-200 focus:outline-none focus:ring-4 hover:cursor-pointer
-          ${
-            isSelected ? "scale-110 ring-2" : "hover:scale-105 hover:shadow-lg"
-          }`}
+        className="w-8 h-8 rounded-xl transition-all duration-300 
+                   flex items-center justify-center"
+        whileHover={{ scale: isSelected ? 1.17 : 1.07 }}
+        whileTap={{ scale: 0.94 }}
         style={{
-          // Gradient background for the professional color swatch look
-          background: `linear-gradient(to right, ${theme.activeBg}, ${theme.primary500})`,
-
-          // Dynamic border/ring based on selection status for high contrast
-          borderColor: isSelected ? theme.primary900 : theme.border,
+          background: `linear-gradient(135deg, ${theme.activeBg}, ${theme.primary500})`,
+          border: `2px solid ${isSelected ? theme.primary900 : theme.border}`,
           boxShadow: isSelected
-            ? `0 0 0 2px ${theme.activeBg}, 0 0 0 5px ${theme.primary600}`
-            : "0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)",
+            ? `
+                0 0 0 2px ${theme.activeBg},
+                0 0 0 6px ${theme.primary600}40,
+                0 4px 16px rgba(0,0,0,0.25)
+              `
+            : "0 2px 6px rgba(0,0,0,0.15)",
         }}
       />
 
+      {/* Tooltip (modern, subtle) */}
       <span
-        className={`absolute right-full top-1/2 -translate-y-1/2 mr-4 px-2 py-1 bg-gray-800 text-white text-xs font-medium rounded-md whitespace-nowrap 
-          opacity-0 pointer-events-none transition-opacity duration-200 group-hover:opacity-100 group-hover:pointer-events-auto`}
+        className={`absolute right-full top-1/2 -translate-y-1/2 mr-3 
+                    px-2.5 py-1 rounded-md bg-gray-900 text-white
+                    text-xs tracking-wide shadow-md
+                    opacity-0 translate-x-2
+                    transition-all duration-200
+                    group-hover:opacity-100 group-hover:translate-x-0`}
       >
         {theme.name}
       </span>
-    </div>
+    </motion.div>
   );
 }

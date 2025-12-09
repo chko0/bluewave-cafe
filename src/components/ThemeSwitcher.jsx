@@ -6,87 +6,96 @@ import ThemeIcon from "./ThemeIcon";
 import { palette } from "../theme/colors";
 
 export default function ThemeSwitcher() {
-  // State to manage the open/closed status of the theme list
   const [isOpen, setIsOpen] = useState(false);
-
   const { colors } = useTheme();
+
+  const containerVariants = {
+    hidden: { opacity: 0, scale: 0.95, y: 8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 220,
+        damping: 20,
+        duration: 0.25,
+        staggerChildren: 0.05, // icons appear one by one
+      },
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.95,
+      y: 6,
+      transition: { duration: 0.18 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.15 },
+    },
+  };
 
   const handleThemeSelect = (key) => {
     setIsOpen(false);
   };
 
-  const listVariants = {
-    hidden: {
-      opacity: 0,
-      y: 10, // Starts 10 pixels below its final position
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.25, // Quick, smooth transition
-        ease: "easeOut",
-      },
-    },
-    exit: {
-      opacity: 0,
-      y: 5,
-      transition: {
-        duration: 0.15, // Quicker exit
-      },
-    },
-  };
-
   return (
-    // Fixed container positioned at the bottom right
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-4 right-4 z-50">
       <AnimatePresence>
         {isOpen && (
-          // The Floating Theme List
           <motion.div
             id="theme-list"
             initial="hidden"
             animate="visible"
             exit="exit"
-            variants={listVariants}
-            className="mb-3 p-3 bg-white/95 backdrop-blur-md rounded-xl shadow-2xl border border-gray-200 flex flex-col space-y-3 origin-bottom-right"
+            variants={containerVariants}
+            className="mb-3 px-2.5 py-3 bg-white/95 backdrop-blur-xl 
+                       rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.15)] 
+                       border border-gray-200/70
+                       flex flex-col space-y-2 origin-bottom-right"
           >
             {Object.keys(palette).map((key) => (
-              <ThemeIcon
-                key={key}
-                themeKey={key}
-                theme={palette[key]}
-                onClick={handleThemeSelect} // Passes the handler to close the menu
-              />
+              <motion.div key={key} variants={itemVariants}>
+                <ThemeIcon
+                  themeKey={key}
+                  theme={palette[key]}
+                  onClick={handleThemeSelect}
+                />
+              </motion.div>
             ))}
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* The Toggle Button (FAB) */}
+      {/* FAB */}
       <div className="relative group">
         <button
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
           aria-controls="theme-list"
           aria-label={isOpen ? "Close Theme Selector" : "Open Theme Selector"}
-          className="w-14 h-14 rounded-full shadow-xl flex items-center justify-center transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-offset-2 text-white hover:cursor-pointer"
+          className="w-14 h-14 rounded-full shadow-xl flex items-center justify-center 
+                     transition-all duration-300 transform hover:scale-105 
+                     focus:outline-none focus:ring-4 focus:ring-offset-2 text-white"
           style={{
-            // Change FAB color when open
-            background: isOpen ? "gray" : colors.primary600,
-            boxShadow: `0 8px 15px rgba(0, 0, 0, 0.25), 0 0 0 4px ${colors.primary700}30`, // Subtle shadow effect
+            background: isOpen ? "#6B7280" : colors.primary600,
+            boxShadow: `0 8px 18px rgba(0, 0, 0, 0.25)`,
           }}
         >
-          {/* Change icon based on state */}
           {isOpen ? <X size={24} /> : <Palette size={24} />}
         </button>
 
         {/* Tooltip */}
         <span
-          className={`absolute right-full top-1/2 -translate-y-1/2 mr-3 px-3 py-1.5 bg-gray-800 text-white text-sm font-medium rounded-lg whitespace-nowrap 
-            opacity-0 pointer-events-none transition-opacity duration-300 group-hover:pointer-events-auto ${
-              !isOpen ? "group-hover:opacity-100" : ""
-            }`}
+          className={`absolute right-full top-1/2 -translate-y-1/2 mr-3 
+                      px-3 py-1.5 bg-gray-900 text-white text-sm rounded-lg 
+                      opacity-0 select-none transition-opacity duration-300 
+                      ${!isOpen ? "group-hover:opacity-100" : ""}`}
         >
           Theme
         </span>
