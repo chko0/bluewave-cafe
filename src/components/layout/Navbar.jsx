@@ -3,6 +3,7 @@ import { useTheme } from "../../context/ThemeContext";
 import config from "../../config";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import IconText from "../ui/IconText";
 
 export default function Navbar({ ref }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -52,15 +53,14 @@ export default function Navbar({ ref }) {
                 }`}
                 style={{ color: colors.activeText }}
               >
-                {Icon && (
-                  <Icon
-                    className={`w-4 h-4 sm:w-5 sm:h-5 transition-transform ${
-                      isActive ? "scale-110" : "group-hover:scale-105"
-                    }`}
-                  />
-                )}
-
-                <span>{label}</span>
+                <IconText
+                  icon={Icon}
+                  iconClassName={`w-4 h-4 sm:w-5 sm:h-5 transition-transform ${
+                    isActive ? "scale-110" : "group-hover:scale-105"
+                  }`}
+                >
+                  {label}
+                </IconText>
 
                 {/* Underline */}
                 <span

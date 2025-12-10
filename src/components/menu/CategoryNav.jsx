@@ -1,6 +1,7 @@
 import menuData from "../../data/menuData";
 import { useTheme } from "../../context/ThemeContext";
 import { useEffect, useRef } from "react";
+import IconText from "../ui/IconText";
 
 export default function CategoryNav({
   activeCategory,
@@ -88,8 +89,9 @@ export default function CategoryNav({
                   boxShadow: isActive ? "0 4px 10px rgba(0,0,0,0.2)" : "none",
                 }}
               >
-                <Icon className="w-5 h-5" />
-                {name}
+                <IconText icon={Icon} size="5">
+                  {name}
+                </IconText>
               </button>
             );
           })}

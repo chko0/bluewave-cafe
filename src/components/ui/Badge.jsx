@@ -1,4 +1,5 @@
 import { Star } from "lucide-react";
+import IconText from "./IconText";
 
 export default function Badge({ text, icon: Icon = Star, bgColor, textColor }) {
   const animationClasses = [];
@@ -32,8 +33,14 @@ export default function Badge({ text, icon: Icon = Star, bgColor, textColor }) {
         ...cssVariables,
       }}
     >
-      <Icon className={`w-4 h-4 ${text === "New" ? "animate-bounce" : ""}`} />
-      <span className={`text-xs`}>{text}</span>
+      <IconText
+        icon={Icon}
+        iconClassName={`w-4 h-4 ${text === "New" ? "animate-bounce" : ""}`}
+        size="4"
+        gap="1.5"
+      >
+        <span className={`text-xs`}>{text}</span>
+      </IconText>
     </div>
   );
 }
