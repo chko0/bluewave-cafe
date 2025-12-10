@@ -6,11 +6,11 @@ import {
 } from "react-router-dom";
 import React, { Suspense } from "react";
 
-import ScrollToTop from "./components/ScrollToTop";
-import PageTitleHandler from "./components/PageTitleHandler";
-import Loading from "./components/Loading";
+import ScrollToTop from "./components/common/ScrollToTop";
+import PageTitleHandler from "./components/common/PageTitleHandler";
+import Loading from "./components/ui/Loading";
 
-import MainLayout from "./layout/MainLayout";
+import MainLayout from "./components/layout/MainLayout";
 
 const HomePage = React.lazy(() => import("./pages/HomePage"));
 const MenuPage = React.lazy(() => import("./pages/MenuPage"));

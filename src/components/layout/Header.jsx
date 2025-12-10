@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { useTheme } from "../context/ThemeContext";
-import config from "../config";
-import { ReactComponent as AppLogo } from "../assets/favicon.svg";
+import { useTheme } from "../../context/ThemeContext";
+import config from "../../config";
+import { ReactComponent as AppLogo } from "/src/assets/favicon.svg";
 import { forwardRef } from "react";
 
 const Header = forwardRef((props, ref) => {

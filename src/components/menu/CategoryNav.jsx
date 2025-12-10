@@ -1,5 +1,5 @@
-import menuData from "../data/menuData";
-import { useTheme } from "../context/ThemeContext";
+import menuData from "../../data/menuData";
+import { useTheme } from "../../context/ThemeContext";
 import { useEffect, useRef } from "react";
 
 export default function CategoryNav({

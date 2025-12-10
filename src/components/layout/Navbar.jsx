@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
-import { useTheme } from "../context/ThemeContext";
-import config from "../config";
+import { useTheme } from "../../context/ThemeContext";
+import config from "../../config";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 

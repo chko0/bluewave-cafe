@@ -1,4 +1,4 @@
-import AppLogoSvg from "../assets/favicon.svg?raw";
+import AppLogoSvg from "/src/assets/favicon.svg?raw";
 
 export function setFavicon(colorPrimary, colorAccent) {
   const favicon =

@@ -5,11 +5,11 @@ import "../styles/MenuPage.css";
 
 import menuData from "../data/menuData";
 
-import CategoryNav from "../components/CategoryNav";
-import CategoryHeader from "../components/CategoryHeader";
-import Loading from "../components/Loading";
+import CategoryNav from "../components/menu/CategoryNav";
+import CategoryHeader from "../components/menu/CategoryHeader";
+import Loading from "../components/ui/Loading";
 
-const MenuItems = React.lazy(() => import("../components/MenuItems"));
+const MenuItems = React.lazy(() => import("../components/menu/MenuItems"));
 
 export default function MenuPage() {
   const { headerHeight, navbarHeight } = useOutletContext();

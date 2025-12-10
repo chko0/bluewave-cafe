@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import { Outlet } from "react-router-dom";
-import { useTheme } from "../context/ThemeContext";
-import { setFavicon } from "../utils/utils";
+import { useTheme } from "../../context/ThemeContext";
+import { setFavicon } from "../../utils/utils";
 
 import Header from "./Header";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import ThemeSwitcher from "../components/ThemeSwitcher";
+import ThemeSwitcher from "../ui/ThemeSwitcher";
 
 export default function MainLayout() {
   const { colors } = useTheme();

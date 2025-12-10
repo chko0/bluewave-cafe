@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import config from "../config";
+import config from "/src/config";
 
 export default function PageTitleHandler() {
   const location = useLocation();

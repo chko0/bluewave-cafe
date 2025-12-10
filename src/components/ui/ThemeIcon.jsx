@@ -1,4 +1,4 @@
-import { useTheme } from "../context/ThemeContext";
+import { useTheme } from "../../context/ThemeContext";
 import { motion } from "framer-motion";
 
 export default function ThemeIcon({ themeKey, theme, onClick }) {
@@ -39,7 +39,7 @@ export default function ThemeIcon({ themeKey, theme, onClick }) {
         }}
       />
 
-      {/* Tooltip (modern, subtle) */}
+      {/* Tooltip */}
       <span
         className={`absolute right-full top-1/2 -translate-y-1/2 mr-3 
                     px-2.5 py-1 rounded-md bg-gray-900 text-white

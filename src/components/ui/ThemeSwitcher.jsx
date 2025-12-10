@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Palette, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useTheme } from "../context/ThemeContext";
+import { useTheme } from "../../context/ThemeContext";
 import ThemeIcon from "./ThemeIcon";
-import { palette } from "../theme/colors";
+import { palette } from "../../themes/colors";
 
 export default function ThemeSwitcher() {
   const [isOpen, setIsOpen] = useState(false);

@@ -1,6 +1,6 @@
 import { Star, Leaf, TrendingUp, Droplet } from "lucide-react";
-import Badge from "./Badge";
-import { useTheme } from "../context/ThemeContext";
+import Badge from "../ui/Badge";
+import { useTheme } from "../../context/ThemeContext";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/opacity.css";
 

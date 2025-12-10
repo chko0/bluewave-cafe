@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import { useTheme } from "../context/ThemeContext";
+import { useTheme } from "../../context/ThemeContext";
 import { Twitter, Facebook, Instagram } from "lucide-react";
 
-import config from "../config";
+import config from "/src/config";
 
 const iconMap = {
   twitter: Twitter,
