@@ -4,11 +4,10 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import React, { Suspense } from "react";
+import React from "react";
 
 import ScrollToTop from "./components/common/ScrollToTop";
 import PageTitleHandler from "./components/common/PageTitleHandler";
-import Loading from "./components/ui/Loading";
 
 import MainLayout from "./components/layout/MainLayout";
 
@@ -27,19 +26,17 @@ export default function App() {
       <ScrollToTop />
       <PageTitleHandler />
 
-      <Suspense fallback={<Loading />}>
-        <Routes>
-          <Route element={<MainLayout />}>
-            <Route index element={<HomePage />} />
-            <Route path="home" element={<Navigate to="/" replace />} />
-            <Route path="menu" element={<MenuPage />} />
-            <Route path="about" element={<AboutPage />} />
-            <Route path="feedback" element={<FeedbackPage />} />
-            <Route path="feedback/success" element={<FeedbackSuccessPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Route>
-        </Routes>
-      </Suspense>
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="home" element={<Navigate to="/" replace />} />
+          <Route path="menu" element={<MenuPage />} />
+          <Route path="about" element={<AboutPage />} />
+          <Route path="feedback" element={<FeedbackPage />} />
+          <Route path="feedback/success" element={<FeedbackSuccessPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
     </Router>
   );
 }

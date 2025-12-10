@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { useTheme } from "../../context/ThemeContext";
 import { setFavicon } from "../../utils/utils";
@@ -7,6 +7,7 @@ import Header from "./Header";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import ThemeSwitcher from "../ui/ThemeSwitcher";
+import Loading from "../ui/Loading";
 
 export default function MainLayout() {
   const { colors } = useTheme();
@@ -53,13 +54,15 @@ export default function MainLayout() {
       <Navbar ref={navbarRef} />
       <Header ref={headerRef} />
 
-      <main className="flex-1">
-        <Outlet
-          context={{
-            headerHeight,
-            navbarHeight,
-          }}
-        />
+      <main className="flex-1 min-h-screen">
+        <Suspense fallback={<Loading />}>
+          <Outlet
+            context={{
+              headerHeight,
+              navbarHeight,
+            }}
+          />
+        </Suspense>
       </main>
 
       <Footer />
