@@ -1,7 +1,8 @@
 import menuData from "../../data/menuData";
 import { useTheme } from "../../context/ThemeContext";
 import { useEffect, useRef } from "react";
-import IconText from "../ui/IconText";
+import Button from "../ui/Button";
+import clsx from "clsx";
 
 export default function CategoryNav({
   activeCategory,
@@ -56,28 +57,21 @@ export default function CategoryNav({
             const isActive = activeCategory === name;
 
             return (
-              <button
+              <Button
                 key={name}
+                icon={Icon}
+                iconClassName="w-5 h-5"
                 ref={isActive ? activeItemRef : null}
                 onClick={() => setActiveCategory(name)}
                 aria-label={`Select ${name} category`}
-                className={`px-5 py-2 rounded-full font-semibold transition-all flex items-center gap-2 select-none
-                  ${
-                    !isActive
-                      ? "bg-[var(--inactive-bg)] text-[var(--inactive-text)]"
-                      : ""
-                  }
-                  ${
-                    activeCategory === name
-                      ? "shadow-lg scale-105"
-                      : "hover:scale-105 hover:shadow hover:cursor-pointer"
-                  }
-                  ${
-                    !isActive
-                      ? "hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]"
-                      : ""
-                  }
-                `}
+                className={clsx(
+                  "px-5 py-2 rounded-full font-semibold transition-all select-none",
+                  !isActive &&
+                    "bg-[var(--inactive-bg)] text-[var(--inactive-text)] hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]",
+                  activeCategory === name
+                    ? "shadow-lg scale-105"
+                    : "hover:scale-105 hover:shadow hover:cursor-pointer"
+                )}
                 style={{
                   "--hover-bg": hoverBackgroundColor,
                   "--hover-text": hoverTextColor,
@@ -89,10 +83,8 @@ export default function CategoryNav({
                   boxShadow: isActive ? "0 4px 10px rgba(0,0,0,0.2)" : "none",
                 }}
               >
-                <IconText icon={Icon} size="5">
-                  {name}
-                </IconText>
-              </button>
+                {name}
+              </Button>
             );
           })}
         </div>

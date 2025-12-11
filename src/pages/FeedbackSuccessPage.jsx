@@ -1,7 +1,7 @@
 import { CheckCircle } from "lucide-react";
-import { Link } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 import config from "../config";
+import Button from "../components/ui/Button";
 
 export default function FeedbackSuccessPage() {
   const { colors } = useTheme();
@@ -36,20 +36,20 @@ export default function FeedbackSuccessPage() {
           {config.site.name} even better.
         </p>
 
-        {/* --- Back to Menu Button --- */}
-        <Link
+        {/* --- Back to Home Button --- */}
+        <Button
           to="/"
-          className="inline-block text-white text-sm md:text-base px-6 py-4 md:px-8 rounded-xl transition-all duration-200 font-bold shadow-lg 
+          className="text-sm md:text-base px-6 py-4 md:px-8 rounded-xl transition-all duration-200 font-bold shadow-lg 
             hover:shadow-xl uppercase tracking-wider hover:scale-[1.03] hover:[--link-bg:var(--link-hover-bg)]"
-          aria-label="Return to Menu"
+          aria-label="Return Home"
           style={{
             "--link-bg": colors.primary600,
             "--link-hover-bg": colors.primary700,
             backgroundColor: "var(--link-bg)",
           }}
         >
-          Return to Home
-        </Link>
+          Return Home
+        </Button>
       </div>
     </div>
   );

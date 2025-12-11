@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MessageCircle, AlertCircle, CheckCircle } from "lucide-react";
-
 import { useTheme } from "../context/ThemeContext";
 
 import config from "../config";
+import Button from "../components/ui/Button";
+import clsx from "clsx";
 
 const MIN_MESSAGE_LENGTH = 10;
 const WORKER_ENDPOINT = config.workers.WORKER_ENDPOINT;
@@ -235,31 +236,31 @@ export default function FeedbackPage() {
         />
 
         {/* --- SUBMIT BUTTON --- */}
-        <button
+        <Button
           type="submit"
           aria-label="Send Feedback"
           disabled={isButtonDisabled}
-          className={`w-full text-white px-6 py-4 rounded-xl font-bold uppercase tracking-wider transition-all duration-200 shadow-lg hover:shadow-xl hover:cursor-pointer
-            disabled:opacity-40 disabled:cursor-not-allowed  ${
-              isButtonDisabled
-                ? ""
-                : "hover:scale-[1.01] hover:[--btn-bg:var(--btn-hover-bg)]"
-            }`}
+          className={clsx(
+            "w-full text-white px-6 py-4 rounded-xl font-bold uppercase tracking-wider transition-all duration-200 shadow-lg hover:shadow-xl hover:cursor-pointer",
+            "disabled:opacity-40 disabled:cursor-not-allowed",
+            !isButtonDisabled &&
+              "hover:scale-[1.01] hover:[--btn-bg:var(--btn-hover-bg)]"
+          )}
           style={{
             "--btn-bg": colors.primary600,
             "--btn-hover-bg": colors.primary700,
             backgroundColor: "var(--btn-bg)",
           }}
         >
-          {loading ? (
-            <span className="flex items-center justify-center gap-2 select-none">
-              <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-              Sending...
-            </span>
+          {!loading ? (
+            <>Send</>
           ) : (
-            <span className="select-none">Send</span>
+            <>
+              <div className="inline-block w-4 h-4 mr-2 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+              Sending...
+            </>
           )}
-        </button>
+        </Button>
       </form>
 
       <span className="text-red-500">{result}</span>
