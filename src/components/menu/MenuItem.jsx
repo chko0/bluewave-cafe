@@ -9,32 +9,6 @@ export default function MenuItem({ index, item, highPriorityLoading }) {
 
   const { colors } = useTheme();
 
-  const STATUS_COLORS = {
-    // Standard Success/Green (for Vegan/Leaf)
-    success: { bg: "#d4edda", text: "#155724" },
-    // Standard Warning/Gold (for Popular/Star)
-    warning: { bg: "#fff3cd", text: "#856404" },
-    // Light Purple/Lavender for Dietary
-    dietary: { bg: "#f3e8ff", text: "#5b21b6" }, // Based on very light purple/violet for uniqueness
-  };
-
-  const badgeColors = {
-    // ⭐️ POPULAR (Warning Role: Fixed Gold/Yellow for universal recognition)
-    popular: STATUS_COLORS.warning,
-
-    // ✨ NEW (Accent Role: Use Theme's primary for brand consistency)
-    new: {
-      bg: colors.border, // A very light, thematic background
-      text: colors.primary700, // A darker thematic text color for high contrast
-    },
-
-    // 🌱 VEGAN (Success Role: Fixed Green for universal recognition)
-    vegan: STATUS_COLORS.success,
-
-    // 🥛 LACTOSE-FREE (Thematic Accent: Use a complementary shade like the primary accent)
-    lactoseFree: STATUS_COLORS.dietary,
-  };
-
   return (
     <div
       className="rounded-3xl border-t-4 overflow-hidden flex flex-col h-full shadow-md"
@@ -58,36 +32,24 @@ export default function MenuItem({ index, item, highPriorityLoading }) {
         {/* Badges overlay */}
         <div className="absolute top-2 left-2 flex flex-row gap-1.5 z-10 flex-wrap max-w-[90%]">
           {item.popular && (
-            <Badge
-              text="Popular"
-              icon={Star}
-              bgColor={badgeColors.popular.bg} // Dynamic Background
-              textColor={badgeColors.popular.text} // Dynamic Text
-            />
+            <Badge variant="popular" icon={Star}>
+              Popular
+            </Badge>
           )}
           {item.new && (
-            <Badge
-              text="New"
-              icon={TrendingUp}
-              bgColor={badgeColors.new.bg} // Dynamic Background
-              textColor={badgeColors.new.text} // Dynamic Text
-            />
+            <Badge variant="new" icon={TrendingUp}>
+              New
+            </Badge>
           )}
           {item.vegan && (
-            <Badge
-              text="Vegan"
-              icon={Leaf}
-              bgColor={badgeColors.vegan.bg} // Dynamic Background
-              textColor={badgeColors.vegan.text} // Dynamic Text
-            />
+            <Badge variant="vegan" icon={Leaf}>
+              Vegan
+            </Badge>
           )}
           {item.lactoseFree && (
-            <Badge
-              text="Dairy-Free"
-              icon={Droplet}
-              bgColor={badgeColors.lactoseFree.bg} // Dynamic Background
-              textColor={badgeColors.lactoseFree.text} // Dynamic Text
-            />
+            <Badge variant="lactoseFree" icon={Droplet}>
+              Dairy-Free
+            </Badge>
           )}
         </div>
       </div>

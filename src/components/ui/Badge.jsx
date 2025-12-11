@@ -1,46 +1,100 @@
-import { Star } from "lucide-react";
-import IconText from "./IconText";
+import { useTheme } from "../../context/ThemeContext";
+import clsx from "clsx";
 
-export default function Badge({ text, icon: Icon = Star, bgColor, textColor }) {
-  const animationClasses = [];
-  const cssVariables = {}; // To hold dynamic CSS variables
+const STATUS_COLORS = {
+  // Standard Success/Green (for Vegan)
+  success: { bg: "#d4edda", text: "#155724" },
+  // Standard Warning/Gold (for Popular)
+  warning: { bg: "#fff3cd", text: "#856404" },
+  // Light Purple/Lavender (for Dietary)
+  dietary: { bg: "#f3e8ff", text: "#5b21b6" },
+};
 
-  if (text === "Popular") {
-    animationClasses.push("animate-badge-pulse-glow animate-badge-shimmer");
-    cssVariables["--badge-glow-color"] = "rgba(255, 215, 0, 0.7)";
-    cssVariables["--badge-glow-color-light"] = "rgba(255, 215, 0, 0.3)";
-  }
+// Variant definitions
+const badgeVariants = (themeColors) => ({
+  default: {
+    bg: "#e5e7eb",
+    text: "#111827",
+    classes: "",
+    iconClasses: "",
+  },
 
-  if (text === "New") {
-    animationClasses.push("animate-badge-shimmer");
-    cssVariables["--badge-shimmer-color"] = `rgba(${parseInt(
-      textColor.slice(1, 3),
-      16
-    )}, ${parseInt(textColor.slice(3, 5), 16)}, ${parseInt(
-      textColor.slice(5, 7),
-      16
-    )}, 0.6)`;
+  popular: {
+    bg: STATUS_COLORS.warning.bg,
+    text: STATUS_COLORS.warning.text,
+    classes: "animate-badge-pulse-glow animate-badge-shimmer",
+    iconClasses: "",
+    cssVars: {
+      "--badge-glow-color": "rgba(255, 215, 0, 0.7)",
+      "--badge-glow-color-light": "rgba(255, 215, 0, 0.3)",
+    },
+  },
+
+  new: {
+    bg: themeColors.border,
+    text: themeColors.primary700,
+    classes: "animate-badge-shimmer",
+    iconClasses: "animate-bounce",
+    cssFromTextColor: true,
+  },
+
+  vegan: {
+    bg: STATUS_COLORS.success.bg,
+    text: STATUS_COLORS.success.text,
+    classes: "",
+    iconClasses: "",
+  },
+
+  lactoseFree: {
+    bg: STATUS_COLORS.dietary.bg,
+    text: STATUS_COLORS.dietary.text,
+    classes: "",
+    iconClasses: "",
+  },
+});
+
+export default function Badge({
+  variant = "default",
+  icon: Icon,
+  children,
+  className,
+}) {
+  const { colors } = useTheme();
+
+  const variants = badgeVariants(colors);
+  const currVariant = variants[variant] || variants.default;
+
+  // Dynamic CSS variables
+  let cssVariables = { ...(currVariant.cssVars || {}) };
+
+  // Compute shimmer for "new" if needed
+  if (currVariant.cssFromTextColor && currVariant.text) {
+    const textColor = currVariant.text;
+    const r = parseInt(textColor.slice(1, 3), 16);
+    const g = parseInt(textColor.slice(3, 5), 16);
+    const b = parseInt(textColor.slice(5, 7), 16);
+
+    cssVariables["--badge-shimmer-color"] = `rgba(${r}, ${g}, ${b}, 0.6)`;
     cssVariables["--badge-shimmer-border-color"] = textColor;
   }
 
   return (
-    <div
-      className={`flex items-center gap-1 px-2 py-1 text-xs font-semibold rounded-full shadow-sm select-none
-        ${animationClasses.join(" ")}`}
+    <span
+      role="status"
+      aria-label={children}
+      className={clsx(
+        "inline-flex items-center gap-1 px-2 py-1 text-xs font-semibold rounded-full shadow-sm select-none",
+        currVariant.classes,
+        className
+      )}
       style={{
-        backgroundColor: bgColor,
-        color: textColor,
+        backgroundColor: currVariant.bg,
+        color: currVariant.text,
         ...cssVariables,
       }}
     >
-      <IconText
-        icon={Icon}
-        iconClassName={`w-4 h-4 ${text === "New" ? "animate-bounce" : ""}`}
-        size="4"
-        gap="1.5"
-      >
-        <span className={`text-xs`}>{text}</span>
-      </IconText>
-    </div>
+      {Icon && <Icon className={clsx("w-4 h-4", currVariant.iconClasses)} />}
+      {children}
+    </span>
   );
 }
