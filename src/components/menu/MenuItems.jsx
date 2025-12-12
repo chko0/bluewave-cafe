@@ -1,11 +1,15 @@
 import { motion, AnimatePresence } from "framer-motion";
 import MenuItem from "./MenuItem";
 
-export default function MenuItems({ items, activeCategory }) {
-  // Sort items so 'New' items are first
-  const sortedItems = [...items].sort(
-    (a, b) => (b.new ? 1 : 0) - (a.new ? 1 : 0)
-  );
+export default function MenuItems({
+  items = [],
+  activeCategory = "default",
+  sortNewFirst = true,
+}) {
+  // Sort items if needed
+  const sortedItems = sortNewFirst
+    ? [...items].sort((a, b) => (b.new ? 1 : 0) - (a.new ? 1 : 0))
+    : items;
 
   return (
     <AnimatePresence mode="wait">
@@ -23,7 +27,7 @@ export default function MenuItems({ items, activeCategory }) {
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.3, delay: index * 0.05 }}
           >
             <MenuItem
               index={index}

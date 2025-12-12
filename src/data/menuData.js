@@ -107,6 +107,7 @@ const menuData = {
           "Sweet & spicy black tea concentrate mixed with steamed milk",
         image: "chai_latte.webp", // New image
         popular: true,
+        seasonal: true,
       },
       {
         name: "Matcha Latte",

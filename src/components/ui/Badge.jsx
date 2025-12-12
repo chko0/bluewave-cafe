@@ -30,8 +30,8 @@ const badgeVariants = (themeColors) => ({
   },
 
   new: {
-    bg: themeColors.border,
-    text: themeColors.primary700,
+    bg: themeColors.activeBg,
+    text: themeColors.activeText,
     classes: "animate-badge-shimmer",
     iconClasses: "animate-bounce",
     cssFromTextColor: true,
@@ -49,6 +49,13 @@ const badgeVariants = (themeColors) => ({
     text: STATUS_COLORS.dietary.text,
     classes: "",
     iconClasses: "",
+  },
+
+  seasonal: {
+    bg: themeColors.border,
+    text: themeColors.primary700,
+    classes: "animate-pulse-slow", // subtle, slow pulse instead of shimmer
+    iconClasses: "", // optional, can leave empty
   },
 });
 

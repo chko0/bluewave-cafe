@@ -1,4 +1,4 @@
-import { Star, Leaf, TrendingUp, Droplet } from "lucide-react";
+import { Star, Leaf, TrendingUp, Droplet, Flower } from "lucide-react";
 import Badge from "../ui/Badge";
 import { useTheme } from "../../context/ThemeContext";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -49,6 +49,11 @@ export default function MenuItem({ index, item, highPriorityLoading }) {
           {item.lactoseFree && (
             <Badge variant="lactoseFree" icon={Droplet}>
               Dairy-Free
+            </Badge>
+          )}
+          {item.seasonal && (
+            <Badge variant="seasonal" icon={Flower}>
+              Seasonal
             </Badge>
           )}
         </div>
