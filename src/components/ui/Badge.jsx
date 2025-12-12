@@ -1,22 +1,21 @@
+import { twMerge } from "tailwind-merge";
 import { useTheme } from "../../context/ThemeContext";
 import clsx from "clsx";
 
 const STATUS_COLORS = {
-  // Standard Success/Green (for Vegan)
-  success: { bg: "#d4edda", text: "#155724" },
-  // Standard Warning/Gold (for Popular)
-  warning: { bg: "#fff3cd", text: "#856404" },
-  // Light Purple/Lavender (for Dietary)
-  dietary: { bg: "#f3e8ff", text: "#5b21b6" },
+  success: { bg: "#d4edda", text: "#155724" }, // Standard Success/Green (for Vegan)
+  warning: { bg: "#fff3cd", text: "#856404" }, // Standard Warning/Yellow (for Popular)
+  dietary: { bg: "#f3e8ff", text: "#5b21b6" }, // Light Purple/Lavender (for Dietary)
 };
 
 // Variant definitions
 const badgeVariants = (themeColors) => ({
   default: {
-    bg: "#e5e7eb",
-    text: "#111827",
+    bg: themeColors.border,
+    text: themeColors.primary700,
     classes: "",
     iconClasses: "",
+    cssFromTextColor: true,
   },
 
   popular: {
@@ -65,9 +64,13 @@ export default function Badge({
   const currVariant = variants[variant] || variants.default;
 
   // Dynamic CSS variables
-  let cssVariables = { ...(currVariant.cssVars || {}) };
+  let cssVariables = {
+    "--badge-bg": currVariant.bg,
+    "--badge-text": currVariant.text,
+    ...(currVariant.cssVars || {}),
+  };
 
-  // Compute shimmer for "new" if needed
+  // Dynamic shimmer color for variants using text
   if (currVariant.cssFromTextColor && currVariant.text) {
     const textColor = currVariant.text;
     const r = parseInt(textColor.slice(1, 3), 16);
@@ -79,22 +82,19 @@ export default function Badge({
   }
 
   return (
-    <span
+    <div
       role="status"
       aria-label={children}
-      className={clsx(
-        "inline-flex items-center gap-1 px-2 py-1 text-xs font-semibold rounded-full shadow-sm select-none",
+      className={twMerge(
+        "inline-flex items-center gap-1 px-2 py-1 font-semibold text-xs rounded-full shadow-sm select-none",
+        "bg-[var(--badge-bg)] text-[var(--badge-text)]",
         currVariant.classes,
         className
       )}
-      style={{
-        backgroundColor: currVariant.bg,
-        color: currVariant.text,
-        ...cssVariables,
-      }}
+      style={{ ...cssVariables }}
     >
       {Icon && <Icon className={clsx("w-4 h-4", currVariant.iconClasses)} />}
       {children}
-    </span>
+    </div>
   );
 }
