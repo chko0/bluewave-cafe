@@ -30,25 +30,26 @@ export default function MenuItem({ index, item, highPriorityLoading }) {
         />
 
         {/* Badges overlay */}
+        <div className="absolute top-0 left-0 w-full h-full rounded-t-3xl pointer-events-none z-0">
+          {/* Subtle gradient overlay at the top for badge separation */}
+          <div
+            className="absolute top-0 left-0 w-full h-16 rounded-t-3xl"
+            style={{
+              background: `linear-gradient(to bottom right, ${colors.primary900}60, ${colors.primary900}50, 20%, transparent 60%)`,
+              pointerEvents: "none",
+            }}
+          />
+        </div>
+
         <div className="absolute top-2 left-2 flex flex-row gap-1.5 z-10 flex-wrap max-w-[90%]">
+          {item.new && (
+            <Badge variant="new" icon={TrendingUp}>
+              New!
+            </Badge>
+          )}
           {item.popular && (
             <Badge variant="popular" icon={Star}>
               Popular
-            </Badge>
-          )}
-          {item.new && (
-            <Badge variant="new" icon={TrendingUp}>
-              New
-            </Badge>
-          )}
-          {item.vegan && (
-            <Badge variant="vegan" icon={Leaf}>
-              Vegan
-            </Badge>
-          )}
-          {item.lactoseFree && (
-            <Badge variant="lactoseFree" icon={Droplet}>
-              Dairy-Free
             </Badge>
           )}
           {item.seasonal && (
@@ -61,19 +62,35 @@ export default function MenuItem({ index, item, highPriorityLoading }) {
 
       {/* Text Content */}
       <div className="p-5 pt-3 pb-4 flex flex-col flex-grow">
-        <div className="flex justify-between items-baseline mb-1">
-          <h3
-            className="text-xl md:text-2xl font-extrabold"
-            style={{ color: colors.primary900 }}
+        <div className="flex justify-between items-start mb-1 gap-2">
+          <div className="flex flex-col flex-grow min-w-0">
+            <div className="flex items-center flex-wrap gap-2 min-w-0">
+              <h3
+                className="text-xl md:text-2xl font-extrabold flex-shrink-0"
+                style={{ color: colors.primary900 }}
+              >
+                {name}
+              </h3>
+
+              {/* Dietary Badges */}
+              <div className="flex flex-row gap-1">
+                {item.vegan && <Badge variant="vegan" icon={Leaf} />}
+                {item.lactoseFree && (
+                  <Badge variant="lactoseFree" icon={Droplet} />
+                )}
+              </div>
+            </div>
+          </div>
+
+          <p
+            className="font-bold text-lg flex-shrink-0"
+            style={{ color: colors.primary600 }}
           >
-            {name}
-          </h3>
-          <p className="font-bold text-lg" style={{ color: colors.primary600 }}>
             ${price}
           </p>
         </div>
 
-        <p className="text-gray-700 text-sm flex-grow">{description}</p>
+        <p className="text-gray-700 text-sm flex-grow mt-0.5">{description}</p>
       </div>
     </div>
   );
