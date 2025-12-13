@@ -1,5 +1,6 @@
 import { twMerge } from "tailwind-merge";
 import { useTheme } from "../../context/ThemeContext";
+import "../../styles/Badge.css";
 import clsx from "clsx";
 
 const STATUS_COLORS = {

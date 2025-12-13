@@ -1,8 +1,6 @@
 import React, { useState, useEffect, Suspense } from "react";
 import { useOutletContext } from "react-router-dom";
 
-import "../styles/MenuPage.css";
-
 import menuData from "../data/menuData";
 
 import CategoryNav from "../components/menu/CategoryNav";

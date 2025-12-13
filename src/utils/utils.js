@@ -20,3 +20,10 @@ export function setFavicon(colorPrimary, colorAccent) {
     document.head.appendChild(favicon);
   }
 }
+
+export function getSpecialtyItems(menu, limit = 4) {
+  return Object.values(menu)
+    .flatMap((category) => category.items)
+    .filter((item) => item.popular || item.seasonal || item.new)
+    .slice(0, limit);
+}
