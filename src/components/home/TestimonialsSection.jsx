@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import testimonials from "../../data/testimonials";
-import TestimonialCard from "./TestimonialCard";
+import TestimonialCard from "./testimonials/TestimonialCard";
 import { useTheme } from "../../context/ThemeContext";
 
 export default function TestimonialsSection() {

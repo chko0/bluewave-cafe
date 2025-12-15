@@ -1,5 +1,5 @@
 import { Star } from "lucide-react";
-import { useTheme } from "../../context/ThemeContext";
+import { useTheme } from "../../../context/ThemeContext";
 
 export default function TestimonialCard({ testimonial }) {
   const { colors } = useTheme();
