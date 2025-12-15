@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useTheme } from "../../context/ThemeContext";
 import { Twitter, Facebook, Instagram } from "lucide-react";
 
-import config from "/src/config";
+import { NAVIGATION, SOCIALS, SITE } from "/src/config";
 
 const iconMap = {
   twitter: Twitter,
@@ -13,8 +13,8 @@ const iconMap = {
 export default function Footer() {
   const { colors } = useTheme();
 
-  const navLinks = config.navigation;
-  const socialLinks = config.socials;
+  const navLinks = NAVIGATION;
+  const socialLinks = SOCIALS;
 
   // Define dynamic colors for readability and reuse, matching the visual intent
   const primaryGradientStart = colors.primary600;
@@ -34,12 +34,12 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 py-10 grid gap-8 sm:grid-cols-3">
         {/* Brand / About */}
         <div>
-          <h2 className="text-lg font-semibold">{config.site.name}</h2>
+          <h2 className="text-lg font-semibold">{SITE.name}</h2>
           <p
             className="mt-3 text-sm leading-relaxed"
             style={{ color: primaryTextMuted }}
           >
-            {config.site.description}
+            {SITE.description}
           </p>
         </div>
 
@@ -106,7 +106,7 @@ export default function Footer() {
           color: primaryTextMuted,
         }}
       >
-        © {new Date().getFullYear()} {config.site.name}. All rights reserved.
+        © {new Date().getFullYear()} {SITE.copyrightName}. All rights reserved.
       </div>
     </footer>
   );

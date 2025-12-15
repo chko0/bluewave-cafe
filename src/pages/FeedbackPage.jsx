@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { MessageCircle, AlertCircle, CheckCircle } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 
-import config from "../config";
+import { SITE, WORKERS } from "/src/config";
 import Button from "../components/ui/Button";
 import clsx from "clsx";
 
 const MIN_MESSAGE_LENGTH = 10;
-const WORKER_ENDPOINT = config.workers.WORKER_ENDPOINT;
+const WORKER_ENDPOINT = WORKERS.feedbackEndpoint;
 
 export default function FeedbackPage() {
   const { colors } = useTheme();
@@ -88,7 +88,7 @@ export default function FeedbackPage() {
           Your Feedback Matters
         </h2>
         <p className="text-lg" style={{ color: colors.primary700 }}>
-          Every message helps us make {config.site.name} better
+          Every message helps us make {SITE.name} better
         </p>
       </div>
 

@@ -1,28 +1,24 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import config from "/src/config";
+import { SITE, NAVIGATION } from "/src/config";
 
 export default function PageTitleHandler() {
   const location = useLocation();
 
-  const [currentFullTitle, setCurrentFullTitle] = useState(
-    config.site.tabTitle
-  );
+  const [currentFullTitle, setCurrentFullTitle] = useState(SITE.tabTitle);
   const [currentDescription, setCurrentDescription] = useState(
-    config.site.description
+    SITE.description
   );
 
   useEffect(() => {
-    const baseTitle = config.site.tabTitle;
+    const baseTitle = SITE.tabTitle;
 
     // 1. Find matching navigation item
-    const navItem = config.navigation.find(
-      (item) => item.path === location.pathname
-    );
+    const navItem = NAVIGATION.find((item) => item.path === location.pathname);
 
     // 2. Calculate final title and description
     const pageLabel = navItem?.label || "Page Not Found";
-    const pageDescription = navItem?.description || config.site.description;
+    const pageDescription = navItem?.description || SITE.description;
 
     const fullTitle = `${pageLabel} | ${baseTitle}`;
 

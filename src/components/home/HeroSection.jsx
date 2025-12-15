@@ -1,7 +1,7 @@
 import Badge from "../ui/Badge";
 import "../../styles/globals.css";
 import Button from "../ui/Button";
-import config from "../../config";
+import { SITE } from "/src/config";
 import { useTheme } from "../../context/ThemeContext";
 import cafeHero from "../../../public/cafe-hero.webp";
 import { Coffee } from "lucide-react";
@@ -60,7 +60,7 @@ export default function HeroSection() {
           className="text-lg sm:text-xl mb-8 max-w-xl"
           style={{ color: colors.primary900 }}
         >
-          {config.site.description}
+          {SITE.description}
         </p>
 
         {/* CTA Buttons */}

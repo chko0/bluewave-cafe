@@ -1,6 +1,6 @@
 import { CheckCircle } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
-import config from "../config";
+import { SITE } from "/src/config";
 import Button from "../components/ui/Button";
 
 export default function FeedbackSuccessPage() {
@@ -33,7 +33,7 @@ export default function FeedbackSuccessPage() {
           style={{ color: colors.primary700 }}
         >
           Your input is greatly appreciated! We'll use your message to make{" "}
-          {config.site.name} even better.
+          {SITE.name} even better.
         </p>
 
         {/* --- Back to Home Button --- */}

@@ -1,7 +1,7 @@
 import { MapPin, Phone, Mail, Coffee } from "lucide-react";
 import heroImg from "/cafe-hero.webp";
 import { useTheme } from "../context/ThemeContext";
-import config from "../config";
+import { SITE, LOCATION } from "/src/config";
 
 export default function AboutPage() {
   const { colors } = useTheme();
@@ -12,7 +12,7 @@ export default function AboutPage() {
       <div className="relative w-full h-64 md:h-96 rounded-3xl overflow-hidden shadow-lg">
         <img
           src={heroImg}
-          alt={config.site.name}
+          alt={SITE.name}
           className={`w-full h-full object-cover transform transition duration-600 block`}
           fetchPriority="high"
           loading="eager"
@@ -25,7 +25,7 @@ export default function AboutPage() {
           }}
         >
           <h1 className="text-3xl md:text-5xl font-extrabold text-white drop-shadow-lg">
-            Welcome to {config.site.name}
+            Welcome to {SITE.name}
           </h1>
         </div>
       </div>
@@ -43,9 +43,9 @@ export default function AboutPage() {
           className="text-lg leading-relaxed"
           style={{ color: colors.primary700 }}
         >
-          At {config.site.name}, we craft moments of comfort with every cup.
-          From freshly brewed coffee to baked delights, our mission is to
-          brighten your day in a cozy & welcoming space.
+          At {SITE.name}, we craft moments of comfort with every cup. From
+          freshly brewed coffee to baked delights, our mission is to brighten
+          your day in a cozy & welcoming space.
         </p>
       </section>
 
@@ -56,31 +56,31 @@ export default function AboutPage() {
       >
         {/* 1. Address Link (MapPin) */}
         <a
-          href={`https://maps.google.com/?q=${config.contact.address}`}
+          href={`https://maps.google.com/?q=${LOCATION.address}`}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-3 group transition-opacity hover:opacity-85 focus:outline-none"
         >
           <MapPin className="w-6 h-6" style={{ color: colors.primary500 }} />
-          <p>{config.contact.address}</p>
+          <p>{LOCATION.address}</p>
         </a>
 
         {/* 2. Phone Link */}
         <a
-          href={`tel:${config.contact.phone}`}
+          href={`tel:${LOCATION.contact.phone}`}
           className="flex items-center gap-3 group transition-opacity hover:opacity-85 focus:outline-none"
         >
           <Phone className="w-6 h-6" style={{ color: colors.primary500 }} />
-          <p>{config.contact.phone}</p>
+          <p>{LOCATION.contact.phone}</p>
         </a>
 
         {/* 3. Email Link */}
         <a
-          href={`mailto:${config.contact.email}`}
+          href={`mailto:${LOCATION.contact.email}`}
           className="flex items-center gap-3 group transition-opacity hover:opacity-85 focus:outline-none"
         >
           <Mail className="w-6 h-6" style={{ color: colors.primary500 }} />
-          <p>{config.contact.email}</p>
+          <p>{LOCATION.contact.email}</p>
         </a>
       </section>
 

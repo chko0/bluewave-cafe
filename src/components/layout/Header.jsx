@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useTheme } from "../../context/ThemeContext";
-import config from "../../config";
+import { SITE } from "/src/config";
 import { ReactComponent as AppLogo } from "/src/assets/favicon.svg";
 import { forwardRef } from "react";
 
@@ -30,7 +30,7 @@ const Header = forwardRef((props, ref) => {
 
           {/* Title */}
           <h1 className="text-2xl md:text-3xl font-extrabold tracking-wide drop-shadow-lg -mb-0.5">
-            {config.site.name}
+            {SITE.name}
           </h1>
 
           {/* Subtitle */}
@@ -38,7 +38,7 @@ const Header = forwardRef((props, ref) => {
             className="text-center text-sm md:text-lg font-light tracking-wide"
             style={{ color: colors.lightBg }}
           >
-            {config.site.subtitle}
+            {SITE.subtitle}
           </p>
         </Link>
       </div>

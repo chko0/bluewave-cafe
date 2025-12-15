@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { useTheme } from "../../context/ThemeContext";
-import config from "../../config";
+import { SITE, NAVIGATION } from "/src/config";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import IconText from "../ui/IconText";
@@ -10,7 +10,7 @@ export default function Navbar({ ref }) {
 
   const { colors } = useTheme();
   const location = useLocation();
-  const navLinks = config.navigation.filter((item) => !item.hidden);
+  const navLinks = NAVIGATION.filter((item) => !item.hidden);
 
   return (
     <nav
@@ -35,7 +35,7 @@ export default function Navbar({ ref }) {
           className="text-lg sm:text-xl font-semibold select-none tracking-wide"
           style={{ color: colors.activeText }}
         >
-          {config.site.name}
+          {SITE.name}
         </Link>
 
         {/* Desktop navigation */}
