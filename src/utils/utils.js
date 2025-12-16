@@ -27,3 +27,29 @@ export function getSpecialtyItems(menu, limit = 4) {
     .filter((item) => item.popular || item.seasonal || item.new)
     .slice(0, limit);
 }
+
+export function getOpenStatus(openingHours) {
+  const now = new Date();
+  const day = now
+    .toLocaleDateString("en-US", { weekday: "long" })
+    .toLowerCase();
+
+  const today = openingHours[day];
+  if (!today) return { open: false, label: "Closed today" };
+
+  const [openH, openM] = today.open.split(":").map(Number);
+  const [closeH, closeM] = today.close.split(":").map(Number);
+
+  const openTime = new Date(now);
+  openTime.setHours(openH, openM, 0);
+
+  const closeTime = new Date(now);
+  closeTime.setHours(closeH, closeM, 0);
+
+  const isOpen = now >= openTime && now <= closeTime;
+
+  return {
+    open: isOpen,
+    label: isOpen ? "Now Open" : "Closed",
+  };
+}

@@ -9,7 +9,7 @@ export const LOCATION = {
   map: {
     provider: "google", // future-proof
     embedUrl: null, // placeholder
-    staticImage: "/images/map-placeholder.webp",
+    staticImage: "map-placeholder.webp",
   },
 
   contact: {

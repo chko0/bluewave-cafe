@@ -5,5 +5,5 @@ export const OPENING_HOURS = {
   thursday: { open: "08:00", close: "23:00" },
   friday: { open: "08:00", close: "23:00" },
   saturday: { open: "09:00", close: "23:00" },
-  sunday: { closed: true },
+  sunday: null,
 };
