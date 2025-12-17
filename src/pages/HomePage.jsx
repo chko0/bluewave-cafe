@@ -7,13 +7,13 @@ import WhyBluewaveSection from "../components/home/WhyBluewaveSection";
 
 export default function HomePage() {
   return (
-    <section>
+    <>
       <HeroSection />
       <AnnouncementSection />
       <SpecialtyItemsSection />
       <TestimonialsSection />
       <LocationSection />
       <WhyBluewaveSection />
-    </section>
+    </>
   );
 }

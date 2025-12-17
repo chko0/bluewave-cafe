@@ -22,6 +22,7 @@ export default function LocationSection() {
 
   return (
     <section
+      id="location"
       className="py-20 md:py-32 px-4"
       style={{ backgroundColor: colors.lightBg }}
     >

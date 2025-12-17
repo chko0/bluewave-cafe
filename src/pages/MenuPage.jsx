@@ -6,11 +6,13 @@ import menuData from "../data/menuData";
 import CategoryNav from "../components/menu/CategoryNav";
 import CategoryHeader from "../components/menu/CategoryHeader";
 import Loading from "../components/ui/Loading";
+import useScrollTo from "../hooks/useScrollTo";
 
 const MenuItems = React.lazy(() => import("../components/menu/MenuItems"));
 
 export default function MenuPage() {
   const { headerHeight, navbarHeight } = useOutletContext();
+  const scrollTo = useScrollTo();
 
   // All categories available
   const categories = Object.keys(menuData);
@@ -36,10 +38,7 @@ export default function MenuPage() {
     const targetScroll = headerHeight - navbarHeight;
 
     if (window.scrollY > targetScroll) {
-      window.scrollTo({
-        top: targetScroll,
-        behavior: "smooth",
-      });
+      scrollTo(targetScroll);
     }
   }, [activeCategory, headerHeight, navbarHeight]);
 
