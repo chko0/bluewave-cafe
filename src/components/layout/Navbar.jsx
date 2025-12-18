@@ -40,8 +40,8 @@ export default function Navbar({ ref }) {
 
         {/* Desktop navigation */}
         <div className="hidden md:flex items-center gap-6 sm:gap-8">
-          {navLinks.map(({ path, label, icon: Icon }) => {
-            const isActive = location.pathname === path;
+          {navLinks.map(({ path, label, icon: Icon, match }) => {
+            const isActive = match?.test(location.pathname);
 
             return (
               <Link
@@ -89,8 +89,8 @@ export default function Navbar({ ref }) {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="md:hidden flex flex-col gap-1.5 px-6 pb-4 animate-fadeIn">
-          {navLinks.map(({ path, label, icon: Icon }) => {
-            const isActive = location.pathname === path;
+          {navLinks.map(({ path, label, icon: Icon, match }) => {
+            const isActive = match?.test(location.pathname);
 
             return (
               <Link
