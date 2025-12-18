@@ -6,7 +6,7 @@ import clsx from "clsx";
 
 export default function CategoryNav({
   activeCategory,
-  setActiveCategory,
+  handleCategoryChange,
   navbarHeight,
 }) {
   const { colors } = useTheme();
@@ -52,23 +52,23 @@ export default function CategoryNav({
 
       <div className="overflow-x-auto scrollbar scrollbar-thumb-rounded scrollbar-thin">
         <div className="flex gap-3 px-4 py-2 min-w-max justify-start sm:justify-center rtl:flex-row-reverse">
-          {Object.entries(menuData).map(([name, data]) => {
-            const Icon = data.icon;
-            const isActive = activeCategory === name;
+          {Object.entries(menuData).map(([key, data]) => {
+            const { icon: Icon, id: categoryId, label: categoryLabel } = data;
+            const isActive = activeCategory === categoryId;
 
             return (
               <Button
-                key={name}
+                key={categoryId}
                 icon={Icon}
                 iconClassName="w-5 h-5"
                 ref={isActive ? activeItemRef : null}
-                onClick={() => setActiveCategory(name)}
-                aria-label={`Select ${name} category`}
+                onClick={() => handleCategoryChange(categoryId)}
+                aria-label={`Select ${categoryLabel} category`}
                 className={clsx(
-                  "px-5 py-2 rounded-full font-semibold transition-all select-none",
+                  "px-5 py-2 rounded-full font-semibold transition-all select-none hover:scale-105 active:scale-95",
                   !isActive &&
                     "bg-[var(--inactive-bg)] text-[var(--inactive-text)] hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]",
-                  activeCategory === name
+                  activeCategory === categoryId
                     ? "shadow-lg scale-105"
                     : "hover:scale-105 hover:shadow hover:cursor-pointer"
                 )}
@@ -83,7 +83,7 @@ export default function CategoryNav({
                   boxShadow: isActive ? "0 4px 10px rgba(0,0,0,0.2)" : "none",
                 }}
               >
-                {name}
+                {categoryLabel}
               </Button>
             );
           })}

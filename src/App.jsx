@@ -30,7 +30,7 @@ export default function App() {
         <Route element={<MainLayout />}>
           <Route index element={<HomePage />} />
           <Route path="home" element={<Navigate to="/" replace />} />
-          <Route path="menu" element={<MenuPage />} />
+          <Route path="menu/:categoryId?" element={<MenuPage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="feedback" element={<FeedbackPage />} />
           <Route path="feedback/success" element={<FeedbackSuccessPage />} />

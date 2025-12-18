@@ -4,105 +4,95 @@ import { SITE } from "/src/config";
 import { useTheme } from "/src/context/ThemeContext";
 import cafeHero from "/cafe-hero.webp";
 import { Coffee } from "lucide-react";
-import clsx from "clsx";
 import "/src/styles/globals.css";
 import useScrollTo from "../../hooks/useScrollTo";
-
 export default function HeroSection() {
   const { colors } = useTheme();
   const scrollTo = useScrollTo();
 
   return (
     <section
-      className="relative flex flex-col lg:flex-row items-center justify-between w-full overflow-hidden py-6 lg:py-0 min-h-[60vh] sm:min-h-[70vh] lg:min-h-[75vh]"
+      className="relative flex flex-col lg:flex-row items-center justify-between w-full overflow-hidden min-h-[70vh]"
       style={{
         background: `linear-gradient(135deg, ${colors.lightBg} 0%, ${colors.inactiveBg} 100%)`,
       }}
     >
-      {/* Background radial decoration */}
+      {/* Decorative Blur Blobs */}
       <div
-        className="absolute inset-0 pointer-events-none z-0"
-        style={{
-          background: `radial-gradient(circle at 75% 30%, ${colors.primary100}40, transparent 70%)`,
-        }}
+        className="absolute top-[-10%] right-[-5%] w-96 h-96 rounded-full blur-[120px] opacity-20 pointer-events-none"
+        style={{ backgroundColor: colors.primary400 }}
       />
 
       {/* Text Content */}
-      <div className="flex-1 max-w-3xl flex flex-col justify-center items-start px-6 md:px-10 lg:px-16 pt-6 pb-12 z-10">
-        <Badge variant="default" className="mb-4 text-xs">
-          Since 2018
+      <div className="flex-1 max-w-4xl flex flex-col justify-center items-center lg:items-start px-6 md:px-12 lg:pl-20 xl:pl-32 py-12 lg:py-0 z-10 text-center lg:text-left">
+        <Badge
+          variant="default"
+          className="mb-6 px-4 py-1.5 uppercase tracking-wider text-xs md:text-sm font-semibold shadow-sm"
+          style={{
+            backgroundColor: colors.primary100,
+            color: colors.primary900,
+          }}
+        >
+          Established 2018
         </Badge>
 
         <h1
-          role="heading"
-          aria-label="Tripoli's Cozy Workspace and Community Spot"
-          className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-4"
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6 tracking-tight"
           style={{ color: colors.primary900 }}
         >
-          Tripoli's Cozy Workspace & Community Spot
+          Tripoli's Cozy <br className="hidden md:block" />
+          <span className="italic" style={{ color: colors.primary600 }}>
+            Workspace
+          </span>{" "}
+          & Community
         </h1>
 
         <p
-          className="text-lg sm:text-xl mb-8 max-w-xl"
+          className="text-lg md:text-xl mb-10 max-w-xl leading-relaxed opacity-90"
           style={{ color: colors.primary900 }}
         >
           {SITE.description}
         </p>
 
-        {/* CTA Buttons */}
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
           <Button
             to="/menu"
             icon={Coffee}
-            className={clsx(
-              "rounded-xl shadow-md transition-all duration-300",
-              "hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2",
-              "focus:ring-primary-500"
-            )}
-            style={{
-              backgroundColor: colors.primary600,
-              color: colors.lightBg,
-              border: `1px solid ${colors.primary700}`,
-            }}
+            className="px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"
+            style={{ backgroundColor: colors.primary600, color: "#fff" }}
           >
-            View Menu
+            Explore Menu
           </Button>
 
           <Button
             onClick={() => scrollTo("location")}
-            className={clsx(
-              "rounded-xl shadow-sm transition-all duration-300",
-              "hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2",
-              "focus:ring-primary-500"
-            )}
+            className="px-8 py-4 rounded-full backdrop-blur-md transition-all hover:bg-white/30 cursor-pointer"
             style={{
-              backgroundColor: colors.lightBg,
+              border: `1px solid ${colors.primary200}`,
               color: colors.primary900,
-              border: `1px solid ${colors.inactiveBg}`,
             }}
           >
-            Visit Us!
+            Visit Us
           </Button>
         </div>
       </div>
 
-      {/* Hero Image */}
-      <div className="lg:flex-none lg:w-2/5 flex items-center justify-center relative w-full pt-12 lg:pt-0 z-10">
-        <img
-          src={cafeHero}
-          alt="Bluewave Cafe interior with cozy seating and ambient lighting"
-          className="w-full max-w-xl lg:max-w-md xl:max-w-lg rounded-xl shadow-2xl object-cover h-96 lg:h-[80vh] object-center transform transition-transform duration-500 hover:scale-[1.01]"
-        />
-
-        {/* Subtle wave overlay */}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1) 0%, transparent 70%)",
-            animation: "waveAnimation 10s infinite linear",
-          }}
-        />
+      {/* Hero Image Container */}
+      <div className="relative w-full lg:w-[45%] h-[400px] lg:h-screen z-10">
+        <div className="absolute inset-0 lg:left-[-10%]">
+          <img
+            src={cafeHero}
+            alt="Bluewave Cafe Interior"
+            className="w-full h-full object-cover shadow-2xl"
+            style={{
+              // Creating a soft edge on the left for desktop
+              maskImage:
+                "linear-gradient(to left, black 85%, transparent 100%)",
+              WebkitMaskImage:
+                "linear-gradient(to left, black 85%, transparent 100%)",
+            }}
+          />
+        </div>
       </div>
     </section>
   );

@@ -1,5 +1,5 @@
-import React, { useState, useEffect, Suspense } from "react";
-import { useOutletContext } from "react-router-dom";
+import React, { useEffect, Suspense, useMemo } from "react";
+import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 
 import menuData from "../data/menuData";
 
@@ -12,55 +12,70 @@ const MenuItems = React.lazy(() => import("../components/menu/MenuItems"));
 
 export default function MenuPage() {
   const { headerHeight, navbarHeight } = useOutletContext();
+  const { categoryId } = useParams();
+  const navigate = useNavigate();
   const scrollTo = useScrollTo();
 
-  // All categories available
-  const categories = Object.keys(menuData);
+  // Convert menuData to an array for easier searching
+  const menuArray = useMemo(() => Object.values(menuData), []);
 
-  // Default category fallback
-  const defaultCategory = categories[0];
+  // 1. Identify the active category data based on the URL id (categoryId)
+  const activeCategoryData = useMemo(() => {
+    return menuArray.find((cat) => cat.id === categoryId) || menuArray[0];
+  }, [categoryId, menuArray]);
 
-  // Retrieve stored category if valid
-  const storedCategory = localStorage.getItem("Category");
-  const initialCategory =
-    storedCategory && menuData[storedCategory]
-      ? storedCategory
-      : defaultCategory;
+  // Derive the active ID (handles the fallback if the URL is just /menu)
+  const activeId = activeCategoryData.id;
 
-  const [activeCategory, setActiveCategory] = useState(initialCategory);
-
-  const ActiveIcon = menuData[activeCategory].icon;
-
-  // Scroll into position after category change
+  // 2. Sync Logic: Redirect to last category or first category if path is just "/menu"
   useEffect(() => {
-    localStorage.setItem("Category", activeCategory);
+    if (!categoryId) {
+      const storedCategory = localStorage.getItem("Category");
+      const target = menuArray.find((c) => c.id === storedCategory)
+        ? storedCategory
+        : menuArray[0].id;
 
+      // Navigate to the full path /menu/categoryId
+      navigate(`/menu/${target}`, { replace: true });
+    } else {
+      // Save preference if user navigated to a specific valid categoryId
+      localStorage.setItem("Category", categoryId);
+    }
+  }, [categoryId, navigate, menuArray]);
+
+  // 3. Handle Category Changes via Navigation
+  const handleCategoryChange = (newId) => {
+    navigate(`/menu/${newId}`);
+  };
+
+  // 4. Effect: Scroll positioning
+  useEffect(() => {
     const targetScroll = headerHeight - navbarHeight;
 
     if (window.scrollY > targetScroll) {
       scrollTo(targetScroll);
     }
-  }, [activeCategory, headerHeight, navbarHeight]);
+  }, [categoryId, headerHeight, navbarHeight, scrollTo]);
 
   return (
     <>
       <CategoryNav
-        activeCategory={activeCategory}
-        setActiveCategory={setActiveCategory}
+        activeCategory={activeId}
+        handleCategoryChange={handleCategoryChange}
         navbarHeight={navbarHeight}
       />
 
       <div className="px-6 py-4 md:py-6 max-w-7xl mx-auto min-h-screen flex flex-col transition duration-300">
         <CategoryHeader
-          key={activeCategory}
-          activeCategory={activeCategory}
-          ActiveIcon={ActiveIcon}
+          key={activeId}
+          activeCategory={activeCategoryData.label}
+          ActiveIcon={activeCategoryData.icon}
         />
 
         <Suspense fallback={<Loading isFullHeight={false} className="mt-12" />}>
           <MenuItems
-            items={menuData[activeCategory].items}
-            activeCategory={activeCategory}
+            items={activeCategoryData.items}
+            activeCategory={activeId}
           />
         </Suspense>
       </div>

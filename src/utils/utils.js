@@ -53,3 +53,5 @@ export function getOpenStatus(openingHours) {
     label: isOpen ? "Now Open" : "Closed",
   };
 }
+
+const slugify = (text) => text.toLowerCase().replace(/\s+/g, "-");
