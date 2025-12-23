@@ -1,5 +1,6 @@
 export const SITE = {
   name: "BlueWave Café",
+  shortName: "BlueWave",
   subtitle: "Fresh brews & baked delights",
   tagline: "Your cozy spot for coffee & comfort",
   description:

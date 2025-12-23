@@ -1,5 +1,6 @@
-import AnnouncementRail from "./announcements/AnnouncementRail";
+import { SITE } from "../../config/site";
 import { useTheme } from "../../context/ThemeContext";
+import AnnouncementRail from "./announcements/AnnouncementRail";
 
 export default function AnnouncementSection() {
   const { colors } = useTheme();
@@ -7,34 +8,41 @@ export default function AnnouncementSection() {
   return (
     <section
       aria-labelledby="announcements-heading"
-      className="relative px-6 md:px-16 py-10 overflow-hidden"
-      // style={{
-      //   background: `linear-gradient(
-      //     to bottom,
-      //     ${colors.lightBg},
-      //     ${colors.inactiveBg}
-      //   )`,
-      // }}
+      className="relative px-6 md:px-16 py-8 overflow-hidden bg-transparent"
     >
-      {/* Section Header */}
-      <div className="mb-6 flex items-center justify-between">
-        <h2
-          id="announcements-heading"
-          className="text-lg md:text-xl font-bold tracking-wide"
-          style={{ color: colors.primary900 }}
-        >
-          Today at Bluewave
-        </h2>
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-4 flex items-center gap-3">
+          <span className="relative flex h-2 w-2">
+            <span
+              className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
+              style={{ backgroundColor: colors.primary500 }}
+            ></span>
+            <span
+              className="relative inline-flex rounded-full h-2 w-2"
+              style={{ backgroundColor: colors.primary600 }}
+            ></span>
+          </span>
 
-        {/* Optional subtle accent line */}
-        <div
-          className="h-[2px] flex-1 ml-4 rounded-full opacity-30"
-          style={{ backgroundColor: colors.primary300 }}
-        />
+          <h2
+            className="text-xs md:text-sm font-bold uppercase tracking-widest opacity-70"
+            style={{ color: colors.primary900 }}
+          >
+            Today at {SITE.shortName}
+          </h2>
+          <div
+            className="h-[1px] flex-1 rounded-full opacity-10"
+            style={{ backgroundColor: colors.primary900 }}
+          />
+        </div>
+
+        {/*
+          Fixed min-height prevents layout shift on mobile when
+          announcement content or CTA length changes 
+        */}
+        <div className="min-h-[80px] md:min-h-[70px]">
+          <AnnouncementRail />
+        </div>
       </div>
-
-      {/* Announcement Rail */}
-      <AnnouncementRail />
     </section>
   );
 }
