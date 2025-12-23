@@ -1,6 +1,6 @@
 import Modal, { ModalContent } from "../../ui/Modal";
 import AnnouncementCard from "./AnnouncementCard";
-import announcements from "/src/data/announcements";
+import announcements from "/src/data/announcementsData";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import Button from "/src/components/ui/Button";

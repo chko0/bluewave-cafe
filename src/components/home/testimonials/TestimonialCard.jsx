@@ -20,13 +20,21 @@ export default function TestimonialCard({ testimonial }) {
 
       {/* Footer */}
       <div className="flex items-center justify-between">
-        {/* Name */}
-        <span
-          className="text-sm font-semibold"
-          style={{ color: colors.primary700 }}
-        >
-          – {name}
-        </span>
+        <div>
+          {/* Name */}
+          <span
+            className="text-sm font-semibold"
+            style={{ color: colors.primary700 }}
+          >
+            – {name}
+          </span>
+          <span
+            className="text-[10px] uppercase tracking-widest font-bold opacity-50 mb-1 block"
+            style={{ color: colors.primary600 }}
+          >
+            {testimonial.tag}
+          </span>
+        </div>
 
         {/* Stars */}
         <div className="flex gap-0.5">
