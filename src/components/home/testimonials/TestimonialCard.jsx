@@ -3,41 +3,45 @@ import { useTheme } from "../../../context/ThemeContext";
 
 export default function TestimonialCard({ testimonial }) {
   const { colors } = useTheme();
-  const { name, rating, quote } = testimonial;
+  const { name, rating, quote, tag } = testimonial;
 
   return (
     <div
-      className="rounded-2xl p-6 shadow-md flex flex-col justify-between h-full"
+      className="rounded-2xl p-6 shadow-md flex flex-col w-full h-full"
       style={{
         background: `linear-gradient(to bottom right, ${colors.lightBg}, white)`,
         border: `1px solid ${colors.border}`,
       }}
     >
       {/* Quote */}
-      <p className="text-base italic mb-4" style={{ color: colors.primary900 }}>
-        “{quote}”
-      </p>
+      <div className="overflow-hidden h-[4.5rem] sm:h-24 leading-6">
+        <p
+          className="text-base italic line-clamp-3 sm:line-clamp-4"
+          style={{ color: colors.primary900 }}
+        >
+          “{quote}”
+        </p>
+      </div>
 
       {/* Footer */}
-      <div className="flex items-center justify-between">
+      <div className="mt-auto pt-4 border-t border-slate-50 flex items-end justify-between">
         <div>
-          {/* Name */}
           <span
-            className="text-sm font-semibold"
+            className="text-sm font-bold"
             style={{ color: colors.primary700 }}
           >
             – {name}
           </span>
           <span
-            className="text-[10px] uppercase tracking-widest font-bold opacity-50 mb-1 block"
+            className="text-[10px] uppercase tracking-widest font-black opacity-70 block"
             style={{ color: colors.primary600 }}
           >
-            {testimonial.tag}
+            {tag}
           </span>
         </div>
 
-        {/* Stars */}
-        <div className="flex gap-0.5">
+        {/* Rating (Stars) */}
+        <div className="flex gap-0.5 pb-1">
           {Array.from({ length: rating }).map((_, i) => (
             <Star
               key={i}

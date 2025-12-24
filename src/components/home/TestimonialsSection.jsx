@@ -9,8 +9,6 @@ export default function TestimonialsSection() {
   const { colors } = useTheme();
   const [index, setIndex] = useState(0);
 
-  // Logic to show different amounts based on screen size could be complex,
-  // so we'll keep the 3-item slice but improve the grid responsiveness.
   const visibleTestimonials = testimonials.slice(index, index + 3);
 
   const next = () => {
@@ -18,7 +16,7 @@ export default function TestimonialsSection() {
   };
 
   return (
-    <section className="py-24 px-6 md:px-16 max-w-7xl mx-auto">
+    <section className="py-16 md:py-24 px-6 md:px-16 max-w-7xl mx-auto">
       {/* Section Header */}
       <div className="text-center mb-16">
         <h2
@@ -30,66 +28,55 @@ export default function TestimonialsSection() {
       </div>
 
       {/* Carousel Container */}
-      <div className="relative min-h-[300px]">
-        {/* Fixed min-height prevents jumping */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={index}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            variants={{
-              initial: { opacity: 0 },
-              animate: { opacity: 1, transition: { staggerChildren: 0.1 } },
-              exit: { opacity: 0 },
-            }}
-          >
-            {visibleTestimonials.map((testimonial, i) => (
-              <motion.div
-                key={testimonial.name + i}
-                variants={{
-                  initial: { opacity: 0, y: 20 },
-                  animate: { opacity: 1, y: 0 },
-                  exit: { opacity: 0, y: -10 },
-                }}
-              >
-                <TestimonialCard testimonial={testimonial} />
-              </motion.div>
-            ))}
-          </motion.div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
+        <AnimatePresence initial={false} mode="wait">
+          {visibleTestimonials.map((testimonial) => (
+            <motion.div
+              layout
+              key={testimonial.name}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="flex"
+            >
+              <TestimonialCard testimonial={testimonial} />
+            </motion.div>
+          ))}
         </AnimatePresence>
-        <div className="flex flex-col items-center mt-12 gap-4">
-          <Button
-            onClick={next}
-            trailingIcon={true}
-            className="group flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-all border-2 active:scale-95 bg-transparent hover:bg-transparent"
-            style={{
-              borderColor: `${colors.primary600}30`,
-              color: colors.primary600,
-            }}
-          >
-            Next Stories
-          </Button>
+      </div>
 
-          {/* Progress Indicators (Senior Touch) */}
-          <div className="flex gap-1.5">
-            {Array.from({ length: Math.ceil(testimonials.length / 3) }).map(
-              (_, i) => (
-                <div
-                  key={i}
-                  className="h-1.5 rounded-full transition-all duration-300"
-                  style={{
-                    width: i === index / 3 ? "24px" : "6px",
-                    backgroundColor:
-                      i === index / 3
-                        ? colors.primary600
-                        : `${colors.primary600}20`,
-                  }}
-                />
-              )
-            )}
-          </div>
+      <div className="flex flex-col items-center mt-12 gap-4">
+        <Button
+          onClick={next}
+          trailingIcon={true}
+          className="group flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-all border-2 active:scale-95 bg-transparent hover:bg-transparent"
+          style={{
+            borderColor: `${colors.primary600}30`,
+            color: colors.primary600,
+          }}
+        >
+          Next Stories
+        </Button>
+
+        {/* Progress Indicators */}
+        <div className="flex gap-2">
+          {Array.from({ length: Math.ceil(testimonials.length / 3) }).map(
+            (_, i) => (
+              <div
+                key={i}
+                onClick={() => setIndex(i * 3)}
+                className="h-2 rounded-full transition-all duration-300"
+                style={{
+                  width: i === index / 3 ? "28px" : "10px",
+                  backgroundColor:
+                    i === index / 3
+                      ? colors.primary600
+                      : `${colors.primary600}30`,
+                }}
+              />
+            )
+          )}
         </div>
       </div>
     </section>
