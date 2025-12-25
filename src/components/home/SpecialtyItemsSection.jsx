@@ -13,7 +13,7 @@ export default function SpecialtyItemsSection() {
   if (!items.length) return null;
 
   return (
-    <section className="relative py-24 px-6 md:px-12 overflow-hidden">
+    <section className="relative py-16 px-6 md:px-12 overflow-hidden">
       {/* Decorative background element */}
       <div
         className="absolute top-0 right-0 w-1/3 h-full opacity-[0.03] pointer-events-none"
@@ -81,10 +81,10 @@ export default function SpecialtyItemsSection() {
         </div>
 
         {/* Mobile-only CTA */}
-        <div className="mt-16 flex justify-center md:hidden">
+        <div className="mt-12 flex justify-center md:hidden">
           <Button
             to="/menu"
-            className="w-full sm:w-auto rounded-2xl px-8 py-4 text-lg font-bold shadow-xl shadow-blue-900/10"
+            className="w-full sm:w-auto rounded-2xl px-8 py-4 text-md font-semibold shadow-xl shadow-blue-900/10"
             style={{
               backgroundColor: colors.primary600,
               color: "#fff",
