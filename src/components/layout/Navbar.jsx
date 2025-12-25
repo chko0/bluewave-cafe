@@ -15,19 +15,14 @@ export default function Navbar({ ref }) {
   return (
     <nav
       ref={ref}
-      className="fixed top-0 left-0 w-full z-50 backdrop-blur-md border-b border-white/10 shadow-md"
+      className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl border-b border-white/10 transition-all duration-300 shadow-lg shadow-black/5"
       style={{
-        background: `linear-gradient(
-          to right,
-          ${colors.primary900}D0,
-          ${colors.primary800}D0,
-          ${colors.primary700}D0
-        )`,
+        background: `linear-gradient(135deg, ${colors.primary600}D9, ${colors.primary600}D9)`,
       }}
     >
       {/* Main container */}
       <div
-        className={`flex justify-between items-center px-5 sm:px-8 transition-all duration-300 py-3`}
+        className={`flex justify-between items-center px-5 sm:px-8 transition-all duration-300 py-2 md:py-3`}
       >
         {/* Logo / Title */}
         <Link
