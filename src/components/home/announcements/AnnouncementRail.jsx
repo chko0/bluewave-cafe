@@ -62,6 +62,7 @@ export default function AnnouncementRail() {
     >
       <AnimatePresence mode="wait">
         <motion.div
+          key={currentAnnouncement.id || currentAnnouncement.title}
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -20 }}
