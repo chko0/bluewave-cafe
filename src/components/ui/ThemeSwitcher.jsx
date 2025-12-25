@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../../context/ThemeContext";
 import ThemeIcon from "./ThemeIcon";
 import { palette } from "../../themes/colors";
+import Button from "./Button";
 
 export default function ThemeSwitcher() {
   const [isOpen, setIsOpen] = useState(false);
@@ -73,8 +74,22 @@ export default function ThemeSwitcher() {
       </AnimatePresence>
 
       {/* FAB */}
-      <div className="relative group">
-        <button
+      <div className="relative group flex items-center justify-end">
+        {/* Tooltip */}
+        <span
+          className={`absolute right-full mr-3 whitespace-nowrap
+                      px-3 py-1.5 bg-gray-900 text-white text-xs font-bold rounded-lg 
+                      transition-all duration-300 transform translate-x-2
+                      opacity-0 group-hover:opacity-100 group-hover:translate-x-0
+                      pointer-events-none select-none`}
+          style={{
+            display: isOpen ? "none" : "block",
+          }}
+        >
+          Theme
+        </span>
+
+        <Button
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
           aria-controls="theme-list"
@@ -88,17 +103,7 @@ export default function ThemeSwitcher() {
           }}
         >
           {isOpen ? <X size={24} /> : <Palette size={24} />}
-        </button>
-
-        {/* Tooltip */}
-        <span
-          className={`absolute right-full top-1/2 -translate-y-1/2 mr-3 
-                      px-3 py-1.5 bg-gray-900 text-white text-sm rounded-lg 
-                      opacity-0 select-none transition-opacity duration-300 
-                      ${!isOpen ? "group-hover:opacity-100" : ""}`}
-        >
-          Theme
-        </span>
+        </Button>
       </div>
     </div>
   );
