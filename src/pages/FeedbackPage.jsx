@@ -88,7 +88,7 @@ export default function FeedbackPage() {
           Your Feedback Matters
         </h2>
         <p className="text-lg" style={{ color: colors.primary700 }}>
-          Every message helps us make {SITE.name} better
+          Help us make {SITE.name} better
         </p>
       </div>
 
