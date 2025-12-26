@@ -1,19 +1,22 @@
-import { Facebook, Instagram, Twitter } from "lucide-react";
-
 export const SOCIALS = [
   {
     platform: "Facebook",
     url: "https://facebook.com/",
-    icon: Facebook,
+    icon: "facebook",
   },
   {
     platform: "Instagram",
     url: "https://instagram.com/",
-    icon: Instagram,
+    icon: "instagram",
   },
   {
     platform: "Twitter",
     url: "https://twitter.com/",
-    icon: Twitter,
+    icon: "twitter",
+  },
+  {
+    platform: "Whatsapp",
+    url: "",
+    icon: "whatsapp",
   },
 ];

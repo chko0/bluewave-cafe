@@ -1,44 +1,15 @@
 import { Link } from "react-router-dom";
-import { useTheme } from "../../context/ThemeContext";
-import { Twitter, Facebook, Instagram } from "lucide-react";
-
 import { NAVIGATION, SOCIALS, SITE } from "/src/config";
-
-const iconMap = {
-  twitter: Twitter,
-  facebook: Facebook,
-  instagram: Instagram,
-};
+import { Icon } from "@iconify/react";
 
 export default function Footer() {
-  const { colors } = useTheme();
-
-  const navLinks = NAVIGATION;
-  const socialLinks = SOCIALS;
-
-  // Define dynamic colors for readability and reuse, matching the visual intent
-  const primaryGradientStart = colors.primary600;
-  const primaryGradientMiddle = colors.primary700;
-
-  const hoverLinkColor = colors.hoverBg;
-  const primaryTextMuted = "rgba(255, 255, 255, 0.8)"; // Replaces text-blue-100/200
-  const borderSubtle = "rgba(255, 255, 255, 0.3)"; // Replaces border-blue-400/40
-
   return (
-    <footer
-      className="text-white mt-16 min-h-62 w-full"
-      style={{
-        background: `linear-gradient(to right, ${primaryGradientStart},  ${primaryGradientMiddle})`,
-      }}
-    >
+    <footer className="text-white mt-16 min-h-62 w-full bg-gradient-to-r from-brand-primary-600 to-brand-primary-700">
       <div className="max-w-7xl mx-auto px-6 py-10 grid gap-8 sm:grid-cols-3">
         {/* Brand / About */}
         <div>
           <h2 className="text-lg font-semibold">{SITE.name}</h2>
-          <p
-            className="mt-3 text-sm leading-relaxed"
-            style={{ color: primaryTextMuted }}
-          >
+          <p className="mt-3 text-sm leading-relaxed text-brand-active-text/80">
             {SITE.description}
           </p>
         </div>
@@ -47,19 +18,15 @@ export default function Footer() {
         <div>
           <h3 className="text-md font-semibold">Quick Links</h3>
           <ul className="footer-options mt-3 space-y-2 text-sm">
-            {navLinks.map(({ path, label, hidden }) => {
+            {NAVIGATION.map(({ path, label, hidden }) => {
               if (hidden) return null;
 
               return (
                 <li key={path}>
                   <Link
                     to={path}
-                    className="transition hover:opacity-100 focus:opacity-100"
+                    className="transition duration-200 hover:opacity-50 focus:opacity-100 text-brand-active-text/80"
                     aria-label={`Go to ${label} page`}
-                    style={{
-                      color: primaryTextMuted,
-                      "--hover-color": hoverLinkColor,
-                    }}
                   >
                     {label}
                   </Link>
@@ -73,9 +40,8 @@ export default function Footer() {
         <div>
           <h3 className="text-md font-semibold">Follow Us</h3>
           <div className="footer-options flex gap-4 mt-3">
-            {socialLinks.map(({ platform, url, icon }) => {
-              const IconComponent = iconMap[platform.toLowerCase()];
-              if (!IconComponent) return null; // Skip if icon name is invalid
+            {SOCIALS.map(({ platform, url, icon }) => {
+              if (!icon) return null; // Skip if icon is invalid
 
               return (
                 <Link
@@ -84,13 +50,9 @@ export default function Footer() {
                   aria-label={`Follow us on ${platform}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="transition hover:opacity-100 focus:opacity-100"
-                  style={{
-                    color: primaryTextMuted,
-                    "--hover-color": hoverLinkColor,
-                  }}
+                  className="transition duration-200 hover:opacity-50 focus:opacity-100 text-brand-active-text/80"
                 >
-                  <IconComponent size={20} />
+                  <Icon icon={`simple-icons:${icon}`} size={20} />
                 </Link>
               );
             })}
@@ -99,13 +61,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div
-        className="py-4 text-center text-sm"
-        style={{
-          borderTop: `1px solid ${borderSubtle}`,
-          color: primaryTextMuted,
-        }}
-      >
+      <div className="py-4 text-center text-sm text-brand-active-text/80 border-t border-brand-active-text/20">
         © {new Date().getFullYear()} {SITE.copyrightName}. All rights reserved.
       </div>
     </footer>
