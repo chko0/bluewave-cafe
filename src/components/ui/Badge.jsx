@@ -4,9 +4,10 @@ import "../../styles/Badge.css";
 import clsx from "clsx";
 
 const STATUS_COLORS = {
-  success: { bg: "#d4edda", text: "#155724" }, // Standard Success/Green (for Vegan)
-  warning: { bg: "#fff3cd", text: "#856404" }, // Standard Warning/Yellow (for Popular)
-  dietary: { bg: "#f3e8ff", text: "#5b21b6" }, // Light Purple/Lavender (for Dietary)
+  success: { bg: "#e6f7ec", text: "#15803d", border: "#22c55e" },
+  danger: { bg: "#fee2e2", text: "#991b1b", border: "#ef4444" },
+  warning: { bg: "#fff3cd", text: "#856404" },
+  dietary: { bg: "#f3e8ff", text: "#5b21b6" },
 };
 
 // Variant definitions
@@ -57,6 +58,24 @@ const badgeVariants = (themeColors) => ({
     text: themeColors.primary700,
     classes: "animate-pulse-slow", // subtle, slow pulse instead of shimmer
     iconClasses: "", // optional, can leave empty
+  },
+
+  open: {
+    bg: STATUS_COLORS.success.bg,
+    text: STATUS_COLORS.success.text,
+    classes: "border border-[color:var(--badge-border)]",
+    cssVars: {
+      "--badge-border": STATUS_COLORS.success.border,
+    },
+  },
+
+  closed: {
+    bg: STATUS_COLORS.danger.bg,
+    text: STATUS_COLORS.danger.text,
+    classes: "border border-[color:var(--badge-border)]",
+    cssVars: {
+      "--badge-border": STATUS_COLORS.danger.border,
+    },
   },
 });
 

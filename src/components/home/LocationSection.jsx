@@ -4,9 +4,15 @@ import { getOpenStatus } from "/src/utils/utils";
 import { useTheme } from "/src/context/ThemeContext";
 import clsx from "clsx";
 import Button from "../ui/Button";
+import { useState } from "react";
+import Badge from "../ui/Badge";
+import IconText from "../ui/IconText";
 
 export default function LocationSection() {
   const { colors } = useTheme();
+
+  const [mapLoaded, setMapLoaded] = useState(false);
+
   const status = getOpenStatus(OPENING_HOURS);
 
   // Determine active day for highlighting
@@ -33,7 +39,7 @@ export default function LocationSection() {
             className="text-4xl md:text-5xl font-extrabold mb-3 tracking-tight"
             style={{ color: colors.primary900 }}
           >
-            Find Us at {SITE.name}
+            Visit Us at {SITE.name}
           </h2>
           <p className="text-lg" style={{ color: colors.primary700 }}>
             {LOCATION.tagline || "Your local spot for coffee and community."}
@@ -42,22 +48,44 @@ export default function LocationSection() {
 
         {/* Floating Glass Card Container */}
         <div
-          className="grid lg:grid-cols-5 gap-8 rounded-2xl border backdrop-blur-sm shadow-2xl overflow-hidden transform hover:shadow-primary-300/50 transition duration-300"
-          style={{
-            background: colors.glassBg,
-            borderColor: colors.border,
-          }}
+          className={clsx(
+            "grid lg:grid-cols-5 overflow-hidden rounded-3xl border",
+            "shadow-xl hover:shadow-2xl transition-shadow duration-300",
+            "bg-white/60 backdrop-blur-md"
+          )}
+          style={{ borderColor: colors.border }}
         >
           {/* Map (should take up 3/5 on large screens) */}
           <div className="relative h-96 lg:h-auto lg:col-span-3">
-            <img
-              src={LOCATION.map.staticImage}
-              alt="Map location"
-              className="w-full h-full object-cover"
+            {/* Overlay Gradient */}
+            <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+
+            {/* Map Placeholder */}
+            {!mapLoaded && (
+              <img
+                src="/map-placeholder.webp"
+                alt="Map Placeholder"
+                className="absolute inset-0 w-full h-full object-cover scale-105"
+              />
+            )}
+
+            {/* Map Location */}
+            <iframe
+              title="Google Map Location"
+              src={LOCATION.map.embedUrl}
+              className={clsx(
+                "absolute inset-0 w-full h-full border-0 transition-opacity duration-700",
+                mapLoaded ? "opacity-100" : "opacity-0"
+              )}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              onLoad={() => setMapLoaded(true)}
             />
+
             {/* Directions Button */}
             <Button
-              href={LOCATION.directionsUrl}
+              as="a"
+              href={LOCATION.map.directionsUrl}
               target="_blank"
               rel="noopener noreferrer"
               icon={Navigation}
@@ -75,8 +103,11 @@ export default function LocationSection() {
           <div className="lg:col-span-2 p-8 md:p-10 flex flex-col justify-between">
             {/* Status & Hours */}
             <div className="flex flex-col gap-8">
-              {/* Status */}
-              <div className="flex items-center gap-3">
+              {/* Status (Open / Closed) */}
+              <Badge
+                variant={status.open ? "open" : "closed"}
+                className="px-4 py-2 text-sm font-extrabold tracking-wide gap-3"
+              >
                 <span
                   className={clsx(
                     "w-4 h-4 rounded-full shadow-md",
@@ -86,7 +117,7 @@ export default function LocationSection() {
                 <span className={clsx("text-xl font-bold", statusColors.text)}>
                   {status.label}
                 </span>
-              </div>
+              </Badge>
 
               {/* Hours Grid */}
               <div className="flex flex-col gap-2">
@@ -104,7 +135,7 @@ export default function LocationSection() {
                     <div
                       key={day}
                       className={clsx(
-                        "flex justify-between py-1 border-b border-dashed",
+                        "flex justify-between py-1",
                         isToday ? "font-extrabold" : "font-medium text-gray-600"
                       )}
                       style={{
@@ -142,29 +173,42 @@ export default function LocationSection() {
               >
                 Contact & Location
               </h3>
-              <div className="flex items-start gap-3">
-                <MapPin
-                  size={20}
-                  className="mt-1"
-                  style={{ color: colors.primary700 }}
-                />
+              <IconText
+                icon={MapPin}
+                size="5"
+                gap="3"
+                className="items-start"
+                iconClassName="mt-1"
+                style={{ color: colors.primary700 }}
+              >
                 <span
                   className="text-base leading-relaxed"
                   style={{ color: colors.primary800 }}
                 >
                   {LOCATION.address}
                 </span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Phone size={20} style={{ color: colors.primary700 }} />
-                <a
-                  href={`tel:${LOCATION.contact.phone}`}
-                  className="text-base font-semibold hover:text-primary-700 transition"
+              </IconText>
+              <IconText
+                icon={Phone}
+                size="5"
+                gap="3"
+                className="items-start"
+                iconClassName="mt-1"
+                style={{ color: colors.primary700 }}
+              >
+                <span
+                  className="text-base leading-relaxed"
                   style={{ color: colors.primary800 }}
                 >
-                  {LOCATION.contact.phone}
-                </a>
-              </div>
+                  <a
+                    href={`tel:${LOCATION.contact.phone}`}
+                    className="text-base font-semibold hover:text-primary-700 transition"
+                    style={{ color: colors.primary800 }}
+                  >
+                    {LOCATION.contact.phone}
+                  </a>
+                </span>
+              </IconText>
             </div>
           </div>
         </div>
