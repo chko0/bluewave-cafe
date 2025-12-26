@@ -1,9 +1,9 @@
 export const palette = {
   /**
-   * 🌊 BlueWave (Muted): Subtle, Professional Blue
+   * 🌊 BlueWave: Subtle, Professional Blue
    */
   bluewave: {
-    name: "Default",
+    name: "Bluewave",
 
     // === FUNCTIONAL ROLES ===
     // Backgrounds & Surfaces
@@ -25,7 +25,7 @@ export const palette = {
   },
 
   /**
-   * 🌊 Bahwak (Revised): Rich, Saturated Mediterranean Teal and Deep Gold
+   * 🌊 Bahwak: Rich, Saturated Mediterranean Teal and Deep Gold
    */
   bahwak: {
     name: "Bahwak",
@@ -100,7 +100,7 @@ export const palette = {
   },
 
   /**
-   * 💜 LavenderMist (Muted): Deep Plum and Slate-Violet for Visual Comfort
+   * 💜 LavenderMist: Deep Plum and Slate-Violet
    */
   lavender: {
     name: "Lavender",
@@ -150,7 +150,7 @@ export const palette = {
   },
 
   /**
-   * 🧡 CanyonClay (Final Pop): Clean Base with Punchier Terracotta Accents
+   * 🧡 CanyonClay: Clean Base with Punchier Terracotta Accents
    */
   canyon: {
     name: "Canyon Clay",

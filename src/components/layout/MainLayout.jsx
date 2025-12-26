@@ -39,17 +39,8 @@ export default function MainLayout() {
 
   return (
     <div
-      className="flex flex-col min-h-screen"
-      style={{
-        backgroundImage: `linear-gradient(
-          to bottom,
-          ${colors.inactiveBg},
-          ${colors.lightBg},
-          ${colors.lightBg}
-        )`,
-        backgroundAttachment: "fixed",
-        backgroundSize: "100% 100vh",
-      }}
+      className="flex flex-col min-h-screen bg-fixed bg-[length:100%_100vh]
+        bg-gradient-to-b from-brand-inactive-bg via-brand-light-bg to-brand-light-bg"
     >
       <Navbar ref={navbarRef} />
       <Header ref={headerRef} />

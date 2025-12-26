@@ -1,5 +1,4 @@
 import { Link, useLocation } from "react-router-dom";
-import { useTheme } from "../../context/ThemeContext";
 import { NAVIGATION } from "/src/config";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
@@ -9,17 +8,16 @@ import BrandLogo from "../common/BrandLogo";
 export default function Navbar({ ref }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const { colors } = useTheme();
   const location = useLocation();
   const navLinks = NAVIGATION.filter((item) => !item.hidden);
 
   return (
     <nav
       ref={ref}
-      className="fixed top-0 left-0 w-full z-50 backdrop-blur-xl border-b border-white/10 transition-all duration-300 shadow-lg shadow-black/5"
-      style={{
-        background: `linear-gradient(135deg, ${colors.primary600}D9, ${colors.primary600}D9)`,
-      }}
+      className="
+          fixed top-0 left-0 w-full z-50 backdrop-blur-xl border-b border-white/10 transition-all duration-300 shadow-lg shadow-black/5
+          bg-gradient-to-br from-brand-primary-600/85 to-brand-primary-600/85
+        "
     >
       {/* Main container */}
       <div className="flex justify-between items-center px-5 sm:px-8 transition-all duration-300 py-2 md:py-3">
@@ -43,10 +41,9 @@ export default function Navbar({ ref }) {
                 key={path}
                 to={path}
                 aria-label={`Go to ${label} page`}
-                className={`group flex items-center gap-1.5 font-medium relative transition-all duration-200 whitespace-nowrap select-none ${
+                className={`group flex items-center gap-1.5 font-medium text-brand-active-text relative transition-all duration-200 whitespace-nowrap select-none ${
                   isActive ? "opacity-100" : "opacity-70 hover:opacity-100"
                 }`}
-                style={{ color: colors.activeText }}
               >
                 <IconText
                   icon={Icon}
@@ -59,12 +56,11 @@ export default function Navbar({ ref }) {
 
                 {/* Underline */}
                 <span
-                  className={`absolute bottom-[-5px] left-0 w-full h-[2px] rounded-full transition-all duration-300 ${
+                  className={`absolute bottom-[-5px] left-0 w-full h-[2px] rounded-full transition-all duration-300 bg-brand-active-text ${
                     isActive
                       ? "opacity-100 scale-x-100"
                       : "opacity-0 scale-x-0 group-hover:opacity-75 group-hover:scale-x-75"
                   }`}
-                  style={{ backgroundColor: colors.activeText }}
                 />
               </Link>
             );
@@ -73,7 +69,7 @@ export default function Navbar({ ref }) {
 
         {/* Mobile hamburger button */}
         <button
-          className="md:hidden text-white p-2"
+          className="md:hidden text-brand-active-text p-2"
           onClick={() => setMenuOpen((prev) => !prev)}
           aria-label="Toggle navigation menu"
         >
@@ -92,13 +88,11 @@ export default function Navbar({ ref }) {
                 key={path}
                 to={path}
                 onClick={() => setMenuOpen(false)}
-                className={`flex items-center gap-2.25 py-2 rounded-md transition ${
+                className={`flex items-center gap-2.25 py-2 rounded-md transition text-brand-active-text ${
                   isActive ? "opacity-100" : "opacity-70 hover:opacity-100"
                 }`}
-                style={{ color: colors.activeText }}
               >
                 {Icon && <Icon className="w-5 h-5" />}
-
                 {label}
               </Link>
             );
