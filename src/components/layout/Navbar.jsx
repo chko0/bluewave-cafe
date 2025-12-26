@@ -1,9 +1,10 @@
 import { Link, useLocation } from "react-router-dom";
 import { useTheme } from "../../context/ThemeContext";
-import { SITE, NAVIGATION } from "/src/config";
+import { NAVIGATION } from "/src/config";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import IconText from "../ui/IconText";
+import BrandLogo from "../common/BrandLogo";
 
 export default function Navbar({ ref }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -21,17 +22,16 @@ export default function Navbar({ ref }) {
       }}
     >
       {/* Main container */}
-      <div
-        className={`flex justify-between items-center px-5 sm:px-8 transition-all duration-300 py-2 md:py-3`}
-      >
-        {/* Logo / Title */}
-        <Link
-          to="/"
-          className="text-lg sm:text-xl font-semibold select-none tracking-wide"
-          style={{ color: colors.activeText }}
-        >
-          {SITE.name}
-        </Link>
+      <div className="flex justify-between items-center px-5 sm:px-8 transition-all duration-300 py-2 md:py-3">
+        {/* Logo */}
+        <BrandLogo
+          layout="horizontal"
+          headingLevel="div"
+          showLogo={true}
+          showTitle={false}
+          showSubtitle={false}
+          size={45}
+        />
 
         {/* Desktop navigation */}
         <div className="hidden md:flex items-center gap-6 sm:gap-8">
