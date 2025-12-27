@@ -41,7 +41,7 @@ export default function Button({
     >
       <span className="inline-flex items-center justify-center gap-2 w-full">
         {Icon && <Icon {...iconProps} />}
-        <span>{children}</span>
+        {children && <span>{children}</span>}
         {trailingIcon && (
           <ChevronRight className="w-3.5 h-3.5 transform transition-transform duration-200 group-hover:translate-x-1" />
         )}

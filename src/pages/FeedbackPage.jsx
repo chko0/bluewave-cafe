@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { MessageCircle, AlertCircle, CheckCircle } from "lucide-react";
-import { useTheme } from "../context/ThemeContext";
+import { MessageCircle, AlertCircle, CheckCircle, Star } from "lucide-react";
+
+import IconText from "../components/ui/IconText";
 
 import { SITE, WORKERS } from "/src/config";
 import Button from "../components/ui/Button";
@@ -11,8 +12,6 @@ const MIN_MESSAGE_LENGTH = 10;
 const WORKER_ENDPOINT = WORKERS.feedbackEndpoint;
 
 export default function FeedbackPage() {
-  const { colors } = useTheme();
-
   const navigate = useNavigate();
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
@@ -37,7 +36,8 @@ export default function FeedbackPage() {
   // Reusable Tailwind classes for inputs
   const inputClasses = `w-full p-4 pr-7 border rounded-xl shadow-inner
     focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-200
-    border-gray-300 placeholder-gray-500
+    border-gray-300 placeholder-gray-500 focus:ring-brand-primary-500
+    scrollbar-thumb-brand-border hover:scrollbar-thumb-brand-hover-bg
   `;
 
   const handleSubmit = async (e) => {
@@ -77,17 +77,11 @@ export default function FeedbackPage() {
     <div className="px-6 py-12 max-w-3xl mx-auto">
       {/* Header and Call to Action */}
       <div className="text-center mb-10">
-        <MessageCircle
-          className="w-12 h-12 mx-auto mb-4"
-          style={{ color: colors.primary600 }}
-        />
-        <h2
-          className="text-3xl font-extrabold mb-2"
-          style={{ color: colors.primary900 }}
-        >
+        <MessageCircle className="w-12 h-12 mx-auto mb-4 text-brand-primary-600" />
+        <h2 className="text-3xl font-extrabold mb-2 text-brand-primary-900">
           Your Feedback Matters
         </h2>
-        <p className="text-lg" style={{ color: colors.primary700 }}>
+        <p className="text-lg text-brand-primary-700">
           Help us make {SITE.name} better
         </p>
       </div>
@@ -100,54 +94,51 @@ export default function FeedbackPage() {
         <div className="space-y-4 text-center">
           <h3
             id="rating-label"
-            className="text-md md:text-lg sm:text-xl font-bold"
-            style={{ color: colors.primary700 }}
+            className="text-md md:text-lg sm:text-xl font-bold text-brand-primary-700"
           >
             Rate Your Experience!
           </h3>
 
           <div
-            className="flex justify-center items-center gap-1 sm:gap-2 p-3 sm:p-4 rounded-xl border-2"
+            className="flex justify-center items-center gap-1 sm:gap-2 p-3 sm:p-4 rounded-xl border-2 border-brand-border"
             role="radiogroup"
             aria-required="true"
             aria-labelledby="rating-label"
-            style={{ borderColor: colors.border }}
           >
-            {[1, 2, 3, 4, 5].map((starValue) => (
-              <button
-                key={starValue}
-                type="button"
-                aria-label={`Rate ${starValue} out of 5 stars`}
-                aria-checked={rating === starValue}
-                role="radio"
-                onClick={() => setRating(starValue)}
-                className="text-3xl transition-all duration-200 transform hover:scale-125 focus:outline-none select-none
-                  active:scale-100 hover:cursor-pointer"
-                style={{
-                  // Determine color based on the displayRating (hover/selected)
-                  color:
-                    starValue <= displayRating
-                      ? colors.primary500
-                      : colors.border,
-                  // Add a subtle drop shadow to make active stars 'glow'
-                  filter:
-                    starValue <= displayRating
-                      ? `drop-shadow(0 0 6px ${colors.primary500}aa)`
-                      : "none",
-                }}
-                onMouseEnter={() => setHoverRating(starValue)}
-                onMouseLeave={() => setHoverRating(0)}
-              >
-                ★
-              </button>
-            ))}
+            {[1, 2, 3, 4, 5].map((starValue) => {
+              const isActive = starValue <= displayRating;
+              return (
+                <Button
+                  key={starValue}
+                  type="button"
+                  aria-label={`Rate ${starValue} out of 5 stars`}
+                  aria-checked={rating === starValue}
+                  role="radio"
+                  onClick={() => setRating(starValue)}
+                  onMouseEnter={() => setHoverRating(starValue)}
+                  onMouseLeave={() => setHoverRating(0)}
+                  icon={Star}
+                  iconClassName={clsx(
+                    "w-6 h-6 transition-all duration-200 transform fill-current",
+                    isActive ? "text-brand-primary-500" : "text-brand-border"
+                  )}
+                  className={clsx(
+                    "p-0 bg-transparent hover:bg-transparent shadow-none hover:shadow-none min-w-0 transition-all duration-200 hover:scale-125 active:scale-100 cursor-pointer",
+                    isActive && "drop-shadow-[0_0_4px_var(--brand-primary500)]"
+                  )}
+                />
+              );
+            })}
           </div>
         </div>
 
         {/* --- MESSAGE INPUT --- */}
         <div className="relative">
           <textarea
-            className={`${inputClasses} resize-none scrollbar scrollbar-thin hover:scrollbar-thumb-gray-400 scrollbar-thumb-rounded`}
+            className={clsx(
+              inputClasses,
+              "resize-none scrollbar scrollbar-thin hover:scrollbar-thumb-gray-400 scrollbar-thumb-rounded"
+            )}
             rows="4"
             name="message"
             aria-label="Your feedback. What did you love? How can we improve?"
@@ -156,41 +147,41 @@ export default function FeedbackPage() {
             required
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            style={{ "--tw-ring-color": colors.primary500 }}
-            onFocus={() => setIsTextareaFocused(true)} // Set to true when user focuses
+            onFocus={() => setIsTextareaFocused(true)}
             onBlur={() => {
               setIsMessageTouched(true);
-              setIsTextareaFocused(false); // Set to false when user clicks away
+              setIsTextareaFocused(false);
             }}
           />
 
           {/* Character Status (Bottom Right, inside the textarea) */}
           <span
-            className="absolute bottom-3 right-2 text-xs font-medium select-none"
-            style={{
-              color: isMessageValid ? "#10b981" : "red",
-            }}
+            className={clsx(
+              "absolute bottom-3 right-2 text-xs font-medium select-none",
+              isMessageValid ? "text-[#10b981]" : "text-red-500"
+            )}
           >
             {/* Conditional rendering for the icon/text */}
             <div className="relative w-17 h-7 flex items-end justify-end">
               <span
-                className={`absolute ${
+                className={clsx(
+                  "absolute text-red-500",
                   isTextareaFocused && !isMessageValid
                     ? "opacity-100 transition-opacity duration-300"
                     : "opacity-0"
-                }`}
-                style={{ color: "red" }}
+                )}
               >
                 {currentLength} / {MIN_MESSAGE_LENGTH}
               </span>
 
               {/* State 2: Valid Message (Icon - fades in) */}
               <span
-                className={`absolute  ${
+                className={clsx(
+                  "absolute",
                   isMessageValid
                     ? "transition-opacity duration-300 opacity-100"
                     : "opacity-0"
-                }`}
+                )}
               >
                 <CheckCircle size={20} />
               </span>
@@ -200,39 +191,38 @@ export default function FeedbackPage() {
 
         {/* Alert Message */}
         <div
-          className={`overflow-hidden transition-all duration-300 ease-in-out -mt-5 select-none
-              ${
-                currentLength < MIN_MESSAGE_LENGTH && isMessageTouched
-                  ? "max-h-[3rem] opacity-100" // Visible and tall enough to show content
-                  : "max-h-0 opacity-0" // Hidden (collapsed height 0, invisible)
-              }`}
+          className={clsx(
+            "overflow-hidden transition-all duration-300 ease-in-out -mt-5 select-none",
+            currentLength < MIN_MESSAGE_LENGTH && isMessageTouched
+              ? "max-h-[3rem] opacity-100" // Visible and tall enough to show content
+              : "max-h-0 opacity-0" // Hidden (collapsed height 0, invisible)
+          )}
         >
-          <div className="flex items-center gap-2 text-red-500 font-medium">
-            <AlertCircle className="w-5 h-5 flex-shrink-0" />
-            <p className="text-xs sm:text-sm">
-              Please enter at least {MIN_MESSAGE_LENGTH} characters
-            </p>
-          </div>
+          <IconText
+            icon={AlertCircle}
+            size={5}
+            className="text-xs sm:text-sm font-medium text-red-500"
+          >
+            Please enter at least {MIN_MESSAGE_LENGTH} characters
+          </IconText>
         </div>
 
         {/* --- NAME INPUT --- */}
         <input
           type="text"
           name="name"
-          aria-label="Enter your name"
+          aria-label="Enter your name (optional)"
           placeholder="Your Name (optional)"
           className={inputClasses}
-          style={{ "--tw-ring-color": colors.primary500 }}
         />
 
         {/* --- EMAIL INPUT --- */}
         <input
           type="text"
           name="contact"
-          aria-label="Enter your email or phone"
+          aria-label="Enter your email or phone number (optional)"
           placeholder="Your Email or Phone (optional)"
           className={inputClasses}
-          style={{ "--tw-ring-color": colors.primary500 }}
         />
 
         {/* --- SUBMIT BUTTON --- */}
@@ -243,14 +233,9 @@ export default function FeedbackPage() {
           className={clsx(
             "w-full text-white px-6 py-4 rounded-xl font-bold uppercase tracking-wider transition-all duration-200 shadow-lg hover:shadow-xl hover:cursor-pointer",
             "disabled:opacity-40 disabled:cursor-not-allowed",
-            !isButtonDisabled &&
-              "hover:scale-[1.01] hover:[--btn-bg:var(--btn-hover-bg)]"
+            "bg-brand-primary-600 hover:bg-brand-primary-700 text-brand-active-text",
+            !isButtonDisabled && "hover:scale-[1.01]"
           )}
-          style={{
-            "--btn-bg": colors.primary600,
-            "--btn-hover-bg": colors.primary700,
-            backgroundColor: "var(--btn-bg)",
-          }}
         >
           {!loading ? (
             <>Send</>
