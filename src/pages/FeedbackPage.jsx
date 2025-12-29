@@ -1,12 +1,19 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { MessageCircle, AlertCircle, CheckCircle, Star } from "lucide-react";
+import {
+  MessageCircle,
+  AlertCircle,
+  CheckCircle,
+  Star,
+  Send,
+} from "lucide-react";
 
 import IconText from "../components/ui/IconText";
 
 import { SITE, WORKERS } from "/src/config";
 import Button from "../components/ui/Button";
 import clsx from "clsx";
+import Spinner from "../components/ui/Spinner";
 
 const MIN_MESSAGE_LENGTH = 10;
 const WORKER_ENDPOINT = WORKERS.feedbackEndpoint;
@@ -230,6 +237,10 @@ export default function FeedbackPage() {
           type="submit"
           aria-label="Send Feedback"
           disabled={isButtonDisabled}
+          icon={!loading ? Send : Spinner}
+          iconClassName={
+            !loading ? "" : "w-4 h-4 border-2 text-brand-active-text"
+          }
           className={clsx(
             "w-full text-white px-6 py-4 rounded-xl font-bold uppercase tracking-wider transition-all duration-200 shadow-lg hover:shadow-xl hover:cursor-pointer",
             "disabled:opacity-40 disabled:cursor-not-allowed",
@@ -237,14 +248,7 @@ export default function FeedbackPage() {
             !isButtonDisabled && "hover:scale-[1.01]"
           )}
         >
-          {!loading ? (
-            <>Send</>
-          ) : (
-            <>
-              <div className="inline-block w-4 h-4 mr-2 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-              Sending...
-            </>
-          )}
+          {!loading ? "Send" : "Sending..."}
         </Button>
       </form>
 
