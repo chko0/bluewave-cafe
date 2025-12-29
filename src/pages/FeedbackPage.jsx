@@ -144,7 +144,7 @@ export default function FeedbackPage() {
           <textarea
             className={clsx(
               inputClasses,
-              "resize-none scrollbar scrollbar-thin hover:scrollbar-thumb-gray-400 scrollbar-thumb-rounded"
+              "resize-none scrollbar scrollbar-thin hover:scrollbar-thumb-brand-hover-bg scrollbar-thumb-rounded"
             )}
             rows="4"
             name="message"
@@ -169,7 +169,7 @@ export default function FeedbackPage() {
             )}
           >
             {/* Conditional rendering for the icon/text */}
-            <div className="relative w-17 h-7 flex items-end justify-end">
+            <span className="relative w-[70px] h-7 flex items-end justify-end">
               <span
                 className={clsx(
                   "absolute text-red-500",
@@ -192,7 +192,7 @@ export default function FeedbackPage() {
               >
                 <CheckCircle size={20} />
               </span>
-            </div>
+            </span>
           </span>
         </div>
 
