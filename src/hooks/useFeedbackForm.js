@@ -1,14 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { WORKERS } from "../config";
 
 const MIN_MESSAGE_LENGTH = 10;
 const WORKER_ENDPOINT = WORKERS.feedbackEndpoint;
 
+const STORAGE_KEY = "feedback_draft";
+
 export function useFeedbackForm() {
   const navigate = useNavigate();
 
-  const [formState, setFormState] = useState({ rating: 0, message: "" });
+  const [formState, setFormState] = useState(() => {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    return saved
+      ? JSON.parse(saved)
+      : { rating: 0, message: "", name: "", contact: "" };
+  });
   const [touched, setTouched] = useState({ rating: false, message: false });
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState("");
@@ -16,6 +23,11 @@ export function useFeedbackForm() {
   const currentLength = formState.message.trim().replace(/\s/g, "").length;
   const isMessageValid = currentLength >= MIN_MESSAGE_LENGTH;
   const isValid = isMessageValid && formState.rating > 0;
+
+  // Automatically save to localStorage whenever formState changes
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(formState));
+  }, [formState]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,6 +52,7 @@ export function useFeedbackForm() {
       const data = await response.json();
 
       if (data.success) {
+        localStorage.removeItem(STORAGE_KEY); // Clean up the draft
         navigate("/feedback/success");
       } else {
         // Display the error message returned by the Worker

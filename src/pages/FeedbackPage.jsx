@@ -84,11 +84,11 @@ export default function FeedbackPage() {
                   icon={Star}
                   iconClassName={clsx(
                     "w-6 h-6 transition-all duration-200 transform fill-current",
-                    isActive ? "text-brand-primary-500" : "text-brand-border"
+                    isActive ? "text-brand-primary-500" : "text-brand-border",
                   )}
                   className={clsx(
                     "p-0 bg-transparent hover:bg-transparent shadow-none hover:shadow-none min-w-0 transition-all duration-200 hover:scale-125 active:scale-100 cursor-pointer",
-                    isActive && "drop-shadow-[0_0_4px_var(--brand-primary500)]"
+                    isActive && "drop-shadow-[0_0_4px_var(--brand-primary500)]",
                   )}
                 />
               );
@@ -106,7 +106,7 @@ export default function FeedbackPage() {
           <textarea
             className={clsx(
               inputClasses,
-              "resize-none scrollbar scrollbar-thin hover:scrollbar-thumb-brand-hover-bg scrollbar-thumb-rounded"
+              "resize-none scrollbar scrollbar-thin hover:scrollbar-thumb-brand-hover-bg scrollbar-thumb-rounded",
             )}
             rows="4"
             name="message"
@@ -132,7 +132,7 @@ export default function FeedbackPage() {
                 "absolute text-red-500 transition-opacity",
                 isTextareaFocused && !isMessageValid
                   ? "opacity-100"
-                  : "opacity-0"
+                  : "opacity-0",
               )}
             >
               {currentLength} / {MIN_MESSAGE_LENGTH}
@@ -140,7 +140,7 @@ export default function FeedbackPage() {
             <span
               className={clsx(
                 "absolute transition-opacity",
-                isMessageValid ? "opacity-100" : "opacity-0"
+                isMessageValid ? "opacity-100" : "opacity-0",
               )}
             >
               <CheckCircle size={20} className="text-[#10b981]" />
@@ -160,6 +160,10 @@ export default function FeedbackPage() {
           aria-label="Enter your name (optional)"
           placeholder="Your Name (optional)"
           className={inputClasses}
+          value={formState.name}
+          onChange={(e) =>
+            setFormState((prev) => ({ ...prev, name: e.target.value }))
+          }
         />
 
         {/* --- EMAIL INPUT --- */}
@@ -169,6 +173,10 @@ export default function FeedbackPage() {
           aria-label="Enter your email or phone number (optional)"
           placeholder="Your Email or Phone (optional)"
           className={inputClasses}
+          value={formState.contact}
+          onChange={(e) =>
+            setFormState((prev) => ({ ...prev, contact: e.target.value }))
+          }
         />
 
         {/* --- SUBMIT BUTTON --- */}
@@ -184,7 +192,7 @@ export default function FeedbackPage() {
             "w-full text-white px-6 py-4 rounded-xl font-bold uppercase tracking-wider transition-all duration-200 shadow-lg hover:shadow-xl hover:cursor-pointer",
             "disabled:opacity-40 disabled:cursor-not-allowed",
             "bg-brand-primary-600 hover:bg-brand-primary-700 text-brand-active-text",
-            !isValid && "hover:scale-[1.01]"
+            !isValid && "hover:scale-[1.01]",
           )}
         >
           {!loading ? "Send" : "Sending..."}
