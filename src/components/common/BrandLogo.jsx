@@ -29,32 +29,34 @@ export default function BrandLogo({
   const { colors } = useTheme();
   const layoutStyles = layoutConfig[layout];
 
-  const logoPadding = Math.max(6, size * 0.15);
-  const titleSize = size * 0.47;
-  const subtitleSize = size * 0.28;
+  // const logoPadding = Math.max(6, size * 0.15);
+  // const titleSize = size * 0.47;
+  // const subtitleSize = size * 0.28;
 
   return (
     <Link
       to="/"
       aria-label={`${SITE.name} homepage`}
+      style={{ fontSize: `${size}px` }}
       className={clsx(
         "flex items-center justify-center select-none transition-transform active:scale-95",
         layoutStyles.wrapper,
-        className
+        className,
       )}
     >
-      {/* Logo */}
+      {/* Logo Container */}
       {showLogo && (
         <div
           className={clsx(
-            "rounded-full bg-white shadow-xl flex items-center justify-center",
-            layoutStyles.logoMargin
+            "w-14 h-14 p-2 rounded-full bg-white shadow-xl flex items-center justify-center",
+            "w-[1em] h-[1em] p-[0.15em]",
+            layoutStyles.logoMargin,
           )}
-          style={{
-            width: size,
-            height: size,
-            padding: logoPadding,
-          }}
+          // style={{
+          //   width: size,
+          //   height: size,
+          //   padding: logoPadding,
+          // }}
         >
           <AppLogo
             role="img"
@@ -68,27 +70,19 @@ export default function BrandLogo({
         </div>
       )}
 
-      {/* Text */}
+      {/* Text Group */}
       <div className={clsx("flex flex-col", layoutStyles.textAlign)}>
         {showTitle && (
-          <Heading
-            className="font-extrabold tracking-wide drop-shadow-lg leading-tight"
-            style={{
-              fontSize: titleSize,
-              color: "white",
-            }}
-          >
+          <Heading className="text-[0.45em] font-extrabold tracking-wide drop-shadow-lg leading-tight text-brand-active-text">
             {SITE.name}
           </Heading>
         )}
 
         {showSubtitle && (
           <p
-            className="font-light tracking-wide opacity-90 -mt-0.5"
-            style={{
-              fontSize: subtitleSize,
-              color: colors.lightBg,
-            }}
+            className={clsx(
+              "text-[0.27em] font-light tracking-wide opacity-90 -mt-0.5 text-brand-light-bg",
+            )}
           >
             {SITE.subtitle}
           </p>
