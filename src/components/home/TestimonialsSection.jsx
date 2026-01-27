@@ -2,11 +2,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import testimonials from "../../data/testimonialsData";
 import TestimonialCard from "./testimonials/TestimonialCard";
-import { useTheme } from "../../context/ThemeContext";
 import Button from "../ui/Button";
+import clsx from "clsx";
 
 export default function TestimonialsSection() {
-  const { colors } = useTheme();
   const [index, setIndex] = useState(0);
 
   const visibleTestimonials = testimonials.slice(index, index + 3);
@@ -19,10 +18,7 @@ export default function TestimonialsSection() {
     <section className="py-16 px-6 md:px-16 max-w-7xl mx-auto">
       {/* Section Header */}
       <div className="text-center mb-16">
-        <h2
-          className="text-4xl md:text-5xl font-black mb-4 tracking-tight"
-          style={{ color: colors.primary900 }}
-        >
+        <h2 className="text-4xl md:text-5xl font-black mb-4 tracking-tight text-brand-primary-900">
           What Regulars Say
         </h2>
       </div>
@@ -50,11 +46,8 @@ export default function TestimonialsSection() {
         <Button
           onClick={next}
           trailingIcon={true}
-          className="group flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-all border-2 active:scale-95 bg-transparent hover:bg-transparent"
-          style={{
-            borderColor: `${colors.primary600}30`,
-            color: colors.primary600,
-          }}
+          className="group flex items-center gap-2 px-6 py-3 rounded-full font-bold transition-all border-2 active:scale-95 bg-transparent hover:bg-transparent
+            border-brand-primary-600/20 text-brand-primary-600"
         >
           Next Stories
         </Button>
@@ -66,16 +59,14 @@ export default function TestimonialsSection() {
               <div
                 key={i}
                 onClick={() => setIndex(i * 3)}
-                className="h-2 rounded-full transition-all duration-300"
-                style={{
-                  width: i === index / 3 ? "28px" : "10px",
-                  backgroundColor:
-                    i === index / 3
-                      ? colors.primary600
-                      : `${colors.primary600}30`,
-                }}
+                className={clsx(
+                  "h-2 rounded-full transition-all duration-300 cursor-pointer",
+                  i === index / 3
+                    ? "w-[28px] bg-brand-primary-600"
+                    : "w-[10px] bg-brand-primary-600/30",
+                )}
               />
-            )
+            ),
           )}
         </div>
       </div>

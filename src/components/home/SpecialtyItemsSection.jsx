@@ -2,12 +2,10 @@ import MenuItem from "../menu/MenuItem";
 import Button from "../ui/Button";
 import { getSpecialtyItems } from "../../utils/utils";
 import menuData from "../../data/menuData";
-import { useTheme } from "../../context/ThemeContext";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
 export default function SpecialtyItemsSection() {
-  const { colors } = useTheme();
   const items = getSpecialtyItems(menuData, 4);
 
   if (!items.length) return null;
@@ -15,10 +13,7 @@ export default function SpecialtyItemsSection() {
   return (
     <section className="relative py-16 px-6 md:px-12 overflow-hidden">
       {/* Decorative background element */}
-      <div
-        className="absolute top-0 right-0 w-1/3 h-full opacity-[0.03] pointer-events-none"
-        style={{ color: colors.primary900 }}
-      >
+      <div className="absolute top-0 right-0 w-1/3 h-full opacity-[0.03] pointer-events-none text-brand-primary-900">
         <svg viewBox="0 0 100 100" className="w-full h-full fill-current">
           <circle cx="100" cy="0" r="80" />
         </svg>
@@ -33,17 +28,11 @@ export default function SpecialtyItemsSection() {
           className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6"
         >
           <div className="max-w-2.5xl">
-            <h2
-              className="text-4xl md:text-5xl font-black mb-4 leading-tight tracking-tight"
-              style={{ color: colors.primary900 }}
-            >
+            <h2 className="text-4xl md:text-5xl font-black mb-4 leading-tight tracking-tight text-brand-primary-900">
               The Specialty{" "}
-              <span style={{ color: colors.primary600 }}>Picks</span>
+              <span className="text-brand-primary-600">Picks</span>
             </h2>
-            <p
-              className="text-lg md:text-xl leading-relaxed opacity-80"
-              style={{ color: colors.primary900 }}
-            >
+            <p className="text-lg md:text-xl leading-relaxed opacity-80 text-brand-primary-900">
               Hand-selected favorites and seasonal highlights curated for the
               true coffee enthusiast.
             </p>
@@ -53,8 +42,7 @@ export default function SpecialtyItemsSection() {
           <Button
             to="/menu"
             variant="ghost"
-            className="hidden md:flex items-center gap-2 font-bold group bg-transparent hover:bg-transparent"
-            style={{ color: colors.primary600 }}
+            className="hidden md:flex items-center gap-2 font-bold group bg-transparent hover:bg-transparent text-brand-primary-600"
           >
             Browse all items
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -84,11 +72,7 @@ export default function SpecialtyItemsSection() {
         <div className="mt-12 flex justify-center md:hidden">
           <Button
             to="/menu"
-            className="w-full sm:w-auto rounded-2xl px-8 py-4 text-md font-semibold shadow-xl shadow-blue-900/10"
-            style={{
-              backgroundColor: colors.primary600,
-              color: "#fff",
-            }}
+            className="w-full sm:w-auto rounded-2xl px-8 py-4 text-md font-semibold shadow-xl shadow-blue-900/10 text-brand-active-bg bg-brand-primary-600"
           >
             Explore Full Menu
           </Button>

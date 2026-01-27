@@ -1,14 +1,12 @@
+import "/src/styles/globals.css";
 import Badge from "../ui/Badge";
 import Button from "../ui/Button";
 import { SITE } from "/src/config";
-import { useTheme } from "/src/context/ThemeContext";
 import cafeHero from "/cafe-hero.webp";
 import { Coffee } from "lucide-react";
-import "/src/styles/globals.css";
 import useScrollTo from "../../hooks/useScrollTo";
 
 export default function HeroSection() {
-  const { colors } = useTheme();
   const scrollTo = useScrollTo();
 
   return (
@@ -17,10 +15,10 @@ export default function HeroSection() {
         relative
         w-full
         overflow-hidden
+        bg-gradient-to-br
+        from-brand-light-bg
+        to-brand-inactive-bg
       "
-      style={{
-        background: `linear-gradient(135deg, ${colors.lightBg} 0%, ${colors.inactiveBg} 100%)`,
-      }}
     >
       {/* Decorative blur */}
       <div
@@ -32,8 +30,8 @@ export default function HeroSection() {
           blur-[120px]
           opacity-20
           pointer-events-none
+          text-brand-primary-400
         "
-        style={{ backgroundColor: colors.primary400 }}
       />
 
       {/* Content container */}
@@ -59,11 +57,8 @@ export default function HeroSection() {
               text-xs sm:text-sm
               font-semibold
               shadow-sm
+              text-brand-primary-900
             "
-            style={{
-              backgroundColor: colors.primary100,
-              color: colors.primary900,
-            }}
           >
             Established 2018
           </Badge>
@@ -76,14 +71,12 @@ export default function HeroSection() {
               leading-tight
               tracking-tight
               mb-5
+              text-brand-primary-900
             "
-            style={{ color: colors.primary900 }}
           >
             Tripoli's Cozy{" "}
-            <span className="italic" style={{ color: colors.primary600 }}>
-              Workspace
-            </span>{" "}
-            & Community
+            <span className="italic text-brand-primary-600">Workspace</span> &
+            Community
           </h1>
 
           <p
@@ -93,8 +86,8 @@ export default function HeroSection() {
               mb-8
               leading-relaxed
               opacity-90
+              text-brand-primary-900
             "
-            style={{ color: colors.primary900 }}
           >
             {SITE.description}
           </p>
@@ -113,11 +106,9 @@ export default function HeroSection() {
                 hover:-translate-y-0.5 hover:shadow-xl hover:saturate-110
                 focus-visible:outline-none
                 focus-visible:ring-2 focus-visible:ring-offset-2
+                text-white
+                bg-brand-primary-600
               "
-              style={{
-                backgroundColor: colors.primary600,
-                color: "#fff",
-              }}
             >
               Explore Menu
             </Button>
@@ -135,12 +126,10 @@ export default function HeroSection() {
                 hover:-translate-y-0.5 hover:shadow-md cursor-pointer
                 focus-visible:outline-none
                 focus-visible:ring-2 focus-visible:ring-offset-2
+                bg-brand-light-bg
+                text-brand-primary-900
+                border-brand-border
               "
-              style={{
-                backgroundColor: colors.lightBg,
-                borderColor: colors.border,
-                color: colors.primary900,
-              }}
             >
               Visit Us
             </Button>
@@ -172,11 +161,10 @@ export default function HeroSection() {
                 absolute inset-y-0 left-0
                 w-24
                 pointer-events-none
+                bg-gradient-to-l
+                from-transparent
+                to-brand-active-text/80
               "
-              style={{
-                background:
-                  "linear-gradient(to left, transparent, rgba(255,255,255,0.8))",
-              }}
             />
           </div>
         </div>

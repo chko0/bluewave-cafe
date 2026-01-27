@@ -1,10 +1,7 @@
-import { useTheme } from "../../../context/ThemeContext";
 import { Maximize2 } from "lucide-react";
 import Button from "../../ui/Button";
 
 export default function AnnouncementCard({ announcement, onOpen }) {
-  const { colors } = useTheme();
-
   const Icon = announcement.icon ?? null;
 
   return (
@@ -13,11 +10,8 @@ export default function AnnouncementCard({ announcement, onOpen }) {
       tabIndex={0}
       onKeyDown={(e) => e.key === "Enter" && onOpen()}
       onClick={onOpen}
-      className="group flex flex-row items-center gap-4 px-5 py-4 rounded-2xl border border-white/20 backdrop-blur-sm shadow-sm transition-all hover:shadow-md cursor-pointer"
-      style={{
-        background: `linear-gradient(to right, ${colors.primary600}, ${colors.primary500})`,
-        color: colors.activeText,
-      }}
+      className="group flex flex-row items-center gap-4 px-5 py-4 rounded-2xl border border-white/20 backdrop-blur-sm shadow-sm transition-all hover:shadow-md cursor-pointer
+            text-brand-active-text bg-gradient-to-r from-brand-primary-600 to-brand-primary-500"
     >
       <div className="p-2 rounded-xl bg-white/10 hidden sm:block">
         {Icon && <Icon className="w-5 h-5 text-white" />}
@@ -41,8 +35,7 @@ export default function AnnouncementCard({ announcement, onOpen }) {
           <Button
             to={announcement.cta.to}
             onClick={(e) => e.stopPropagation()} // Prevent modal when clicking button
-            className="!py-1.5 !px-4 bg-white text-primary-900 text-xs font-bold rounded-full hover:bg-opacity-90 transition-colors shadow-sm"
-            style={{ color: colors.primary900 }}
+            className="!py-1.5 !px-4 bg-white text-brand-primary-900 text-xs font-bold rounded-full hover:bg-opacity-90 transition-colors shadow-sm"
           >
             {announcement.cta.label}
           </Button>

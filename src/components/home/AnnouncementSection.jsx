@@ -1,10 +1,7 @@
 import { SITE } from "../../config/site";
-import { useTheme } from "../../context/ThemeContext";
 import AnnouncementRail from "./announcements/AnnouncementRail";
 
 export default function AnnouncementSection() {
-  const { colors } = useTheme();
-
   return (
     <section
       aria-labelledby="announcements-heading"
@@ -13,26 +10,14 @@ export default function AnnouncementSection() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-4 flex items-center gap-3">
           <span className="relative flex h-2 w-2">
-            <span
-              className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75"
-              style={{ backgroundColor: colors.primary500 }}
-            ></span>
-            <span
-              className="relative inline-flex rounded-full h-2 w-2"
-              style={{ backgroundColor: colors.primary600 }}
-            ></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 bg-brand-primary-500" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-primary-600" />
           </span>
 
-          <h2
-            className="text-xs md:text-sm font-bold uppercase tracking-widest opacity-70"
-            style={{ color: colors.primary900 }}
-          >
+          <h2 className="text-xs md:text-sm font-bold uppercase tracking-widest opacity-70 text-brand-primary-900">
             Today at {SITE.shortName}
           </h2>
-          <div
-            className="h-[1px] flex-1 rounded-full opacity-10"
-            style={{ backgroundColor: colors.primary900 }}
-          />
+          <div className="h-[1px] flex-1 rounded-full opacity-10 bg-brand-primary-900" />
         </div>
 
         {/*

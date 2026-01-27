@@ -1,10 +1,7 @@
-import { useTheme } from "/src/context/ThemeContext";
 import { Coffee, Users, Laptop } from "lucide-react";
 import { SITE } from "/src/config";
 
 export default function WhyBluewaveSection() {
-  const { colors } = useTheme();
-
   const features = [
     {
       icon: Coffee,
@@ -27,24 +24,15 @@ export default function WhyBluewaveSection() {
   ];
 
   return (
-    <section
-      className="py-24 px-4 bg-gradient-to-b from-white to-[var(--section-bg)]"
-      style={{ "--section-bg": colors.lightBg }}
-    >
+    <section className="py-24 px-4 bg-gradient-to-b from-white to-brand-light-bg">
       <div className="max-w-5xl mx-auto text-center">
         {/* Title */}
-        <h2
-          className="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight"
-          style={{ color: colors.primary900 }}
-        >
+        <h2 className="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight text-brand-primary-900">
           Why {SITE.shortName}?
         </h2>
 
         {/* Body */}
-        <p
-          className="text-base md:text-lg leading-relaxed max-w-3xl mx-auto mb-12"
-          style={{ color: colors.primary700 }}
-        >
+        <p className="text-base md:text-lg leading-relaxed max-w-3xl mx-auto mb-12 text-brand-primary-700">
           Located in Tripoli's Mina District, {SITE.shortName} blends cozy
           aesthetics with a modern, work-friendly design. We're fuel for
           students, freelancers, and every coffee-lover in between — a place to
@@ -56,25 +44,15 @@ export default function WhyBluewaveSection() {
           {features.map(({ icon: Icon, title, description }) => (
             <div
               key={title}
-              className="flex flex-col items-center md:items-start gap-4 p-6 rounded-2xl shadow-lg hover:shadow-primary-300/40 transition-shadow duration-300 bg-white"
-              style={{ border: `1px solid ${colors.border}` }}
+              className="flex flex-col items-center md:items-start gap-4 p-6 rounded-2xl shadow-lg hover:shadow-primary-300/40 transition-shadow duration-300 bg-white border-1 border-brand-border"
             >
               {Icon && (
-                <Icon
-                  className="text-primary-600 w-8 h-8"
-                  style={{ color: colors.primary700 }}
-                />
+                <Icon className="text-primary-600 w-8 h-8 text-brand-primary-700" />
               )}
-              <h3
-                className="text-lg md:text-xl font-bold"
-                style={{ color: colors.primary700 }}
-              >
+              <h3 className="text-lg md:text-xl font-bold text-brand-primary-700">
                 {title}
               </h3>
-              <p
-                className="text-sm md:text-base"
-                style={{ color: colors.primary700 }}
-              >
+              <p className="text-sm md:text-base text-brand-primary-700">
                 {description}
               </p>
             </div>
@@ -82,10 +60,7 @@ export default function WhyBluewaveSection() {
         </div>
 
         {/* Subtle Divider */}
-        <div
-          className="mt-16 mx-auto w-24 h-1 rounded-full"
-          style={{ backgroundColor: colors.primary200 }}
-        />
+        <div className="mt-16 mx-auto w-24 h-1 rounded-full bg-brand-primary-200" />
       </div>
     </section>
   );

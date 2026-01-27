@@ -1,7 +1,6 @@
 import { MapPin, Phone, Navigation } from "lucide-react";
 import { SITE, LOCATION, OPENING_HOURS, DAYS_ORDER } from "/src/config";
 import { getOpenStatus } from "/src/utils/utils";
-import { useTheme } from "/src/context/ThemeContext";
 import clsx from "clsx";
 import Button from "../ui/Button";
 import { useState } from "react";
@@ -9,8 +8,6 @@ import Badge from "../ui/Badge";
 import IconText from "../ui/IconText";
 
 export default function LocationSection() {
-  const { colors } = useTheme();
-
   const [mapLoaded, setMapLoaded] = useState(false);
 
   const status = getOpenStatus(OPENING_HOURS);
@@ -29,19 +26,16 @@ export default function LocationSection() {
   return (
     <section
       id="location"
-      className="py-20 md:py-32 px-4"
-      style={{ backgroundColor: colors.lightBg }}
+      className="py-20 md:py-32 px-4 bg-brand-light-bg"
+      // style={{ backgroundColor: colors.lightBg }}
     >
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-14 text-center max-w-2xl mx-auto">
-          <h2
-            className="text-4xl md:text-5xl font-extrabold mb-3 tracking-tight"
-            style={{ color: colors.primary900 }}
-          >
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-3 tracking-tight text-brand-primary-900">
             Visit Us at {SITE.name}
           </h2>
-          <p className="text-lg" style={{ color: colors.primary700 }}>
+          <p className="text-lg text-brand-primary-700">
             {LOCATION.tagline || "Your local spot for coffee and community."}
           </p>
         </div>
@@ -51,9 +45,8 @@ export default function LocationSection() {
           className={clsx(
             "grid lg:grid-cols-5 overflow-hidden rounded-3xl border",
             "shadow-xl hover:shadow-2xl transition-shadow duration-300",
-            "bg-white/60 backdrop-blur-md"
+            "bg-white/60 backdrop-blur-md border-brand-border",
           )}
-          style={{ borderColor: colors.border }}
         >
           {/* Map (should take up 3/5 on large screens) */}
           <div className="relative h-96 lg:h-auto lg:col-span-3">
@@ -75,7 +68,7 @@ export default function LocationSection() {
               src={LOCATION.map.embedUrl}
               className={clsx(
                 "absolute inset-0 w-full h-full border-0 transition-opacity duration-700",
-                mapLoaded ? "opacity-100" : "opacity-0"
+                mapLoaded ? "opacity-100" : "opacity-0",
               )}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
@@ -92,7 +85,7 @@ export default function LocationSection() {
               className={clsx(
                 "absolute bottom-6 left-6 inline-flex items-center gap-2 px-5 py-2 rounded-full text-base font-bold shadow-xl transition",
                 "bg-white text-gray-900 border border-gray-200",
-                "hover:bg-gray-50 hover:scale-[1.03]"
+                "hover:bg-gray-50 hover:scale-[1.03]",
               )}
             >
               Get Directions
@@ -111,7 +104,7 @@ export default function LocationSection() {
                 <span
                   className={clsx(
                     "w-4 h-4 rounded-full shadow-md",
-                    statusColors.bg
+                    statusColors.bg,
                   )}
                 />
                 <span className={clsx("text-xl font-bold", statusColors.text)}>
@@ -121,10 +114,7 @@ export default function LocationSection() {
 
               {/* Hours Grid */}
               <div className="flex flex-col gap-2">
-                <h3
-                  className="text-xl font-semibold mb-2"
-                  style={{ color: colors.primary900 }}
-                >
+                <h3 className="text-xl font-semibold mb-2 text-brand-primary-900">
                   Operating Hours
                 </h3>
                 {DAYS_ORDER.map((day) => {
@@ -136,13 +126,18 @@ export default function LocationSection() {
                       key={day}
                       className={clsx(
                         "flex justify-between py-1",
-                        isToday ? "font-extrabold" : "font-medium text-gray-600"
+                        isToday
+                          ? "font-extrabold"
+                          : "font-medium text-gray-600",
+                        isToday
+                          ? "border-brand-primary-400"
+                          : "border-brand-border",
                       )}
-                      style={{
-                        borderColor: isToday
-                          ? colors.primary400
-                          : colors.border,
-                      }}
+                      // style={{
+                      //   borderColor: isToday
+                      //     ? colors.primary400
+                      //     : colors.border,
+                      // }}
                     >
                       <span className="capitalize">{day}</span>
                       <span
@@ -151,7 +146,7 @@ export default function LocationSection() {
                             ? isToday
                               ? "text-gray-900"
                               : "text-gray-700"
-                            : "text-red-500"
+                            : "text-red-500",
                         )}
                       >
                         {hours ? `${hours.open} – ${hours.close}` : "Closed"}
@@ -163,28 +158,18 @@ export default function LocationSection() {
             </div>
 
             {/* Contact Info */}
-            <div
-              className="flex flex-col gap-3 pt-6 mt-6 border-t"
-              style={{ borderColor: colors.border }}
-            >
-              <h3
-                className="text-xl font-semibold"
-                style={{ color: colors.primary900 }}
-              >
+            <div className="flex flex-col gap-3 pt-6 mt-6 border-t border-brand-border">
+              <h3 className="text-xl font-semibold text-brand-primary-900">
                 Contact & Location
               </h3>
               <IconText
                 icon={MapPin}
                 size="5"
                 gap="3"
-                className="items-start"
+                className="items-start text-brand-primary-700"
                 iconClassName="mt-1"
-                style={{ color: colors.primary700 }}
               >
-                <span
-                  className="text-base leading-relaxed"
-                  style={{ color: colors.primary800 }}
-                >
+                <span className="text-base leading-relaxed text-brand-primary-800">
                   {LOCATION.address}
                 </span>
               </IconText>
@@ -192,18 +177,13 @@ export default function LocationSection() {
                 icon={Phone}
                 size="5"
                 gap="3"
-                className="items-start"
+                className="items-start text-brand-primary-700"
                 iconClassName="mt-1"
-                style={{ color: colors.primary700 }}
               >
-                <span
-                  className="text-base leading-relaxed"
-                  style={{ color: colors.primary800 }}
-                >
+                <span className="text-base leading-relaxed text-brand-primary-800">
                   <a
                     href={`tel:${LOCATION.contact.phone}`}
-                    className="text-base font-semibold hover:text-primary-700 transition"
-                    style={{ color: colors.primary800 }}
+                    className="text-base font-semibold hover:text-primary-700 transition text-brand-primary-800"
                   >
                     {LOCATION.contact.phone}
                   </a>

@@ -4,14 +4,11 @@ import announcements from "/src/data/announcementsData";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import Button from "/src/components/ui/Button";
-import { useTheme } from "/src/context/ThemeContext";
 import useAutoRotate from "/src/hooks/useAutoRotate";
 
 const ROTATION_INTERVAL = 5000;
 
 export default function AnnouncementRail() {
-  const { colors } = useTheme();
-
   const [index, setIndex] = useState(0);
   const [modalAnnouncement, setModalAnnouncement] = useState(null);
   const isModalOpen = Boolean(modalAnnouncement);
@@ -84,8 +81,7 @@ export default function AnnouncementRail() {
           {openAnnouncement?.cta && (
             <Button
               to={openAnnouncement?.cta.to}
-              style={{ backgroundColor: colors.primary600, color: "#fff" }}
-              className="w-full justify-center py-3 rounded-2xl font-bold"
+              className="w-full justify-center bg-brand-primary-600 text-white py-3 rounded-2xl font-bold"
             >
               {openAnnouncement?.cta.label}
             </Button>

@@ -21,7 +21,7 @@ export default function Button({
   const accessibilityLabel = children ? undefined : ariaLabel;
 
   const baseClasses =
-    "group inline-flex items-center gap-2 px-4 py-2 rounded-md font-semibold transition-colors text-white bg-blue-600 hover:bg-blue-700";
+    "group inline-flex items-center gap-2 px-4 py-2 rounded-md font-semibold transition-colors text-white bg-brand-primary-600";
 
   const finalClasses = twMerge(clsx(baseClasses, className));
 
