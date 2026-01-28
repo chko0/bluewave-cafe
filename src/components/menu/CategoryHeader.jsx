@@ -1,29 +1,20 @@
-import { useTheme } from "../../context/ThemeContext";
+import clsx from "clsx";
 
 export default function CategoryHeader({ activeCategory, ActiveIcon }) {
-  const { colors } = useTheme();
-
-  const gradient = `linear-gradient(to right, ${colors.primary500}, ${colors.primary600}, ${colors.primary700})`;
-  const iconColor = colors.primary500;
-  const textColor = colors.primary900;
+  const gradient = `bg-gradient-to-r from-brand-primary-500 via-brand-primary-600 to-brand-primary-700`;
 
   return (
-    <h2
-      className="text-2xl/7 font-bold mb-6 flex items-center justify-center gap-3"
-      style={{ color: textColor }}
-    >
+    <h2 className="text-2xl/7 font-bold mb-6 flex items-center justify-center gap-3 text-brand-primary-900">
       {/* Left gradient bar */}
       <span
-        className="block h-1 w-16 rounded-full"
-        style={{ background: gradient }}
+        className={clsx("block h-1 w-16 rounded-full", gradient)}
         translate="no"
       ></span>
 
       {/* Icon #1 */}
       <ActiveIcon
         key="left"
-        className="w-6 h-6"
-        style={{ color: iconColor }}
+        className="w-6 h-6 text-brand-primary-500"
         translate="no"
       />
 
@@ -35,15 +26,13 @@ export default function CategoryHeader({ activeCategory, ActiveIcon }) {
       {/* Icon #2 */}
       <ActiveIcon
         key="right"
-        className="w-6 h-6"
-        style={{ color: iconColor }}
+        className="w-6 h-6 text-brand-primary-500"
         translate="no"
       />
 
       {/* Right gradient bar */}
       <span
-        className="block h-1 w-16 rounded-full"
-        style={{ background: gradient }}
+        className={clsx("block h-1 w-16 rounded-full", gradient)}
         translate="no"
       ></span>
     </h2>

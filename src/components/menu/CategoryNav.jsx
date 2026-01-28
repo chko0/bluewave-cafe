@@ -1,5 +1,4 @@
 import menuData from "../../data/menuData";
-import { useTheme } from "../../context/ThemeContext";
 import { useEffect, useRef } from "react";
 import Button from "../ui/Button";
 import clsx from "clsx";
@@ -9,12 +8,7 @@ export default function CategoryNav({
   handleCategoryChange,
   navbarHeight,
 }) {
-  const { colors } = useTheme();
-
   const activeItemRef = useRef(null);
-
-  const hoverBackgroundColor = colors.hoverBg; // Equivalent to a color-300 level background
-  const hoverTextColor = colors.inactiveText; // Keeps the text readable against the light hover background
 
   useEffect(() => {
     activeItemRef.current?.scrollIntoView({
@@ -27,27 +21,19 @@ export default function CategoryNav({
 
   return (
     <nav
-      className="z-40 overflow-x-auto border-b shadow-sm sticky"
-      style={{
-        top: navbarHeight + "px",
-        backgroundColor: colors.lightBg,
-        borderColor: colors.border,
-      }}
+      className="z-40 overflow-x-auto border-b shadow-sm sticky bg-brand-light-bg border-brand-border top-[var(--navbar-height)]"
+      style={{ "--navbar-height": `${navbarHeight}px` }}
     >
       {/* Left gradient overlay */}
       <div
-        className="absolute top-0 left-0 h-full w-11 pointer-events-none"
-        style={{
-          background: `linear-gradient(to right, ${colors.lightBg}, transparent, transparent)`,
-        }}
+        className="absolute top-0 left-0 h-full w-11 pointer-events-none
+          bg-gradient-to-r from-brand-light-bg via-transparent to-transparent"
       />
 
       {/* Right gradient overlay */}
       <div
-        className="absolute top-0 right-0 h-full w-11 pointer-events-none"
-        style={{
-          background: `linear-gradient(to left, ${colors.lightBg}, transparent, transparent)`,
-        }}
+        className="absolute top-0 right-0 h-full w-11 pointer-events-none
+          bg-gradient-to-l from-brand-light-bg via-transparent to-transparent"
       />
 
       <div className="overflow-x-auto scrollbar scrollbar-thumb-rounded scrollbar-thin">
@@ -59,29 +45,21 @@ export default function CategoryNav({
             return (
               <Button
                 key={categoryId}
-                icon={Icon}
-                iconClassName="w-5 h-5"
                 ref={isActive ? activeItemRef : null}
                 onClick={() => handleCategoryChange(categoryId)}
                 aria-label={`Select ${categoryLabel} category`}
+                icon={Icon}
+                iconClassName="w-5 h-5"
                 className={clsx(
-                  "px-5 py-2 rounded-full font-semibold transition-all select-none hover:scale-105 active:scale-95",
-                  !isActive &&
-                    "bg-[var(--inactive-bg)] text-[var(--inactive-text)] hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]",
-                  activeCategory === categoryId
-                    ? "shadow-lg scale-105"
-                    : "hover:scale-105 hover:shadow hover:cursor-pointer"
-                )}
-                style={{
-                  "--hover-bg": hoverBackgroundColor,
-                  "--hover-text": hoverTextColor,
-                  "--inactive-bg": colors.inactiveBg,
-                  "--inactive-text": colors.inactiveText,
+                  // Base Styles
+                  "px-5 py-2 rounded-full font-semibold select-none transition-all duration-300",
+                  "hover:scale-105 hover:cursor-pointer active:scale-95",
 
-                  backgroundColor: isActive ? colors.activeBg : undefined,
-                  color: isActive ? colors.activeText : undefined,
-                  boxShadow: isActive ? "0 4px 10px rgba(0,0,0,0.2)" : "none",
-                }}
+                  // Active vs Inactive States
+                  isActive
+                    ? "bg-brand-active-bg text-brand-active-text scale-105 shadow-[0_4px_10px_rgba(0,0,0,0.2)]"
+                    : "bg-brand-inactive-bg text-brand-inactive-text hover:bg-brand-hover-bg hover:shadow-md",
+                )}
               >
                 {categoryLabel}
               </Button>

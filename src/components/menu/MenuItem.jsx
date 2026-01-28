@@ -1,21 +1,15 @@
 import { Star, Leaf, TrendingUp, Droplet, Flower } from "lucide-react";
 import Badge from "../ui/Badge";
-import { useTheme } from "../../context/ThemeContext";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/opacity.css";
 
 export default function MenuItem({ index, item, highPriorityLoading }) {
   const { name, image, description, price } = item;
 
-  const { colors } = useTheme();
-
   return (
     <div
-      className="rounded-3xl border-t-4 overflow-hidden flex flex-col h-full shadow-md"
-      style={{
-        background: `linear-gradient(to bottom right, ${colors.lightBg}, #f4f7fa, #ffffff)`,
-        borderTopColor: colors.primary500,
-      }}
+      className="rounded-3xl border-t-4 overflow-hidden flex flex-col h-full shadow-md
+        bg-gradient-to-br from-brand-light-bg via-[#f4f7fa] to-white border-t-brand-primary-500"
     >
       {/* Image */}
       <div className="overflow-hidden rounded-t-3xl relative h-56">
@@ -33,11 +27,8 @@ export default function MenuItem({ index, item, highPriorityLoading }) {
         <div className="absolute top-0 left-0 w-full h-full rounded-t-3xl pointer-events-none z-0">
           {/* Subtle gradient overlay at the top for badge separation */}
           <div
-            className="absolute top-0 left-0 w-full h-16 rounded-t-3xl"
-            style={{
-              background: `linear-gradient(to bottom right, ${colors.primary900}60, ${colors.primary900}50, 20%, transparent 60%)`,
-              pointerEvents: "none",
-            }}
+            className="absolute top-0 left-0 w-full h-16 rounded-t-3xl pointer-events-none
+              bg-gradient-to-b from-brand-primary-900/20 via-brand-primary-900/5 to-transparent"
           />
         </div>
 
@@ -65,10 +56,7 @@ export default function MenuItem({ index, item, highPriorityLoading }) {
         <div className="flex justify-between items-start mb-1 gap-2">
           <div className="flex flex-col flex-grow min-w-0">
             <div className="flex items-center flex-wrap gap-2 min-w-0">
-              <h3
-                className="text-xl md:text-2xl font-extrabold flex-shrink-0"
-                style={{ color: colors.primary900 }}
-              >
+              <h3 className="text-brand-primary-900 text-xl md:text-2xl font-extrabold flex-shrink-0">
                 {name}
               </h3>
 
@@ -82,10 +70,7 @@ export default function MenuItem({ index, item, highPriorityLoading }) {
             </div>
           </div>
 
-          <p
-            className="font-bold text-lg flex-shrink-0"
-            style={{ color: colors.primary600 }}
-          >
+          <p className="text-brand-primary-600 font-bold text-lg flex-shrink-0">
             ${price}
           </p>
         </div>
