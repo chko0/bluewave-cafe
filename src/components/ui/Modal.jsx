@@ -2,7 +2,6 @@ import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Info, X } from "lucide-react";
 import { useEffect } from "react";
-import { useTheme } from "../../context/ThemeContext";
 
 export default function Modal({ isOpen, onClose, children }) {
   // Prevent background scrolling
@@ -52,22 +51,17 @@ export default function Modal({ isOpen, onClose, children }) {
         </div>
       )}
     </AnimatePresence>,
-    document.body
+    document.body,
   );
 }
 
 export function ModalContent({ icon: Icon = Info, title, message, children }) {
-  const { colors } = useTheme();
-
   return (
     <div className="flex flex-col">
       <div className="flex items-center gap-3 mb-4">
         {Icon && (
-          <div
-            className="p-2 rounded-xl"
-            style={{ backgroundColor: `${colors.primary100}` }}
-          >
-            <Icon className="w-6 h-6" style={{ color: colors.primary600 }} />
+          <div className="p-2 rounded-xl bg-brand-primary-100">
+            <Icon className="w-6 h-6 text-brand-primary-600" />
           </div>
         )}
         <h3 className="font-bold text-lg text-gray-900">{title}</h3>

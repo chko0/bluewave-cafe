@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { useTheme } from "../../context/ThemeContext";
 import { motion } from "framer-motion";
 
@@ -22,20 +23,22 @@ export default function ThemeIcon({ themeKey, theme, onClick }) {
       <motion.button
         onClick={handleClick}
         aria-label={`Select ${theme.name} theme`}
-        className="w-8 h-8 rounded-xl transition-all duration-300 
-                   flex items-center justify-center"
-        whileHover={{ scale: isSelected ? 1.17 : 1.07 }}
-        whileTap={{ scale: 0.94 }}
+        className={clsx(
+          "h-8 w-8 rounded-xl transition-all duration-300",
+          "bg-gradient-to-br from-[var(--active-bg)] to-[var(--primary-500)]",
+          "border-2",
+          isSelected
+            ? "border-[var(--primary-900)] ring-4 ring-[var(--primary-600)]/30 shadow-lg"
+            : "border-[var(--border-color)] shadow-sm",
+        )}
+        whileHover={{ scale: isSelected ? 1.15 : 1.1 }}
+        whileTap={{ scale: 0.95 }}
         style={{
-          background: `linear-gradient(135deg, ${theme.activeBg}, ${theme.primary500})`,
-          border: `2px solid ${isSelected ? theme.primary900 : theme.border}`,
-          boxShadow: isSelected
-            ? `
-                0 0 0 2px ${theme.activeBg},
-                0 0 0 6px ${theme.primary600}40,
-                0 4px 16px rgba(0,0,0,0.25)
-              `
-            : "0 2px 6px rgba(0,0,0,0.15)",
+          "--active-bg": theme.activeBg,
+          "--primary-500": theme.primary500,
+          "--primary-600": theme.primary600,
+          "--primary-900": theme.primary900,
+          "--border-color": theme.border,
         }}
       />
 
