@@ -2,6 +2,7 @@ import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Info, X } from "lucide-react";
 import { useEffect } from "react";
+import IconText from "./IconText";
 
 export default function Modal({ isOpen, onClose, children }) {
   // Prevent background scrolling
@@ -58,16 +59,18 @@ export default function Modal({ isOpen, onClose, children }) {
 export function ModalContent({ icon: Icon = Info, title, message, children }) {
   return (
     <div className="flex flex-col">
-      <div className="flex items-center gap-3 mb-4">
-        {Icon && (
-          <div className="p-2 rounded-xl bg-brand-primary-100">
-            <Icon className="w-6 h-6 text-brand-primary-600" />
-          </div>
-        )}
-        <h3 className="font-bold text-lg text-gray-900">{title}</h3>
+      <div>
+        <IconText
+          icon={Icon}
+          iconClassName="w-6 h-6 text-brand-primary-600"
+          className="bg-brand-primary-100 mb-4"
+          gap="3"
+        >
+          <h3 className="font-bold text-lg text-gray-900">{title}</h3>
+        </IconText>
       </div>
 
-      <p className="text-gray-600 leading-relaxed mb-6">{message}</p>
+      <p className="text-gray-600 leading-relaxed mb-2">{message}</p>
 
       {/* Allows for custom buttons or inputs */}
       <div className="flex flex-col gap-2">{children}</div>

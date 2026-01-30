@@ -4,7 +4,7 @@ import { Icon } from "@iconify/react";
 
 export default function Footer() {
   return (
-    <footer className="text-white mt-16 min-h-62 w-full bg-gradient-to-r from-brand-primary-600 to-brand-primary-700">
+    <footer className="text-white min-h-62 w-full bg-gradient-to-r from-brand-primary-600 to-brand-primary-700">
       <div className="max-w-7xl mx-auto px-6 py-10 grid gap-8 sm:grid-cols-3">
         {/* Brand / About */}
         <div>

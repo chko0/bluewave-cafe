@@ -24,7 +24,7 @@ export default function WhyBluewaveSection() {
   ];
 
   return (
-    <section className="py-24 px-4 bg-gradient-to-b from-white to-brand-light-bg">
+    <section className="py-24 px-4 bg-gradient-to-b from-white to-brand-light-bg -mb-16">
       <div className="max-w-5xl mx-auto text-center">
         {/* Title */}
         <h2 className="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight text-brand-primary-900">

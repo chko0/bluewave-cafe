@@ -72,7 +72,7 @@ export default function SpecialtyItemsSection() {
         <div className="mt-12 flex justify-center md:hidden">
           <Button
             to="/menu"
-            className="w-full sm:w-auto rounded-2xl px-8 py-4 text-md font-semibold shadow-xl shadow-blue-900/10 text-brand-active-bg bg-brand-primary-600"
+            className="w-full sm:w-auto rounded-2xl px-8 py-4 text-md text-white font-semibold shadow-xl shadow-blue-900/10 bg-brand-primary-600"
           >
             Explore Full Menu
           </Button>

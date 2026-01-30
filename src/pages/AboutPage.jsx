@@ -1,6 +1,7 @@
 import { MapPin, Phone, Mail, Coffee } from "lucide-react";
 import heroImg from "/cafe-hero.webp";
 import { SITE, LOCATION } from "/src/config";
+import IconText from "../components/ui/IconText";
 
 export default function AboutPage() {
   return (
@@ -42,32 +43,43 @@ export default function AboutPage() {
           href={`https://maps.google.com/?q=${LOCATION.address}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-3 group transition-opacity hover:opacity-85 focus:outline-none"
         >
-          <MapPin className="w-6 h-6 text-brand-primary-500" />
-          <p>{LOCATION.address}</p>
+          <IconText
+            icon={MapPin}
+            className="transition-opacity hover:opacity-85 focus:outline-none"
+            gap="3"
+            iconClassName="w-6 h-6 text-brand-primary-500"
+          >
+            {LOCATION.address}
+          </IconText>
         </a>
 
         {/* 2. Phone Link */}
-        <a
-          href={`tel:${LOCATION.contact.phone}`}
-          className="flex items-center gap-3 group transition-opacity hover:opacity-85 focus:outline-none"
-        >
-          <Phone className="w-6 h-6 text-brand-primary-500" />
-          <p>{LOCATION.contact.phone}</p>
+        <a href={`tel:${LOCATION.contact.phone}`}>
+          <IconText
+            icon={Phone}
+            className="transition-opacity hover:opacity-85 focus:outline-none"
+            gap="3"
+            iconClassName="w-6 h-6 text-brand-primary-500"
+          >
+            {LOCATION.contact.phone}
+          </IconText>
         </a>
 
         {/* 3. Email Link */}
-        <a
-          href={`mailto:${LOCATION.contact.email}`}
-          className="flex items-center gap-3 group transition-opacity hover:opacity-85 focus:outline-none"
-        >
-          <Mail className="w-6 h-6 text-brand-primary-500" />
-          <p>{LOCATION.contact.email}</p>
+        <a href={`mailto:${LOCATION.contact.email}`}>
+          <IconText
+            icon={Mail}
+            className="transition-opacity hover:opacity-85 focus:outline-none"
+            gap="3"
+            iconClassName="w-6 h-6 text-brand-primary-500"
+          >
+            {LOCATION.contact.email}
+          </IconText>
         </a>
       </section>
 
-      {/* Mission / Values */}
+      {/* Mission & Values */}
       <section className="p-8 rounded-3xl shadow-md text-center space-y-4 bg-white">
         <h3 className="text-2xl font-bold text-brand-primary-900">
           Our Mission

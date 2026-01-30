@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import IconText from "../ui/IconText";
 import BrandLogo from "../common/BrandLogo";
+import { motion, AnimatePresence } from "framer-motion";
+import clsx from "clsx";
 
 export default function Navbar({ ref }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -69,36 +71,45 @@ export default function Navbar({ ref }) {
 
         {/* Mobile hamburger button */}
         <button
-          className="md:hidden text-brand-active-text p-2"
+          className="md:hidden text-brand-active-text"
           onClick={() => setMenuOpen((prev) => !prev)}
           aria-label="Toggle navigation menu"
         >
-          {menuOpen ? <X size={26} /> : <Menu size={26} />}
+          {menuOpen ? <X size={30} /> : <Menu size={30} />}
         </button>
       </div>
 
       {/* Mobile Menu */}
-      {menuOpen && (
-        <div className="md:hidden flex flex-col gap-1.5 px-6 pb-4 animate-fadeIn">
-          {navLinks.map(({ path, label, icon: Icon, match }) => {
-            const isActive = match?.test(location.pathname);
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
+            className="md:hidden flex flex-col gap-1.5 px-6 pb-4 pt-2 overflow-hidden"
+          >
+            {navLinks.map(({ path, label, icon: Icon, match }) => {
+              const isActive = match?.test(location.pathname);
 
-            return (
-              <Link
-                key={path}
-                to={path}
-                onClick={() => setMenuOpen(false)}
-                className={`flex items-center gap-2.25 py-2 rounded-md transition text-brand-active-text ${
-                  isActive ? "opacity-100" : "opacity-70 hover:opacity-100"
-                }`}
-              >
-                {Icon && <Icon className="w-5 h-5" />}
-                {label}
-              </Link>
-            );
-          })}
-        </div>
-      )}
+              return (
+                <Link
+                  key={path}
+                  to={path}
+                  onClick={() => setMenuOpen(false)}
+                  className={clsx(
+                    "flex items-center gap-2 px-2 py-2 rounded-md transition-all text-brand-active-text",
+                    isActive ? "opacity-100" : "opacity-70 hover:opacity-100",
+                  )}
+                >
+                  {Icon && <Icon className="w-5 h-5" />}
+                  {label}
+                </Link>
+              );
+            })}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

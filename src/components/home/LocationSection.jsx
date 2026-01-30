@@ -103,11 +103,11 @@ export default function LocationSection() {
               >
                 <span
                   className={clsx(
-                    "w-4 h-4 rounded-full shadow-md",
+                    "w-3 h-3 rounded-full shadow-md",
                     statusColors.bg,
                   )}
                 />
-                <span className={clsx("text-xl font-bold", statusColors.text)}>
+                <span className={clsx("text-lg font-bold", statusColors.text)}>
                   {status.label}
                 </span>
               </Badge>
@@ -133,11 +133,6 @@ export default function LocationSection() {
                           ? "border-brand-primary-400"
                           : "border-brand-border",
                       )}
-                      // style={{
-                      //   borderColor: isToday
-                      //     ? colors.primary400
-                      //     : colors.border,
-                      // }}
                     >
                       <span className="capitalize">{day}</span>
                       <span
@@ -162,33 +157,36 @@ export default function LocationSection() {
               <h3 className="text-xl font-semibold text-brand-primary-900">
                 Contact & Location
               </h3>
-              <IconText
-                icon={MapPin}
-                size="5"
-                gap="3"
-                className="items-start text-brand-primary-700"
-                iconClassName="mt-1"
+
+              {/* 1. Address Link (MapPin) */}
+              <a
+                href={`https://maps.google.com/?q=${LOCATION.address}`}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <span className="text-base leading-relaxed text-brand-primary-800">
+                <IconText
+                  icon={MapPin}
+                  className="transition-opacity hover:opacity-85 focus:outline-none text-brand-primary-900"
+                  size="5"
+                  gap="3"
+                  iconClassName="text-brand-primary-500"
+                >
                   {LOCATION.address}
-                </span>
-              </IconText>
-              <IconText
-                icon={Phone}
-                size="5"
-                gap="3"
-                className="items-start text-brand-primary-700"
-                iconClassName="mt-1"
-              >
-                <span className="text-base leading-relaxed text-brand-primary-800">
-                  <a
-                    href={`tel:${LOCATION.contact.phone}`}
-                    className="text-base font-semibold hover:text-primary-700 transition text-brand-primary-800"
-                  >
-                    {LOCATION.contact.phone}
-                  </a>
-                </span>
-              </IconText>
+                </IconText>
+              </a>
+
+              {/* 2. Phone Link */}
+              <a href={`tel:${LOCATION.contact.phone}`}>
+                <IconText
+                  icon={Phone}
+                  className="transition-opacity hover:opacity-85 focus:outline-none text-brand-primary-900"
+                  size="5"
+                  gap="3"
+                  iconClassName="text-brand-primary-500"
+                >
+                  {LOCATION.contact.phone}
+                </IconText>
+              </a>
             </div>
           </div>
         </div>
