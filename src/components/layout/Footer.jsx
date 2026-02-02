@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { NAVIGATION, SOCIALS, SITE } from "/src/config";
+import { NAVIGATION, SOCIALS, SITE } from "@/config";
 import { Icon } from "@iconify/react";
 
 export default function Footer() {

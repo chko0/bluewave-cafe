@@ -1,13 +1,12 @@
 import { Suspense, useEffect, useRef, useState } from "react";
 import { Outlet } from "react-router-dom";
-import { useTheme } from "../../context/ThemeContext";
-import { setFavicon } from "../../utils/utils";
+import { useTheme } from "@/context/ThemeContext";
+import { setFavicon } from "@/utils/utils";
 
 import Header from "./Header";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import ThemeSwitcher from "../ui/ThemeSwitcher";
-import Loading from "../ui/Loading";
+import { ThemeSwitcher, Loading } from "@/components/ui";
 
 export default function MainLayout() {
   const { colors } = useTheme();

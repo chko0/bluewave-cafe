@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { useTheme } from "../../context/ThemeContext";
-import { SITE } from "/src/config";
-import { ReactComponent as AppLogo } from "/src/assets/favicon.svg";
+import { useTheme } from "@/context/ThemeContext";
+import { SITE } from "@/config";
+import { ReactComponent as AppLogo } from "@/assets/favicon.svg";
 import clsx from "clsx";
 
 const layoutConfig = {

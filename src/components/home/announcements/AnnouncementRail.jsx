@@ -1,10 +1,14 @@
-import Modal, { ModalContent } from "../../ui/Modal";
-import AnnouncementCard from "./AnnouncementCard";
-import announcements from "/src/data/announcementsData";
-import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import Button from "/src/components/ui/Button";
-import useAutoRotate from "/src/hooks/useAutoRotate";
+
+import { AnimatePresence, motion } from "framer-motion";
+
+import { Modal, Button } from "@/components/ui";
+import { ModalContent } from "@/components/ui/Modal";
+
+import announcements from "@/data/announcementsData";
+import useAutoRotate from "@/hooks/useAutoRotate";
+
+import AnnouncementCard from "./AnnouncementCard";
 
 const ROTATION_INTERVAL = 5000;
 

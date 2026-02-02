@@ -1,11 +1,11 @@
-import { MapPin, Phone, Navigation } from "lucide-react";
-import { SITE, LOCATION, OPENING_HOURS, DAYS_ORDER } from "/src/config";
-import { getOpenStatus } from "/src/utils/utils";
-import clsx from "clsx";
-import Button from "../ui/Button";
 import { useState } from "react";
-import Badge from "../ui/Badge";
-import IconText from "../ui/IconText";
+
+import { Button, Badge, IconText } from "@/components/ui";
+
+import { MapPin, Phone, Navigation } from "lucide-react";
+import { SITE, LOCATION, OPENING_HOURS, DAYS_ORDER } from "@/config";
+import { getOpenStatus } from "@/utils/utils";
+import clsx from "clsx";
 
 export default function LocationSection() {
   const [mapLoaded, setMapLoaded] = useState(false);

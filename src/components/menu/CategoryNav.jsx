@@ -1,6 +1,6 @@
-import menuData from "../../data/menuData";
+import menuData from "@/data/menuData";
 import { useEffect, useRef } from "react";
-import Button from "../ui/Button";
+import { Button } from "@/components/ui";
 import clsx from "clsx";
 
 export default function CategoryNav({

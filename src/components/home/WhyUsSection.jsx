@@ -1,5 +1,5 @@
 import { Coffee, Users, Laptop } from "lucide-react";
-import { SITE } from "/src/config";
+import { SITE } from "@/config";
 
 export default function WhyBluewaveSection() {
   const features = [

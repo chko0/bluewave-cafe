@@ -1,4 +1,4 @@
-import BrandLogo from "../common/BrandLogo";
+import BrandLogo from "@/components/common/BrandLogo";
 
 export default function Header({ ref }) {
   return (

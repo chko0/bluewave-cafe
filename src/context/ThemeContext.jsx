@@ -1,5 +1,5 @@
 import { createContext, useState, useContext, useLayoutEffect } from "react";
-import { palette } from "../themes/colors";
+import { palette } from "@/themes/colors";
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {

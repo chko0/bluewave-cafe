@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { SITE, NAVIGATION } from "/src/config";
+import { SITE, NAVIGATION } from "@/config";
 
 export default function PageTitleHandler() {
   const { pathname } = useLocation();

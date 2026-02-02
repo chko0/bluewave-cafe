@@ -1,6 +1,6 @@
 import { CheckCircle } from "lucide-react";
 import { SITE } from "/src/config";
-import Button from "../components/ui/Button";
+import { Button } from "@/components/ui";
 
 export default function FeedbackSuccessPage() {
   return (

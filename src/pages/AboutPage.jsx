@@ -1,7 +1,7 @@
 import { MapPin, Phone, Mail, Coffee } from "lucide-react";
 import heroImg from "/cafe-hero.webp";
 import { SITE, LOCATION } from "/src/config";
-import IconText from "../components/ui/IconText";
+import { IconText } from "@/components/ui";
 
 export default function AboutPage() {
   return (

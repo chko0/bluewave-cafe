@@ -1,14 +1,14 @@
 import React, { useEffect, Suspense, useMemo } from "react";
 import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 
-import menuData from "../data/menuData";
+import menuData from "@/data/menuData";
 
-import CategoryNav from "../components/menu/CategoryNav";
-import CategoryHeader from "../components/menu/CategoryHeader";
-import Loading from "../components/ui/Loading";
-import useScrollTo from "../hooks/useScrollTo";
+import CategoryNav from "@/components/menu/CategoryNav";
+import CategoryHeader from "@/components/menu/CategoryHeader";
+import { Loading } from "@/components/ui";
+import useScrollTo from "@/hooks/useScrollTo";
 
-const MenuItems = React.lazy(() => import("../components/menu/MenuItems"));
+const MenuItems = React.lazy(() => import("@/components/menu/MenuItems"));
 
 export default function MenuPage() {
   const { headerHeight, navbarHeight } = useOutletContext();
