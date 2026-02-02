@@ -26,13 +26,13 @@ export default function CategoryNav({
     >
       {/* Left gradient overlay */}
       <div
-        className="absolute top-0 left-0 h-full w-11 pointer-events-none
+        className="absolute top-0 left-0 h-full w-11 pointer-events-none z-41
           bg-gradient-to-r from-brand-light-bg via-transparent to-transparent"
       />
 
       {/* Right gradient overlay */}
       <div
-        className="absolute top-0 right-0 h-full w-11 pointer-events-none
+        className="absolute top-0 right-0 h-full w-11 pointer-events-none z-41
           bg-gradient-to-l from-brand-light-bg via-transparent to-transparent"
       />
 

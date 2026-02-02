@@ -6,7 +6,7 @@ export default [
     title: "New Chai Latte",
     message: "Limited seasonal blend available this week",
     icon: Sparkles,
-    cta: { label: "View Menu", to: "/menu" },
+    cta: { label: "View Menu", to: "/menu/hot-drinks" },
   },
   {
     id: "late-hours",

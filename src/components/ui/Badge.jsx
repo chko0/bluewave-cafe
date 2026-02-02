@@ -116,7 +116,7 @@ export default function Badge({
         "inline-flex items-center gap-1 px-2 py-1 font-semibold text-xs rounded-full shadow-sm select-none",
         "bg-[var(--badge-bg)] text-[var(--badge-text)]",
         currVariant.classes,
-        className
+        className,
       )}
       style={{ ...cssVariables }}
     >

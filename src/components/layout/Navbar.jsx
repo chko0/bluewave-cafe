@@ -16,13 +16,16 @@ export default function Navbar({ ref }) {
   return (
     <nav
       ref={ref}
-      className="
-          fixed top-0 left-0 w-full z-50 backdrop-blur-xl border-b border-white/10 transition-all duration-300 shadow-lg shadow-black/5
-          bg-gradient-to-br from-brand-primary-600/85 to-brand-primary-600/85
-        "
+      className={clsx(
+        "fixed top-0 left-0 w-full z-50 transition-all duration-300",
+        "backdrop-blur-xl border-b border-brand-primary-900/10",
+        "bg-gradient-to-br from-brand-primary-600/90 to-brand-primary-600/85",
+        // The "Premium" Shadow: Uses brand color instead of pure black for a natural blend
+        "shadow-lg shadow-black/5",
+      )}
     >
       {/* Main container */}
-      <div className="flex justify-between items-center px-5 sm:px-8 transition-all duration-300 py-2 md:py-3">
+      <div className="flex justify-between items-center px-5 sm:px-8 transition-all duration-300 py-2">
         {/* Logo */}
         <BrandLogo
           layout="horizontal"
@@ -43,6 +46,7 @@ export default function Navbar({ ref }) {
                 key={path}
                 to={path}
                 aria-label={`Go to ${label} page`}
+                onClick={(e) => isActive && e.preventDefault()}
                 className={`group flex items-center gap-1.5 font-medium text-brand-active-text relative transition-all duration-200 whitespace-nowrap select-none ${
                   isActive ? "opacity-100" : "opacity-70 hover:opacity-100"
                 }`}

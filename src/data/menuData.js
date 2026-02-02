@@ -112,7 +112,7 @@ const menuData = {
         description:
           "Sweet & spicy black tea concentrate mixed with steamed milk",
         image: "chai_latte.webp",
-        popular: true,
+        new: true,
         seasonal: true,
       },
       {

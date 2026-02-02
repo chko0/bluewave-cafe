@@ -70,7 +70,7 @@ export function ModalContent({ icon: Icon = Info, title, message, children }) {
         </IconText>
       </div>
 
-      <p className="text-gray-600 leading-relaxed mb-2">{message}</p>
+      <p className="text-gray-600 leading-relaxed mb-4">{message}</p>
 
       {/* Allows for custom buttons or inputs */}
       <div className="flex flex-col gap-2">{children}</div>

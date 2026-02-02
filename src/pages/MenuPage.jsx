@@ -45,7 +45,7 @@ export default function MenuPage() {
 
   // 3. Handle Category Changes via Navigation
   const handleCategoryChange = (newId) => {
-    navigate(`/menu/${newId}`);
+    if (newId != categoryId) navigate(`/menu/${newId}`);
   };
 
   // 4. Effect: Scroll positioning

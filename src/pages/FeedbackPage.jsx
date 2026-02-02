@@ -61,7 +61,7 @@ export default function FeedbackPage() {
           </h3>
 
           <div
-            className="flex justify-center items-center gap-1 sm:gap-2 p-3 sm:p-4 rounded-xl border-2 shadow-inner border-brand-border"
+            className="flex justify-center items-center gap-1.25 sm:gap-2 p-3 sm:p-4 rounded-xl border-2 shadow-inner border-brand-border"
             role="radiogroup"
             aria-required="true"
             aria-labelledby="rating-label"
