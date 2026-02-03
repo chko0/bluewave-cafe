@@ -1,10 +1,8 @@
-import React, { useEffect, Suspense, useMemo } from "react";
+import { useEffect, Suspense, useMemo } from "react";
 import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 
 import { menuData } from "@/data";
-const MenuItems = React.lazy(() => import("@/components/menu/MenuItems"));
-
-import { Loading, CategoryHeader, CategoryNav } from "@/components";
+import { Loading, CategoryHeader, CategoryNav, MenuItems } from "@/components";
 import { useScrollTo } from "@/hooks";
 
 export default function MenuPage() {

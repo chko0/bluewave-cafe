@@ -1,8 +1,10 @@
 import "@/styles/globals.css";
-import { Button, Badge } from "@/components";
-import { SITE } from "@/config";
+
 import cafeHero from "/cafe-hero.webp";
 import { Coffee } from "lucide-react";
+
+import { Button, Badge } from "@/components";
+import { SITE } from "@/config";
 import { useScrollTo } from "@/hooks";
 
 export default function HeroSection() {

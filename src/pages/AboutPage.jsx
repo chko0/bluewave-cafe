@@ -1,5 +1,6 @@
 import { MapPin, Phone, Mail, Coffee } from "lucide-react";
 import heroImg from "/cafe-hero.webp";
+
 import { SITE, LOCATION } from "@/config";
 import { IconText } from "@/components";
 

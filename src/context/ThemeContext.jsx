@@ -1,5 +1,6 @@
 import { createContext, useState, useContext, useLayoutEffect } from "react";
 import palette from "@/themes";
+
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {

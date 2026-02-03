@@ -1,9 +1,11 @@
-import { Link, useLocation } from "react-router-dom";
-import { NAVIGATION } from "@/config";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
-import { IconText, BrandLogo } from "@/components";
+import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
+
+import { NAVIGATION } from "@/config";
+import { IconText, BrandLogo } from "@/components";
+
 import clsx from "clsx";
 
 export default function Navbar({ ref }) {

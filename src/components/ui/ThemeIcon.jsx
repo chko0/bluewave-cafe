@@ -1,6 +1,6 @@
 import clsx from "clsx";
-import { useTheme } from "@/context/ThemeContext";
 import { motion } from "framer-motion";
+import { useTheme } from "@/context/ThemeContext";
 
 export default function ThemeIcon({ themeKey, theme, onClick }) {
   const { themeKey: currentThemeKey, setTheme } = useTheme();

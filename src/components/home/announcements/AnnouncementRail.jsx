@@ -3,7 +3,6 @@ import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 import { Modal, Button } from "@/components";
-
 import { announcementsData as announcements } from "@/data";
 import { useAutoRotate } from "@/hooks";
 

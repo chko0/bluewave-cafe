@@ -1,8 +1,9 @@
+import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+
 import { Button, MenuItem } from "@/components";
 import { getSpecialtyItems } from "@/utils";
 import { menuData } from "@/data";
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 
 export default function SpecialtyItemsSection() {
   const items = getSpecialtyItems(menuData, 4);
