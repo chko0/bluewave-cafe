@@ -2,11 +2,10 @@ import { useState } from "react";
 
 import { AnimatePresence, motion } from "framer-motion";
 
-import { Modal, Button } from "@/components/ui";
-import { ModalContent } from "@/components/ui/Modal";
+import { Modal, Button, ModalContent } from "@/components";
 
 import announcements from "@/data/announcementsData";
-import useAutoRotate from "@/hooks/useAutoRotate";
+import { useAutoRotate } from "@/hooks";
 
 import AnnouncementCard from "./AnnouncementCard";
 

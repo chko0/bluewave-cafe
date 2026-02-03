@@ -1,5 +1,5 @@
 import { Maximize2 } from "lucide-react";
-import { Button } from "@/components/ui";
+import { Button } from "@/components";
 
 export default function AnnouncementCard({ announcement, onOpen }) {
   const Icon = announcement.icon ?? null;

@@ -1,8 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import testimonials from "@/data/testimonialsData";
-import TestimonialCard from "./testimonials/TestimonialCard";
-import { Button } from "@/components/ui";
+import TestimonialCard from "./TestimonialCard";
+import { Button } from "@/components";
 import clsx from "clsx";
 
 export default function TestimonialsSection() {

@@ -2,8 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { NAVIGATION } from "@/config";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { IconText } from "@/components/ui";
-import BrandLogo from "@/components/common/BrandLogo";
+import { IconText, BrandLogo } from "@/components";
 import { motion, AnimatePresence } from "framer-motion";
 import clsx from "clsx";
 

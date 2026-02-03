@@ -6,17 +6,14 @@ import {
 } from "react-router-dom";
 import React from "react";
 
-import ScrollToTop from "./components/common/ScrollToTop";
-import PageTitleHandler from "./components/common/PageTitleHandler";
-
-import MainLayout from "./components/layout/MainLayout";
+import { MainLayout, PageTitleHandler, ScrollToTop } from "@/components";
 
 const HomePage = React.lazy(() => import("./pages/HomePage"));
 const MenuPage = React.lazy(() => import("./pages/MenuPage"));
 const AboutPage = React.lazy(() => import("./pages/AboutPage"));
 const FeedbackPage = React.lazy(() => import("./pages/FeedbackPage"));
-const FeedbackSuccessPage = React.lazy(() =>
-  import("./pages/FeedbackSuccessPage")
+const FeedbackSuccessPage = React.lazy(
+  () => import("./pages/FeedbackSuccessPage"),
 );
 const NotFoundPage = React.lazy(() => import("./pages/NotFoundPage"));
 

@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-import { Button, Badge, IconText } from "@/components/ui";
+import { Button, Badge, IconText } from "@/components";
 
 import { MapPin, Phone, Navigation } from "lucide-react";
 import { SITE, LOCATION, OPENING_HOURS, DAYS_ORDER } from "@/config";
-import { getOpenStatus } from "@/utils/utils";
+import { getOpenStatus } from "@/utils";
 import clsx from "clsx";
 
 export default function LocationSection() {

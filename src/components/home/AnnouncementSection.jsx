@@ -1,4 +1,4 @@
-import { SITE } from "@/config/site";
+import { SITE } from "@/config";
 import AnnouncementRail from "./announcements/AnnouncementRail";
 
 export default function AnnouncementSection() {

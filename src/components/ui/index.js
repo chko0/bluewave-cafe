@@ -2,7 +2,7 @@ export { default as Badge } from "./Badge.jsx";
 export { default as Button } from "./Button.jsx";
 export { default as IconText } from "./IconText.jsx";
 export { default as Loading } from "./Loading.jsx";
-export { default as Modal } from "./Modal.jsx";
+export { default as Modal, ModalContent } from "./Modal.jsx";
 export { default as Spinner } from "./Spinner.jsx";
 export { default as ThemeIcon } from "./ThemeIcon.jsx";
 export { default as ThemeSwitcher } from "./ThemeSwitcher.jsx";

@@ -1,9 +1,11 @@
-import AnnouncementSection from "@/components/home/AnnouncementSection";
-import HeroSection from "@/components/home/HeroSection";
-import LocationSection from "@/components/home/LocationSection";
-import SpecialtyItemsSection from "@/components/home/SpecialtyItemsSection";
-import TestimonialsSection from "@/components/home/TestimonialsSection";
-import WhyUsSection from "@/components/home/WhyUsSection";
+import {
+  HeroSection,
+  AnnouncementSection,
+  SpecialtyItemsSection,
+  TestimonialsSection,
+  LocationSection,
+  WhyUsSection,
+} from "@/components";
 
 export default function HomePage() {
   return (

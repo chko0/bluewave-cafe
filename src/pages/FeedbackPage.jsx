@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { MessageCircle, CheckCircle, Star, Send } from "lucide-react";
-import { SITE } from "/src/config";
-import { Button, Spinner, ValidationError } from "@/components/ui";
-import { useFeedbackForm } from "../hooks/useFeedbackForm";
+import { SITE } from "@/config";
+import { Button, Spinner, ValidationError } from "@/components";
+import { useFeedbackForm } from "@/hooks";
 
 import clsx from "clsx";
 

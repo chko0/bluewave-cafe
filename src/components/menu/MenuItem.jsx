@@ -2,7 +2,7 @@ import { Star, Leaf, TrendingUp, Droplet, Flower } from "lucide-react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/opacity.css";
 
-import { Badge } from "@/components/ui";
+import { Badge } from "@/components";
 
 export default function MenuItem({ index, item, highPriorityLoading }) {
   const { name, image, description, price } = item;

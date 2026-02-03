@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { WORKERS } from "../config";
+import { WORKERS } from "@/config";
 
 const MIN_MESSAGE_LENGTH = 10;
 const WORKER_ENDPOINT = WORKERS.feedbackEndpoint;
 
 const STORAGE_KEY = "feedback_draft";
 
-export function useFeedbackForm() {
+export default function useFeedbackForm() {
   const navigate = useNavigate();
 
   const [formState, setFormState] = useState(() => {

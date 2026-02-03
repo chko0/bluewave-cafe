@@ -1,9 +1,9 @@
 import "@/styles/globals.css";
-import { Button, Badge } from "@/components/ui";
+import { Button, Badge } from "@/components";
 import { SITE } from "@/config";
 import cafeHero from "/cafe-hero.webp";
 import { Coffee } from "lucide-react";
-import useScrollTo from "@/hooks/useScrollTo";
+import { useScrollTo } from "@/hooks";
 
 export default function HeroSection() {
   const scrollTo = useScrollTo();
