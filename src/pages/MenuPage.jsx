@@ -1,7 +1,7 @@
 import React, { useEffect, Suspense, useMemo } from "react";
 import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 
-import menuData from "@/data/menuData";
+import { menuData } from "@/data";
 const MenuItems = React.lazy(() => import("@/components/menu/MenuItems"));
 
 import { Loading, CategoryHeader, CategoryNav } from "@/components";

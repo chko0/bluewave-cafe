@@ -1,6 +1,6 @@
 import { Calendar, Info, Sparkles } from "lucide-react";
 
-export default [
+const announcementsData = [
   {
     id: "chai-latte",
     title: "New Chai Latte",
@@ -21,3 +21,5 @@ export default [
     icon: Calendar,
   },
 ];
+
+export default announcementsData;

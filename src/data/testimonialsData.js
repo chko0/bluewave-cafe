@@ -1,4 +1,4 @@
-export default [
+const testimonialsData = [
   {
     name: "Dani A.",
     rating: 5,
@@ -60,3 +60,5 @@ export default [
     tag: "Foodie",
   },
 ];
+
+export default testimonialsData;

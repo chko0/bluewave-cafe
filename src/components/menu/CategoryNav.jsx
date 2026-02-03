@@ -1,4 +1,4 @@
-import menuData from "@/data/menuData";
+import { menuData } from "@/data";
 import { useEffect, useRef } from "react";
 import { Button } from "@/components";
 import clsx from "clsx";

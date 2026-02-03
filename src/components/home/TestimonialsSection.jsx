@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import testimonials from "@/data/testimonialsData";
+import { testimonialsData as testimonials } from "@/data";
 import TestimonialCard from "./TestimonialCard";
 import { Button } from "@/components";
 import clsx from "clsx";

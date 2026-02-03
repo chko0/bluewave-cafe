@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 import { Modal, Button } from "@/components";
 
-import announcements from "@/data/announcementsData";
+import { announcementsData as announcements } from "@/data";
 import { useAutoRotate } from "@/hooks";
 
 import AnnouncementCard from "./AnnouncementCard";

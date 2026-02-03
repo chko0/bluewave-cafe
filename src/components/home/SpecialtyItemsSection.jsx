@@ -1,6 +1,6 @@
 import { Button, MenuItem } from "@/components";
 import { getSpecialtyItems } from "@/utils";
-import menuData from "@/data/menuData";
+import { menuData } from "@/data";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
