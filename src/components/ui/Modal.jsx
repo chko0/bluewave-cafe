@@ -4,7 +4,7 @@ import { Info, X } from "lucide-react";
 import { useEffect } from "react";
 import IconText from "./IconText";
 
-export default function Modal({ isOpen, onClose, children }) {
+function Modal({ isOpen, onClose, children }) {
   // Prevent background scrolling
   useEffect(() => {
     const originalStyle = window.getComputedStyle(document.body).overflow;
@@ -56,7 +56,7 @@ export default function Modal({ isOpen, onClose, children }) {
   );
 }
 
-export function ModalContent({ icon: Icon = Info, title, message, children }) {
+function ModalContent({ icon: Icon = Info, title, message, children }) {
   return (
     <div className="flex flex-col">
       <div>
@@ -77,3 +77,6 @@ export function ModalContent({ icon: Icon = Info, title, message, children }) {
     </div>
   );
 }
+
+Modal.Content = ModalContent;
+export default Modal;

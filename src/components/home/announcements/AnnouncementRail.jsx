@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { AnimatePresence, motion } from "framer-motion";
 
-import { Modal, Button, ModalContent } from "@/components";
+import { Modal, Button } from "@/components";
 
 import announcements from "@/data/announcementsData";
 import { useAutoRotate } from "@/hooks";
@@ -76,7 +76,7 @@ export default function AnnouncementRail() {
       </AnimatePresence>
 
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-        <ModalContent
+        <Modal.Content
           icon={openAnnouncement.icon}
           title={openAnnouncement?.title}
           message={openAnnouncement?.message}
@@ -89,7 +89,7 @@ export default function AnnouncementRail() {
               {openAnnouncement?.cta.label}
             </Button>
           )}
-        </ModalContent>
+        </Modal.Content>
       </Modal>
     </div>
   );
