@@ -1,4 +1,4 @@
-export const palette = {
+const palette = {
   /**
    * 🌊 BlueWave: Subtle, Professional Blue
    */
@@ -199,3 +199,5 @@ export const palette = {
     primary900: "#5c331a", // Deep cocoa brown (Matches inactiveText, Headers)
   },
 };
+
+export default palette;

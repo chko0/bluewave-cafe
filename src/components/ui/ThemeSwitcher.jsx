@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Palette, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ThemeIcon from "./ThemeIcon";
-import { palette } from "@/themes/colors";
+import palette from "@/themes";
 import Button from "./Button";
 import clsx from "clsx";
 
