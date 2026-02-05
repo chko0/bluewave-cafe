@@ -1,8 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+
 import { NAVIGATION, SOCIALS, SITE } from "@/config";
+import { useNavigationHandler } from "@/hooks";
 import { Icon } from "@iconify/react";
 
 export default function Footer() {
+  const location = useLocation();
+  const { handleNavigation } = useNavigationHandler();
+
   return (
     <footer className="text-white min-h-62 w-full bg-gradient-to-r from-brand-primary-600 to-brand-primary-700">
       <div className="max-w-7xl mx-auto px-6 py-10 grid gap-8 sm:grid-cols-3">
@@ -18,13 +23,15 @@ export default function Footer() {
         <div>
           <h3 className="text-md font-semibold">Quick Links</h3>
           <ul className="footer-options mt-3 space-y-2 text-sm">
-            {NAVIGATION.map(({ path, label, hidden }) => {
+            {NAVIGATION.map(({ path, label, hidden, match }) => {
               if (hidden) return null;
+              const isActive = match?.test(location.pathname);
 
               return (
                 <li key={path}>
                   <Link
                     to={path}
+                    onClick={(e) => handleNavigation(e, isActive)}
                     className="transition duration-200 hover:opacity-50 focus:opacity-100 text-brand-active-text/80"
                     aria-label={`Go to ${label} page`}
                   >

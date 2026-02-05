@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 
 import { NAVIGATION } from "@/config";
 import { IconText, BrandLogo } from "@/components";
+import { useNavigationHandler } from "@/hooks";
 
 import clsx from "clsx";
 
@@ -13,6 +14,8 @@ export default function Navbar({ ref }) {
 
   const location = useLocation();
   const navLinks = NAVIGATION.filter((item) => !item.hidden);
+
+  const { handleNavigation } = useNavigationHandler(setMenuOpen);
 
   return (
     <nav
@@ -47,7 +50,7 @@ export default function Navbar({ ref }) {
                 key={path}
                 to={path}
                 aria-label={`Go to ${label} page`}
-                onClick={(e) => isActive && e.preventDefault()}
+                onClick={(e) => handleNavigation(e, isActive)}
                 className={`group flex items-center gap-1.5 font-medium text-brand-active-text relative transition-all duration-200 whitespace-nowrap select-none ${
                   isActive ? "opacity-100" : "opacity-70 hover:opacity-100"
                 }`}
@@ -101,7 +104,7 @@ export default function Navbar({ ref }) {
                 <Link
                   key={path}
                   to={path}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={(e) => handleNavigation(e, isActive)}
                   className={clsx(
                     "flex items-center gap-2 px-2 py-2 rounded-md transition-all text-brand-active-text",
                     isActive ? "opacity-100" : "opacity-70 hover:opacity-100",

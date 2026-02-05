@@ -23,20 +23,20 @@ export default function MenuPage() {
   const activeId = activeCategoryData.id;
 
   // 2. Sync Logic: Redirect to last category or first category if path is just "/menu"
-  useEffect(() => {
-    if (!categoryId) {
-      const storedCategory = localStorage.getItem("Category");
-      const target = menuArray.find((c) => c.id === storedCategory)
-        ? storedCategory
-        : menuArray[0].id;
+  // useEffect(() => {
+  //   if (!categoryId) {
+  //     const storedCategory = localStorage.getItem("Category");
+  //     const target = menuArray.find((c) => c.id === storedCategory)
+  //       ? storedCategory
+  //       : menuArray[0].id;
 
-      // Navigate to the full path /menu/categoryId
-      navigate(`/menu/${target}`, { replace: true });
-    } else {
-      // Save preference if user navigated to a specific valid categoryId
-      localStorage.setItem("Category", categoryId);
-    }
-  }, [categoryId, navigate, menuArray]);
+  //     // Navigate to the full path /menu/categoryId
+  //     navigate(`/menu/${target}`, { replace: true });
+  //   } else {
+  //     // Save preference if user navigated to a specific valid categoryId
+  //     localStorage.setItem("Category", categoryId);
+  //   }
+  // }, [categoryId, navigate, menuArray]);
 
   // 3. Handle Category Changes via Navigation
   const handleCategoryChange = (newId) => {
