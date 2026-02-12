@@ -32,7 +32,7 @@ export default function WhyBluewaveSection() {
         </h2>
 
         {/* Body */}
-        <p className="text-base md:text-lg leading-relaxed max-w-3xl mx-auto mb-12 text-brand-primary-700">
+        <p className="text-base md:text-lg leading-relaxed max-w-3xl mx-auto mb-12 text-brand-primary-900">
           Located in Tripoli's Mina District, {SITE.shortName} blends cozy
           aesthetics with a modern, work-friendly design. We're fuel for
           students, freelancers, and every coffee-lover in between — a place to

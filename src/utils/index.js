@@ -50,7 +50,7 @@ export function getOpenStatus(openingHours) {
 
   return {
     open: isOpen,
-    label: isOpen ? "Now Open" : "Closed",
+    label: isOpen ? "Now Open!" : "Closed",
   };
 }
 

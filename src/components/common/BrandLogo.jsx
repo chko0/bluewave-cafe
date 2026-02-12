@@ -71,23 +71,21 @@ export default function BrandLogo({
       )}
 
       {/* Text Group */}
-      <div className={clsx("flex flex-col", layoutStyles.textAlign)}>
-        {showTitle && (
-          <Heading className="text-[0.45em] font-extrabold tracking-wide drop-shadow-lg leading-tight text-brand-active-text">
-            {SITE.name}
-          </Heading>
-        )}
+      {(showTitle || showSubtitle) && (
+        <div className={clsx("flex flex-col", layoutStyles.textAlign)}>
+          {showTitle && (
+            <Heading className="text-[0.45em] font-extrabold tracking-wide drop-shadow-lg leading-tight text-brand-active-text">
+              {SITE.name}
+            </Heading>
+          )}
 
-        {showSubtitle && (
-          <p
-            className={clsx(
-              "text-[0.27em] font-light tracking-wide opacity-90 -mt-0.5 text-brand-light-bg",
-            )}
-          >
-            {SITE.subtitle}
-          </p>
-        )}
-      </div>
+          {showSubtitle && (
+            <p className="text-[0.27em] font-light tracking-wide opacity-90 -mt-0.5 text-brand-light-bg">
+              {SITE.subtitle}
+            </p>
+          )}
+        </div>
+      )}
     </Link>
   );
 }

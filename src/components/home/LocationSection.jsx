@@ -17,12 +17,6 @@ export default function LocationSection() {
     .toLocaleString("en-US", { weekday: "long" })
     .toLowerCase();
 
-  // Dynamic styles for the Status indicator
-  const statusColors = {
-    bg: status.open ? "bg-green-500" : "bg-red-500",
-    text: status.open ? "text-green-600" : "text-red-600",
-  };
-
   return (
     <section
       id="location"
@@ -35,7 +29,7 @@ export default function LocationSection() {
           <h2 className="text-4xl md:text-5xl font-extrabold mb-3 tracking-tight text-brand-primary-900">
             Visit Us at {SITE.name}
           </h2>
-          <p className="text-lg text-brand-primary-700">
+          <p className="text-lg text-brand-primary-900">
             {LOCATION.tagline || "Your local spot for coffee and community."}
           </p>
         </div>
@@ -48,8 +42,8 @@ export default function LocationSection() {
             "bg-white/60 backdrop-blur-md border-brand-border",
           )}
         >
-          {/* Map (should take up 3/5 on large screens) */}
-          <div className="relative h-96 lg:h-auto lg:col-span-3">
+          {/* Map */}
+          <div className="relative h-[50vh] lg:h-auto lg:col-span-3">
             {/* Overlay Gradient */}
             <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20 via-transparent to-transparent" />
 
@@ -93,24 +87,43 @@ export default function LocationSection() {
           </div>
 
           {/* Info (should take up 2/5 on large screens) */}
-          <div className="lg:col-span-2 p-8 md:p-10 flex flex-col justify-between">
+          <div className="lg:col-span-2 p-6 md:p-10 flex flex-col justify-between">
             {/* Status & Hours */}
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-6">
               {/* Status (Open / Closed) */}
-              <Badge
-                variant={status.open ? "open" : "closed"}
-                className="px-4 py-2 text-sm font-extrabold tracking-wide gap-3"
-              >
-                <span
+              <div className="flex justify-start">
+                <Badge
+                  // variant={status.open ? "open" : "closed"}
                   className={clsx(
-                    "w-3 h-3 rounded-full shadow-md",
-                    statusColors.bg,
+                    "px-4 py-1.5 rounded-full border flex items-center gap-3",
+                    status.open
+                      ? "bg-green-50 border-green-500 shadow-sm shadow-green-100/50"
+                      : "bg-red-100/80 border-red-400 shadow-sm shadow-red-100/50",
                   )}
-                />
-                <span className={clsx("text-lg font-bold", statusColors.text)}>
-                  {status.label}
-                </span>
-              </Badge>
+                >
+                  {/* Animated Status Dot */}
+                  <div className="relative flex items-center justify-center">
+                    {status.open && (
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+                    )}
+                    <span
+                      className={clsx(
+                        "relative inline-flex h-2.5 w-2.5 rounded-full",
+                        status.open ? "bg-green-600" : "bg-red-700",
+                      )}
+                    />
+                  </div>
+
+                  <span
+                    className={clsx(
+                      "text-sm font-extrabold uppercase tracking-widest",
+                      status.open ? "text-green-600" : "text-red-700",
+                    )}
+                  >
+                    {status.label}
+                  </span>
+                </Badge>
+              </div>
 
               {/* Hours Grid */}
               <div className="flex flex-col gap-2">
@@ -125,13 +138,10 @@ export default function LocationSection() {
                     <div
                       key={day}
                       className={clsx(
-                        "flex justify-between py-1",
+                        "flex justify-between py-1.5 md:py-1",
                         isToday
-                          ? "font-extrabold"
-                          : "font-medium text-gray-600",
-                        isToday
-                          ? "border-brand-primary-400"
-                          : "border-brand-border",
+                          ? "font-extrabold border-brand-primary-400"
+                          : "font-medium text-gray-600 border-brand-border",
                       )}
                     >
                       <span className="capitalize">{day}</span>
@@ -141,7 +151,7 @@ export default function LocationSection() {
                             ? isToday
                               ? "text-gray-900"
                               : "text-gray-700"
-                            : "text-red-500",
+                            : "text-red-700",
                         )}
                       >
                         {hours ? `${hours.open} – ${hours.close}` : "Closed"}
