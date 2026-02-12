@@ -19,9 +19,9 @@ export default function AnnouncementCard({ announcement, onOpen }) {
 
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2">
-          <h4 className="font-bold text-sm leading-tight truncate">
+          <h3 className="font-bold text-sm leading-tight truncate">
             {announcement.title}
-          </h4>
+          </h3>
           {/* Subtle indicator that there is more text */}
           <Maximize2 className="w-3 h-3 opacity-0 group-hover:opacity-50 transition-opacity hidden md:block" />
         </div>
