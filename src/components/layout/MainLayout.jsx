@@ -1,38 +1,31 @@
-import { Suspense, useEffect, useRef, useState } from "react";
-import { Outlet } from "react-router-dom";
+import { Suspense, useLayoutEffect, useRef, useState } from "react";
+import { useLocation, Outlet } from "react-router-dom";
 
-import { useTheme } from "@/context/ThemeContext";
-import { setFavicon } from "@/utils";
 import { ThemeSwitcher, Loading } from "@/components";
 import { Header, Navbar, Footer } from "./";
 
 export default function MainLayout() {
-  const { colors } = useTheme();
+  let location = useLocation();
 
   const headerRef = useRef(null);
   const navbarRef = useRef(null);
 
-  const [headerHeight, setHeaderHeight] = useState(0);
-  const [navbarHeight, setNavbarHeight] = useState(0);
+  const [offsets, setOffsets] = useState({ headerHeight: 0, navbarHeight: 0 });
 
-  useEffect(() => {
-    function updateHeights() {
-      if (headerRef.current) {
-        setHeaderHeight(headerRef.current.offsetHeight);
-      }
-      if (navbarRef.current) {
-        setNavbarHeight(navbarRef.current.offsetHeight);
-      }
-    }
+  useLayoutEffect(() => {
+    const updateHeights = () => {
+      setOffsets({
+        headerHeight: headerRef.current?.offsetHeight || 0,
+        navbarHeight: navbarRef.current?.offsetHeight || 0,
+      });
+    };
 
     updateHeights();
     window.addEventListener("resize", updateHeights);
     return () => window.removeEventListener("resize", updateHeights);
   }, []);
 
-  useEffect(() => {
-    setFavicon(colors.activeBg, colors.inactiveBg);
-  }, [colors]);
+  const { headerHeight, navbarHeight } = offsets;
 
   return (
     <div
@@ -43,7 +36,7 @@ export default function MainLayout() {
       <Header ref={headerRef} />
 
       <main className="flex-1 min-h-screen pb-16">
-        <Suspense fallback={<Loading />}>
+        <Suspense key={location.key} fallback={<Loading />}>
           <Outlet
             context={{
               headerHeight,

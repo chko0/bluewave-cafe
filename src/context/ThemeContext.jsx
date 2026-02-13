@@ -1,5 +1,6 @@
 import { createContext, useState, useContext, useLayoutEffect } from "react";
 import palette from "@/themes";
+import { setFavicon } from "@/utils";
 
 const ThemeContext = createContext();
 
@@ -12,9 +13,12 @@ export function ThemeProvider({ children }) {
   const [themeName, setThemeName] = useState(initialTheme);
   const colors = palette[themeName];
 
-  // Update CSS Variables whenever the theme changes
+  // Update CSS Variables whenever the theme changes + update FavIcon
   useLayoutEffect(() => {
     const root = window.document.documentElement;
+
+    // Disable Tailwind CSS transitions
+    root.classList.add("stop-transitions");
 
     // Map the palette keys to CSS variables
     Object.entries(colors).forEach(([key, value]) => {
@@ -24,8 +28,16 @@ export function ThemeProvider({ children }) {
       }
     });
 
+    // Reenable Tailwind CSS transitions after the next frame
+    requestAnimationFrame(() => {
+      root.classList.remove("stop-transitions");
+    });
+
     localStorage.setItem("Theme", themeName);
-  }, [themeName, colors]);
+
+    // UPDATE FAVICON
+    setFavicon(colors.activeBg, colors.inactiveBg);
+  }, [themeName]);
 
   return (
     <ThemeContext.Provider

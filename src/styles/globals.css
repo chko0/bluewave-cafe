@@ -59,3 +59,8 @@
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.22) transparent;
 }
+
+/* Prevents transitions on load */
+.stop-transitions * {
+  transition: none !important;
+}
