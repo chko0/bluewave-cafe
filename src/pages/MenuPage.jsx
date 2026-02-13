@@ -22,7 +22,7 @@ export default function MenuPage() {
   // Derive the active ID (handles the fallback if the URL is just /menu)
   const activeId = activeCategoryData.id;
 
-  // 2. Sync Logic: Redirect to last category or first category if path is just "/menu"
+  // 2. (DISABLED) Sync Logic: Redirect to last category or first category if path is just "/menu"
   // useEffect(() => {
   //   if (!categoryId) {
   //     const storedCategory = localStorage.getItem("Category");

@@ -1,11 +1,22 @@
 import { Suspense, useLayoutEffect, useRef, useState } from "react";
 import { useLocation, Outlet } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 
-import { ThemeSwitcher, Loading } from "@/components";
 import { Header, Navbar, Footer } from "./";
 
+import { ThemeSwitcher, Loading } from "@/components";
+import { NAVIGATION } from "@/config";
+
 export default function MainLayout() {
-  let location = useLocation();
+  const location = useLocation();
+
+  // Find which configuration object matches the current URL
+  const activeRoute = NAVIGATION.find((route) =>
+    route.match.test(location.pathname),
+  );
+
+  // Fallback to pathname if no match found (like 404 page)
+  const navigationKey = activeRoute ? activeRoute.path : location.pathname;
 
   const headerRef = useRef(null);
   const navbarRef = useRef(null);
@@ -36,13 +47,17 @@ export default function MainLayout() {
       <Header ref={headerRef} />
 
       <main className="flex-1 min-h-screen pb-16">
-        <Suspense key={location.key} fallback={<Loading />}>
-          <Outlet
-            context={{
-              headerHeight,
-              navbarHeight,
-            }}
-          />
+        <Suspense key={navigationKey} fallback={<Loading />}>
+          <AnimatePresence mode="wait">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25, ease: "easeInOut" }}
+            >
+              <Outlet context={{ headerHeight, navbarHeight }} />
+            </motion.div>
+          </AnimatePresence>
         </Suspense>
       </main>
 

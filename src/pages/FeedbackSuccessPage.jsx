@@ -5,9 +5,9 @@ import { Button } from "@/components";
 
 export default function FeedbackSuccessPage() {
   return (
-    <div className="px-6 py-14 max-w-xl mx-auto text-center">
+    <div className="px-6 py-10 md:py-14 max-w-xl mx-auto text-center">
       {/* Container for the success card effect */}
-      <div className="bg-white p-10 rounded-3xl shadow-2xl space-y-5 border-t-8 border-brand-primary-500">
+      <div className="bg-white p-6 md:p-10 rounded-3xl shadow-2xl space-y-5 border-t-8 border-brand-primary-500">
         <CheckCircle className="w-20 h-20 mx-auto mb-4 transition-transform duration-300 scale-100 animate-pulse-once text-brand-primary-500" />
 
         <h2 className="text-3xl sm:text-4xl font-extrabold mb-6 text-brand-primary-900">

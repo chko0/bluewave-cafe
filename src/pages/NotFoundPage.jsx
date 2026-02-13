@@ -1,11 +1,12 @@
 import { Button } from "@/components";
+import { Coffee } from "lucide-react";
 
 export default function NotFoundPage() {
   return (
-    <div className="px-6 py-14 max-w-xl mx-auto text-center">
+    <div className="px-6 py-10 md:py-14 max-w-xl mx-auto text-center">
       {/* Container for the success card effect */}
-      <div className="bg-white p-10 rounded-3xl shadow-2xl space-y-5 border-t-8 border-brand-primary-500">
-        <span className="text-9xl mx-auto text-brand-primary-500 font-bold mb-4 transition-transform duration-300 scale-100 animate-pulse-once">
+      <div className="bg-white p-6 md:p-10 rounded-3xl shadow-2xl space-y-5 border-t-8 border-brand-primary-500">
+        <span className="text-8xl mx-auto text-brand-primary-500 font-bold mb-4 transition-transform duration-300 scale-100 animate-pulse-once">
           404
         </span>
 
@@ -13,10 +14,13 @@ export default function NotFoundPage() {
           Page Not Found!
         </h2>
 
-        <p className="text-lg md:text-xl mb-8 text-brand-primary-700">
-          Looks like this page has gone missing! Maybe it stepped out for a
-          quick coffee break. Let's get you back on track.
-        </p>
+        <div className="text-lg md:text-xl mb-8 text-brand-primary-700">
+          <p>
+            Looks like this page has gone missing! Maybe it stepped out for a
+            quick coffee break...
+            <Coffee className="inline-block ml-2 align-text-bottom" size={24} />
+          </p>
+        </div>
 
         {/* --- Back to Home Button --- */}
         <Button

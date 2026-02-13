@@ -66,7 +66,7 @@ export default function MenuItem({
       >
         <div className="flex justify-between items-start gap-3">
           <div className="flex flex-col min-w-0">
-            <div className="flex items-center flex-wrap gap-2">
+            <div className="flex items-center flex-wrap gap-x-2">
               <h3 className="text-brand-primary-900 text-xl font-extrabold truncate">
                 {name}
               </h3>

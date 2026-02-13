@@ -6,7 +6,7 @@ import { IconText } from "@/components";
 
 export default function AboutPage() {
   return (
-    <div className="px-6 py-16 max-w-5xl mx-auto flex flex-col gap-12">
+    <div className="px-6 py-10 md:py-12 max-w-5xl mx-auto flex flex-col gap-12">
       {/* Hero Section */}
       <div className="relative w-full h-64 md:h-96 rounded-3xl overflow-hidden shadow-lg">
         <img
@@ -31,7 +31,7 @@ export default function AboutPage() {
           Our Story
         </h2>
         <p className="text-lg leading-relaxed text-brand-primary-700">
-          At {SITE.name}, we craft moments of comfort with every cup. From
+          At {SITE.shortName}, we craft moments of comfort with every cup. From
           freshly brewed coffee to baked delights, our mission is to brighten
           your day in a cozy & welcoming space.
         </p>

@@ -34,11 +34,11 @@ export default function FeedbackPage() {
   `;
 
   return (
-    <div className="px-6 py-12 max-w-3xl mx-auto">
+    <div className="px-6 py-10 md:py-12 max-w-3xl mx-auto">
       {/* Header and Call to Action */}
       <div className="text-center mb-10">
         <MessageCircle className="w-12 h-12 mx-auto mb-4 text-brand-primary-600" />
-        <h2 className="text-3xl font-extrabold mb-2 text-brand-primary-900">
+        <h2 className="text-2xl md:text-3xl mb-0.5 font-extrabold text-brand-primary-900">
           Your Feedback Matters
         </h2>
         <p className="text-lg text-brand-primary-700">
