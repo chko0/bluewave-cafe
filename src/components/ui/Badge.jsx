@@ -23,7 +23,7 @@ const badgeVariants = (themeColors) => ({
   popular: {
     bg: STATUS_COLORS.warning.bg,
     text: STATUS_COLORS.warning.text,
-    classes: "animate-badge-pulse-glow animate-badge-shimmer",
+    classes: "animate-badge-pulse-glow",
     iconClasses: "",
     cssVars: {
       "--badge-glow-color": "rgba(255, 215, 0, 0.7)",
