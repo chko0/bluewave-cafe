@@ -10,6 +10,9 @@ import {
 export default function HomePage() {
   return (
     <>
+      <link rel="preconnect" href="https://maps.googleapis.com" />
+      <link rel="preconnect" href="https://maps.gstatic.com" />
+      <link rel="preload" href="cafe-hero.webp" as="image" alt="cafe-hero" />
       <HeroSection />
       <AnnouncementSection />
       <SpecialtyItemsSection />

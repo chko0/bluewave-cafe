@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MapPin, Phone, Navigation } from "lucide-react";
 
 import { Button, Badge, IconText } from "@/components";
@@ -8,7 +8,9 @@ import { getOpenStatus } from "@/utils";
 import clsx from "clsx";
 
 export default function LocationSection() {
+  const [isInView, setIsInView] = useState(false);
   const [mapLoaded, setMapLoaded] = useState(false);
+  const containerRef = useRef(null);
 
   const status = getOpenStatus(OPENING_HOURS);
 
@@ -16,6 +18,21 @@ export default function LocationSection() {
   const currentDay = new Date()
     .toLocaleString("en-US", { weekday: "long" })
     .toLowerCase();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect(); // Only load once
+        }
+      },
+      { rootMargin: "400px" }, // Start loading 400px before it enters view
+    );
+
+    if (containerRef.current) observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section
@@ -43,7 +60,10 @@ export default function LocationSection() {
           )}
         >
           {/* Map */}
-          <div className="relative h-[50vh] lg:h-auto lg:col-span-3">
+          <div
+            ref={containerRef}
+            className="relative h-[50vh] lg:h-auto lg:col-span-3"
+          >
             {/* Overlay Gradient */}
             <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20 via-transparent to-transparent" />
 
@@ -52,22 +72,24 @@ export default function LocationSection() {
               <img
                 src="/map-placeholder.webp"
                 alt="Map Placeholder"
-                className="absolute inset-0 w-full h-full object-cover scale-105"
+                className="absolute inset-0 w-full h-full object-cover animate-pulse bg-gray-200"
               />
             )}
 
             {/* Map Location */}
-            <iframe
-              title="Google Map Location"
-              src={LOCATION.map.embedUrl}
-              className={clsx(
-                "absolute inset-0 w-full h-full border-0 transition-opacity duration-700",
-                mapLoaded ? "opacity-100" : "opacity-0",
-              )}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              onLoad={() => setMapLoaded(true)}
-            />
+            {isInView && (
+              <iframe
+                title="Google Map Location"
+                src={LOCATION.map.embedUrl}
+                className={clsx(
+                  "absolute inset-0 w-full h-full border-0 transition-opacity duration-700",
+                  mapLoaded ? "opacity-100" : "opacity-0",
+                )}
+                referrerPolicy="no-referrer-when-downgrade"
+                onLoad={() => setMapLoaded(true)}
+                loading="lazy"
+              />
+            )}
 
             {/* Directions Button */}
             <Button
