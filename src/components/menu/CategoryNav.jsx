@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { menuData } from "@/data";
 import { Button } from "@/components";
@@ -11,45 +11,89 @@ export default function CategoryNav({
   navbarHeight,
 }) {
   const activeItemRef = useRef(null);
+  const scrollRef = useRef(null);
 
+  const [gradientState, setGradientState] = useState({
+    left: false,
+    right: false,
+  });
+
+  // Scroll the element into view
   useEffect(() => {
     activeItemRef.current?.scrollIntoView({
-      // Scroll the element into view
-      behavior: "smooth", // Use smooth scrolling for a better user experience
-      inline: "center", // Center the element in the viewable area (best for horizontal)
-      block: "nearest", // Align vertically to the nearest edge (default for horizontal scrolling)
+      behavior: "smooth",
+      inline: "center",
+      block: "nearest",
     });
   }, [activeCategory]);
 
+  const updateGradients = useCallback(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const left = el.scrollLeft > 0;
+    const right = el.scrollLeft + el.clientWidth < el.scrollWidth - 1;
+
+    setGradientState((prev) => {
+      if (prev.left === left && prev.right === right) return prev;
+      return { left, right };
+    });
+  }, []);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    updateGradients();
+
+    el.addEventListener("scroll", updateGradients, { passive: true });
+    window.addEventListener("resize", updateGradients);
+
+    return () => {
+      el.removeEventListener("scroll", updateGradients);
+      window.removeEventListener("resize", updateGradients);
+    };
+  }, [updateGradients]);
+
+  const { left: showLeft, right: showRight } = gradientState;
+
   return (
     <nav
-      className="z-40 overflow-x-auto border-b shadow-sm sticky bg-brand-light-bg border-brand-border top-[var(--navbar-height)]"
+      className="z-40 border-b shadow-sm sticky bg-brand-light-bg border-brand-border top-[var(--navbar-height)]"
       style={{ "--navbar-height": `${navbarHeight}px` }}
     >
       {/* Left gradient overlay */}
       <div
-        className="absolute top-0 left-0 h-full w-11 pointer-events-none z-41
-          bg-gradient-to-r from-brand-light-bg via-transparent to-transparent"
+        className={clsx(
+          "absolute top-0 left-0 h-full w-11 pointer-events-none z-41 transition-opacity duration-300",
+          "bg-gradient-to-r from-brand-light-bg via-transparent to-transparent",
+          showLeft ? "opacity-100" : "opacity-0",
+        )}
       />
 
       {/* Right gradient overlay */}
       <div
-        className="absolute top-0 right-0 h-full w-11 pointer-events-none z-41
-          bg-gradient-to-l from-brand-light-bg via-transparent to-transparent"
+        className={clsx(
+          "absolute top-0 right-0 h-full w-11 pointer-events-none z-41 transition-opacity duration-300",
+          "bg-gradient-to-l from-brand-light-bg via-transparent to-transparent",
+          showRight ? "opacity-100" : "opacity-0",
+        )}
       />
 
-      <div className="overflow-x-auto scrollbar scrollbar-thumb-rounded scrollbar-thin">
+      <div
+        ref={scrollRef}
+        className="overflow-x-auto scrollbar scrollbar-thumb-rounded scrollbar-thin"
+      >
         <div className="flex gap-3 px-4 py-2 min-w-max justify-start sm:justify-center rtl:flex-row-reverse">
-          {Object.entries(menuData).map(([key, data]) => {
-            const { icon: Icon, id: categoryId, label: categoryLabel } = data;
-            const isActive = activeCategory === categoryId;
+          {Object.values(menuData).map(({ icon: Icon, id, label }) => {
+            const isActive = activeCategory === id;
 
             return (
               <Button
-                key={categoryId}
+                key={id}
                 ref={isActive ? activeItemRef : null}
-                onClick={() => handleCategoryChange(categoryId)}
-                aria-label={`Select ${categoryLabel} category`}
+                onClick={() => handleCategoryChange(id)}
+                aria-label={`Select ${label} category`}
                 icon={Icon}
                 iconClassName="w-5 h-5"
                 className={clsx(
@@ -63,7 +107,7 @@ export default function CategoryNav({
                     : "bg-brand-inactive-bg text-brand-inactive-text hover:bg-brand-hover-bg hover:shadow-md",
                 )}
               >
-                {categoryLabel}
+                {label}
               </Button>
             );
           })}
