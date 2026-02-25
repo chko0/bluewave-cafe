@@ -22,7 +22,7 @@ export default function MenuItems({
         transition={{ duration: 0.24 }}
       >
         {sortedItems.map((item, index) => (
-          <MenuItem index={index} item={item} highPriorityLoading={index < 1} />
+          <MenuItem key={index} item={item} highPriorityLoading={index < 1} />
         ))}
       </motion.div>
     </AnimatePresence>

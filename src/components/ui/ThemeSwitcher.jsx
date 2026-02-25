@@ -8,7 +8,7 @@ import palette from "@/themes";
 import clsx from "clsx";
 
 export default function ThemeSwitcher() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isSwitcherOpen, setIsSwitcherOpen] = useState(false);
 
   const containerVariants = {
     hidden: { opacity: 0, scale: 0.95, y: 8 },
@@ -42,13 +42,13 @@ export default function ThemeSwitcher() {
   };
 
   const handleThemeSelect = (key) => {
-    setIsOpen(false);
+    setIsSwitcherOpen(false);
   };
 
   return (
-    <div className="fixed bottom-4 right-4 z-50">
+    <>
       <AnimatePresence>
-        {isOpen && (
+        {isSwitcherOpen && (
           <motion.div
             id="theme-list"
             initial="hidden"
@@ -83,27 +83,29 @@ export default function ThemeSwitcher() {
             "transition-all duration-300 transform translate-x-2",
             "opacity-0 group-hover:opacity-100 group-hover:translate-x-0",
             "pointer-events-none select-none",
-            isOpen ? "hidden" : "block",
+            isSwitcherOpen ? "hidden" : "block",
           )}
         >
           Theme
         </span>
 
         <Button
-          onClick={() => setIsOpen(!isOpen)}
-          aria-expanded={isOpen}
+          onClick={() => setIsSwitcherOpen(!isSwitcherOpen)}
+          aria-expanded={isSwitcherOpen}
           aria-controls="theme-list"
-          aria-label={isOpen ? "Close Theme Selector" : "Open Theme Selector"}
-          icon={isOpen ? X : Palette}
+          aria-label={
+            isSwitcherOpen ? "Close Theme Selector" : "Open Theme Selector"
+          }
+          icon={isSwitcherOpen ? X : Palette}
           iconClassName="w-5 h-5"
           className={clsx(
             "flex h-14 w-14 items-center justify-center rounded-full text-white shadow-[0_8px_18px_rgba(0,0,0,0.25)]",
             "transition-all duration-300 transform hover:scale-105",
             "focus:outline-none focus:ring-4 focus:ring-offset-2 focus:ring-brand-primary-500",
-            isOpen ? "bg-gray-500" : "bg-brand-primary-600",
+            isSwitcherOpen ? "bg-gray-500" : "bg-brand-primary-600",
           )}
         />
       </div>
-    </div>
+    </>
   );
 }

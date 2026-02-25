@@ -63,7 +63,7 @@ export default function MainLayout() {
 
       <Footer />
 
-      <div className="flex-shrink-0">
+      <div className="fixed bottom-4 right-4 z-50 flex flex-col items-center gap-2.5">
         <ThemeSwitcher />
       </div>
     </div>

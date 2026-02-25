@@ -26,23 +26,20 @@ export default function TestimonialsSection() {
       </div>
 
       {/* Carousel Container */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8">
-        <AnimatePresence initial={false} mode="wait">
+      <AnimatePresence initial={false} mode="wait">
+        <motion.div
+          key={index} // Triggers animation when page changes
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.3 }}
+          className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8"
+        >
           {visibleTestimonials.map((testimonial) => (
-            <motion.div
-              layout
-              key={testimonial.name}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3 }}
-              className="flex"
-            >
-              <TestimonialCard testimonial={testimonial} />
-            </motion.div>
+            <TestimonialCard key={testimonial.id} testimonial={testimonial} />
           ))}
-        </AnimatePresence>
-      </div>
+        </motion.div>
+      </AnimatePresence>
 
       <div className="flex flex-col items-center mt-12 gap-4">
         <Button

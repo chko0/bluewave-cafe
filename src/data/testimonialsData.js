@@ -1,23 +1,27 @@
 const testimonialsData = [
   {
+    id: "1",
     name: "Dani A.",
     rating: 5,
     quote: "Coziest vibe in Tripoli. Perfect place to get work done.",
     tag: "Remote Work",
   },
   {
+    id: "2",
     name: "Rami K.",
     rating: 5,
     quote: "Perfect for studying. Outlets everywhere and calm music.",
     tag: "Student",
   },
   {
+    id: "3",
     name: "Lynn S.",
     rating: 4,
     quote: "Best iced caramel latte bl shmel! Highly recommended.",
     tag: "Coffee Lover",
   },
   {
+    id: "4",
     name: "Omar M.",
     rating: 5,
     quote:
@@ -25,6 +29,7 @@ const testimonialsData = [
     tag: "Regular",
   },
   {
+    id: "5",
     name: "Sara T.",
     rating: 5,
     quote:
@@ -32,6 +37,7 @@ const testimonialsData = [
     tag: "Digital Nomad",
   },
   {
+    id: "6",
     name: "Jad H.",
     rating: 4,
     quote:
@@ -39,6 +45,7 @@ const testimonialsData = [
     tag: "Morning Person",
   },
   {
+    id: "7",
     name: "Mira W.",
     rating: 5,
     quote:
@@ -46,6 +53,7 @@ const testimonialsData = [
     tag: "Evening Vibe",
   },
   {
+    id: "8",
     name: "Khaled Z.",
     rating: 5,
     quote:
@@ -53,6 +61,7 @@ const testimonialsData = [
     tag: "Coffee Enthusiast",
   },
   {
+    id: "9",
     name: "Nour G.",
     rating: 5,
     quote:
