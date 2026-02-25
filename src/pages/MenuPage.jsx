@@ -22,28 +22,12 @@ export default function MenuPage() {
   // Derive the active ID (handles the fallback if the URL is just /menu)
   const activeId = activeCategoryData.id;
 
-  // 2. (DISABLED) Sync Logic: Redirect to last category or first category if path is just "/menu"
-  // useEffect(() => {
-  //   if (!categoryId) {
-  //     const storedCategory = localStorage.getItem("Category");
-  //     const target = menuArray.find((c) => c.id === storedCategory)
-  //       ? storedCategory
-  //       : menuArray[0].id;
-
-  //     // Navigate to the full path /menu/categoryId
-  //     navigate(`/menu/${target}`, { replace: true });
-  //   } else {
-  //     // Save preference if user navigated to a specific valid categoryId
-  //     localStorage.setItem("Category", categoryId);
-  //   }
-  // }, [categoryId, navigate, menuArray]);
-
-  // 3. Handle Category Changes via Navigation
+  // 2. Handle Category Changes via Navigation
   const handleCategoryChange = (newId) => {
-    if (newId != categoryId) navigate(`/menu/${newId}`);
+    if (newId !== categoryId) navigate(`/menu/${newId}`);
   };
 
-  // 4. Effect: Scroll positioning
+  // 3. Effect: Scroll positioning
   useEffect(() => {
     const targetScroll = headerHeight - navbarHeight;
 

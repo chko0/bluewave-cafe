@@ -7,7 +7,7 @@ import { IconText } from "@/components";
 export default function AboutPage() {
   return (
     <>
-      <link rel="preload" href="cafe-hero.webp" as="image" alt="cafe-hero" />
+      <link rel="preload" href="cafe-hero.webp" as="image" />
 
       <div className="px-6 py-10 md:py-12 max-w-5xl mx-auto flex flex-col gap-12">
         {/* Hero Section */}

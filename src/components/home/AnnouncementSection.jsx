@@ -21,8 +21,7 @@ export default function AnnouncementSection() {
         </div>
 
         {/*
-          Fixed min-height prevents layout shift on mobile when
-          announcement content or CTA length changes 
+          Fixed min-height prevents layout shift on mobile when announcement content or CTA length changes 
         */}
         <div className="min-h-[80px] md:min-h-[70px]">
           <AnnouncementRail />

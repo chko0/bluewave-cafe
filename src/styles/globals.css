@@ -17,20 +17,6 @@
   --color-brand-primary-900: var(--brand-primary900);
 }
 
-.footer-options a:hover {
-  color: var(--hover-color) !important;
-}
-
-/* =============================== */
-/* Custom utility for the nav link line */
-/* =============================== */
-.nav-link-item:hover .nav-line {
-  /* Set the background color here */
-  background-color: var(--line-active-color);
-  opacity: 0.5 !important; /* Half opacity on hover */
-  transform: scaleX(0.9) !important; /* Scale to 90% width on hover */
-}
-
 /* ============================
    GLOBAL SCROLLBAR STYLING
    ============================ */

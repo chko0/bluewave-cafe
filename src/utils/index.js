@@ -14,7 +14,10 @@ export function setFavicon(colorPrimary, colorAccent) {
   );
 
   const svgBlob = new Blob([svg], { type: "image/svg+xml" });
+
+  const oldHref = favicon.href;
   favicon.href = URL.createObjectURL(svgBlob);
+  if (oldHref?.startsWith("blob:")) URL.revokeObjectURL(oldHref);
 
   if (!document.getElementById("dynamic-favicon")) {
     document.head.appendChild(favicon);
@@ -30,9 +33,7 @@ export function getSpecialtyItems(menu, limit = 4) {
 
 export function getOpenStatus(openingHours) {
   const now = new Date();
-  const day = now
-    .toLocaleDateString("en-US", { weekday: "long" })
-    .toLowerCase();
+  const day = now.toLocaleString("en-US", { weekday: "long" }).toLowerCase();
 
   const today = openingHours[day];
   if (!today) return { open: false, label: "Closed today" };
