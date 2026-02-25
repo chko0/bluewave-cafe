@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 
 import cafeHero from "/cafe-hero.webp";
+import cafeHero2 from "/cafe-interior.webp";
 import { Coffee } from "lucide-react";
 
 import { Button, Badge } from "@/components";
@@ -150,7 +151,7 @@ export default function HeroSection() {
             "
           >
             <img
-              src={cafeHero}
+              src={cafeHero2}
               alt="Bluewave Cafe Interior"
               className="w-full h-full object-cover"
             />
