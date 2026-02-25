@@ -29,10 +29,6 @@ export default function BrandLogo({
   const { colors } = useTheme();
   const layoutStyles = layoutConfig[layout];
 
-  // const logoPadding = Math.max(6, size * 0.15);
-  // const titleSize = size * 0.47;
-  // const subtitleSize = size * 0.28;
-
   return (
     <Link
       to="/"
@@ -52,11 +48,6 @@ export default function BrandLogo({
             "w-[1em] h-[1em] p-[0.15em]",
             layoutStyles.logoMargin,
           )}
-          // style={{
-          //   width: size,
-          //   height: size,
-          //   padding: logoPadding,
-          // }}
         >
           <AppLogo
             role="img"

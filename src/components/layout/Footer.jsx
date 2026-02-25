@@ -51,16 +51,16 @@ export default function Footer() {
               if (!icon) return null; // Skip if icon is invalid
 
               return (
-                <Link
+                <a
                   key={platform}
-                  to={url}
+                  href={url}
                   aria-label={`Follow us on ${platform}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="transition duration-200 hover:opacity-50 focus:opacity-100 text-brand-active-text/80"
                 >
                   <Icon icon={`simple-icons:${icon}`} size={20} />
-                </Link>
+                </a>
               );
             })}
           </div>

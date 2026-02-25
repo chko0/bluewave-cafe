@@ -6,11 +6,12 @@ const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
   const fallbackTheme = "bluewave";
-  const savedTheme = localStorage.getItem("Theme");
-  const initialTheme =
-    savedTheme && palette[savedTheme] ? savedTheme : fallbackTheme;
 
-  const [themeName, setThemeName] = useState(initialTheme);
+  const [themeName, setThemeName] = useState(() => {
+    const saved = localStorage.getItem("Theme");
+    return saved && palette[saved] ? saved : fallbackTheme;
+  });
+
   const colors = palette[themeName];
 
   // Update CSS Variables whenever the theme changes + update FavIcon
@@ -37,7 +38,7 @@ export function ThemeProvider({ children }) {
 
     // UPDATE FAVICON
     setFavicon(colors.activeBg, colors.inactiveBg);
-  }, [themeName]);
+  }, [themeName, colors]);
 
   return (
     <ThemeContext.Provider

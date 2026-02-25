@@ -46,9 +46,7 @@ export default function WhyBluewaveSection() {
               key={title}
               className="flex flex-col items-center md:items-start gap-4 p-6 rounded-2xl shadow-lg hover:shadow-primary-300/40 transition-shadow duration-300 bg-white border-1 border-brand-border"
             >
-              {Icon && (
-                <Icon className="text-primary-600 w-8 h-8 text-brand-primary-900" />
-              )}
+              {Icon && <Icon className="w-8 h-8 text-brand-primary-900" />}
               <h3 className="text-lg md:text-xl font-bold text-brand-primary-900">
                 {title}
               </h3>

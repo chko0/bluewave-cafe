@@ -16,7 +16,6 @@ export default function AnnouncementRail() {
   const isModalOpen = Boolean(modalAnnouncement);
 
   const currentAnnouncement = announcements[index];
-  const openAnnouncement = modalAnnouncement ?? currentAnnouncement;
 
   const { startRotation, stopRotation } = useAutoRotate({
     enabled: announcements.length > 1 && !modalAnnouncement,
@@ -76,16 +75,16 @@ export default function AnnouncementRail() {
 
       <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
         <Modal.Content
-          icon={openAnnouncement.icon}
-          title={openAnnouncement?.title}
-          message={openAnnouncement?.message}
+          icon={modalAnnouncement?.icon}
+          title={modalAnnouncement?.title}
+          message={modalAnnouncement?.message}
         >
-          {openAnnouncement?.cta && (
+          {modalAnnouncement?.cta && (
             <Button
-              to={openAnnouncement?.cta.to}
+              to={modalAnnouncement?.cta.to}
               className="w-full justify-center bg-brand-primary-600 text-white py-3 rounded-2xl font-bold"
             >
-              {openAnnouncement?.cta.label}
+              {modalAnnouncement?.cta.label}
             </Button>
           )}
         </Modal.Content>
