@@ -15,7 +15,7 @@ export default function MainLayout() {
     route.match.test(location.pathname),
   );
 
-  // Fallback to pathname if no match found (like 404 page)
+  // Fallback to pathname if no match found
   const navigationKey = activeRoute ? activeRoute.path : location.pathname;
 
   const headerRef = useRef(null);

@@ -35,11 +35,7 @@ export default function LocationSection() {
   }, []);
 
   return (
-    <section
-      id="location"
-      className="py-20 md:py-32 px-4 bg-brand-light-bg"
-      // style={{ backgroundColor: colors.lightBg }}
-    >
+    <section id="location" className="py-20 md:py-32 px-4 bg-brand-light-bg">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-14 text-center max-w-2xl mx-auto">
@@ -115,7 +111,6 @@ export default function LocationSection() {
               {/* Status (Open / Closed) */}
               <div className="flex justify-start">
                 <Badge
-                  // variant={status.open ? "open" : "closed"}
                   className={clsx(
                     "px-4 py-1.5 rounded-full border flex items-center gap-3",
                     status.open

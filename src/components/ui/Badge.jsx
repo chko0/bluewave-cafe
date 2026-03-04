@@ -56,8 +56,8 @@ const badgeVariants = (themeColors) => ({
   seasonal: {
     bg: themeColors.border,
     text: themeColors.primary700,
-    classes: "animate-pulse-slow", // subtle, slow pulse instead of shimmer
-    iconClasses: "", // optional, can leave empty
+    classes: "animate-pulse-slow",
+    iconClasses: "",
   },
 
   open: {

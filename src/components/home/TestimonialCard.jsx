@@ -4,10 +4,7 @@ export default function TestimonialCard({ testimonial }) {
   const { name, rating, quote, tag } = testimonial;
 
   return (
-    <div
-      className="rounded-2xl p-6 shadow-md flex flex-col w-full h-full bg-brand-active-text border-1 border-brand-border"
-      // style={{ background: `linear-gradient(to bottom right, ${colors.lightBg}, white)` }}
-    >
+    <div className="rounded-2xl p-6 shadow-md flex flex-col w-full h-full bg-brand-active-text border-1 border-brand-border">
       {/* Quote */}
       <div className="overflow-hidden h-[4.5rem] sm:h-24 leading-6">
         <p className="text-base italic line-clamp-3 sm:line-clamp-4 text-brand-primary-900">

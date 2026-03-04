@@ -36,7 +36,7 @@ export function ThemeProvider({ children }) {
 
     localStorage.setItem("Theme", themeName);
 
-    // UPDATE FAVICON
+    // Update Favicon
     setFavicon(colors.activeBg, colors.inactiveBg);
   }, [themeName, colors]);
 

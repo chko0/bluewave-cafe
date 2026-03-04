@@ -24,7 +24,6 @@ export default function Navbar({ ref }) {
         "fixed top-0 left-0 w-full z-50 transition-all duration-300",
         "backdrop-blur-xl border-b border-brand-primary-900/10",
         "bg-gradient-to-br from-brand-primary-600/90 to-brand-primary-600/85",
-        // The "Premium" Shadow: Uses brand color instead of pure black for a natural blend
         "shadow-lg shadow-black/5",
       )}
     >
