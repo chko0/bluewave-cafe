@@ -71,7 +71,7 @@ export default function BrandLogo({
           )}
 
           {showSubtitle && (
-            <p className="text-[0.27em] font-light tracking-wide opacity-90 -mt-0.5 text-brand-light-bg">
+            <p className="text-[0.24em] font-light tracking-wide opacity-90 -mt-0.5 text-brand-light-bg">
               {SITE.subtitle}
             </p>
           )}

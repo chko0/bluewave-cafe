@@ -1,4 +1,6 @@
 import { MapPin, Phone, Mail, Coffee } from "lucide-react";
+import { motion } from "framer-motion";
+
 import heroImg from "/cafe-hero.webp";
 
 import { SITE, LOCATION } from "@/config";
@@ -12,12 +14,15 @@ export default function AboutPage() {
       <div className="px-6 py-10 md:py-12 max-w-5xl mx-auto flex flex-col gap-12">
         {/* Hero Section */}
         <div className="relative w-full h-64 md:h-96 rounded-3xl overflow-hidden shadow-lg">
-          <img
+          <motion.img
             src={heroImg}
             alt={SITE.name}
-            className={`w-full h-full object-cover transform transition duration-600 block`}
             fetchPriority="high"
             loading="eager"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="w-full h-full object-cover block"
           />
 
           <div className="absolute inset-0 flex items-end p-6 rounded-3xl bg-gradient-to-t from-brand-primary-900/70 to-transparent">
@@ -41,8 +46,8 @@ export default function AboutPage() {
         </section>
 
         {/* Contact Info */}
-        <section className="grid md:place-items-center sm:grid-cols-3 gap-4 text-brand-primary-900">
-          {/* 1. Address Link (MapPin) */}
+        <section className="grid md:place-items-center sm:grid-cols-3 gap-4 text-brand-primary-700">
+          {/* 1. Address Link */}
           <a
             href={`https://maps.google.com/?q=${LOCATION.address}`}
             target="_blank"

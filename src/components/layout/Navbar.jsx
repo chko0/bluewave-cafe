@@ -22,9 +22,9 @@ export default function Navbar({ ref }) {
       ref={ref}
       className={clsx(
         "fixed top-0 left-0 w-full z-50 transition-all duration-300",
-        "backdrop-blur-xl border-b border-brand-primary-900/10",
-        "bg-gradient-to-br from-brand-primary-600/90 to-brand-primary-600/85",
-        "shadow-lg shadow-black/5",
+        "backdrop-blur-xl border-b border-brand-inactive-bg/15",
+        "bg-gradient-to-r from-brand-primary-700 via-brand-primary-600 to-brand-primary-500",
+        "shadow-lg shadow-black/10 overflow-hidden",
       )}
     >
       {/* Main container */}
@@ -36,7 +36,7 @@ export default function Navbar({ ref }) {
           showLogo={true}
           showTitle={false}
           showSubtitle={false}
-          size={45}
+          size={40}
         />
 
         {/* Desktop navigation */}
@@ -93,8 +93,8 @@ export default function Navbar({ ref }) {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.2, ease: "easeInOut" }}
-            className="md:hidden flex flex-col gap-1.5 px-6 pb-4 pt-2 overflow-hidden"
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="md:hidden flex flex-col gap-1.5 px-6 pb-4 pt-2"
           >
             {navLinks.map(({ path, label, icon: Icon, match }) => {
               const isActive = match?.test(location.pathname);
@@ -105,11 +105,11 @@ export default function Navbar({ ref }) {
                   to={path}
                   onClick={(e) => handleNavigation(e, isActive)}
                   className={clsx(
-                    "flex items-center gap-2 px-2 py-2 rounded-md transition-all text-brand-active-text",
+                    "flex items-center gap-2 px-2 py-2 rounded-md transition-all text-brand-active-text text-lg",
                     isActive ? "opacity-100" : "opacity-70 hover:opacity-100",
                   )}
                 >
-                  {Icon && <Icon className="w-5 h-5" />}
+                  {Icon && <Icon className="w-6 h-6" />}
                   {label}
                 </Link>
               );

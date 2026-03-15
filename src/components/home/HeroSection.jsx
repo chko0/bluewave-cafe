@@ -1,5 +1,7 @@
 import "@/styles/globals.css";
 
+import { motion } from "framer-motion";
+
 import cafeHero from "/cafe-interior.webp";
 import { Coffee } from "lucide-react";
 
@@ -149,9 +151,14 @@ export default function HeroSection() {
               shadow-2xl
             "
           >
-            <img
+            <motion.img
               src={cafeHero}
               alt="Bluewave Cafe Interior"
+              fetchPriority="high"
+              loading="eager"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
               className="w-full h-full object-cover"
             />
 

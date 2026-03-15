@@ -69,11 +69,9 @@ function ModalContent({ icon: Icon = Info, title, message, children }) {
           <h3 className="font-bold text-lg text-gray-900">{title}</h3>
         </IconText>
       </div>
-
       <p className="text-gray-600 leading-relaxed mb-4">{message}</p>
-
       {/* Allows for custom buttons or inputs */}
-      <div className="flex flex-col gap-2">{children}</div>
+      {children && <div className="flex flex-col gap-2 mt-2">{children}</div>}
     </div>
   );
 }
