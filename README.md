@@ -1,8 +1,8 @@
-# ☕ BlueWave Café — Interactive Web Menu
+# ☕ BlueWave Café - Interactive Web Application
 
 **BlueWave Café** is a modern, high-performance, and fully themeable web application built with **React**, **Vite**, and **Tailwind CSS**, featuring a **serverless feedback system powered by Cloudflare Workers and Resend API.**
 
-It recreates a real café's digital menu experience — showcasing expertise in responsive UI/UX, global state management, performance optimization, and accessible front-end architecture.
+It recreates a real café's digital menu experience, showcasing expertise in responsive UI/UX, global state management, performance optimization, and accessible front-end architecture.
 
 This project serves as both a **technical showcase** and a **portfolio piece** highlighting advanced React development skills.
 
@@ -10,11 +10,11 @@ This project serves as both a **technical showcase** and a **portfolio piece** h
 
 | Feature                            | Technologies Used                                                          | Benefit                                                                                                                                                                                       |
 | :--------------------------------- | :------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Dynamic Theming**                | **React Context API**, `colors.js`, `ThemeSwitcher.jsx`                    | Allows instant theme switching using global state and CSS variable injection.                                                                                                                 |
+| **Dynamic Theming**                | **React Context API**, `themes/index.js`, `ThemeSwitcher.jsx`              | Allows instant theme switching using global state and CSS variable injection.                                                                                                                 |
 | **Performance-First Architecture** | **`React.lazy()`**, `Suspense`, Vite `manualChunks`, image `fetchPriority` | Route-based code splitting and optimized build setup enable lightning-fast initial loads.                                                                                                     |
 | **Elegant UI/UX Design**           | **`framer-motion`**, Tailwind CSS, dynamic favicon                         | Provides a polished, accessible interface with subtle motion effects and real-time theme reflection in the favicon.                                                                           |
 | **Scalable Data Management**       | **`config.json`**, `menuData.js`                                           | All site data (navigation, metadata, and menu items) is externally managed, simplifying updates and long-term scalability.                                                                    |
-| **SEO & Routing Optimization**     | **React Router v6**, `PageTitleHandler.jsx`, `react-helmet-async`          | Automatically generates descriptive page titles and meta tags for better SEO and user experience.                                                                                             |
+| **SEO & Routing Optimization**     | **React Router v6**, `PageTitleHandler.jsx`, `site.js`, `navigation.js`    | Automatically generates descriptive page titles and meta tags for better SEO and user experience.                                                                                             |
 | **Serverless Email System**        | **Cloudflare Worker**, [Resend API](https://resend.com/)                   | Securely handles feedback form submissions without exposing backend credentials. The Worker validates input, calls Resend's REST API, and sends confirmation emails with high deliverability. |
 
 ## 🚀 Live Demo
@@ -31,13 +31,13 @@ Explore the full experience, including dynamic themes and smooth animations:
 - **State Management:** Custom **React Context** for Theming
 - **Animation:** [Framer Motion](https://www.framer.com/motion/)
 - **Routing:** [React Router DOM v6](https://reactrouter.com/)
-- **Icons:** [Lucide React](https://lucide.dev/icons/)
+- **Icons:** [Lucide React](https://lucide.dev/icons/) + [Iconify](https://iconify.design/docs/icon-components/react/) for social media icons
 - **Backend:** [Cloudflare Workers](https://developers.cloudflare.com/workers/) + [Resend API](https://resend.com/) for serverless email handling
 
 ## ☁️ Backend
 
 The project leverages a **Cloudflare Worker** to manage form submissions securely.  
-When a customer submits feedback, the Worker validates input, sends the message to the site owner's inbox via **Resend API**, and returns a success response — all without exposing private API keys or relying on traditional servers.
+When a customer submits feedback, the Worker validates input, sends the message to the site owner's inbox via **Resend API**, and returns a success response - all without exposing private API keys or relying on traditional servers.
 
 _(Currently configured to send feedback to a test inbox for demonstration purposes.)_
 
@@ -54,7 +54,7 @@ This setup ensures:
 # ☕ Inspiration
 
 BlueWave Café was designed as a fictional brand to illustrate how thoughtful UI design, clean code, and technical polish can transform a simple café menu into a complete digital experience.
-It's not just about what's on the menu — it's about the craft behind how it's served.
+It's not just about what's on the menu - it's about the craft behind how it's served.
 
 ## 💻 Local Setup
 
@@ -117,34 +117,36 @@ The production build will be located in the `/dist` folder.
 
 ## 📂 Project Structure
 
-The codebase follows a clear, predictable structure for high maintainability:
+The codebase follows a clear, scalable, and predictable structure for high maintainability:
 
 ```bash
 /
-├── node_modules/
-├── public/
-│   ├── menu/           # Contains menu item images (e.g., espresso.webp, latte.webp)
-│   ├── cafe-hero.webp  # Hero image, accessed directly by components like AboutPage
+├── public/             # Static assets (Optimizeed .webp menu items & hero images)
 │   └── robots.txt      # SEO configuration file
 │
 └── src/
-    ├── assets/         # Contains static assets referenced by React components
-    │   └── favicon.svg # Used by Header.jsx for the logo component
-    │
-    ├── components/     # Reusable UI components (Navbar, Footer, Badge, Loading, ...)
-    ├── context/        # Global state logic (ThemeContext.jsx)
-    ├── data/           # Content data (menuData.js)
+    ├── assets/         # Source assets (Favicon used for dynamic SVG manipulation)
+    ├── components/        # Reusable UI Components
+    │   ├── common/        # Global cross-cutting components (Logo, Title Handlers)
+    │   ├── home/          # Feature-specific components for the Landing Page
+    │   ├── layout/        # Structural components (Navbar, Footer, MainLayout)
+    │   ├── menu/          # Menu-specific domain logic and display components
+    │   └── ui/            # Atomic Design System (Reusable Button, Badge, Modal, etc.)
+    ├── config/         # Centralized application constants (e.g., Hours, Navigation, Socials, API endpoints, Contact info)
+    ├── context/        # Global state management (ThemeContext.jsx)
+    ├── data/           # Decoupled data content (Menu items, Testimonials, Announcements)
+    ├── hooks/          # Custom React hooks (Navigation handlers, Feedback Logic, ...)
     ├── pages/          # Route-specific components (MenuPage, AboutPage, NotFoundPage, ...)
-    ├── theme/          # Theme definitions (colors.js)
-    ├── utils/          # Utility functions (setFavicon, utils.js)
-    ├── config.json     # Application settings (API endpoints, navigation links, contact info)
+    ├── styles/         # Global CSS and specialized component animations
+    ├── themes/         # Theme definitions
+    ├── utils/          # Helper functions and utility logic
     ├── App.jsx         # Main routing and global layout
-    └── main.jsx        # Entry point (initializes ThemeProvider)
+    └── main.jsx        # Application entry point
 ```
 
 ## ⚡ Performance
 
-Tested using **Google PageSpeed Insights** — achieving near-perfect scores:
+Tested using **Google PageSpeed Insights**, achieving near-perfect scores:
 
 - **Performance:** 99 / 100
 - **Accessibility:** 100 / 100
@@ -160,7 +162,7 @@ Tested using **Google PageSpeed Insights** — achieving near-perfect scores:
 
 ## 📜 License
 
-© 2025 Chadi Kouzayha. All rights reserved.
+© 2026 Chadi Kouzayha. All rights reserved.
 This project is for demonstration and portfolio purposes. Redistribution or commercial use without permission is prohibited.
 
 ---
