@@ -7,19 +7,19 @@ export default function WhyBluewaveSection() {
       icon: Coffee,
       title: "Cozy Atmosphere",
       description:
-        "Relax, enjoy your coffee, and soak in the warm, inviting environment.",
+        "Relax, enjoy your coffee, & soak in the warm, inviting environment.",
     },
     {
       icon: Laptop,
       title: "Work-Friendly",
       description:
-        "Quiet corners and fast Wi-Fi for students and freelancers alike.",
+        "Quiet corners & fast Wi-Fi for students & freelancers alike.",
     },
     {
       icon: Users,
       title: "Community Hub",
       description:
-        "Meet, connect, and collaborate with like-minded coffee enthusiasts.",
+        "Meet, connect, & collaborate with like-minded coffee enthusiasts.",
     },
   ];
 
@@ -35,8 +35,8 @@ export default function WhyBluewaveSection() {
         <p className="text-base md:text-lg leading-relaxed max-w-3xl mx-auto mb-12 text-brand-primary-900">
           Located in Tripoli's Mina District, {SITE.shortName} blends cozy
           aesthetics with a modern, work-friendly design. We're fuel for
-          students, freelancers, and every coffee-lover in between — a place to
-          focus, connect, and slow down.
+          students, freelancers, & every coffee-lover in between... a place to
+          focus, connect, & slow down.
         </p>
 
         {/* Features Grid */}

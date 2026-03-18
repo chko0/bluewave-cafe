@@ -33,8 +33,8 @@ export default function SpecialtyItemsSection() {
               <span className="text-brand-primary-600">Picks</span>
             </h2>
             <p className="text-lg md:text-xl leading-relaxed opacity-80 text-brand-primary-900">
-              Hand-selected favorites and seasonal highlights curated for the
-              true coffee enthusiast.
+              Hand-selected favorites & seasonal highlights curated for the true
+              coffee enthusiast.
             </p>
           </div>
 

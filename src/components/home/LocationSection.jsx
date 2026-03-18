@@ -42,9 +42,7 @@ export default function LocationSection() {
           <h2 className="text-4xl md:text-5xl font-extrabold mb-3 tracking-tight text-brand-primary-900">
             Visit Us at {SITE.name}
           </h2>
-          <p className="text-lg text-brand-primary-900">
-            {LOCATION.tagline || "Your local spot for coffee and community."}
-          </p>
+          <p className="text-lg text-brand-primary-900">{SITE.tagline}</p>
         </div>
 
         {/* Floating Glass Card Container */}

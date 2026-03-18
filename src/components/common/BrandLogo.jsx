@@ -44,7 +44,7 @@ export default function BrandLogo({
       {showLogo && (
         <div
           className={clsx(
-            "w-14 h-14 p-2 rounded-full bg-white shadow-xl flex items-center justify-center",
+            "p-2 rounded-full bg-white shadow-xl flex items-center justify-center",
             "w-[1em] h-[1em] p-[0.15em]",
             layoutStyles.logoMargin,
           )}
