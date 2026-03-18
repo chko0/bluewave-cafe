@@ -1,22 +1,25 @@
 {
-  "name": "cafe-menu",
+  "name": "bluewave-cafe",
   "private": true,
-  "version": "0.0.0",
+  "version": "2.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview --host"
   },
   "dependencies": {
+    "@iconify/react": "^6.0.2",
     "@tailwindcss/vite": "^4.1.14",
+    "clsx": "^2.1.1",
     "framer-motion": "^12.23.22",
     "lucide-react": "^0.544.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-lazy-load-image-component": "^1.6.3",
     "react-router-dom": "^7.9.3",
+    "tailwind-merge": "^3.4.0",
     "tailwind-scrollbar": "^4.0.2",
     "tailwindcss": "^4.1.14"
   },
@@ -26,6 +29,7 @@
     "@types/react": "^19.1.16",
     "@types/react-dom": "^19.1.9",
     "@vitejs/plugin-react": "^5.0.4",
+    "baseline-browser-mapping": "^2.9.5",
     "eslint": "^9.36.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.22",

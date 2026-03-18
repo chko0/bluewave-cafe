@@ -1,0 +1,52 @@
+@import "tailwindcss";
+@plugin 'tailwind-scrollbar';
+
+/* Mapping to the CSS variables created in ThemeContext */
+@theme {
+  --color-brand-light-bg: var(--brand-lightBg);
+  --color-brand-border: var(--brand-border);
+  --color-brand-active-bg: var(--brand-activeBg);
+  --color-brand-inactive-bg: var(--brand-inactiveBg);
+  --color-brand-hover-bg: var(--brand-hoverBg);
+  --color-brand-active-text: var(--brand-activeText);
+  --color-brand-inactive-text: var(--brand-inactiveText);
+
+  --color-brand-primary-500: var(--brand-primary500);
+  --color-brand-primary-600: var(--brand-primary600);
+  --color-brand-primary-700: var(--brand-primary700);
+  --color-brand-primary-900: var(--brand-primary900);
+}
+
+/* ============================
+   GLOBAL SCROLLBAR STYLING
+   ============================ */
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  height: 6px; /* horizontal scrollbar height */
+  width: 6px; /* vertical scrollbar width */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.18); /* subtle thumb */
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.28);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.22) transparent;
+}
+
+/* Prevents transitions on load */
+.stop-transitions * {
+  transition: none !important;
+}

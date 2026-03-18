@@ -10,7 +10,9 @@ import {
 
 const menuData = {
   // --- 1. COFFEE ---
-  Coffee: {
+  coffee: {
+    id: "coffee",
+    label: "Coffee",
     icon: Coffee,
     items: [
       {
@@ -56,9 +58,11 @@ const menuData = {
     ],
   },
 
-  // --- 2. COLD BEVERAGES ---
-  "Cold Drinks": {
-    icon: CupSoda, // Keeping the soda icon for cold drinks
+  // --- 2. COLD DRINKS ---
+  coldDrinks: {
+    id: "cold-drinks",
+    label: "Cold Drinks",
+    icon: CupSoda,
     items: [
       {
         name: "Iced Tea",
@@ -85,7 +89,9 @@ const menuData = {
   },
 
   // --- 3. HOT DRINKS ---
-  "Hot Drinks": {
+  hotDrinks: {
+    id: "hot-drinks",
+    label: "Hot Drinks",
     icon: Milk,
     items: [
       {
@@ -98,29 +104,32 @@ const menuData = {
         name: "Classic Hot Tea",
         price: 3.0,
         description: "Your choice of high-quality Black Tea or Earl Grey",
-        image: "classic_hot_tea.webp", // New image
+        image: "classic_hot_tea.webp",
       },
       {
         name: "Chai Latte",
         price: 4.5,
         description:
           "Sweet & spicy black tea concentrate mixed with steamed milk",
-        image: "chai_latte.webp", // New image
-        popular: true,
+        image: "chai_latte.webp",
+        new: true,
+        seasonal: true,
       },
       {
         name: "Matcha Latte",
         price: 5.5,
         description:
           "Ceremonial grade Japanese matcha blended with steamed milk",
-        image: "matcha_latte.webp", // New image
+        image: "matcha_latte.webp",
         new: true,
       },
     ],
   },
 
   // --- 4. BREAKFAST ---
-  Breakfast: {
+  breakfast: {
+    id: "breakfast",
+    label: "Breakfast",
     icon: Star,
     items: [
       {
@@ -148,7 +157,9 @@ const menuData = {
   },
 
   // --- 5. SANDWICHES ---
-  Sandwiches: {
+  sandwiches: {
+    id: "sandwiches",
+    label: "Sandwiches",
     icon: Sandwich,
     items: [
       {
@@ -194,7 +205,9 @@ const menuData = {
   },
 
   // --- 6. PASTRIES ---
-  Pastries: {
+  pastries: {
+    id: "pastries",
+    label: "Pastries",
     icon: Croissant,
     items: [
       {
@@ -261,7 +274,9 @@ const menuData = {
   },
 
   // --- 7. DESSERTS ---
-  Desserts: {
+  desserts: {
+    id: "desserts",
+    label: "Desserts",
     icon: Cake,
     items: [
       {

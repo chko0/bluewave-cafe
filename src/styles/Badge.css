@@ -1,0 +1,85 @@
+/* =============================== */
+/* Glow Animation */
+/* =============================== */
+
+@keyframes badge-pulse-glow-opt {
+  0%,
+  100% {
+    transform: scale3d(1, 1, 1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale3d(1.02, 1.02, 1);
+    opacity: 0.8;
+  }
+}
+
+@keyframes badge-pulse-scale-opt {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.animate-badge-pulse-glow {
+  position: relative;
+  z-index: 0;
+  border: 1px solid #ffd700;
+  will-change: transform;
+  animation: badge-pulse-scale-opt 2s ease-in-out infinite;
+}
+
+.animate-badge-pulse-glow::after {
+  content: "";
+  position: absolute;
+  inset: 0px;
+  border-radius: inherit;
+
+  box-shadow:
+    0 0 8px 1px rgba(255, 215, 0, 0.7),
+    0 0 15px 4px rgba(255, 171, 0, 0.5);
+
+  z-index: -1;
+
+  animation: badge-pulse-glow-opt 2s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+/* ================================ */
+/* Shimmer Animation */
+/* ================================ */
+
+@keyframes badge-shimmer {
+  0% {
+    transform: translateX(-150%) skewX(-20deg);
+  }
+  100% {
+    transform: translateX(250%) skewX(-20deg);
+  }
+}
+
+.animate-badge-shimmer {
+  position: relative;
+  overflow: hidden; /* keeps shimmer inside the pill */
+  transform: translateZ(0); /* forces layer promotion for the container */
+}
+
+.animate-badge-shimmer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* slightly wider for smoother entry */
+  height: 100%;
+  background: linear-gradient(
+    110deg,
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  will-change: transform; /* GPU acceleration */
+  animation: badge-shimmer 2.1s ease-in-out infinite;
+}

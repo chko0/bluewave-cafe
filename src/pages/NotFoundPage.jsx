@@ -1,34 +1,41 @@
-import { Link } from "react-router-dom";
-import { useTheme } from "../context/ThemeContext";
+import { Button } from "@/components";
+import { Coffee } from "lucide-react";
 
 export default function NotFoundPage() {
-  const { colors } = useTheme();
-
-  const buttonBg = colors.primary600;
-  const buttonHoverBg = colors.primary700; // Used for the darker hover state
-  const headerText = colors.primary900;
-  const paragraphText = colors.primary700;
-
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen text-center">
-      <h2 className="text-5xl font-bold mb-4" style={{ color: headerText }}>
-        404
-      </h2>
-      <p className="text-lg mb-8" style={{ color: paragraphText }}>
-        Oops! Page not found.
-      </p>
-      <Link
-        to="/"
-        aria-label="Back to Home"
-        className="text-white px-6 py-3 rounded-xl transition font-semibold hover:scale-105 hover:[--btn-bg:var(--btn-hover-bg)]"
-        style={{
-          "--btn-bg": buttonBg,
-          "--btn-hover-bg": buttonHoverBg,
-          backgroundColor: "var(--btn-bg)",
-        }}
-      >
-        Back to Home
-      </Link>
-    </main>
+    <div className="px-6 py-10 md:py-14 max-w-xl mx-auto text-center">
+      {/* Container for the success card effect */}
+      <div className="bg-white p-6 md:p-10 rounded-3xl shadow-2xl space-y-5 border-t-8 border-brand-primary-500">
+        <span className="text-8xl mx-auto text-brand-primary-500 font-bold mb-4 transition-transform duration-300 scale-100 animate-pulse-once">
+          404
+        </span>
+
+        <h2 className="text-3xl sm:text-4xl font-extrabold mb-6 text-brand-primary-900">
+          Page Not Found!
+        </h2>
+
+        <div className="text-lg md:text-xl mb-8 text-brand-primary-700">
+          <p>
+            Looks like this page has gone missing! Maybe it stepped out for a
+            quick coffee break...
+            <Coffee className="inline-block ml-2 align-text-bottom" size={24} />
+          </p>
+        </div>
+
+        {/* --- Back to Home Button --- */}
+        <Button
+          to="/"
+          className="
+              text-sm md:text-base px-6 py-4 md:px-8 rounded-xl transition-all duration-200 font-bold shadow-lg
+              text-brand-active-text
+              hover:shadow-xl uppercase tracking-wider hover:scale-[1.03]
+              bg-brand-primary-600 hover:bg-brand-primary-700
+          "
+          aria-label="Return Home"
+        >
+          Return Home
+        </Button>
+      </div>
+    </div>
   );
 }

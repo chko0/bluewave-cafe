@@ -1,70 +1,60 @@
-import React, { useState, useRef, useEffect, Suspense } from "react";
-import "../styles/MenuPage.css";
+import { useEffect, Suspense, useMemo } from "react";
+import { useNavigate, useOutletContext, useParams } from "react-router-dom";
 
-import menuData from "../data/menuData";
+import { menuData } from "@/data";
+import { Loading, CategoryHeader, CategoryNav, MenuItems } from "@/components";
+import { useScrollTo } from "@/hooks";
 
-import CategoryNav from "../components/CategoryNav";
-import CategoryHeader from "../components/CategoryHeader";
-import Loading from "../components/Loading";
+export default function MenuPage() {
+  const { headerHeight, navbarHeight } = useOutletContext();
+  const { categoryId } = useParams();
+  const navigate = useNavigate();
+  const scrollTo = useScrollTo();
 
-const MenuItems = React.lazy(() => import("../components/MenuItems"));
+  // Convert menuData to an array for easier searching
+  const menuArray = useMemo(() => Object.values(menuData), []);
 
-export default function MenuPage({ headerOffset = 292 }) {
-  const categories = Object.keys(menuData);
+  // 1. Identify the active category data based on the URL id (categoryId)
+  const activeCategoryData = useMemo(() => {
+    return menuArray.find((cat) => cat.id === categoryId) || menuArray[0];
+  }, [categoryId, menuArray]);
 
-  const storedCategory = localStorage.getItem("Category");
-  const defaultCategory = categories[0];
+  // Derive the active ID (handles the fallback if the URL is just /menu)
+  const activeId = activeCategoryData.id;
 
-  const chosenCategory =
-    storedCategory && menuData[storedCategory]
-      ? storedCategory
-      : defaultCategory;
+  // 2. Handle Category Changes via Navigation
+  const handleCategoryChange = (newId) => {
+    if (newId !== categoryId) navigate(`/menu/${newId}`);
+  };
 
-  const [activeCategory, setActiveCategory] = useState(chosenCategory);
-
-  const ActiveIcon = menuData[activeCategory].icon;
-
-  const menuRef = useRef(null);
-  const navRef = useRef(null);
-
+  // 3. Effect: Scroll positioning
   useEffect(() => {
-    localStorage.setItem("Category", activeCategory);
-    if (menuRef.current) {
-      const menuTop =
-        menuRef.current.getBoundingClientRect().top + window.pageYOffset;
+    const targetScroll = headerHeight - navbarHeight;
 
-      // Only scroll if user is below the menu section
-      if (window.scrollY > headerOffset) {
-        window.scrollTo({
-          top: headerOffset,
-          behavior: "smooth",
-        });
-      }
+    if (window.scrollY > targetScroll) {
+      scrollTo(targetScroll);
     }
-  }, [activeCategory]);
+  }, [categoryId, headerHeight, navbarHeight, scrollTo]);
 
   return (
     <>
       <CategoryNav
-        activeCategory={activeCategory}
-        setActiveCategory={setActiveCategory}
+        activeCategory={activeId}
+        handleCategoryChange={handleCategoryChange}
+        navbarHeight={navbarHeight}
       />
 
-      {/* Menu Section */}
-      <div
-        ref={menuRef}
-        className="px-6 py-4 md:py-6 max-w-7xl mx-auto min-h-screen flex flex-col transition duration-300 ease-in-out"
-      >
+      <div className="px-6 py-4 md:py-6 max-w-7xl mx-auto min-h-screen flex flex-col transition duration-300">
         <CategoryHeader
-          key={activeCategory}
-          activeCategory={activeCategory}
-          ActiveIcon={ActiveIcon}
+          key={activeId}
+          activeCategory={activeCategoryData.label}
+          ActiveIcon={activeCategoryData.icon}
         />
 
         <Suspense fallback={<Loading isFullHeight={false} className="mt-12" />}>
           <MenuItems
-            items={menuData[activeCategory].items}
-            activeCategory={activeCategory}
+            items={activeCategoryData.items}
+            activeCategory={activeId}
           />
         </Suspense>
       </div>
