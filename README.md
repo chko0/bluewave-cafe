@@ -1,21 +1,44 @@
-# ☕ BlueWave Café - Interactive Web Application
+# ☕ BlueWave Café v2.0 - Interactive Web Application
 
 **BlueWave Café** is a modern, high-performance, and fully themeable web application built with **React**, **Vite**, and **Tailwind CSS**, featuring a **serverless feedback system powered by Cloudflare Workers and Resend API.**
 
-It recreates a real café's digital menu experience, showcasing expertise in responsive UI/UX, global state management, performance optimization, and accessible front-end architecture.
+Version 2.0 introduces a complete **Cafe Landing Page redesign**, improved UI architecture, and enhanced scalability, transforming the project from a simple menu interface into a more **production-ready frontend application**.
 
-This project serves as both a **technical showcase** and a **portfolio piece** highlighting advanced React development skills.
+It recreates a real café's digital experience, showcasing expertise in responsive UI/UX, component architecture, performance optimization, and accessible frontend design.
+
+This project serves as both a **technical showcase** and a **portfolio piece** highlighting strong React development practices and real-world frontend architecture.
+
+## 🧠 Highlights
+
+- Built as a **real-world scalable frontend**, not just a static UI
+- Fully **themeable design system** using Tailwind CSS variables
+- **Component-driven architecture** with reusable UI primitives
+- **Serverless backend integration** using Cloudflare Workers
+- Focus on **performance, accessibility, and UX polish**
+
+## 📸 Preview
+
+![Landing Page](./screenshots/Screenshot_1.png)
+![Menu Page](./screenshots/Screenshot_2.png)
+![Announcement Popup Modal](./screenshots/Screenshot_3.png)
+![Landing Page (Mobile)](./screenshots/Screenshot_4.png)
+![Menu Page (Mobile)](./screenshots/Screenshot_5.png)
+![Feedback Form Page (Mobile)](./screenshots/Screenshot_6.png)
 
 ## ✨ Key Features
 
-| Feature                            | Technologies Used                                                          | Benefit                                                                                                                                                                                       |
-| :--------------------------------- | :------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Dynamic Theming**                | **React Context API**, `themes/index.js`, `ThemeSwitcher.jsx`              | Allows instant theme switching using global state and CSS variable injection.                                                                                                                 |
-| **Performance-First Architecture** | **`React.lazy()`**, `Suspense`, Vite `manualChunks`, image `fetchPriority` | Route-based code splitting and optimized build setup enable lightning-fast initial loads.                                                                                                     |
-| **Elegant UI/UX Design**           | **`framer-motion`**, Tailwind CSS, dynamic favicon                         | Provides a polished, accessible interface with subtle motion effects and real-time theme reflection in the favicon.                                                                           |
-| **Scalable Data Management**       | **`config.json`**, `menuData.js`                                           | All site data (navigation, metadata, and menu items) is externally managed, simplifying updates and long-term scalability.                                                                    |
-| **SEO & Routing Optimization**     | **React Router v6**, `PageTitleHandler.jsx`, `site.js`, `navigation.js`    | Automatically generates descriptive page titles and meta tags for better SEO and user experience.                                                                                             |
-| **Serverless Email System**        | **Cloudflare Worker**, [Resend API](https://resend.com/)                   | Securely handles feedback form submissions without exposing backend credentials. The Worker validates input, calls Resend's REST API, and sends confirmation emails with high deliverability. |
+| Feature                            | Technologies Used                                                                             | Benefit                                                                                                                                                                                       |
+| :--------------------------------- | :-------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Dynamic Theming**                | React Context API, Tailwind CSS variables                                                     | Enables instant theme switching using global state and CSS design tokens.                                                                                                                     |
+| **Performance-First Architecture** | **`React.lazy()`**, `Suspense`, Vite `manualChunks`, image `fetchPriority`                    | Route-based code splitting and optimized build setup enable lightning-fast initial loads.                                                                                                     |
+| **Elegant UI/UX Design**           | **`framer-motion`**, Tailwind CSS, dynamic favicon, responsive layout                         | Provides a polished, responsive, and accessible interface with subtle motion effects, smooth transitions, and real-time theme reflection in the favicon.                                      |
+| **Cafe Landing Page**              | Modular React components, responsive layout, Google Maps Embed API (iframe-based integration) | Provides a complete real-world landing experience with hero, testimonials, announcements, and location integration.                                                                           |
+| **Reusable UI System**             | Reusable UI primitives (Button, Badge, Modal, etc.)                                           | Promotes consistency, scalability, and faster development across the app.                                                                                                                     |
+| **Custom Hooks System**            | `useScrollTo`, `useAutoRotate`, `useNavigationHandler`                                        | Encapsulates logic cleanly and improves code reusability and separation of concerns.                                                                                                          |
+| **Dynamic Menu Routing**           | React Router, route params                                                                    | Enables direct linking to menu categories (e.g. `/menu/coffee`) for better UX and navigation.                                                                                                 |
+| **Scalable Data Management**       | **`/config/`**, `menuData.js`                                                                 | All site data (e.g., navigation, metadata, menu items) is externally managed, simplifying updates and long-term scalability.                                                                  |
+| **SEO & Routing Optimization**     | **React Router v6**, `PageTitleHandler.jsx`, `site.js`, `navigation.js`                       | Automatically generates descriptive page titles and meta tags for better SEO and user experience.                                                                                             |
+| **Serverless Email System**        | **Cloudflare Worker**, [Resend API](https://resend.com/)                                      | Securely handles feedback form submissions without exposing backend credentials. The Worker validates input, calls Resend's REST API, and sends confirmation emails with high deliverability. |
 
 ## 🚀 Live Demo
 
@@ -37,7 +60,9 @@ Explore the full experience, including dynamic themes and smooth animations:
 ## ☁️ Backend
 
 The project leverages a **Cloudflare Worker** to manage form submissions securely.  
-When a customer submits feedback, the Worker validates input, sends the message to the site owner's inbox via **Resend API**, and returns a success response - all without exposing private API keys or relying on traditional servers.
+When the user submits feedback, the Worker validates input, communicates with the **Resend API**, and sends emails without exposing sensitive credentials.
+
+This simulates a **real-world serverless backend architecture** without requiring a traditional server.
 
 _(Currently configured to send feedback to a test inbox for demonstration purposes.)_
 
@@ -121,7 +146,7 @@ The codebase follows a clear, scalable, and predictable structure for high maint
 
 ```bash
 /
-├── public/             # Static assets (Optimizeed .webp menu items & hero images)
+├── public/             # Static assets (Optimized .webp menu items & hero images)
 │   └── robots.txt      # SEO configuration file
 │
 └── src/
@@ -146,12 +171,23 @@ The codebase follows a clear, scalable, and predictable structure for high maint
 
 ## ⚡ Performance
 
-Tested using **Google PageSpeed Insights**, achieving near-perfect scores:
+Tested using **Google PageSpeed Insights** (Mobile, slow 4G throttling):
 
-- **Performance:** 99 / 100
+- **Performance:** 96-99 / 100 (depending on route)
 - **Accessibility:** 100 / 100
 - **Best Practices:** 100 / 100
 - **SEO:** 100 / 100
+
+Desktop consistently scores **100 / 100** across all categories.
+
+> Benchmarked on the landing page (most resource-intensive route).
+
+## 🔖 Versioning
+
+- **v2.0** — Cafe Landing Page, improved architecture, and UI system
+- **v1.0** — Initial release (menu-focused experience)
+
+Version history is available via Git tags and pull requests.
 
 ## 🚧 Future Improvements
 
@@ -159,11 +195,6 @@ Tested using **Google PageSpeed Insights**, achieving near-perfect scores:
 - Multi-language support (Arabic & English)
 - Payment and order integration
 - PWA support for offline browsing
-
-## 📜 License
-
-© 2026 Chadi Kouzayha. All rights reserved.
-This project is for demonstration and portfolio purposes. Redistribution or commercial use without permission is prohibited.
 
 ---
 

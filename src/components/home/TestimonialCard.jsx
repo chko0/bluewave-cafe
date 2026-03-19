@@ -18,7 +18,7 @@ export default function TestimonialCard({ testimonial }) {
           <span className="text-sm font-bold text-brand-primary-700">
             – {name}
           </span>
-          <span className="text-[10px] uppercase tracking-widest font-black block text-brand-primary-600/80">
+          <span className="text-[10px] uppercase tracking-widest font-black block text-brand-primary-600/85">
             {tag}
           </span>
         </div>
