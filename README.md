@@ -1,12 +1,18 @@
 # ☕ BlueWave Café v2.0 - Interactive Web Application
 
-**BlueWave Café** is a modern, high-performance, and fully themeable web application built with **React**, **Vite**, and **Tailwind CSS**, featuring a **serverless feedback system powered by Cloudflare Workers and Resend API.**
+**BlueWave Café** is a modern, high-performance, and fully themeable web application built with **React**, **Vite**, and **Tailwind CSS**, featuring a serverless feedback system powered by Cloudflare Workers and Resend API.
 
-Version 2.0 introduces a complete **Cafe Landing Page redesign**, improved UI architecture, and enhanced scalability, transforming the project from a simple menu interface into a more **production-ready frontend application**.
+Version 2.0 introduces a complete **Cafe Landing Page redesign**, improved UI architecture, and enhanced scalability, transforming the project from a simple menu interface into a more **production-ready, scalable frontend application**.
 
 It recreates a real café's digital experience, showcasing expertise in responsive UI/UX, component architecture, performance optimization, and accessible frontend design.
 
 This project serves as both a **technical showcase** and a **portfolio piece** highlighting strong React development practices and real-world frontend architecture.
+
+## 🚀 Live Demo
+
+Explore the full experience, including dynamic themes and smooth animations:
+
+🔗 **[https://bluewave-cafe.pages.dev](https://bluewave-cafe.pages.dev)**
 
 ## 🧠 Highlights
 
@@ -15,6 +21,7 @@ This project serves as both a **technical showcase** and a **portfolio piece** h
 - **Component-driven architecture** with reusable UI primitives
 - **Serverless backend integration** using Cloudflare Workers
 - Focus on **performance, accessibility, and UX polish**
+- Feature-based folder structure with separation of concerns
 
 ## 📸 Preview
 
@@ -29,33 +36,41 @@ This project serves as both a **technical showcase** and a **portfolio piece** h
 
 | Feature                            | Technologies Used                                                                             | Benefit                                                                                                                                                                                       |
 | :--------------------------------- | :-------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Dynamic Theming**                | React Context API, Tailwind CSS variables                                                     | Enables instant theme switching using global state and CSS design tokens.                                                                                                                     |
+| **Dynamic Theming**                | React Context API, Tailwind CSS variables                                                     | Enables instant theme switching using global state with real-time favicon color injection.                                                                                                    |
 | **Performance-First Architecture** | **`React.lazy()`**, `Suspense`, Vite `manualChunks`, image `fetchPriority`                    | Route-based code splitting and optimized build setup enable lightning-fast initial loads.                                                                                                     |
+| **Dynamic Menu Routing**           | **React Router v7**, Route Params                                                             | Enables direct linking to menu categories (e.g. `/menu/coffee`) for better UX and navigation.                                                                                                 |
+| **Serverless Email System**        | **Cloudflare Worker**, [Resend API](https://resend.com/)                                      | Securely handles feedback form submissions without exposing backend credentials. The Worker validates input, calls Resend's REST API, and sends confirmation emails with high deliverability. |
 | **Elegant UI/UX Design**           | **`framer-motion`**, Tailwind CSS, dynamic favicon, responsive layout                         | Provides a polished, responsive, and accessible interface with subtle motion effects, smooth transitions, and real-time theme reflection in the favicon.                                      |
 | **Cafe Landing Page**              | Modular React components, responsive layout, Google Maps Embed API (iframe-based integration) | Provides a complete real-world landing experience with hero, testimonials, announcements, and location integration.                                                                           |
 | **Reusable UI System**             | Reusable UI primitives (Button, Badge, Modal, etc.)                                           | Promotes consistency, scalability, and faster development across the app.                                                                                                                     |
 | **Custom Hooks System**            | `useScrollTo`, `useAutoRotate`, `useNavigationHandler`                                        | Encapsulates logic cleanly and improves code reusability and separation of concerns.                                                                                                          |
-| **Dynamic Menu Routing**           | React Router, route params                                                                    | Enables direct linking to menu categories (e.g. `/menu/coffee`) for better UX and navigation.                                                                                                 |
-| **Scalable Data Management**       | **`/config/`**, `menuData.js`                                                                 | All site data (e.g., navigation, metadata, menu items) is externally managed, simplifying updates and long-term scalability.                                                                  |
-| **SEO & Routing Optimization**     | **React Router v6**, `PageTitleHandler.jsx`, `site.js`, `navigation.js`                       | Automatically generates descriptive page titles and meta tags for better SEO and user experience.                                                                                             |
-| **Serverless Email System**        | **Cloudflare Worker**, [Resend API](https://resend.com/)                                      | Securely handles feedback form submissions without exposing backend credentials. The Worker validates input, calls Resend's REST API, and sends confirmation emails with high deliverability. |
-
-## 🚀 Live Demo
-
-Explore the full experience, including dynamic themes and smooth animations:
-
-🔗 **[https://bluewave-cafe.pages.dev](https://bluewave-cafe.pages.dev)**
+| **Scalable Data Management**       | Centralized **`/config`** and **`/data`** directories                                         | All site data (e.g. navigation, metadata, hours, menu items) is externally managed, simplifying updates and long-term scalability.                                                            |
+| **SEO & Routing Optimization**     | **React Router v7**, `PageTitleHandler.jsx`, `site.js`, `navigation.js`                       | Automatically generates descriptive page titles and meta tags for better SEO and user experience.                                                                                             |
 
 ## 🛠️ Tech Stack
 
 - **Framework:** [React](https://reactjs.org/) (Hooks, Context, Lazy Loading)
 - **Build Tool:** [Vite](https://vitejs.dev/)
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
-- **State Management:** Custom **React Context** for Theming
-- **Animation:** [Framer Motion](https://www.framer.com/motion/)
-- **Routing:** [React Router DOM v6](https://reactrouter.com/)
-- **Icons:** [Lucide React](https://lucide.dev/icons/) + [Iconify](https://iconify.design/docs/icon-components/react/) for social media icons
+- **Animations:** [Framer Motion](https://www.framer.com/motion/)
+- **Routing:** [React Router DOM 7](https://reactrouter.com/)
+- **Icons:** [Lucide React](https://lucide.dev/icons/) & [Iconify](https://iconify.design/docs/icon-components/react/) for social media icons
 - **Backend:** [Cloudflare Workers](https://developers.cloudflare.com/workers/) + [Resend API](https://resend.com/) for serverless email handling
+
+## ⚡ Performance
+
+Tested using **Google PageSpeed Insights** (Mobile, slow 4G throttling):
+
+- **Performance:** 96-99 / 100 (depending on route)
+- **Accessibility:** 100 / 100
+- **Best Practices:** 100 / 100
+- **SEO:** 100 / 100
+
+**Desktop:** 100 / 100 across all categories.
+
+> Benchmarked on the landing page (most resource-intensive route).
+
+📊 [Full Lighthouse Report (Landing Page)](https://pagespeed.web.dev/analysis/https-bluewave-cafe-pages-dev/kdabkbs5r4?form_factor=mobile)
 
 ## ☁️ Backend
 
@@ -75,11 +90,6 @@ This setup ensures:
 - Zero server maintenance
 - Edge-based scalability and speed
 - Automatic CI/CD via `git push`
-
-# ☕ Inspiration
-
-BlueWave Café was designed as a fictional brand to illustrate how thoughtful UI design, clean code, and technical polish can transform a simple café menu into a complete digital experience.
-It's not just about what's on the menu - it's about the craft behind how it's served.
 
 ## 💻 Local Setup
 
@@ -142,7 +152,7 @@ The production build will be located in the `/dist` folder.
 
 ## 📂 Project Structure
 
-The codebase follows a clear, scalable, and predictable structure for high maintainability:
+The codebase follows a predictable, feature-based structure to ensure high maintainability:
 
 ```bash
 /
@@ -150,37 +160,24 @@ The codebase follows a clear, scalable, and predictable structure for high maint
 │   └── robots.txt      # SEO configuration file
 │
 └── src/
-    ├── assets/         # Source assets (Favicon used for dynamic SVG manipulation)
+    ├── assets/         # Source assets (Favicon for dynamic SVG manipulation)
     ├── components/        # Reusable UI Components
     │   ├── common/        # Global cross-cutting components (Logo, Title Handlers)
     │   ├── home/          # Feature-specific components for the Landing Page
-    │   ├── layout/        # Structural components (Navbar, Footer, MainLayout)
-    │   ├── menu/          # Menu-specific domain logic and display components
-    │   └── ui/            # Atomic Design System (Reusable Button, Badge, Modal, etc.)
-    ├── config/         # Centralized application constants (e.g., Hours, Navigation, Socials, API endpoints, Contact info)
+    │   ├── layout/        # Structural wrappers (Navbar, Footer, MainLayout)
+    │   ├── menu/          # Menu domain logic and display components
+    │   └── ui/            # Atomic UI primitives (Button, Badge, Modal, etc.)
+    ├── config/         # Centralized constants (e.g. Hours, Navigation, Socials, API Endpoints, Contact Info)
     ├── context/        # Global state management (ThemeContext.jsx)
-    ├── data/           # Decoupled data content (Menu items, Testimonials, Announcements)
-    ├── hooks/          # Custom React hooks (Navigation handlers, Feedback Logic, ...)
+    ├── data/           # Decoupled data content (Menu Items, Testimonials, Announcements)
+    ├── hooks/          # Custom React Hooks (Navigation Handlers, Feedback Logic, ...)
     ├── pages/          # Route-specific components (MenuPage, AboutPage, NotFoundPage, ...)
     ├── styles/         # Global CSS and specialized component animations
     ├── themes/         # Theme definitions
     ├── utils/          # Helper functions and utility logic
-    ├── App.jsx         # Main routing and global layout
-    └── main.jsx        # Application entry point
+    ├── App.jsx         # Routing & Provider orchestration
+    └── main.jsx        # App entry point
 ```
-
-## ⚡ Performance
-
-Tested using **Google PageSpeed Insights** (Mobile, slow 4G throttling):
-
-- **Performance:** 96-99 / 100 (depending on route)
-- **Accessibility:** 100 / 100
-- **Best Practices:** 100 / 100
-- **SEO:** 100 / 100
-
-Desktop consistently scores **100 / 100** across all categories.
-
-> Benchmarked on the landing page (most resource-intensive route).
 
 ## 🔖 Versioning
 
