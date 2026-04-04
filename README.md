@@ -25,12 +25,12 @@ Explore the full experience, including dynamic themes and smooth animations:
 
 ## 📸 Preview
 
-![Landing Page](./screenshots/Screenshot_1.png)
-![Menu Page](./screenshots/Screenshot_2.png)
-![Announcement Popup Modal](./screenshots/Screenshot_3.png)
-![Landing Page (Mobile)](./screenshots/Screenshot_4.png)
-![Menu Page (Mobile)](./screenshots/Screenshot_5.png)
-![Feedback Form Page (Mobile)](./screenshots/Screenshot_6.png)
+![Landing Page](./public/screenshots/Screenshot_1.png)
+![Menu Page](./public/screenshots/Screenshot_2.png)
+![Announcement Popup Modal](./public/screenshots/Screenshot_3.png)
+![Landing Page (Mobile)](./public/screenshots/Screenshot_4.png)
+![Menu Page (Mobile)](./public/screenshots/Screenshot_5.png)
+![Feedback Form Page (Mobile)](./public/screenshots/Screenshot_6.png)
 
 ## ✨ Key Features
 

@@ -5,7 +5,7 @@ import {
   Navigate,
 } from "react-router-dom";
 
-import { MainLayout, PageTitleHandler, ScrollToTop } from "@/components";
+import { MainLayout, SEOHandler, ScrollToTop } from "@/components";
 
 import {
   HomePage,
@@ -20,7 +20,7 @@ export default function App() {
   return (
     <Router>
       <ScrollToTop />
-      <PageTitleHandler />
+      <SEOHandler />
 
       <Routes>
         <Route element={<MainLayout />}>
