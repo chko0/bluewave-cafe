@@ -30,6 +30,8 @@
   border: 1px solid #ffd700;
   will-change: transform;
   animation: badge-pulse-scale-opt 2s ease-in-out infinite;
+  animation-delay: 1.8s; /* Waits for motion.div to finish */
+  animation-fill-mode: backwards; /* Keeps initial state during delay */
 }
 
 .animate-badge-pulse-glow::after {
@@ -45,7 +47,9 @@
   z-index: -1;
 
   animation: badge-pulse-glow-opt 2s ease-in-out infinite;
+  animation-delay: 1.8s; /* Matches the parent delay */
   will-change: opacity, transform;
+  animation-fill-mode: backwards; /* Keeps initial state during delay */
 }
 
 /* ================================ */
@@ -82,4 +86,6 @@
   );
   will-change: transform; /* GPU acceleration */
   animation: badge-shimmer 2.1s ease-in-out infinite;
+  animation-delay: 1.5s; /* Shimmer feels better if it starts slightly later */
+  animation-fill-mode: backwards; /* Keeps initial state during delay */
 }
