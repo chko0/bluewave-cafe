@@ -149,13 +149,24 @@ This approach mirrors how modern frontend applications are structured in product
 
 ## 🎥 Video Demo
 
-[VIDEO HERE]
+https://github.com/user-attachments/assets/27a0d31b-e0f4-4ef5-bab4-54f354629b97
 
 ## 📸 Preview
 
 ![Landing Page](./screenshots/Screenshot_1.png)
+> Landing Page
+
 ![Menu Page](./screenshots/Screenshot_2.png)
+> Menu Page
+
 ![Announcement Popup Modal](./screenshots/Screenshot_3.png)
+> Announcement Popup Modal
+
 ![Landing Page (Mobile)](./screenshots/Screenshot_4.png)
+> Landing Page (Mobile)
+
 ![Menu Page (Mobile)](./screenshots/Screenshot_5.png)
+> Menu Page (Mobile)
+
 ![Feedback Form Page (Mobile)](./screenshots/Screenshot_6.png)
+> Feedback Form Page (Mobile)
