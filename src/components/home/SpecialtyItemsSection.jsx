@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Coffee } from "lucide-react";
 
 import { Button, MenuItem } from "@/components";
 import { getSpecialtyItems } from "@/utils";
@@ -72,7 +72,8 @@ export default function SpecialtyItemsSection() {
         <div className="mt-12 flex justify-center md:hidden">
           <Button
             to="/menu"
-            className="w-full sm:w-auto rounded-2xl px-8 py-4 text-md text-white font-semibold shadow-xl shadow-blue-900/10 bg-brand-primary-600"
+            icon={Coffee}
+            className="w-full sm:w-auto rounded-3xl px-8 py-4 text-md text-white font-semibold shadow-xl shadow-blue-900/10 bg-brand-primary-600"
           >
             Explore Full Menu
           </Button>

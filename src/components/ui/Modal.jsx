@@ -40,7 +40,7 @@ function Modal({ isOpen, onClose, children }) {
           >
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full transition-colors z-10"
+              className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full transition-colors z-10 cursor-pointer"
               aria-label="Close modal"
             >
               <X className="w-5 h-5 text-gray-400" />

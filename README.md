@@ -1,38 +1,22 @@
 # ☕ BlueWave Café v2.0 - Interactive Web Application
 
-**BlueWave Café** is a modern, high-performance, and fully themeable web application built with **React**, **Vite**, and **Tailwind CSS**, featuring a serverless feedback system powered by Cloudflare Workers and Resend API.
+**BlueWave Café** is a production-style frontend application that recreates a real café's digital experience - featuring dynamic theming, route-based menu navigation, and a serverless feedback system.
 
-Version 2.0 introduces a complete **Cafe Landing Page redesign**, improved UI architecture, and enhanced scalability, transforming the project from a simple menu interface into a more **production-ready, scalable frontend application**.
+Built with **React, Vite, and Tailwind CSS**, the project focuses on scalable architecture, performance optimization, and polished user experience.
 
-It recreates a real café's digital experience, showcasing expertise in responsive UI/UX, component architecture, performance optimization, and accessible frontend design.
+## 🔗 Live Demo
 
-This project serves as both a **technical showcase** and a **portfolio piece** highlighting strong React development practices and real-world frontend architecture.
-
-## 🚀 Live Demo
-
-Explore the full experience, including dynamic themes and smooth animations:
-
-🔗 **[https://bluewave-cafe.pages.dev](https://bluewave-cafe.pages.dev)**
+https://bluewave-cafe.pages.dev
 
 ## 🧠 Highlights
 
-- Built as a **real-world scalable frontend**, not just a static UI
-- Fully **themeable design system** using Tailwind CSS variables
-- **Component-driven architecture** with reusable UI primitives
-- **Serverless backend integration** using Cloudflare Workers
-- Focus on **performance, accessibility, and UX polish**
-- Feature-based folder structure with separation of concerns
+- Built as a **scalable frontend architecture**, not just a static UI
+- Fully **themeable design system** (Tailwind + CSS variables)
+- **Reusable component system** with clear separation of concerns
+- **Serverless backend integration** (Cloudflare Workers)
+- Strong focus on **performance, accessibility, and UX polish**
 
-## 📸 Preview
-
-![Landing Page](./screenshots/Screenshot_1.png)
-![Menu Page](./screenshots/Screenshot_2.png)
-![Announcement Popup Modal](./screenshots/Screenshot_3.png)
-![Landing Page (Mobile)](./screenshots/Screenshot_4.png)
-![Menu Page (Mobile)](./screenshots/Screenshot_5.png)
-![Feedback Form Page (Mobile)](./screenshots/Screenshot_6.png)
-
-## ✨ Key Features
+## 🚀 Core Features
 
 | Feature                            | Technologies Used                                                                             | Benefit                                                                                                                                                                                       |
 | :--------------------------------- | :-------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -45,7 +29,7 @@ Explore the full experience, including dynamic themes and smooth animations:
 | **Reusable UI System**             | Reusable UI primitives (Button, Badge, Modal, etc.)                                           | Promotes consistency, scalability, and faster development across the app.                                                                                                                     |
 | **Custom Hooks System**            | `useScrollTo`, `useAutoRotate`, `useNavigationHandler`                                        | Encapsulates logic cleanly and improves code reusability and separation of concerns.                                                                                                          |
 | **Scalable Data Management**       | Centralized **`/config`** and **`/data`** directories                                         | All site data (e.g. navigation, metadata, hours, menu items) is externally managed, simplifying updates and long-term scalability.                                                            |
-| **SEO & Routing Optimization**     | **React Router v7**, `PageTitleHandler.jsx`, `site.js`, `navigation.js`                       | Automatically generates descriptive page titles and meta tags for better SEO and user experience.                                                                                             |
+| **SEO & Routing Optimization**     | **React Router v7**, `SEOHandler.jsx`, `site.js`, `navigation.js`, Open Graph meta tags       | Automatically generates descriptive page titles and meta tags for better SEO and user experience, improving discoverability and rich link previews across platforms.                          |
 
 ## 🛠️ Tech Stack
 
@@ -54,23 +38,21 @@ Explore the full experience, including dynamic themes and smooth animations:
 - **Styling:** [Tailwind CSS](https://tailwindcss.com/)
 - **Animations:** [Framer Motion](https://www.framer.com/motion/)
 - **Routing:** [React Router DOM 7](https://reactrouter.com/)
-- **Icons:** [Lucide React](https://lucide.dev/icons/) & [Iconify](https://iconify.design/docs/icon-components/react/) for social media icons
+- **Icons:** [Lucide React](https://lucide.dev/icons/) + [Iconify](https://iconify.design/docs/icon-components/react/) for social media icons
 - **Backend:** [Cloudflare Workers](https://developers.cloudflare.com/workers/) + [Resend API](https://resend.com/) for serverless email handling
 
 ## ⚡ Performance
 
-Tested using **Google PageSpeed Insights** (Mobile, slow 4G throttling):
+Measured using **Google PageSpeed Insights** (Mobile, slow 4G):
 
-- **Performance:** 96-99 / 100 (depending on route)
-- **Accessibility:** 100 / 100
-- **Best Practices:** 100 / 100
-- **SEO:** 100 / 100
+- Performance: **96–99 / 100**
+- Accessibility: **100 / 100**
+- Best Practices: **100 / 100**
+- SEO: **100 / 100**
 
-**Desktop:** 100 / 100 across all categories.
+Desktop: **100 / 100 across all categories**
 
-> Benchmarked on the landing page (most resource-intensive route).
-
-📊 [Full Lighthouse Report (Landing Page)](https://pagespeed.web.dev/analysis/https-bluewave-cafe-pages-dev/kdabkbs5r4?form_factor=mobile)
+📊 [View Full Lighthouse Report](https://pagespeed.web.dev/analysis/https-bluewave-cafe-pages-dev/kdabkbs5r4?form_factor=mobile)
 
 ## ☁️ Backend
 
@@ -91,64 +73,16 @@ This setup ensures:
 - Edge-based scalability and speed
 - Automatic CI/CD via `git push`
 
-## 💻 Local Setup
-
-To run **BlueWave Café** locally, follow these steps:
-
-### 1. Prerequisites
-
-Install **Node.js** (LTS version) and **npm** or **yarn**.
-
-### 2. Clone the Repository
+## 🚦 Running the Project
 
 ```bash
 git clone https://github.com/chko0/bluewave-cafe.git
 cd bluewave-cafe
-```
-
-### 3. Install Dependencies
-
-Using npm:
-
-```bash
 npm install
-```
-
-or yarn:
-
-```bash
-yarn install
-```
-
-### 4. Start the Development Server
-
-```bash
 npm run dev
 ```
 
-or:
-
-```bash
-yarn dev
-```
-
-The application will now be running on http://localhost:5173 (or another port if 5173 is occupied).
-
-### 5. Build for Production
-
-To create a production-ready optimized build:
-
-```bash
-npm run build
-```
-
-or:
-
-```bash
-yarn build
-```
-
-The production build will be located in the `/dist` folder.
+Then open: `http://localhost:5173`
 
 ## 📂 Project Structure
 
@@ -179,20 +113,60 @@ The codebase follows a predictable, feature-based structure to ensure high maint
     └── main.jsx        # App entry point
 ```
 
-## 🔖 Versioning
+## 🧩 Development Process
 
-- **v2.0** — Cafe Landing Page, improved architecture, and UI system
-- **v1.0** — Initial release (menu-focused experience)
+BlueWave Café started as a simple menu interface (v1.0), but was later redesigned into a full landing experience in v2.0.
 
-Version history is available via Git tags and pull requests.
+Key architectural decisions included:
 
-## 🚧 Future Improvements
+- Moving to a **feature-based folder structure** to improve scalability
+- Introducing **centralized config/data layers** to decouple UI from content
+- Using **React.lazy + Suspense** for route-based code splitting
+- Designing a **theme system using CSS variables** for dynamic theming
 
-- Add a CMS or admin dashboard for dynamic menu editing
-- Multi-language support (Arabic & English)
-- Payment and order integration
-- PWA support for offline browsing
+The goal was to simulate a **real-world frontend architecture**, rather than a static project.
 
----
+This approach mirrors how modern frontend applications are structured in production environments, prioritizing maintainability and long-term scalability.
 
-**Crafted with ❤️ and caffeine.**
+## 📚 What I Learned
+
+- Structuring a scalable React app using **feature-based architecture**
+- Separating **UI, data, and configuration layers** for maintainability
+- Implementing dynamic theming using **CSS variables + global state**
+- Improving performance with **code splitting and lazy loading**
+- Designing UI systems with **reusable, composable components**
+- Integrating a **serverless backend** using Cloudflare Workers
+- Implementing **SEO best practices** in SPAs (dynamic meta tags, Open Graph, canonical URLs)
+- Handling social media link previews (LinkedIn, Twitter) and crawler-friendly asset delivery
+- Structuring public assets for direct access by external bots (Cloudflare Pages)
+
+## 💡 Future Improvements
+
+- Integrate a **headless CMS** (e.g. Sanity / Strapi) for dynamic content management
+- Add **i18n support** (Arabic / English)
+- Implement **online ordering & payment flow**
+- Convert to a **PWA** for offline support and installability
+
+## 🎥 Video Demo
+
+https://github.com/user-attachments/assets/27a0d31b-e0f4-4ef5-bab4-54f354629b97
+
+## 📸 Preview
+
+![Landing Page](./screenshots/Screenshot_1.png)
+> Landing Page
+
+![Menu Page](./screenshots/Screenshot_2.png)
+> Menu Page
+
+![Announcement Popup Modal](./screenshots/Screenshot_3.png)
+> Announcement Popup Modal
+
+![Landing Page (Mobile)](./screenshots/Screenshot_4.png)
+> Landing Page (Mobile)
+
+![Menu Page (Mobile)](./screenshots/Screenshot_5.png)
+> Menu Page (Mobile)
+
+![Feedback Form Page (Mobile)](./screenshots/Screenshot_6.png)
+> Feedback Form Page (Mobile)
