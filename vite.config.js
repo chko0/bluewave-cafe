@@ -4,6 +4,10 @@ import tailwindcss from "@tailwindcss/vite";
 import svgr from "@svgr/rollup";
 import { beasties } from "vite-plugin-beasties";
 import path from "path";
+import prerender from "vite-plugin-prerender";
+import { NAVIGATION } from "./src/config/navigation";
+
+const prerenderRoutes = NAVIGATION.map((item) => item.path);
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -16,6 +20,13 @@ export default defineConfig({
         preload: true,
         pruneSource: false,
       },
+    }),
+    prerender({
+      // The paths from your navigation.js
+      staticDir: path.join(__dirname, "dist"),
+      routes: [...prerenderRoutes, "/feedback/success"],
+      // Wait for the helmet tags to actually be injected
+      renderAfterDocumentEvent: "custom-render-trigger",
     }),
   ],
   resolve: {
